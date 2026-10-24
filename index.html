@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YSU의 북마크</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #f4f6f9;
+      --card-bg-light: 255, 255, 255;  /* RGB 값으로 설정 (투명도 조절용) */
+      --card-bg-dark: 45, 45, 65;      /* RGB 값으로 설정 (다크모드 배경 대비 개선) */
+      --text-color: #333333;
+      --text-muted: #666666;
+      --border-color: #e0e0e0;
+      --primary-color: #4a90e2;
+      --primary-hover: #357abd;
+      --danger-color: #e74c3c;
+      --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      
+      /* 박스 배경 불투명도 변수 (0 ~ 1) */
+      --card-opacity: 0.85;
+
+      --card-blur: blur(8px);
+      --modal-blur: blur(12px);
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #1e1e2e;
+      --text-color: #f1f1f1;
+      --text-muted: #a0a0a0;
+      --border-color: #333344;
+      --primary-color: #5c9ce6;
+      --primary-hover: #4a82c4;
+      --card-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; }
+    body { background-color: var(--bg-color); color: var(--text-color); min-height: 100vh; padding-bottom: 40px; transition: background-color 0.3s, color 0.3s; }
+
+    /* Header & Navigation (항상 불투명하게 유지) */
+    .header { 
+      display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; 
+      background: rgb(var(--card-bg-light)); 
+      backdrop-filter: blur(10px); 
+      border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; gap: 1rem; flex-wrap: wrap; 
+    }
+    [data-theme="dark"] .header { background: rgb(var(--card-bg-dark)); }
+
+    .header-left { display: flex; align-items: center; gap: 1.2rem; }
+    .header-brand { font-weight: 800; font-size: 1.05rem; display: flex; align-items: center; gap: 0.5rem; color: var(--primary-color); white-space: nowrap; }
+
+    .nav-tabs { display: flex; gap: 0.5rem; align-items: center; }
+    .tab-btn { background: none; border: none; padding: 0.4rem 0.8rem; font-size: 0.9rem; font-weight: 600; color: var(--text-muted); cursor: pointer; border-radius: 8px; transition: all 0.2s; }
+    .tab-btn:hover { background: rgba(0,0,0,0.05); color: var(--text-color); }
+    .tab-btn.active { background: var(--primary-color); color: #fff; }
+
+    .search-box { flex: 1; max-width: 350px; position: relative; }
+    .search-box input { width: 100%; padding: 0.5rem 1rem 0.5rem 2.2rem; border-radius: 20px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); outline: none; }
+    .search-box i { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+
+    .header-actions { display: flex; gap: 0.4rem; align-items: center; }
+    .btn-icon { background: none; border: 1px solid var(--border-color); width: 36px; height: 36px; border-radius: 8px; color: var(--text-color); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.2s; }
+    .btn-icon:hover { background: rgba(0,0,0,0.05); }
+
+    /* Main Container */
+    .container { max-width: 1400px; margin: 1.5rem auto; padding: 0 1rem; }
+    .grid-container { display: flex; gap: 1.5rem; width: 100%; }
+    .grid-column { flex: 1; display: flex; flex-direction: column; gap: 1.5rem; min-width: 0; }
+
+    /* Section Card (배경에만 투명도 적용, 내부 텍스트는 선명함) */
+    .section-card { 
+      background: rgba(var(--card-bg-light), var(--card-opacity)); 
+      backdrop-filter: var(--card-blur); 
+      border-radius: 12px; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); padding: 1rem; display: flex; flex-direction: column; 
+    }
+    [data-theme="dark"] .section-card { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
+
+    .section-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color); margin-bottom: 0.75rem; }
+    .section-title { font-size: 1.05rem; font-weight: 700; color: var(--text-color); }
+    .section-actions { display: flex; gap: 0.3rem; }
+    .btn-icon-sm { background: none; border: none; padding: 0.3rem; color: var(--text-muted); cursor: pointer; border-radius: 4px; font-size: 0.85rem; }
+    .btn-icon-sm:hover { color: var(--primary-color); background: rgba(0,0,0,0.05); }
+    .btn-icon-sm.danger:hover { color: var(--danger-color); }
+
+    .link-list { display: flex; flex-direction: column; gap: 0.4rem; padding-right: 0.2rem; }
+    .link-wrapper { display: flex; align-items: center; justify-content: space-between; border-radius: 6px; padding: 0.2rem 0.4rem; transition: background 0.2s; }
+    .link-wrapper:hover { background: rgba(0,0,0,0.04); }
+    .link-item { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--text-color); font-size: 0.9rem; flex: 1; overflow: hidden; }
+    .favicon { width: 18px; height: 18px; border-radius: 3px; object-fit: contain; flex-shrink: 0; }
+    .monogram-icon { width: 18px; height: 18px; border-radius: 3px; background: var(--primary-color); color: #fff; font-size: 0.75rem; font-weight: bold; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .link-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .link-actions { display: flex; opacity: 0; transition: opacity 0.2s; gap: 0.2rem; }
+    .link-wrapper:hover .link-actions { opacity: 1; }
+
+    /* Memo Layout */
+    .memo-container { display: flex; gap: 1.5rem; height: calc(100vh - 120px); }
+    .memo-sidebar { width: 260px; background: rgba(var(--card-bg-light), var(--card-opacity)); backdrop-filter: var(--card-blur); border-radius: 12px; border: 1px solid var(--border-color); padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    [data-theme="dark"] .memo-sidebar { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
+
+    .memo-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.5rem; }
+    .memo-item { padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.2s; }
+    .memo-item:hover, .memo-item.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+    .memo-item-title { font-weight: 600; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .memo-item-date { font-size: 0.75rem; opacity: 0.8; margin-top: 0.2rem; }
+
+    .memo-editor { flex: 1; background: rgba(var(--card-bg-light), var(--card-opacity)); backdrop-filter: var(--card-blur); border-radius: 12px; border: 1px solid var(--border-color); padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    [data-theme="dark"] .memo-editor { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
+
+    .memo-editor input { font-size: 1.2rem; font-weight: 700; border: none; background: none; color: var(--text-color); outline: none; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
+    .memo-editor textarea { flex: 1; border: none; background: none; color: var(--text-color); outline: none; resize: none; font-size: 1rem; line-height: 1.6; }
+    .memo-editor-footer { display: flex; justify-content: space-between; align-items: center; }
+
+    /* Modals */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
+    .modal-box { background: rgb(var(--card-bg-light)); backdrop-filter: var(--modal-blur); border-radius: 12px; border: 1px solid var(--border-color); width: 90%; max-width: 450px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; box-shadow: var(--card-shadow); }
+    [data-theme="dark"] .modal-box { background: rgb(var(--card-bg-dark)); }
+
+    .modal-header { font-size: 1.1rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+    .modal-body { display: flex; flex-direction: column; gap: 0.8rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.3rem; }
+    .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+    .form-group input, .form-group select { padding: 0.6rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); outline: none; }
+    .modal-footer { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.5rem; }
+    .btn-primary { background: var(--primary-color); color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-secondary { background: none; border: 1px solid var(--border-color); color: var(--text-color); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; }
+
+    .item-delete-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid var(--border-color); }
+    .bg-preview { width: 100%; height: 120px; border-radius: 8px; border: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: center; background-position: center; background-size: cover; color: var(--text-muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Header Nav Bar -->
+  <div class="header">
+    <div class="header-left">
+      <div class="header-brand">
+        <i class="fa-solid fa-bookmark"></i> YSU의 북마크
+      </div>
+      <div class="nav-tabs" id="pageTabs"></div>
+    </div>
+
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="검색어 또는 URL 입력...">
+    </div>
+
+    <div class="header-actions">
+      <button class="btn-icon" id="addSectionHeaderBtn" title="카테고리 추가"><i class="fa-solid fa-folder-plus"></i></button>
+      <button class="btn-icon" id="deleteSectionHeaderBtn" title="카테고리 삭제"><i class="fa-solid fa-folder-minus"></i></button>
+      <button class="btn-icon" id="bgImageModalBtn" title="배경 이미지 설정"><i class="fa-solid fa-image"></i></button>
+      <button class="btn-icon" id="opacityHeaderBtn" title="투명도 설정"><i class="fa-solid fa-sliders"></i></button>
+      <button class="btn-icon" id="exportBtn" title="내보내기"><i class="fa-solid fa-download"></i></button>
+      <button class="btn-icon" id="importBtn" title="불러오기"><i class="fa-solid fa-upload"></i></button>
+      <input type="file" id="importFileInput" accept=".json,.html,.htm" style="display:none;">
+      <button class="btn-icon" id="themeBtn" title="테마 변경"><i class="fa-solid fa-moon"></i></button>
+      <button class="btn-icon" id="authBtn" title="구글 로그인"><i class="fa-brands fa-google"></i></button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="grid-container" id="gridContainer"></div>
+
+    <div class="memo-container" id="memoContainer" style="display: none;">
+      <div class="memo-sidebar">
+        <button class="btn-primary" id="newMemoBtn"><i class="fa-solid fa-plus"></i> 새 메모</button>
+        <div class="memo-list" id="memoList"></div>
+      </div>
+      <div class="memo-editor">
+        <input type="text" id="memoTitleInput" placeholder="메모 제목">
+        <textarea id="memoContentInput" placeholder="내용을 입력하세요..."></textarea>
+        <div class="memo-editor-footer">
+          <span id="memoDateBadge" style="font-size:0.8rem; color:var(--text-muted);"><i class="fa-regular fa-clock"></i> 작성일시</span>
+          <div>
+            <button class="btn-secondary" id="deleteMemoBtn"><i class="fa-solid fa-trash"></i> 삭제</button>
+            <button class="btn-primary" id="saveMemoBtn"><i class="fa-solid fa-floppy-disk"></i> 저장</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal-overlay" id="sectionModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span id="sectionModalTitle">카테고리 추가</span>
+        <button class="btn-icon-sm" id="closeSectionModalBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>카테고리 이름</label>
+          <input type="text" id="sectionTitleInput" placeholder="예: 개발 도구">
+        </div>
+        <div class="form-group">
+          <label>높이 설정</label>
+          <select id="sectionHeightSelect">
+            <option value="180px">작게 (180px)</option>
+            <option value="260px" selected>보통 (260px)</option>
+            <option value="380px">크게 (380px)</option>
+            <option value="auto">자동 (Auto)</option>
+            <option value="custom">직접 입력</option>
+          </select>
+          <input type="text" id="sectionHeightInput" placeholder="예: 300px" style="display:none; margin-top:0.4rem;">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="saveSectionBtn">저장</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="deleteSectionModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span>카테고리 삭제</span>
+        <button class="btn-icon-sm" id="closeDeleteSectionModalBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="deleteSectionList"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="linkModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span id="linkModalTitle">링크 추가</span>
+        <button class="btn-icon-sm" id="closeLinkModalBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>카테고리 선택</label>
+          <select id="linkSectionSelect"></select>
+        </div>
+        <div class="form-group">
+          <label>링크 이름</label>
+          <input type="text" id="linkNameInput" placeholder="예: Google">
+        </div>
+        <div class="form-group">
+          <label>URL 주소</label>
+          <input type="text" id="linkUrlInput" placeholder="https://www.google.com">
+        </div>
+        <div class="form-group">
+          <label>순서 (위치)</label>
+          <input type="number" id="linkOrderInput" min="1" value="1">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="saveLinkBtn">저장</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="deleteLinkModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span id="deleteLinkModalTitle">링크 삭제</span>
+        <button class="btn-icon-sm" id="closeDeleteLinkModalBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="deleteLinkList"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="bgModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span>배경 이미지 설정</span>
+        <button class="btn-icon-sm" id="closeBgModalBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="bg-preview" id="bgPreviewBox"><span>이미지 없음</span></div>
+        <div class="form-group">
+          <label>이미지 파일 업로드</label>
+          <input type="file" id="bgFileInput" accept="image/*">
+        </div>
+        <div class="form-group">
+          <label>배경 채우기 방식</label>
+          <select id="bgSizeSelect">
+            <option value="cover">화면에 맞춤 (Cover)</option>
+            <option value="contain">원본 비율 유지 (Contain)</option>
+            <option value="repeat">바둑판 배열 (Repeat)</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="removeBgBtn">제거</button>
+        <button class="btn-primary" id="saveBgBtn">적용</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="opacityModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span>박스 배경 투명도 설정</span>
+        <button class="btn-icon-sm" id="closeOpacityModalBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>박스 불투명도: <span id="headerOpacityValText">85%</span></label>
+          <input type="range" id="headerOpacityInput" min="0" max="100" value="85">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" id="saveOpacityBtn">확인</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase Modular SDK Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB0up1hXlFPIAH53mTTx7oxSbNbH4O0rWw",
+      authDomain: "ysu-bookmark.firebaseapp.com",
+      projectId: "ysu-bookmark",
+      storageBucket: "ysu-bookmark.firebasestorage.app",
+      messagingSenderId: "40055074310",
+      appId: "1:40055074310:web:e3d7d16dc2c2f0e3b75d87",
+      measurementId: "G-N2PCMBG9KB"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const provider = new GoogleAuthProvider();
+
+    let currentUser = null;
+    let unsubscribeFirestore = null;
+
+    const getDefaultData = () => ({
+      "_format": "linkofy.v1",
+      "settings": { 
+        "theme": "light", 
+        "openNewPage": false, 
+        "bgImage": "", 
+        "bgSize": "cover",
+        "cardOpacity": 85
+      },
+      "pages": [
+        {
+          "name": "Home",
+          "sections": [
+            {
+              "title": "Search Engines",
+              "height": "260px",
+              "links": [
+                { "name": "네이버", "url": "https://www.naver.com", "iconKind": "auto" },
+                { "name": "Google", "url": "https://www.google.com", "iconKind": "auto" },
+                { "name": "Bing", "url": "https://www.bing.com", "iconKind": "auto" },
+                { "name": "DuckDuckGo", "url": "https://duckduckgo.com", "iconKind": "auto" }
+              ]
+            }
+          ]
+        }
+      ],
+      "memos": []
+    });
+
+    let appState = getDefaultData();
+
+    let activeTab = 0;
+    let currentTheme = 'light';
+    let tempBgImage = '';
+    let selectedMemoId = null;
+
+    let sectionModalMode = 'add';
+    let targetSectionIdx = null;
+
+    let linkModalMode = 'add';
+    let targetLinkSecIdx = null;
+    let targetLinkIdx = null;
+
+    let pageTabsEl, gridContainerEl, memoContainerEl, searchInputEl, themeBtnEl, authBtn;
+    let addSectionHeaderBtn, deleteSectionHeaderBtn, bgImageModalBtn, opacityHeaderBtn;
+    let exportBtn, importBtn, importFileInput;
+    let memoListEl, memoTitleInputEl, memoDateBadgeEl, memoContentInputEl, newMemoBtnEl, saveMemoBtnEl, deleteMemoBtnEl;
+    let sectionModalEl, sectionModalTitleEl, sectionTitleInputEl, sectionHeightSelectEl, sectionHeightInputEl, closeSectionModalBtn, saveSectionBtn;
+    let deleteSectionModalEl, deleteSectionListEl, closeDeleteSectionModalBtn;
+    let linkModalEl, linkModalTitleEl, linkSectionSelectEl, linkNameInputEl, linkUrlInputEl, linkOrderInputEl, closeLinkModalBtn, saveLinkBtn;
+    let deleteLinkModalEl, deleteLinkModalTitleEl, deleteLinkListEl, closeDeleteLinkModalBtn;
+    let bgModalEl, bgFileInputEl, bgSizeSelectEl, bgPreviewBoxEl, saveBgBtnEl, removeBgBtnEl, closeBgModalBtnEl;
+    let opacityModalEl, headerOpacityInputEl, headerOpacityValTextEl, closeOpacityModalBtnEl, saveOpacityBtnEl;
+
+    function initElements() {
+      pageTabsEl = document.getElementById('pageTabs');
+      gridContainerEl = document.getElementById('gridContainer');
+      memoContainerEl = document.getElementById('memoContainer');
+      searchInputEl = document.getElementById('searchInput');
+      themeBtnEl = document.getElementById('themeBtn');
+
+      authBtn = document.getElementById('authBtn');
+
+      addSectionHeaderBtn = document.getElementById('addSectionHeaderBtn');
+      deleteSectionHeaderBtn = document.getElementById('deleteSectionHeaderBtn');
+      bgImageModalBtn = document.getElementById('bgImageModalBtn');
+      opacityHeaderBtn = document.getElementById('opacityHeaderBtn');
+
+      exportBtn = document.getElementById('exportBtn');
+      importBtn = document.getElementById('importBtn');
+      importFileInput = document.getElementById('importFileInput');
+
+      memoListEl = document.getElementById('memoList');
+      memoTitleInputEl = document.getElementById('memoTitleInput');
+      memoDateBadgeEl = document.getElementById('memoDateBadge');
+      memoContentInputEl = document.getElementById('memoContentInput');
+      newMemoBtnEl = document.getElementById('newMemoBtn');
+      saveMemoBtnEl = document.getElementById('saveMemoBtn');
+      deleteMemoBtnEl = document.getElementById('deleteMemoBtn');
+
+      sectionModalEl = document.getElementById('sectionModal');
+      sectionModalTitleEl = document.getElementById('sectionModalTitle');
+      sectionTitleInputEl = document.getElementById('sectionTitleInput');
+      sectionHeightSelectEl = document.getElementById('sectionHeightSelect');
+      sectionHeightInputEl = document.getElementById('sectionHeightInput');
+      closeSectionModalBtn = document.getElementById('closeSectionModalBtn');
+      saveSectionBtn = document.getElementById('saveSectionBtn');
+
+      deleteSectionModalEl = document.getElementById('deleteSectionModal');
+      deleteSectionListEl = document.getElementById('deleteSectionList');
+      closeDeleteSectionModalBtn = document.getElementById('closeDeleteSectionModalBtn');
+
+      linkModalEl = document.getElementById('linkModal');
+      linkModalTitleEl = document.getElementById('linkModalTitle');
+      linkSectionSelectEl = document.getElementById('linkSectionSelect');
+      linkNameInputEl = document.getElementById('linkNameInput');
+      linkUrlInputEl = document.getElementById('linkUrlInput');
+      linkOrderInputEl = document.getElementById('linkOrderInput');
+      closeLinkModalBtn = document.getElementById('closeLinkModalBtn');
+      saveLinkBtn = document.getElementById('saveLinkBtn');
+
+      deleteLinkModalEl = document.getElementById('deleteLinkModal');
+      deleteLinkModalTitleEl = document.getElementById('deleteLinkModalTitle');
+      deleteLinkListEl = document.getElementById('deleteLinkList');
+      closeDeleteLinkModalBtn = document.getElementById('closeDeleteLinkModalBtn');
+
+      bgModalEl = document.getElementById('bgModal');
+      bgFileInputEl = document.getElementById('bgFileInput');
+      bgSizeSelectEl = document.getElementById('bgSizeSelect');
+      bgPreviewBoxEl = document.getElementById('bgPreviewBox');
+      saveBgBtnEl = document.getElementById('saveBgBtn');
+      removeBgBtnEl = document.getElementById('removeBgBtn');
+      closeBgModalBtnEl = document.getElementById('closeBgModalBtn');
+
+      opacityModalEl = document.getElementById('opacityModal');
+      headerOpacityInputEl = document.getElementById('headerOpacityInput');
+      headerOpacityValTextEl = document.getElementById('headerOpacityValText');
+      closeOpacityModalBtnEl = document.getElementById('closeOpacityModalBtn');
+      saveOpacityBtnEl = document.getElementById('saveOpacityBtn');
+    }
+
+    function initApp() {
+      initElements();
+      currentTheme = appState.settings.theme || 'light';
+      applyTheme(currentTheme);
+      applyBgStyle(appState.settings.bgImage || '', appState.settings.bgSize || 'cover', appState.settings.cardOpacity ?? 85);
+      renderPageTabs();
+      renderCurrentView();
+      setupEventListeners();
+      setupAuthListeners();
+    }
+
+    function refreshUI() {
+      currentTheme = appState.settings?.theme || 'light';
+      applyTheme(currentTheme);
+      applyBgStyle(appState.settings?.bgImage || '', appState.settings?.bgSize || 'cover', appState.settings?.cardOpacity ?? 85);
+      renderPageTabs();
+      renderCurrentView();
+    }
+
+    function setupAuthListeners() {
+      authBtn.addEventListener('click', () => {
+        if (currentUser) {
+          signOut(auth);
+        } else {
+          signInWithPopup(auth, provider).catch(err => alert("로그인 오류: " + err.message));
+        }
+      });
+
+      onAuthStateChanged(auth, (user) => {
+        currentUser = user;
+        if (user) {
+          authBtn.title = user.displayName ? `${user.displayName} (로그아웃)` : "로그아웃";
+          authBtn.style.color = "var(--primary-color)";
+          syncFromFirestore(user.uid);
+        } else {
+          authBtn.title = "구글 로그인";
+          authBtn.style.color = "var(--text-color)";
+          if (unsubscribeFirestore) {
+            unsubscribeFirestore();
+            unsubscribeFirestore = null;
+          }
+          appState = getDefaultData();
+          refreshUI();
+        }
+      });
+    }
+
+    function syncFromFirestore(uid) {
+      if (unsubscribeFirestore) unsubscribeFirestore();
+
+      const userDocRef = doc(db, "users", uid);
+      
+      unsubscribeFirestore = onSnapshot(userDocRef, (docSnap) => {
+        if (docSnap.exists()) {
+          appState = docSnap.data();
+          if (!appState.pages) appState.pages = [];
+          if (!appState.memos) appState.memos = [];
+          if (!appState.settings) appState.settings = { theme: 'light', openNewPage: false, bgImage: '', bgSize: 'cover', cardOpacity: 85 };
+          refreshUI();
+        } else {
+          saveState();
+        }
+      });
+    }
+
+    async function saveState() {
+      if (currentUser) {
+        try {
+          const userDocRef = doc(db, "users", currentUser.uid);
+          await setDoc(userDocRef, appState);
+        } catch (err) {
+          console.error("Firestore 저장 오류:", err);
+          alert("서버 저장 실패! 상세오류: " + err.message);
+        }
+      } else {
+        alert("로그인 상태가 아닙니다. 변경사항은 현재 세션에만 유지됩니다.");
+      }
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      themeBtnEl.innerHTML = theme === 'dark' 
+        ? '<i class="fa-solid fa-sun"></i>' 
+        : '<i class="fa-solid fa-moon"></i>';
+      applyBgStyle(appState.settings?.bgImage || '', appState.settings?.bgSize || 'cover', appState.settings?.cardOpacity ?? 85);
+    }
+
+    function applyBgStyle(bgDataUrl, bgSize = 'cover', opacity = 85) {
+      const ratio = opacity / 100;
+      let opacityVal = opacity === 0 ? 0 : Math.pow(ratio, 1.8);
+      
+      // 1~50% 구간에서는 배경이 더 잘 보이도록 투명도 20% 추가 상승 (불투명도를 20% 감소)
+      if (opacity > 0 && opacity <= 50) {
+        opacityVal = opacityVal * 0.8;
+      }
+      
+      document.documentElement.style.setProperty('--card-opacity', opacityVal);
+      
+      if (opacity == 0) {
+        document.documentElement.style.setProperty('--card-blur', 'none');
+        document.documentElement.style.setProperty('--modal-blur', 'none');
+      } else {
+        document.documentElement.style.setProperty('--card-blur', 'blur(8px)');
+        document.documentElement.style.setProperty('--modal-blur', 'blur(12px)');
+      }
+
+      if (bgDataUrl) {
+        document.body.style.backgroundImage = `url('${bgDataUrl}')`;
+        document.body.style.backgroundSize = bgSize;
+        document.body.style.backgroundRepeat = bgSize === 'repeat' ? 'repeat' : 'no-repeat';
+        document.body.style.backgroundPosition = 'center center';
+        document.body.style.backgroundAttachment = bgSize === 'repeat' ? 'scroll' : 'fixed';
+      } else {
+        document.body.style.backgroundImage = 'none';
+      }
+    }
+
+    function getFaviconUrl(url) {
+      try {
+        const domain = new URL(url).hostname;
+        return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+      } catch (e) {
+        return '';
+      }
+    }
+
+    function parseChromeBookmarksHtml(htmlContent) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(htmlContent, 'text/html');
+      const sections = [];
+
+      const h3Tags = doc.querySelectorAll('h3');
+      if (h3Tags.length > 0) {
+        h3Tags.forEach(h3 => {
+          const title = h3.textContent.trim() || '북마크';
+          const dl = h3.nextElementSibling;
+          const links = [];
+          if (dl && dl.tagName === 'DL') {
+            const aTags = dl.querySelectorAll('a');
+            aTags.forEach(a => {
+              if (a.href && a.textContent) {
+                links.push({ name: a.textContent.trim(), url: a.href, iconKind: 'auto' });
+              }
+            });
+          }
+          if (links.length > 0) {
+            sections.push({ title, height: 'auto', links });
+          }
+        });
+      }
+
+      if (sections.length === 0) {
+        const allLinks = [];
+        doc.querySelectorAll('a').forEach(a => {
+          if (a.href && a.textContent) {
+            allLinks.push({ name: a.textContent.trim(), url: a.href, iconKind: 'auto' });
+          }
+        });
+        if (allLinks.length > 0) {
+          sections.push({ title: '불러온 북마크', height: 'auto', links: allLinks });
+        }
+      }
+
+      return sections;
+    }
+
+    function renderPageTabs() {
+      pageTabsEl.innerHTML = '';
+      if (typeof activeTab === 'number' && activeTab >= appState.pages.length) {
+        activeTab = 0;
+      }
+
+      appState.pages.forEach((page, index) => {
+        const btn = document.createElement('button');
+        btn.className = `tab-btn ${activeTab === index ? 'active' : ''}`;
+        btn.textContent = page.name;
+        btn.addEventListener('click', () => {
+          activeTab = index;
+          renderPageTabs();
+          renderCurrentView();
+        });
+        pageTabsEl.appendChild(btn);
+      });
+
+      const memoBtn = document.createElement('button');
+      memoBtn.className = `tab-btn ${activeTab === 'memo' ? 'active' : ''}`;
+      memoBtn.innerHTML = '<i class="fa-solid fa-note-sticky"></i> Memo';
+      memoBtn.addEventListener('click', () => {
+        activeTab = 'memo';
+        renderPageTabs();
+        renderCurrentView();
+      });
+      pageTabsEl.appendChild(memoBtn);
+    }
+
+    function renderCurrentView() {
+      if (activeTab === 'memo') {
+        gridContainerEl.style.display = 'none';
+        memoContainerEl.style.display = 'flex';
+        addSectionHeaderBtn.style.display = 'none';
+        deleteSectionHeaderBtn.style.display = 'none';
+        renderMemoView();
+      } else {
+        gridContainerEl.style.display = 'flex';
+        memoContainerEl.style.display = 'none';
+        addSectionHeaderBtn.style.display = 'flex';
+        deleteSectionHeaderBtn.style.display = 'flex';
+        renderDashboard(searchInputEl.value.trim());
+      }
+    }
+
+    function getColumnCount() {
+      const width = window.innerWidth;
+      if (width < 768) return 1;
+      if (width < 1200) return 2;
+      return 3;
+    }
+
+    function renderDashboard(filterQuery = '') {
+      gridContainerEl.innerHTML = '';
+      if (typeof activeTab === 'number' && activeTab >= appState.pages.length) {
+        activeTab = 0;
+      }
+      const currentPage = appState.pages[activeTab];
+
+      if (!currentPage || !currentPage.sections) return;
+
+      const colCount = getColumnCount();
+      const columns = [];
+      for (let i = 0; i < colCount; i++) {
+        const col = document.createElement('div');
+        col.className = 'grid-column';
+        columns.push(col);
+        gridContainerEl.appendChild(col);
+      }
+
+      const totalSections = currentPage.sections.length;
+      let visibleIdx = 0;
+
+      currentPage.sections.forEach((section, sIdx) => {
+        const filteredLinks = section.links.filter(link => 
+          link.name.toLowerCase().includes(filterQuery.toLowerCase()) || 
+          link.url.toLowerCase().includes(filterQuery.toLowerCase())
+        );
+
+        if (filterQuery && filteredLinks.length === 0) return;
+
+        const card = document.createElement('div');
+        card.className = 'section-card';
+
+        const header = document.createElement('div');
+        header.className = 'section-header';
+        header.innerHTML = `
+          <span class="section-title">${section.title}</span>
+          <div class="section-actions">
+            <button class="btn-icon-sm" title="위로 이동" onclick="window.moveSection(${sIdx}, -1)" ${sIdx === 0 ? 'disabled' : ''}><i class="fa-solid fa-chevron-up"></i></button>
+            <button class="btn-icon-sm" title="아래로 이동" onclick="window.moveSection(${sIdx}, 1)" ${sIdx === totalSections - 1 ? 'disabled' : ''}><i class="fa-solid fa-chevron-down"></i></button>
+            <button class="btn-icon-sm" title="링크 추가" onclick="window.openLinkModal('add', ${sIdx})"><i class="fa-solid fa-plus"></i></button>
+            <button class="btn-icon-sm" title="카테고리 수정" onclick="window.openSectionModal('edit', ${sIdx})"><i class="fa-solid fa-pen"></i></button>
+            <button class="btn-icon-sm danger" title="링크 삭제" onclick="window.openDeleteLinkModal(${sIdx})"><i class="fa-solid fa-link-slash"></i></button>
+          </div>
+        `;
+        card.appendChild(header);
+
+        const linkList = document.createElement('div');
+        linkList.className = 'link-list';
+
+        const rawHeight = (section.height || '260px').toString().trim().toLowerCase();
+
+        if (rawHeight === 'auto' || rawHeight === 'none' || rawHeight === '') {
+          linkList.style.height = 'auto';
+          linkList.style.maxHeight = 'none';
+          linkList.style.overflow = 'visible';
+        } else {
+          const finalHeight = /^\d+$/.test(rawHeight) ? `${rawHeight}px` : rawHeight;
+          linkList.style.height = finalHeight;
+          linkList.style.maxHeight = finalHeight;
+          linkList.style.overflowY = 'auto';
+        }
+
+        const linksToDisplay = filterQuery ? filteredLinks : section.links;
+
+        linksToDisplay.forEach((link, lIdx) => {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'link-wrapper';
+
+          const a = document.createElement('a');
+          a.className = 'link-item';
+          a.href = link.url;
+          a.target = appState.settings.openNewPage ? '_blank' : '_self';
+
+          const img = document.createElement('img');
+          img.className = 'favicon';
+          img.src = getFaviconUrl(link.url);
+          img.alt = link.name;
+          img.onerror = function() {
+            this.style.display = 'none';
+            const fallback = document.createElement('div');
+            fallback.className = 'monogram-icon';
+            fallback.textContent = link.name.charAt(0);
+            a.insertBefore(fallback, a.firstChild);
+          };
+          a.appendChild(img);
+
+          const span = document.createElement('span');
+          span.className = 'link-name';
+          span.textContent = link.name;
+          a.appendChild(span);
+
+          const actions = document.createElement('div');
+          actions.className = 'link-actions';
+
+          const editBtn = document.createElement('button');
+          editBtn.className = 'btn-icon-sm';
+          editBtn.title = '링크 수정';
+          editBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
+          editBtn.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openLinkModal('edit', sIdx, lIdx);
+          };
+
+          const delBtn = document.createElement('button');
+          delBtn.className = 'btn-icon-sm danger';
+          delBtn.title = '링크 삭제';
+          delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+          delBtn.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            deleteSingleLink(sIdx, lIdx);
+          };
+
+          actions.appendChild(editBtn);
+          actions.appendChild(delBtn);
+
+          wrapper.appendChild(a);
+          wrapper.appendChild(actions);
+          linkList.appendChild(wrapper);
+        });
+
+        card.appendChild(linkList);
+        columns[visibleIdx % colCount].appendChild(card);
+        visibleIdx++;
+      });
+    }
+
+    function renderMemoView() {
+      memoListEl.innerHTML = '';
+      if (!appState.memos || appState.memos.length === 0) {
+        memoListEl.innerHTML = '<p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:1rem;">저장된 메모가 없습니다.</p>';
+        clearMemoEditor();
+        return;
+      }
+
+      if (!selectedMemoId && appState.memos.length > 0) {
+        selectedMemoId = appState.memos[0].id;
+      }
+
+      appState.memos.forEach(memo => {
+        const item = document.createElement('div');
+        item.className = `memo-item ${memo.id === selectedMemoId ? 'active' : ''}`;
+        item.innerHTML = `
+          <div class="memo-item-title">${memo.title || '제목 없음'}</div>
+          <div class="memo-item-date">${memo.createdAt || ''}</div>
+        `;
+        item.onclick = () => {
+          selectedMemoId = memo.id;
+          renderMemoView();
+        };
+        memoListEl.appendChild(item);
+      });
+
+      const currentMemo = appState.memos.find(m => m.id === selectedMemoId);
+      if (currentMemo) {
+        memoTitleInputEl.value = currentMemo.title || '';
+        memoContentInputEl.value = currentMemo.content || '';
+        memoDateBadgeEl.innerHTML = `<i class="fa-regular fa-clock"></i> 작성일시: ${currentMemo.createdAt}`;
+      } else {
+        clearMemoEditor();
+      }
+    }
+
+    function clearMemoEditor() {
+      selectedMemoId = null;
+      memoTitleInputEl.value = '';
+      memoContentInputEl.value = '';
+      memoDateBadgeEl.innerHTML = `<i class="fa-regular fa-clock"></i> 새 메모 작성 중`;
+    }
+
+    function saveMemo() {
+      const title = memoTitleInputEl.value.trim() || '제목 없음';
+      const content = memoContentInputEl.value.trim();
+      
+      const now = new Date();
+      const dateString = `${now.getFullYear()}. ${String(now.getMonth() + 1).padStart(2, '0')}. ${String(now.getDate()).padStart(2, '0')}. ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+
+      if (selectedMemoId) {
+        const idx = appState.memos.findIndex(m => m.id === selectedMemoId);
+        if (idx !== -1) {
+          appState.memos[idx].title = title;
+          appState.memos[idx].content = content;
+          appState.memos[idx].createdAt = dateString;
+        }
+      } else {
+        const newMemo = {
+          id: 'memo-' + Date.now(),
+          title: title,
+          content: content,
+          createdAt: dateString
+        };
+        appState.memos.unshift(newMemo);
+        selectedMemoId = newMemo.id;
+      }
+
+      saveState();
+      renderMemoView();
+      alert('메모가 저장되었습니다.');
+    }
+
+    function deleteMemo() {
+      if (!selectedMemoId) {
+        alert('삭제할 메모가 선택되지 않았습니다.');
+        return;
+      }
+
+      if (confirm('현재 메모를 삭제하시겠습니까?')) {
+        appState.memos = appState.memos.filter(m => m.id !== selectedMemoId);
+        selectedMemoId = appState.memos.length > 0 ? appState.memos[0].id : null;
+        saveState();
+        renderMemoView();
+      }
+    }
+
+    function moveSection(sIdx, direction) {
+      const sections = appState.pages[activeTab].sections;
+      const targetIdx = sIdx + direction;
+
+      if (targetIdx < 0 || targetIdx >= sections.length) return;
+
+      const temp = sections[sIdx];
+      sections[sIdx] = sections[targetIdx];
+      sections[targetIdx] = temp;
+
+      saveState();
+      renderCurrentView();
+    }
+
+    function openSectionModal(mode = 'add', sIdx = null) {
+      sectionModalMode = mode;
+      targetSectionIdx = sIdx;
+
+      const presetValues = ['180px', '260px', '380px', 'auto'];
+
+      if (mode === 'edit' && sIdx !== null) {
+        sectionModalTitleEl.textContent = '카테고리 수정';
+        const section = appState.pages[activeTab].sections[sIdx];
+        sectionTitleInputEl.value = section.title;
+
+        const currentHeight = (section.height || '260px').toString().toLowerCase();
+
+        if (presetValues.includes(currentHeight)) {
+          sectionHeightSelectEl.value = currentHeight;
+          sectionHeightInputEl.style.display = 'none';
+          sectionHeightInputEl.value = currentHeight;
+        } else {
+          sectionHeightSelectEl.value = 'custom';
+          sectionHeightInputEl.style.display = 'block';
+          sectionHeightInputEl.value = section.height || '';
+        }
+      } else {
+        sectionModalTitleEl.textContent = '카테고리 추가';
+        sectionTitleInputEl.value = '';
+        sectionHeightSelectEl.value = '260px';
+        sectionHeightInputEl.style.display = 'none';
+        sectionHeightInputEl.value = '260px';
+      }
+      sectionModalEl.classList.add('active');
+    }
+
+    function saveSection() {
+      const title = sectionTitleInputEl.value.trim();
+      const selectedOption = sectionHeightSelectEl.value;
+      let finalHeight = '260px';
+
+      if (!title) {
+        alert('카테고리 이름을 입력하세요.');
+        return;
+      }
+
+      if (selectedOption === 'custom') {
+        const customValue = sectionHeightInputEl.value.trim();
+        if (!customValue) {
+          finalHeight = '260px';
+        } else if (/^\d+$/.test(customValue)) {
+          finalHeight = customValue + 'px';
+        } else {
+          finalHeight = customValue;
+        }
+      } else {
+        finalHeight = selectedOption;
+      }
+
+      const sections = appState.pages[activeTab].sections;
+
+      if (sectionModalMode === 'add') {
+        sections.push({ title: title, height: finalHeight, links: [] });
+      } else if (sectionModalMode === 'edit' && targetSectionIdx !== null) {
+        sections[targetSectionIdx].title = title;
+        sections[targetSectionIdx].height = finalHeight;
+      }
+
+      saveState();
+      renderCurrentView();
+      sectionModalEl.classList.remove('active');
+    }
+
+    function openDeleteSectionModal() {
+      const sections = appState.pages[activeTab].sections;
+      deleteSectionListEl.innerHTML = '';
+
+      if (!sections || sections.length === 0) {
+        deleteSectionListEl.innerHTML = '<p style="text-align:center; color:var(--text-muted); font-size:0.9rem;">삭제할 카테고리가 없습니다.</p>';
+      } else {
+        sections.forEach((sec, idx) => {
+          const row = document.createElement('div');
+          row.className = 'item-delete-row';
+          row.innerHTML = `
+            <span>${sec.title} (${sec.links.length}개 링크)</span>
+            <button class="btn-icon-sm danger" title="카테고리 삭제" onclick="window.deleteSection(${idx})"><i class="fa-solid fa-trash"></i></button>
+          `;
+          deleteSectionListEl.appendChild(row);
+        });
+      }
+      deleteSectionModalEl.classList.add('active');
+    }
+
+    function deleteSection(sIdx) {
+      const sec = appState.pages[activeTab].sections[sIdx];
+      if (confirm(`'${sec.title}' 카테고리와 내부 전체 링크를 삭제하시겠습니까?`)) {
+        appState.pages[activeTab].sections.splice(sIdx, 1);
+        saveState();
+        renderCurrentView();
+        openDeleteSectionModal();
+      }
+    }
+
+    function openLinkModal(mode = 'add', sIdx = 0, lIdx = null) {
+      const currentPage = appState.pages[activeTab];
+      if (!currentPage.sections || currentPage.sections.length === 0) {
+        alert('먼저 카테고리를 하나 이상 추가해 주세요.');
+        return;
+      }
+
+      linkModalMode = mode;
+      targetLinkSecIdx = sIdx;
+      targetLinkIdx = lIdx;
+
+      linkSectionSelectEl.innerHTML = '';
+      currentPage.sections.forEach((sec, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.textContent = sec.title;
+        if (idx === sIdx) opt.selected = true;
+        linkSectionSelectEl.appendChild(opt);
+      });
+
+      if (mode === 'edit' && lIdx !== null) {
+        linkModalTitleEl.textContent = '링크 수정';
+        const currentLink = currentPage.sections[sIdx].links[lIdx];
+        linkNameInputEl.value = currentLink.name;
+        linkUrlInputEl.value = currentLink.url;
+        linkOrderInputEl.value = lIdx + 1;
+      } else {
+        linkModalTitleEl.textContent = '링크 추가';
+        linkNameInputEl.value = '';
+        linkUrlInputEl.value = '';
+        const targetSec = currentPage.sections[sIdx];
+        linkOrderInputEl.value = targetSec ? targetSec.links.length + 1 : 1;
+      }
+
+      linkModalEl.classList.add('active');
+    }
+
+    function saveLink() {
+      const newSecIdx = parseInt(linkSectionSelectEl.value, 10);
+      const name = linkNameInputEl.value.trim();
+      let url = linkUrlInputEl.value.trim();
+      const orderVal = parseInt(linkOrderInputEl.value, 10) || 1;
+
+      if (!name || !url) {
+        alert('이름과 URL을 모두 입력해 주세요.');
+        return;
+      }
+
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'https://' + url;
+      }
+
+      const sections = appState.pages[activeTab].sections;
+      const newLink = { name, url, iconKind: 'auto' };
+
+      if (linkModalMode === 'edit') {
+        sections[targetLinkSecIdx].links.splice(targetLinkIdx, 1);
+      }
+
+      const targetLinks = sections[newSecIdx].links;
+      const insertIdx = Math.max(0, Math.min(orderVal - 1, targetLinks.length));
+      targetLinks.splice(insertIdx, 0, newLink);
+
+      saveState();
+      renderCurrentView();
+      linkModalEl.classList.remove('active');
+    }
+
+    function openDeleteLinkModal(sIdx) {
+      targetLinkSecIdx = sIdx;
+      const section = appState.pages[activeTab].sections[sIdx];
+      deleteLinkModalTitleEl.textContent = `'${section.title}' 링크 삭제`;
+      deleteLinkListEl.innerHTML = '';
+
+      if (!section.links || section.links.length === 0) {
+        deleteLinkListEl.innerHTML = '<p style="text-align:center; color:var(--text-muted); font-size:0.9rem;">삭제할 링크가 없습니다.</p>';
+      } else {
+        section.links.forEach((link, lIdx) => {
+          const row = document.createElement('div');
+          row.className = 'item-delete-row';
+          row.innerHTML = `
+            <span>${link.name}</span>
+            <button class="btn-icon-sm danger" title="링크 삭제" onclick="window.deleteSingleLink(${sIdx}, ${lIdx}, true)"><i class="fa-solid fa-trash"></i></button>
+          `;
+          deleteLinkListEl.appendChild(row);
+        });
+      }
+      deleteLinkModalEl.classList.add('active');
+    }
+
+    function deleteSingleLink(sIdx, lIdx, fromModal = false) {
+      if (confirm('이 링크를 삭제하시겠습니까?')) {
+        appState.pages[activeTab].sections[sIdx].links.splice(lIdx, 1);
+        saveState();
+        renderCurrentView();
+        if (fromModal) openDeleteLinkModal(sIdx);
+      }
+    }
+
+    function openBgModal() {
+      tempBgImage = appState.settings.bgImage || '';
+      bgSizeSelectEl.value = appState.settings.bgSize || 'cover';
+      updateBgPreview();
+      bgModalEl.classList.add('active');
+    }
+
+    function updateBgPreview() {
+      const sizeVal = bgSizeSelectEl.value;
+      if (tempBgImage) {
+        bgPreviewBoxEl.style.backgroundImage = `url('${tempBgImage}')`;
+        bgPreviewBoxEl.style.backgroundSize = sizeVal === 'repeat' ? 'auto' : sizeVal;
+        bgPreviewBoxEl.style.backgroundRepeat = sizeVal === 'repeat' ? 'repeat' : 'no-repeat';
+        bgPreviewBoxEl.innerHTML = '';
+      } else {
+        bgPreviewBoxEl.style.backgroundImage = 'none';
+        bgPreviewBoxEl.innerHTML = '<span>이미지 없음</span>';
+      }
+    }
+
+    function openOpacityModal() {
+      const curOpacity = appState.settings.cardOpacity ?? 85;
+      headerOpacityInputEl.value = curOpacity;
+      headerOpacityValTextEl.textContent = curOpacity + '%';
+      opacityModalEl.classList.add('active');
+    }
+
+    function setupEventListeners() {
+      newMemoBtnEl.addEventListener('click', clearMemoEditor);
+      saveMemoBtnEl.addEventListener('click', saveMemo);
+      deleteMemoBtnEl.addEventListener('click', deleteMemo);
+
+      sectionHeightSelectEl.addEventListener('change', (e) => {
+        if (e.target.value === 'custom') {
+          sectionHeightInputEl.style.display = 'block';
+          sectionHeightInputEl.focus();
+        } else {
+          sectionHeightInputEl.style.display = 'none';
+        }
+      });
+
+      linkSectionSelectEl.addEventListener('change', (e) => {
+        const selectedSecIdx = parseInt(e.target.value, 10);
+        const sec = appState.pages[activeTab].sections[selectedSecIdx];
+        if (linkModalMode === 'add') {
+          linkOrderInputEl.value = sec ? sec.links.length + 1 : 1;
+        } else if (linkModalMode === 'edit' && selectedSecIdx === targetLinkSecIdx) {
+          linkOrderInputEl.value = targetLinkIdx + 1;
+        } else {
+          linkOrderInputEl.value = sec ? sec.links.length + 1 : 1;
+        }
+      });
+
+      searchInputEl.addEventListener('input', (e) => {
+        if (activeTab !== 'memo') renderDashboard(e.target.value.trim());
+      });
+      searchInputEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const query = searchInputEl.value.trim();
+          if (query) {
+            if (query.startsWith('http://') || query.startsWith('https://')) {
+              window.open(query, appState.settings.openNewPage ? '_blank' : '_self');
+            } else {
+              window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+            }
+          }
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (activeTab !== 'memo') renderDashboard(searchInputEl.value.trim());
+      });
+
+      addSectionHeaderBtn.addEventListener('click', () => openSectionModal('add'));
+      deleteSectionHeaderBtn.addEventListener('click', openDeleteSectionModal);
+      bgImageModalBtn.addEventListener('click', openBgModal);
+      opacityHeaderBtn.addEventListener('click', openOpacityModal);
+
+      exportBtn.addEventListener('click', () => {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appState, null, 2));
+        const downloadAnchor = document.createElement('a');
+        downloadAnchor.setAttribute("href", dataStr);
+        downloadAnchor.setAttribute("download", `linkofy_backup_${new Date().toISOString().slice(0,10)}.json`);
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        downloadAnchor.remove();
+      });
+
+      importBtn.addEventListener('click', () => {
+        importFileInput.click();
+      });
+
+      importFileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = async function(evt) {
+          try {
+            const content = evt.target.result;
+            let newPages = null;
+            let newMemos = null;
+            let newSettings = null;
+
+            if (file.name.endsWith('.html') || file.name.endsWith('.htm') || content.trim().startsWith('<')) {
+              const parsedSections = parseChromeBookmarksHtml(content);
+              if (parsedSections && parsedSections.length > 0) {
+                newPages = [{ name: "북마크", sections: parsedSections }];
+              } else {
+                alert('HTML 파일에서 유효한 북마크를 찾을 수 없습니다.');
+                return;
+              }
+            } else {
+              const importedData = JSON.parse(content);
+              if (Array.isArray(importedData)) {
+                newPages = importedData;
+              } else if (importedData.pages && Array.isArray(importedData.pages)) {
+                newPages = importedData.pages;
+                newMemos = importedData.memos;
+                newSettings = importedData.settings;
+              } else if (importedData.sections && Array.isArray(importedData.sections)) {
+                newPages = [{ name: importedData.name || "Home", sections: importedData.sections }];
+              } else if (importedData.links && Array.isArray(importedData.links)) {
+                newPages = [{ name: "Home", sections: [{ title: "가져온 링크", height: "auto", links: importedData.links }] }];
+              } else if (importedData.memos && Array.isArray(importedData.memos)) {
+                newMemos = importedData.memos;
+              } else {
+                alert('지원하지 않는 백업 파일 형식입니다.');
+                return;
+              }
+            }
+
+            if (newPages) appState.pages = newPages;
+            if (newMemos) appState.memos = newMemos;
+            if (newSettings) appState.settings = { ...appState.settings, ...newSettings };
+
+            if (!appState.pages || appState.pages.length === 0) {
+              appState.pages = [{ name: "Home", sections: [] }];
+            }
+            if (!appState.memos) appState.memos = [];
+
+            activeTab = 0;
+            await saveState();
+            refreshUI();
+            alert('데이터를 성공적으로 불러왔습니다!');
+          } catch (err) {
+            alert('파일을 불러오는 도중 오류가 발생했습니다: ' + err.message);
+          }
+        };
+        reader.readAsText(file, 'UTF-8');
+        e.target.value = '';
+      });
+
+      themeBtnEl.addEventListener('click', () => {
+        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+        appState.settings.theme = currentTheme;
+        applyTheme(currentTheme);
+        saveState();
+      });
+
+      bgFileInputEl.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(evt) {
+            tempBgImage = evt.target.result;
+            updateBgPreview();
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      bgSizeSelectEl.addEventListener('change', updateBgPreview);
+
+      saveBgBtnEl.addEventListener('click', () => {
+        appState.settings.bgImage = tempBgImage;
+        appState.settings.bgSize = bgSizeSelectEl.value;
+        applyBgStyle(appState.settings.bgImage, appState.settings.bgSize, appState.settings.cardOpacity);
+        saveState();
+        bgModalEl.classList.remove('active');
+      });
+
+      removeBgBtnEl.addEventListener('click', () => {
+        tempBgImage = '';
+        bgFileInputEl.value = '';
+        updateBgPreview();
+      });
+
+      closeBgModalBtnEl.addEventListener('click', () => bgModalEl.classList.remove('active'));
+
+      headerOpacityInputEl.addEventListener('input', (e) => {
+        const opacityVal = e.target.value;
+        headerOpacityValTextEl.textContent = opacityVal + '%';
+        applyBgStyle(appState.settings.bgImage, appState.settings.bgSize, opacityVal);
+      });
+
+      saveOpacityBtnEl.addEventListener('click', () => {
+        appState.settings.cardOpacity = parseInt(headerOpacityInputEl.value, 10);
+        saveState();
+        opacityModalEl.classList.remove('active');
+      });
+
+      closeOpacityModalBtnEl.addEventListener('click', () => {
+        applyBgStyle(appState.settings.bgImage, bgSizeSelectEl.value, appState.settings.cardOpacity);
+        opacityModalEl.classList.remove('active');
+      });
+
+      closeSectionModalBtn.addEventListener('click', () => sectionModalEl.classList.remove('active'));
+      saveSectionBtn.addEventListener('click', saveSection);
+
+      closeDeleteSectionModalBtn.addEventListener('click', () => deleteSectionModalEl.classList.remove('active'));
+
+      closeLinkModalBtn.addEventListener('click', () => linkModalEl.classList.remove('active'));
+      saveLinkBtn.addEventListener('click', saveLink);
+
+      closeDeleteLinkModalBtn.addEventListener('click', () => deleteLinkModalEl.classList.remove('active'));
+    }
+
+    window.moveSection = moveSection;
+    window.openSectionModal = openSectionModal;
+    window.openLinkModal = openLinkModal;
+    window.openDeleteLinkModal = openDeleteLinkModal;
+    window.deleteSection = deleteSection;
+    window.deleteSingleLink = deleteSingleLink;
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+      initApp();
+    }
+  </script>
+</body>
+</html>
