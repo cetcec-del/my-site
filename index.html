@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YSU의 북마크</title>
+  <title>YUS의 노트</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -21,8 +21,8 @@
       /* 박스 배경 불투명도 변수 (0 ~ 1) */
       --card-opacity: 0.85;
 
-      --card-blur: blur(8px);
-      --modal-blur: blur(12px);
+      --card-blur: none;
+      --modal-blur: none;
     }
 
     [data-theme="dark"] {
@@ -119,6 +119,11 @@
 
     .modal-header { font-size: 1.1rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
     .modal-body { display: flex; flex-direction: column; gap: 0.8rem; }
+    #deleteSectionList, #deleteLinkList { max-height: min(60vh, 480px); overflow-y: auto; overscroll-behavior: contain; }
+    .memo-pagination { display:flex; align-items:center; justify-content:center; gap:.5rem; padding-top:.5rem; }
+    .memo-pagination button { border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-color); border-radius:5px; padding:.35rem .6rem; cursor:pointer; }
+    .memo-pagination button:disabled { opacity:.4; cursor:default; }
+    .memo-important-tag { color:#d97706; font-size:.75rem; margin-right:.25rem; }
     .form-group { display: flex; flex-direction: column; gap: 0.3rem; }
     .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
     .form-group input, .form-group select { padding: 0.6rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); outline: none; }
@@ -137,7 +142,7 @@
   <div class="header">
     <div class="header-left">
       <div class="header-brand">
-        <i class="fa-solid fa-bookmark"></i> YSU의 북마크
+        <i class="fa-solid fa-bookmark"></i> YUS의 노트
       </div>
       <div class="nav-tabs" id="pageTabs"></div>
     </div>
@@ -172,6 +177,7 @@
       <div class="memo-editor">
         <input type="text" id="memoTitleInput" placeholder="메모 제목">
         <textarea id="memoContentInput" placeholder="내용을 입력하세요..."></textarea>
+        <label style="display:flex;align-items:center;gap:.5rem;font-size:.9rem;"><input type="checkbox" id="memoImportantInput"> 중요 메모 (목록 상단 고정)</label>
         <div class="memo-editor-footer">
           <span id="memoDateBadge" style="font-size:0.8rem; color:var(--text-muted);"><i class="fa-regular fa-clock"></i> 작성일시</span>
           <div>
@@ -194,6 +200,10 @@
         <div class="form-group">
           <label>카테고리 이름</label>
           <input type="text" id="sectionTitleInput" placeholder="예: 개발 도구">
+        </div>
+        <div class="form-group">
+          <label>순서 (위치)</label>
+          <input type="number" id="sectionOrderInput" min="1" value="1">
         </div>
         <div class="form-group">
           <label>높이 설정</label>
@@ -337,14 +347,14 @@
       "_format": "linkofy.v1",
       "settings": { 
         "theme": "light", 
-        "openNewPage": false, 
+        "openNewPage": true, 
         "bgImage": "", 
         "bgSize": "cover",
         "cardOpacity": 85
       },
       "pages": [
         {
-          "name": "Home",
+          "name": "B.mark",
           "sections": [
             {
               "title": "Search Engines",
@@ -368,6 +378,8 @@
     let currentTheme = 'light';
     let tempBgImage = '';
     let selectedMemoId = null;
+    let memoCurrentPage = 1;
+    const MEMOS_PER_PAGE = 30;
 
     let sectionModalMode = 'add';
     let targetSectionIdx = null;
@@ -379,8 +391,8 @@
     let pageTabsEl, gridContainerEl, memoContainerEl, searchInputEl, themeBtnEl, authBtn;
     let addSectionHeaderBtn, deleteSectionHeaderBtn, bgImageModalBtn, opacityHeaderBtn;
     let exportBtn, importBtn, importFileInput;
-    let memoListEl, memoTitleInputEl, memoDateBadgeEl, memoContentInputEl, newMemoBtnEl, saveMemoBtnEl, deleteMemoBtnEl;
-    let sectionModalEl, sectionModalTitleEl, sectionTitleInputEl, sectionHeightSelectEl, sectionHeightInputEl, closeSectionModalBtn, saveSectionBtn;
+    let memoListEl, memoTitleInputEl, memoDateBadgeEl, memoContentInputEl, memoImportantInputEl, newMemoBtnEl, saveMemoBtnEl, deleteMemoBtnEl;
+    let sectionModalEl, sectionModalTitleEl, sectionTitleInputEl, sectionHeightSelectEl, sectionHeightInputEl, sectionOrderInputEl, closeSectionModalBtn, saveSectionBtn;
     let deleteSectionModalEl, deleteSectionListEl, closeDeleteSectionModalBtn;
     let linkModalEl, linkModalTitleEl, linkSectionSelectEl, linkNameInputEl, linkUrlInputEl, linkOrderInputEl, closeLinkModalBtn, saveLinkBtn;
     let deleteLinkModalEl, deleteLinkModalTitleEl, deleteLinkListEl, closeDeleteLinkModalBtn;
@@ -409,6 +421,7 @@
       memoTitleInputEl = document.getElementById('memoTitleInput');
       memoDateBadgeEl = document.getElementById('memoDateBadge');
       memoContentInputEl = document.getElementById('memoContentInput');
+      memoImportantInputEl = document.getElementById('memoImportantInput');
       newMemoBtnEl = document.getElementById('newMemoBtn');
       saveMemoBtnEl = document.getElementById('saveMemoBtn');
       deleteMemoBtnEl = document.getElementById('deleteMemoBtn');
@@ -418,6 +431,7 @@
       sectionTitleInputEl = document.getElementById('sectionTitleInput');
       sectionHeightSelectEl = document.getElementById('sectionHeightSelect');
       sectionHeightInputEl = document.getElementById('sectionHeightInput');
+      sectionOrderInputEl = document.getElementById('sectionOrderInput');
       closeSectionModalBtn = document.getElementById('closeSectionModalBtn');
       saveSectionBtn = document.getElementById('saveSectionBtn');
 
@@ -476,8 +490,10 @@
     function setupAuthListeners() {
       authBtn.addEventListener('click', () => {
         if (currentUser) {
-          signOut(auth);
+          signOut(auth).catch(err => alert("로그아웃 오류: " + err.message));
         } else {
+          // 로그인 버튼을 누른 경우에만 Google 계정 선택 팝업을 표시합니다.
+          provider.setCustomParameters({ prompt: 'select_account' });
           signInWithPopup(auth, provider).catch(err => alert("로그인 오류: " + err.message));
         }
       });
@@ -542,23 +558,13 @@
     }
 
     function applyBgStyle(bgDataUrl, bgSize = 'cover', opacity = 85) {
-      const ratio = opacity / 100;
-      let opacityVal = opacity === 0 ? 0 : Math.pow(ratio, 1.8);
-      
-      // 1~50% 구간에서는 배경이 더 잘 보이도록 투명도 20% 추가 상승 (불투명도를 20% 감소)
-      if (opacity > 0 && opacity <= 50) {
-        opacityVal = opacityVal * 0.8;
-      }
-      
-      document.documentElement.style.setProperty('--card-opacity', opacityVal);
-      
-      if (opacity == 0) {
-        document.documentElement.style.setProperty('--card-blur', 'none');
-        document.documentElement.style.setProperty('--modal-blur', 'none');
-      } else {
-        document.documentElement.style.setProperty('--card-blur', 'blur(8px)');
-        document.documentElement.style.setProperty('--modal-blur', 'blur(12px)');
-      }
+      // 슬라이더는 카드 배경의 불투명도(0~100%)만 조절합니다.
+      // 배경 흐림(backdrop-filter)은 사용하지 않아 값이 1이어도 배경이 뿌옇게 보이지 않습니다.
+      const numericOpacity = Number(opacity);
+      const opacityVal = Math.max(0, Math.min(100, Number.isFinite(numericOpacity) ? numericOpacity : 85)) / 100;
+      document.documentElement.style.setProperty('--card-opacity', String(opacityVal));
+      document.documentElement.style.setProperty('--card-blur', 'none');
+      document.documentElement.style.setProperty('--modal-blur', 'none');
 
       if (bgDataUrl) {
         document.body.style.backgroundImage = `url('${bgDataUrl}')`;
@@ -629,7 +635,7 @@
       appState.pages.forEach((page, index) => {
         const btn = document.createElement('button');
         btn.className = `tab-btn ${activeTab === index ? 'active' : ''}`;
-        btn.textContent = page.name;
+        btn.textContent = page.name === 'Home' ? 'B.mark' : page.name;
         btn.addEventListener('click', () => {
           activeTab = index;
           renderPageTabs();
@@ -743,7 +749,8 @@
           const a = document.createElement('a');
           a.className = 'link-item';
           a.href = link.url;
-          a.target = appState.settings.openNewPage ? '_blank' : '_self';
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
 
           const img = document.createElement('img');
           img.className = 'favicon';
@@ -802,23 +809,46 @@
 
     function renderMemoView() {
       memoListEl.innerHTML = '';
-      if (!appState.memos || appState.memos.length === 0) {
-        memoListEl.innerHTML = '<p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:1rem;">저장된 메모가 없습니다.</p>';
-        clearMemoEditor();
+      const query = (searchInputEl?.value || '').trim().toLowerCase();
+      const allMemos = Array.isArray(appState.memos) ? appState.memos : [];
+      const sortedMemos = [...allMemos].sort((a, b) => Number(!!b.important) - Number(!!a.important));
+      const filteredMemos = query ? sortedMemos.filter(m =>
+        String(m.title || '').toLowerCase().includes(query) ||
+        String(m.content || '').toLowerCase().includes(query)
+      ) : sortedMemos;
+
+      if (filteredMemos.length === 0) {
+        memoListEl.innerHTML = '<p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:1rem;">검색 결과가 없거나 저장된 메모가 없습니다.</p>';
+        const pager = document.getElementById('memoPagination');
+        if (pager) pager.remove();
+        if (!query) clearMemoEditor();
         return;
       }
 
-      if (!selectedMemoId && appState.memos.length > 0) {
-        selectedMemoId = appState.memos[0].id;
+      const totalPages = Math.max(1, Math.ceil(filteredMemos.length / MEMOS_PER_PAGE));
+      memoCurrentPage = Math.min(Math.max(1, memoCurrentPage), totalPages);
+      if (!selectedMemoId || !filteredMemos.some(m => m.id === selectedMemoId)) {
+        selectedMemoId = filteredMemos[0].id;
       }
+      const startIdx = (memoCurrentPage - 1) * MEMOS_PER_PAGE;
+      const pageMemos = filteredMemos.slice(startIdx, startIdx + MEMOS_PER_PAGE);
 
-      appState.memos.forEach(memo => {
+      pageMemos.forEach(memo => {
         const item = document.createElement('div');
         item.className = `memo-item ${memo.id === selectedMemoId ? 'active' : ''}`;
-        item.innerHTML = `
-          <div class="memo-item-title">${memo.title || '제목 없음'}</div>
-          <div class="memo-item-date">${memo.createdAt || ''}</div>
-        `;
+        const title = document.createElement('div');
+        title.className = 'memo-item-title';
+        if (memo.important) {
+          const tag = document.createElement('span');
+          tag.className = 'memo-important-tag';
+          tag.textContent = '★ 중요';
+          title.appendChild(tag);
+        }
+        title.appendChild(document.createTextNode(memo.title || '제목 없음'));
+        const date = document.createElement('div');
+        date.className = 'memo-item-date';
+        date.textContent = memo.createdAt || '';
+        item.append(title, date);
         item.onclick = () => {
           selectedMemoId = memo.id;
           renderMemoView();
@@ -826,11 +856,33 @@
         memoListEl.appendChild(item);
       });
 
-      const currentMemo = appState.memos.find(m => m.id === selectedMemoId);
+      let pager = document.getElementById('memoPagination');
+      if (pager) pager.remove();
+      if (filteredMemos.length > MEMOS_PER_PAGE) {
+        pager = document.createElement('div');
+        pager.id = 'memoPagination';
+        pager.className = 'memo-pagination';
+        const prev = document.createElement('button');
+        prev.textContent = '이전';
+        prev.disabled = memoCurrentPage === 1;
+        prev.onclick = () => { memoCurrentPage--; renderMemoView(); };
+        const label = document.createElement('span');
+        label.style.fontSize = '.8rem';
+        label.textContent = `${memoCurrentPage} / ${totalPages}`;
+        const next = document.createElement('button');
+        next.textContent = '다음';
+        next.disabled = memoCurrentPage === totalPages;
+        next.onclick = () => { memoCurrentPage++; renderMemoView(); };
+        pager.append(prev, label, next);
+        memoListEl.parentElement.appendChild(pager);
+      }
+
+      const currentMemo = allMemos.find(m => m.id === selectedMemoId);
       if (currentMemo) {
         memoTitleInputEl.value = currentMemo.title || '';
         memoContentInputEl.value = currentMemo.content || '';
-        memoDateBadgeEl.innerHTML = `<i class="fa-regular fa-clock"></i> 작성일시: ${currentMemo.createdAt}`;
+        memoImportantInputEl.checked = !!currentMemo.important;
+        memoDateBadgeEl.innerHTML = `<i class="fa-regular fa-clock"></i> 작성일시: ${currentMemo.createdAt || ''}`;
       } else {
         clearMemoEditor();
       }
@@ -840,6 +892,7 @@
       selectedMemoId = null;
       memoTitleInputEl.value = '';
       memoContentInputEl.value = '';
+      memoImportantInputEl.checked = false;
       memoDateBadgeEl.innerHTML = `<i class="fa-regular fa-clock"></i> 새 메모 작성 중`;
     }
 
@@ -855,6 +908,7 @@
         if (idx !== -1) {
           appState.memos[idx].title = title;
           appState.memos[idx].content = content;
+          appState.memos[idx].important = memoImportantInputEl.checked;
           appState.memos[idx].createdAt = dateString;
         }
       } else {
@@ -862,15 +916,27 @@
           id: 'memo-' + Date.now(),
           title: title,
           content: content,
+          important: memoImportantInputEl.checked,
           createdAt: dateString
         };
         appState.memos.unshift(newMemo);
         selectedMemoId = newMemo.id;
       }
 
+      memoCurrentPage = 1;
       saveState();
       renderMemoView();
       alert('메모가 저장되었습니다.');
+    }
+
+    function verifyDeletePassword() {
+      const password = prompt('삭제 비밀번호를 입력하세요.');
+      if (password === null) return false;
+      if (password !== '7337') {
+        alert('비밀번호가 올바르지 않습니다.');
+        return false;
+      }
+      return true;
     }
 
     function deleteMemo() {
@@ -879,7 +945,7 @@
         return;
       }
 
-      if (confirm('현재 메모를 삭제하시겠습니까?')) {
+      if (verifyDeletePassword() && confirm('현재 메모를 삭제하시겠습니까?')) {
         appState.memos = appState.memos.filter(m => m.id !== selectedMemoId);
         selectedMemoId = appState.memos.length > 0 ? appState.memos[0].id : null;
         saveState();
@@ -911,6 +977,7 @@
         sectionModalTitleEl.textContent = '카테고리 수정';
         const section = appState.pages[activeTab].sections[sIdx];
         sectionTitleInputEl.value = section.title;
+        sectionOrderInputEl.value = sIdx + 1;
 
         const currentHeight = (section.height || '260px').toString().toLowerCase();
 
@@ -926,6 +993,7 @@
       } else {
         sectionModalTitleEl.textContent = '카테고리 추가';
         sectionTitleInputEl.value = '';
+        sectionOrderInputEl.value = appState.pages[activeTab].sections.length + 1;
         sectionHeightSelectEl.value = '260px';
         sectionHeightInputEl.style.display = 'none';
         sectionHeightInputEl.value = '260px';
@@ -936,6 +1004,7 @@
     function saveSection() {
       const title = sectionTitleInputEl.value.trim();
       const selectedOption = sectionHeightSelectEl.value;
+      const orderVal = Math.max(1, parseInt(sectionOrderInputEl.value, 10) || 1);
       let finalHeight = '260px';
 
       if (!title) {
@@ -959,10 +1028,14 @@
       const sections = appState.pages[activeTab].sections;
 
       if (sectionModalMode === 'add') {
-        sections.push({ title: title, height: finalHeight, links: [] });
+        const insertIdx = Math.max(0, Math.min(orderVal - 1, sections.length));
+        sections.splice(insertIdx, 0, { title: title, height: finalHeight, links: [] });
       } else if (sectionModalMode === 'edit' && targetSectionIdx !== null) {
-        sections[targetSectionIdx].title = title;
-        sections[targetSectionIdx].height = finalHeight;
+        const [section] = sections.splice(targetSectionIdx, 1);
+        section.title = title;
+        section.height = finalHeight;
+        const insertIdx = Math.max(0, Math.min(orderVal - 1, sections.length));
+        sections.splice(insertIdx, 0, section);
       }
 
       saveState();
@@ -992,7 +1065,7 @@
 
     function deleteSection(sIdx) {
       const sec = appState.pages[activeTab].sections[sIdx];
-      if (confirm(`'${sec.title}' 카테고리와 내부 전체 링크를 삭제하시겠습니까?`)) {
+      if (verifyDeletePassword() && confirm(`'${sec.title}' 카테고리와 내부 전체 링크를 삭제하시겠습니까?`)) {
         appState.pages[activeTab].sections.splice(sIdx, 1);
         saveState();
         renderCurrentView();
@@ -1091,7 +1164,7 @@
     }
 
     function deleteSingleLink(sIdx, lIdx, fromModal = false) {
-      if (confirm('이 링크를 삭제하시겠습니까?')) {
+      if (verifyDeletePassword() && confirm('이 링크를 삭제하시겠습니까?')) {
         appState.pages[activeTab].sections[sIdx].links.splice(lIdx, 1);
         saveState();
         renderCurrentView();
@@ -1153,14 +1226,16 @@
       });
 
       searchInputEl.addEventListener('input', (e) => {
-        if (activeTab !== 'memo') renderDashboard(e.target.value.trim());
+        memoCurrentPage = 1;
+        if (activeTab === 'memo') renderMemoView();
+        else renderDashboard(e.target.value.trim());
       });
       searchInputEl.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
           const query = searchInputEl.value.trim();
           if (query) {
             if (query.startsWith('http://') || query.startsWith('https://')) {
-              window.open(query, appState.settings.openNewPage ? '_blank' : '_self');
+              window.open(query, '_blank', 'noopener,noreferrer');
             } else {
               window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
             }
@@ -1302,7 +1377,7 @@
       });
 
       closeOpacityModalBtnEl.addEventListener('click', () => {
-        applyBgStyle(appState.settings.bgImage, bgSizeSelectEl.value, appState.settings.cardOpacity);
+        applyBgStyle(appState.settings.bgImage, appState.settings.bgSize || 'cover', appState.settings.cardOpacity);
         opacityModalEl.classList.remove('active');
       });
 
