@@ -8,8 +8,8 @@
   <style>
     :root {
       --bg-color: #f4f6f9;
-      --card-bg-light: 255, 255, 255;  /* RGB 값으로 설정 (투명도 조절용) */
-      --card-bg-dark: 45, 45, 65;      /* RGB 값으로 설정 (다크모드 배경 대비 개선) */
+      --card-bg-light: 255, 255, 255;
+      --card-bg-dark: 45, 45, 65;
       --text-color: #333333;
       --text-muted: #666666;
       --border-color: #e0e0e0;
@@ -17,10 +17,7 @@
       --primary-hover: #357abd;
       --danger-color: #e74c3c;
       --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      
-      /* 박스 배경 불투명도 변수 (0 ~ 1) */
       --card-opacity: 0.85;
-
       --card-blur: none;
       --modal-blur: none;
     }
@@ -36,104 +33,118 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; }
-    body { background-color: var(--bg-color); color: var(--text-color); min-height: 100vh; padding-bottom: 40px; transition: background-color 0.3s, color 0.3s; }
+    body { background-color: var(--bg-color); color: var(--text-color); min-height: 100vh; padding-bottom: 20px; transition: background-color 0.3s, color 0.3s; }
 
-    /* Header & Navigation (항상 불투명하게 유지) */
+    /* Header & Navigation (간격 축소) */
     .header { 
-      display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; 
+      display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 1.5rem; 
       background: rgb(var(--card-bg-light)); 
       backdrop-filter: blur(10px); 
-      border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; gap: 1rem; flex-wrap: wrap; 
+      border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; gap: 0.8rem; flex-wrap: wrap; 
     }
     [data-theme="dark"] .header { background: rgb(var(--card-bg-dark)); }
 
-    .header-left { display: flex; align-items: center; gap: 1.2rem; }
+    .header-left { display: flex; align-items: center; gap: 1rem; }
     .header-brand { font-weight: 800; font-size: 1.05rem; display: flex; align-items: center; gap: 0.5rem; color: var(--primary-color); white-space: nowrap; }
 
-    .nav-tabs { display: flex; gap: 0.5rem; align-items: center; }
-    .tab-btn { background: none; border: none; padding: 0.4rem 0.8rem; font-size: 0.9rem; font-weight: 600; color: var(--text-muted); cursor: pointer; border-radius: 8px; transition: all 0.2s; }
+    .nav-tabs { display: flex; gap: 0.4rem; align-items: center; }
+    .tab-btn { background: none; border: none; padding: 0.35rem 0.75rem; font-size: 0.88rem; font-weight: 600; color: var(--text-muted); cursor: pointer; border-radius: 8px; transition: all 0.2s; }
     .tab-btn:hover { background: rgba(0,0,0,0.05); color: var(--text-color); }
     .tab-btn.active { background: var(--primary-color); color: #fff; }
 
-    .search-box { flex: 1; max-width: 350px; position: relative; }
-    .search-box input { width: 100%; padding: 0.5rem 1rem 0.5rem 2.2rem; border-radius: 20px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); outline: none; }
-    .search-box i { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+    .search-box { flex: 1; max-width: 320px; position: relative; }
+    .search-box input { width: 100%; padding: 0.4rem 1rem 0.4rem 2.2rem; border-radius: 20px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); outline: none; font-size: 0.88rem; }
+    .search-box i { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.85rem; }
 
-    .header-actions { display: flex; gap: 0.4rem; align-items: center; }
-    .btn-icon { background: none; border: 1px solid var(--border-color); width: 36px; height: 36px; border-radius: 8px; color: var(--text-color); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.2s; }
+    .header-actions { display: flex; gap: 0.35rem; align-items: center; }
+    .btn-icon { background: none; border: 1px solid var(--border-color); width: 34px; height: 34px; border-radius: 8px; color: var(--text-color); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.88rem; transition: all 0.2s; }
     .btn-icon:hover { background: rgba(0,0,0,0.05); }
 
-    /* Main Container */
-    .container { max-width: 1400px; margin: 1.5rem auto; padding: 0 1rem; }
-    .grid-container { display: flex; gap: 1.5rem; width: 100%; }
-    .grid-column { flex: 1; display: flex; flex-direction: column; gap: 1.5rem; min-width: 0; }
+    /* Info Bar (박스 테두리/배경 제거 및 박스 간격 간소화) */
+    .info-bar {
+      max-width: 1400px; margin: 0.5rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.85rem; font-weight: 600; color: var(--text-muted);
+    }
+    .info-bar-left { display: flex; align-items: center; gap: 0.5rem; }
 
-    /* Section Card (배경에만 투명도 적용, 내부 텍스트는 선명함) */
+    /* Main Container (간격 축소) */
+    .container { max-width: 1400px; margin: 0.8rem auto 1rem; padding: 0 1rem; }
+    .grid-container { display: flex; gap: 1.2rem; width: 100%; }
+    .grid-column { flex: 1; display: flex; flex-direction: column; gap: 1.2rem; min-width: 0; }
+
+    /* Section Card */
     .section-card { 
       background: rgba(var(--card-bg-light), var(--card-opacity)); 
       backdrop-filter: var(--card-blur); 
-      border-radius: 12px; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); padding: 1rem; display: flex; flex-direction: column; 
+      border-radius: 12px; border: 1px solid var(--border-color); box-shadow: var(--card-shadow); padding: 0.9rem; display: flex; flex-direction: column; 
     }
     [data-theme="dark"] .section-card { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
 
-    .section-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color); margin-bottom: 0.75rem; }
-    .section-title { font-size: 1.05rem; font-weight: 700; color: var(--text-color); }
-    .section-actions { display: flex; gap: 0.3rem; }
-    .btn-icon-sm { background: none; border: none; padding: 0.3rem; color: var(--text-muted); cursor: pointer; border-radius: 4px; font-size: 0.85rem; }
+    .section-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); margin-bottom: 0.5rem; }
+    .section-title { font-size: 0.98rem; font-weight: 700; color: var(--text-color); display: flex; align-items: center; gap: 0.4rem; }
+    .section-actions { display: flex; gap: 0.25rem; }
+    .btn-icon-sm { background: none; border: none; padding: 0.25rem; color: var(--text-muted); cursor: pointer; border-radius: 4px; font-size: 0.82rem; }
     .btn-icon-sm:hover { color: var(--primary-color); background: rgba(0,0,0,0.05); }
     .btn-icon-sm.danger:hover { color: var(--danger-color); }
 
-    .link-list { display: flex; flex-direction: column; gap: 0.4rem; padding-right: 0.2rem; }
+    .link-list { display: flex; flex-direction: column; gap: 0.35rem; padding-right: 0.2rem; }
     .link-wrapper { display: flex; align-items: center; justify-content: space-between; border-radius: 6px; padding: 0.2rem 0.4rem; transition: background 0.2s; }
     .link-wrapper:hover { background: rgba(0,0,0,0.04); }
-    .link-item { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--text-color); font-size: 0.9rem; flex: 1; overflow: hidden; }
+    .link-item { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--text-color); font-size: 0.88rem; flex: 1; overflow: hidden; }
     .favicon { width: 18px; height: 18px; border-radius: 3px; object-fit: contain; flex-shrink: 0; }
     .monogram-icon { width: 18px; height: 18px; border-radius: 3px; background: var(--primary-color); color: #fff; font-size: 0.75rem; font-weight: bold; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .link-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .link-actions { display: flex; opacity: 0; transition: opacity 0.2s; gap: 0.2rem; }
     .link-wrapper:hover .link-actions { opacity: 1; }
 
+    /* News Component Styling */
+    .news-list { display: flex; flex-direction: column; gap: 0.5rem; overflow-y: auto; }
+    .news-item { text-decoration: none; color: var(--text-color); padding: 0.4rem; border-radius: 6px; border-bottom: 1px dashed var(--border-color); transition: background 0.2s; }
+    .news-item:hover { background: rgba(0,0,0,0.04); }
+    .news-item-title { font-size: 0.86rem; font-weight: 600; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    .news-item-time { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.2rem; }
+
     /* Memo Layout */
-    .memo-container { display: flex; gap: 1.5rem; height: calc(100vh - 120px); }
-    .memo-sidebar { width: 260px; background: rgba(var(--card-bg-light), var(--card-opacity)); backdrop-filter: var(--card-blur); border-radius: 12px; border: 1px solid var(--border-color); padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .memo-container { display: flex; gap: 1.2rem; height: calc(100vh - 110px); }
+    .memo-sidebar { width: 250px; background: rgba(var(--card-bg-light), var(--card-opacity)); backdrop-filter: var(--card-blur); border-radius: 12px; border: 1px solid var(--border-color); padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
     [data-theme="dark"] .memo-sidebar { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
 
     .memo-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.5rem; }
     .memo-item { padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.2s; }
     .memo-item:hover, .memo-item.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
-    .memo-item-title { font-weight: 600; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .memo-item-date { font-size: 0.75rem; opacity: 0.8; margin-top: 0.2rem; }
+    .memo-item-title { font-weight: 600; font-size: 0.88rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .memo-item-date { font-size: 0.72rem; opacity: 0.8; margin-top: 0.2rem; }
 
-    .memo-editor { flex: 1; background: rgba(var(--card-bg-light), var(--card-opacity)); backdrop-filter: var(--card-blur); border-radius: 12px; border: 1px solid var(--border-color); padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .memo-editor { flex: 1; background: rgba(var(--card-bg-light), var(--card-opacity)); backdrop-filter: var(--card-blur); border-radius: 12px; border: 1px solid var(--border-color); padding: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; }
     [data-theme="dark"] .memo-editor { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
 
-    .memo-editor input { font-size: 1.2rem; font-weight: 700; border: none; background: none; color: var(--text-color); outline: none; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
-    .memo-editor textarea { flex: 1; border: none; background: none; color: var(--text-color); outline: none; resize: none; font-size: 1rem; line-height: 1.6; }
+    .memo-editor input { font-size: 1.1rem; font-weight: 700; border: none; background: none; color: var(--text-color); outline: none; border-bottom: 2px solid var(--border-color); padding-bottom: 0.4rem; }
+    .memo-editor textarea { flex: 1; border: none; background: none; color: var(--text-color); outline: none; resize: none; font-size: 0.95rem; line-height: 1.5; }
     .memo-editor-footer { display: flex; justify-content: space-between; align-items: center; }
 
     /* Modals */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
     .modal-overlay.active { opacity: 1; pointer-events: auto; }
-    .modal-box { background: rgb(var(--card-bg-light)); backdrop-filter: var(--modal-blur); border-radius: 12px; border: 1px solid var(--border-color); width: 90%; max-width: 450px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; box-shadow: var(--card-shadow); }
+    .modal-box { background: rgb(var(--card-bg-light)); backdrop-filter: var(--modal-blur); border-radius: 12px; border: 1px solid var(--border-color); width: 90%; max-width: 420px; padding: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; box-shadow: var(--card-shadow); }
     [data-theme="dark"] .modal-box { background: rgb(var(--card-bg-dark)); }
 
-    .modal-header { font-size: 1.1rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
-    .modal-body { display: flex; flex-direction: column; gap: 0.8rem; }
-    #deleteSectionList, #deleteLinkList { max-height: min(60vh, 480px); overflow-y: auto; overscroll-behavior: contain; }
-    .memo-pagination { display:flex; align-items:center; justify-content:center; gap:.5rem; padding-top:.5rem; }
-    .memo-pagination button { border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-color); border-radius:5px; padding:.35rem .6rem; cursor:pointer; }
+    .modal-header { font-size: 1rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+    .modal-body { display: flex; flex-direction: column; gap: 0.7rem; }
+    #deleteSectionList, #deleteLinkList { max-height: min(60vh, 400px); overflow-y: auto; overscroll-behavior: contain; }
+    .memo-pagination { display:flex; align-items:center; justify-content:center; gap:.5rem; padding-top:.4rem; }
+    .memo-pagination button { border:1px solid var(--border-color); background:var(--bg-color); color:var(--text-color); border-radius:5px; padding:.3rem .5rem; cursor:pointer; font-size: 0.8rem; }
     .memo-pagination button:disabled { opacity:.4; cursor:default; }
     .memo-important-tag { color:#d97706; font-size:.75rem; margin-right:.25rem; }
     .form-group { display: flex; flex-direction: column; gap: 0.3rem; }
-    .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
-    .form-group input, .form-group select { padding: 0.6rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); outline: none; }
-    .modal-footer { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.5rem; }
-    .btn-primary { background: var(--primary-color); color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-weight: 600; }
+    .form-group label { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
+    .form-group input, .form-group select { padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); outline: none; font-size: 0.88rem; }
+    .modal-footer { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.4rem; }
+    .btn-primary { background: var(--primary-color); color: #fff; border: none; padding: 0.45rem 0.9rem; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.88rem; }
     .btn-primary:hover { background: var(--primary-hover); }
-    .btn-secondary { background: none; border: 1px solid var(--border-color); color: var(--text-color); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; }
+    .btn-secondary { background: none; border: 1px solid var(--border-color); color: var(--text-color); padding: 0.45rem 0.9rem; border-radius: 6px; cursor: pointer; font-size: 0.88rem; }
 
-    .item-delete-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; border-bottom: 1px solid var(--border-color); }
-    .bg-preview { width: 100%; height: 120px; border-radius: 8px; border: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: center; background-position: center; background-size: cover; color: var(--text-muted); font-size: 0.85rem; }
+    .item-delete-row { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem; border-bottom: 1px solid var(--border-color); font-size: 0.88rem; }
+    .bg-preview { width: 100%; height: 100px; border-radius: 8px; border: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: center; background-position: center; background-size: cover; color: var(--text-muted); font-size: 0.82rem; }
   </style>
 </head>
 <body>
@@ -165,6 +176,14 @@
     </div>
   </div>
 
+  <!-- Info Bar (박스 테두리 없이 텍스트 형태로 간소화된 날짜/시간 영역) -->
+  <div class="info-bar">
+    <div class="info-bar-left">
+      <i class="fa-regular fa-calendar-days" style="color:var(--primary-color);"></i>
+      <span id="currentDateTimeDisplay">--</span>
+    </div>
+  </div>
+
   <!-- Main Content -->
   <div class="container">
     <div class="grid-container" id="gridContainer"></div>
@@ -177,9 +196,9 @@
       <div class="memo-editor">
         <input type="text" id="memoTitleInput" placeholder="메모 제목">
         <textarea id="memoContentInput" placeholder="내용을 입력하세요..."></textarea>
-        <label style="display:flex;align-items:center;gap:.5rem;font-size:.9rem;"><input type="checkbox" id="memoImportantInput"> 중요 메모 (목록 상단 고정)</label>
+        <label style="display:flex;align-items:center;gap:.5rem;font-size:.88rem;"><input type="checkbox" id="memoImportantInput"> 중요 메모 (목록 상단 고정)</label>
         <div class="memo-editor-footer">
-          <span id="memoDateBadge" style="font-size:0.8rem; color:var(--text-muted);"><i class="fa-regular fa-clock"></i> 작성일시</span>
+          <span id="memoDateBadge" style="font-size:0.78rem; color:var(--text-muted);"><i class="fa-regular fa-clock"></i> 작성일시</span>
           <div>
             <button class="btn-secondary" id="deleteMemoBtn"><i class="fa-solid fa-trash"></i> 삭제</button>
             <button class="btn-primary" id="saveMemoBtn"><i class="fa-solid fa-floppy-disk"></i> 저장</button>
@@ -398,6 +417,7 @@
     let deleteLinkModalEl, deleteLinkModalTitleEl, deleteLinkListEl, closeDeleteLinkModalBtn;
     let bgModalEl, bgFileInputEl, bgSizeSelectEl, bgPreviewBoxEl, saveBgBtnEl, removeBgBtnEl, closeBgModalBtnEl;
     let opacityModalEl, headerOpacityInputEl, headerOpacityValTextEl, closeOpacityModalBtnEl, saveOpacityBtnEl;
+    let currentDateTimeDisplayEl;
 
     function initElements() {
       pageTabsEl = document.getElementById('pageTabs');
@@ -466,6 +486,8 @@
       headerOpacityValTextEl = document.getElementById('headerOpacityValText');
       closeOpacityModalBtnEl = document.getElementById('closeOpacityModalBtn');
       saveOpacityBtnEl = document.getElementById('saveOpacityBtn');
+
+      currentDateTimeDisplayEl = document.getElementById('currentDateTimeDisplay');
     }
 
     function initApp() {
@@ -477,6 +499,28 @@
       renderCurrentView();
       setupEventListeners();
       setupAuthListeners();
+      
+      startClockUpdater();
+    }
+
+    function startClockUpdater() {
+      updateDateTime();
+      setInterval(updateDateTime, 1000);
+    }
+
+    function updateDateTime() {
+      if (!currentDateTimeDisplayEl) return;
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const dd = String(now.getDate()).padStart(2, '0');
+      const days = ['일', '월', '화', '수', '목', '금', '토'];
+      const day = days[now.getDay()];
+      const hours = String(now.getHours()).padStart(2, '0');
+      const mins = String(now.getMinutes()).padStart(2, '0');
+      const secs = String(now.getSeconds()).padStart(2, '0');
+
+      currentDateTimeDisplayEl.textContent = `${yyyy}.${mm}.${dd}. (${day}) ${hours}:${mins}:${secs}`;
     }
 
     function refreshUI() {
@@ -492,7 +536,6 @@
         if (currentUser) {
           signOut(auth).catch(err => alert("로그아웃 오류: " + err.message));
         } else {
-          // 로그인 버튼을 누른 경우에만 Google 계정 선택 팝업을 표시합니다.
           provider.setCustomParameters({ prompt: 'select_account' });
           signInWithPopup(auth, provider).catch(err => alert("로그인 오류: " + err.message));
         }
@@ -558,8 +601,6 @@
     }
 
     function applyBgStyle(bgDataUrl, bgSize = 'cover', opacity = 85) {
-      // 슬라이더는 카드 배경의 불투명도(0~100%)만 조절합니다.
-      // 배경 흐림(backdrop-filter)은 사용하지 않아 값이 1이어도 배경이 뿌옇게 보이지 않습니다.
       const numericOpacity = Number(opacity);
       const opacityVal = Math.max(0, Math.min(100, Number.isFinite(numericOpacity) ? numericOpacity : 85)) / 100;
       document.documentElement.style.setProperty('--card-opacity', String(opacityVal));
@@ -678,6 +719,56 @@
       return 3;
     }
 
+    /* RSS 피드를 통한 뉴스 데이터 비동기 로딩 및 카드 렌더링 */
+    async function loadNewsList(containerEl) {
+      containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 불러오는 중...</p>';
+      
+      // MBC 주요 뉴스 RSS 주소를 사용 (rss2json API 활용)
+      const mbcRssUrl = encodeURIComponent('https://imnews.imbc.com/rss/news/news_00.xml');
+      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${mbcRssUrl}`;
+
+      try {
+        const res = await fetch(apiUrl);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.status === 'ok' && data.items && data.items.length > 0) {
+            containerEl.innerHTML = '';
+            data.items.slice(0, 7).forEach(item => {
+              const a = document.createElement('a');
+              a.className = 'news-item';
+              a.href = item.link;
+              a.target = '_blank';
+              a.rel = 'noopener noreferrer';
+
+              const title = document.createElement('div');
+              title.className = 'news-item-title';
+              title.textContent = item.title;
+
+              const time = document.createElement('div');
+              time.className = 'news-item-time';
+              
+              // 날짜 포맷 정리
+              let pubDateStr = item.pubDate;
+              try {
+                const dateObj = new Date(item.pubDate);
+                pubDateStr = `${String(dateObj.getMonth() + 1).padStart(2, '0')}.${String(dateObj.getDate()).padStart(2, '0')} ${String(dateObj.getHours()).padStart(2, '0')}:${String(dateObj.getMinutes()).padStart(2, '0')}`;
+              } catch(e) {}
+
+              time.textContent = pubDateStr;
+
+              a.appendChild(title);
+              a.appendChild(time);
+              containerEl.appendChild(a);
+            });
+            return;
+          }
+        }
+        containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 가져오지 못했습니다.</p>';
+      } catch (e) {
+        containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스 연결 오류가 발생했습니다.</p>';
+      }
+    }
+
     function renderDashboard(filterQuery = '') {
       gridContainerEl.innerHTML = '';
       if (typeof activeTab === 'number' && activeTab >= appState.pages.length) {
@@ -696,8 +787,37 @@
         gridContainerEl.appendChild(col);
       }
 
+      // 첫 번째 컬럼 상단에 뉴스 카드 항상 배치 (검색어가 없을 때)
+      if (!filterQuery) {
+        const newsCard = document.createElement('div');
+        newsCard.className = 'section-card';
+
+        const newsHeader = document.createElement('div');
+        newsHeader.className = 'section-header';
+        newsHeader.innerHTML = `
+          <span class="section-title"><i class="fa-regular fa-newspaper" style="color:var(--primary-color);"></i> MBC 주요 뉴스</span>
+          <div class="section-actions">
+            <button class="btn-icon-sm" id="refreshNewsBtn" title="뉴스 새로고침"><i class="fa-solid fa-arrows-rotate"></i></button>
+          </div>
+        `;
+        newsCard.appendChild(newsHeader);
+
+        const newsListEl = document.createElement('div');
+        newsListEl.className = 'news-list';
+        newsListEl.style.height = '260px';
+        newsCard.appendChild(newsListEl);
+
+        columns[0].appendChild(newsCard);
+        loadNewsList(newsListEl);
+
+        setTimeout(() => {
+          const btn = document.getElementById('refreshNewsBtn');
+          if (btn) btn.onclick = () => loadNewsList(newsListEl);
+        }, 100);
+      }
+
       const totalSections = currentPage.sections.length;
-      let visibleIdx = 0;
+      let visibleIdx = filterQuery ? 0 : 1; // 뉴스가 들어갔으므로 1번 인덱스부터 시작
 
       currentPage.sections.forEach((section, sIdx) => {
         const filteredLinks = section.links.filter(link => 
