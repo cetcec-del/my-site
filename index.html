@@ -35,7 +35,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; }
     body { background-color: var(--bg-color); color: var(--text-color); min-height: 100vh; padding-bottom: 20px; transition: background-color 0.3s, color 0.3s; }
 
-    /* Header & Navigation (간격 축소) */
+    /* Header & Navigation */
     .header { 
       display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 1.5rem; 
       background: rgb(var(--card-bg-light)); 
@@ -60,14 +60,14 @@
     .btn-icon { background: none; border: 1px solid var(--border-color); width: 34px; height: 34px; border-radius: 8px; color: var(--text-color); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.88rem; transition: all 0.2s; }
     .btn-icon:hover { background: rgba(0,0,0,0.05); }
 
-    /* Info Bar (박스 테두리/배경 제거 및 박스 간격 간소화) */
+    /* Info Bar */
     .info-bar {
       max-width: 1400px; margin: 0.5rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center;
       font-size: 0.85rem; font-weight: 600; color: var(--text-muted);
     }
     .info-bar-left { display: flex; align-items: center; gap: 0.5rem; }
 
-    /* Main Container (간격 축소) */
+    /* Main Container */
     .container { max-width: 1400px; margin: 0.8rem auto 1rem; padding: 0 1rem; }
     .grid-container { display: flex; gap: 1.2rem; width: 100%; }
     .grid-column { flex: 1; display: flex; flex-direction: column; gap: 1.2rem; min-width: 0; }
@@ -176,7 +176,7 @@
     </div>
   </div>
 
-  <!-- Info Bar (박스 테두리 없이 텍스트 형태로 간소화된 날짜/시간 영역) -->
+  <!-- Info Bar -->
   <div class="info-bar">
     <div class="info-bar-left">
       <i class="fa-regular fa-calendar-days" style="color:var(--primary-color);"></i>
@@ -719,47 +719,57 @@
       return 3;
     }
 
-    /* RSS 피드를 통한 뉴스 데이터 비동기 로딩 및 카드 렌더링 */
+    /* CORS 프록시를 통해 MBC RSS XML 데이터를 직접 로딩 및 파싱 */
     async function loadNewsList(containerEl) {
       containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 불러오는 중...</p>';
       
-      // MBC 주요 뉴스 RSS 주소를 사용 (rss2json API 활용)
-      const mbcRssUrl = encodeURIComponent('https://imnews.imbc.com/rss/news/news_00.xml');
-      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${mbcRssUrl}`;
+      const targetUrl = 'https://imnews.imbc.com/rss/news/news_00.xml';
+      const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
 
       try {
-        const res = await fetch(apiUrl);
+        const res = await fetch(proxyUrl);
         if (res.ok) {
-          const data = await res.json();
-          if (data.status === 'ok' && data.items && data.items.length > 0) {
+          const xmlText = await res.text();
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+          const items = xmlDoc.querySelectorAll('item');
+
+          if (items && items.length > 0) {
             containerEl.innerHTML = '';
-            data.items.slice(0, 7).forEach(item => {
+            const limit = Math.min(items.length, 7);
+            for (let i = 0; i < limit; i++) {
+              const item = items[i];
+              const title = item.querySelector('title')?.textContent || '제목 없음';
+              const link = item.querySelector('link')?.textContent || '#';
+              const pubDate = item.querySelector('pubDate')?.textContent || '';
+
               const a = document.createElement('a');
               a.className = 'news-item';
-              a.href = item.link;
+              a.href = link;
               a.target = '_blank';
               a.rel = 'noopener noreferrer';
 
-              const title = document.createElement('div');
-              title.className = 'news-item-title';
-              title.textContent = item.title;
+              const titleEl = document.createElement('div');
+              titleEl.className = 'news-item-title';
+              titleEl.textContent = title;
 
-              const time = document.createElement('div');
-              time.className = 'news-item-time';
+              const timeEl = document.createElement('div');
+              timeEl.className = 'news-item-time';
               
-              // 날짜 포맷 정리
-              let pubDateStr = item.pubDate;
+              let pubDateStr = pubDate;
               try {
-                const dateObj = new Date(item.pubDate);
-                pubDateStr = `${String(dateObj.getMonth() + 1).padStart(2, '0')}.${String(dateObj.getDate()).padStart(2, '0')} ${String(dateObj.getHours()).padStart(2, '0')}:${String(dateObj.getMinutes()).padStart(2, '0')}`;
+                const dateObj = new Date(pubDate);
+                if (!isNaN(dateObj)) {
+                  pubDateStr = `${String(dateObj.getMonth() + 1).padStart(2, '0')}.${String(dateObj.getDate()).padStart(2, '0')} ${String(dateObj.getHours()).padStart(2, '0')}:${String(dateObj.getMinutes()).padStart(2, '0')}`;
+                }
               } catch(e) {}
 
-              time.textContent = pubDateStr;
+              timeEl.textContent = pubDateStr;
 
-              a.appendChild(title);
-              a.appendChild(time);
+              a.appendChild(titleEl);
+              a.appendChild(timeEl);
               containerEl.appendChild(a);
-            });
+            }
             return;
           }
         }
@@ -817,7 +827,7 @@
       }
 
       const totalSections = currentPage.sections.length;
-      let visibleIdx = filterQuery ? 0 : 1; // 뉴스가 들어갔으므로 1번 인덱스부터 시작
+      let visibleIdx = filterQuery ? 0 : 1;
 
       currentPage.sections.forEach((section, sIdx) => {
         const filteredLinks = section.links.filter(link => 
