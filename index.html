@@ -64,14 +64,7 @@
     .btn-icon { background: none; border: 1px solid var(--border-color); width: 34px; height: 34px; border-radius: 8px; color: var(--text-color); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.88rem; transition: all 0.2s; }
     .btn-icon:hover { background: rgba(0,0,0,0.05); }
 
-    /* 헤더 영역 날씨 지역 선택 드롭다운 */
-    select#regionSelect { 
-      font: inherit; font-size: 0.82rem; color: var(--text-color); background: var(--bg-color); 
-      border: 1px solid var(--border-color); border-radius: 8px; padding: 0.35rem 0.5rem; 
-      outline: none; cursor: pointer; height: 34px; 
-    }
-
-    /* Info Bar (일시, 날씨, 증시) */
+    /* Info Bar */
     .info-bar {
       max-width: 1400px; margin: 0.5rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center;
       font-size: 0.85rem; font-weight: 600; color: var(--text-muted); flex-wrap: wrap; gap: 0.5rem;
@@ -86,6 +79,14 @@
     button#refreshStockBtn:hover { color: var(--text-color); }
     button#refreshStockBtn.spin svg { animation: spin 0.8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* 지역 선택 팝업 모달 내부 스타일 */
+    .region-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 0.5rem; max-height: 350px; overflow-y: auto; padding-top: 0.5rem; }
+    .region-chip { padding: 0.4rem; border: 1px solid var(--border-color); border-radius: 6px; text-align: center; font-size: 0.85rem; cursor: pointer; background: var(--bg-color); color: var(--text-color); transition: all 0.2s; }
+    .region-chip:hover, .region-chip.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+    .sido-tabs { display: flex; gap: 0.3rem; flex-wrap: wrap; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+    .sido-tab-btn { background: none; border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.8rem; cursor: pointer; color: var(--text-color); }
+    .sido-tab-btn.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
 
     /* Main Container */
     .container { max-width: 1400px; margin: 0.8rem auto 1rem; padding: 0 1rem; }
@@ -146,7 +147,7 @@
     /* Modals */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
     .modal-overlay.active { opacity: 1; pointer-events: auto; }
-    .modal-box { background: rgb(var(--card-bg-light)); backdrop-filter: var(--modal-blur); border-radius: 12px; border: 1px solid var(--border-color); width: 90%; max-width: 420px; padding: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; box-shadow: var(--card-shadow); }
+    .modal-box { background: rgb(var(--card-bg-light)); backdrop-filter: var(--modal-blur); border-radius: 12px; border: 1px solid var(--border-color); width: 90%; max-width: 480px; padding: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; box-shadow: var(--card-shadow); }
     [data-theme="dark"] .modal-box { background: rgb(var(--card-bg-dark)); }
 
     .modal-header { font-size: 1rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
@@ -184,9 +185,9 @@
       <input type="text" id="searchInput" placeholder="검색어 또는 URL 입력...">
     </div>
 
-    <!-- 헤더 우측 영역에 날씨 지역 선택 드롭다운 포함 -->
     <div class="header-actions">
-      <select id="regionSelect" title="날씨 지역 선택"></select>
+      <!-- 지역 선택 아이콘 버튼 추가 -->
+      <button class="btn-icon" id="regionModalBtn" title="날씨 지역 선택"><i class="fa-solid fa-location-dot"></i></button>
       <button class="btn-icon" id="addSectionHeaderBtn" title="카테고리 추가"><i class="fa-solid fa-folder-plus"></i></button>
       <button class="btn-icon" id="deleteSectionHeaderBtn" title="카테고리 삭제"><i class="fa-solid fa-folder-minus"></i></button>
       <button class="btn-icon" id="bgImageModalBtn" title="배경 이미지 설정"><i class="fa-solid fa-image"></i></button>
@@ -239,6 +240,20 @@
             <button class="btn-primary" id="saveMemoBtn"><i class="fa-solid fa-floppy-disk"></i> 저장</button>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 지역 선택 팝업 모달 -->
+  <div class="modal-overlay" id="regionModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span>날씨 지역 선택</span>
+        <button class="btn-icon-sm" id="closeRegionModalBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="sido-tabs" id="sidoTabs"></div>
+        <div class="region-grid" id="regionGrid"></div>
       </div>
     </div>
   </div>
@@ -452,10 +467,10 @@
     let deleteLinkModalEl, deleteLinkModalTitleEl, deleteLinkListEl, closeDeleteLinkModalBtn;
     let bgModalEl, bgFileInputEl, bgSizeSelectEl, bgPreviewBoxEl, saveBgBtnEl, removeBgBtnEl, closeBgModalBtnEl;
     let opacityModalEl, headerOpacityInputEl, headerOpacityValTextEl, closeOpacityModalBtnEl, saveOpacityBtnEl;
-    let currentDateTimeDisplayEl, weatherDisplayEl, kospiDisplayEl, kosdaqDisplayEl, regionSelectEl, refreshStockBtnEl;
+    let currentDateTimeDisplayEl, weatherDisplayEl, kospiDisplayEl, kosdaqDisplayEl, refreshStockBtnEl;
+    let regionModalEl, regionModalBtn, closeRegionModalBtn, sidoTabsEl, regionGridEl;
 
-    // ===== 지역 및 날씨 코드 =====
-    const METRO = ["서울","부산","대구","인천","광주","대전","울산","세종"];
+    // ===== 지역 및 날씨 코드 데이터 =====
     const DATA =
     "서울:종로구,37.573,126.979;중구,37.564,126.998;용산구,37.532,126.990;성동구,37.563,127.037;광진구,37.538,127.082;동대문구,37.574,127.040;중랑구,37.606,127.093;성북구,37.589,127.017;강북구,37.640,127.011;도봉구,37.669,127.047;노원구,37.654,127.056;은평구,37.603,126.929;서대문구,37.579,126.937;마포구,37.566,126.902;양천구,37.517,126.867;강서구,37.551,126.850;구로구,37.495,126.887;금천구,37.457,126.895;영등포구,37.526,126.896;동작구,37.512,126.939;관악구,37.478,126.951;서초구,37.484,127.033;강남구,37.517,127.047;송파구,37.515,127.106;강동구,37.530,127.124|" +
     "부산:중구,35.106,129.032;해운대구,35.163,129.164;부산진구,35.163,129.053;동래구,35.205,129.084;남구,35.136,129.084;사하구,35.104,128.975;북구,35.197,128.990;강서구,35.212,128.980;기장군,35.245,129.222|" +
@@ -480,8 +495,8 @@
       66:"어는 비",67:"어는 비",71:"눈",73:"눈",75:"폭설",77:"싸락눈",80:"소나기",81:"소나기",82:"강한 소나기",
       85:"눈소나기",86:"눈소나기",95:"뇌우",96:"뇌우",99:"뇌우"};
 
-    const places = [];
-    let currentPlaceIdx = 0;
+    const regionGroups = {};
+    let currentRegion = { sido: "서울", name: "종로구", lat: 37.573, lon: 126.979 };
 
     function initElements() {
       pageTabsEl = document.getElementById('pageTabs');
@@ -491,6 +506,12 @@
       themeBtnEl = document.getElementById('themeBtn');
 
       authBtn = document.getElementById('authBtn');
+
+      regionModalBtn = document.getElementById('regionModalBtn');
+      regionModalEl = document.getElementById('regionModal');
+      closeRegionModalBtn = document.getElementById('closeRegionModalBtn');
+      sidoTabsEl = document.getElementById('sidoTabs');
+      regionGridEl = document.getElementById('regionGrid');
 
       addSectionHeaderBtn = document.getElementById('addSectionHeaderBtn');
       deleteSectionHeaderBtn = document.getElementById('deleteSectionHeaderBtn');
@@ -555,13 +576,14 @@
       weatherDisplayEl = document.getElementById('weatherDisplay');
       kospiDisplayEl = document.getElementById('kospiDisplay');
       kosdaqDisplayEl = document.getElementById('kosdaqDisplay');
-      regionSelectEl = document.getElementById('regionSelect');
       refreshStockBtnEl = document.getElementById('refreshStockBtn');
     }
 
     function initApp() {
       initElements();
-      initRegionSelect();
+      parseRegionData();
+      loadSavedRegion();
+
       currentTheme = appState.settings.theme || 'light';
       applyTheme(currentTheme);
       applyBgStyle(appState.settings.bgImage || '', appState.settings.bgSize || 'cover', appState.settings.cardOpacity ?? 85);
@@ -573,39 +595,57 @@
       startClockAndDataUpdater();
     }
 
-    function initRegionSelect() {
+    function parseRegionData() {
       DATA.split("|").forEach(block => {
         const [sido, rest] = block.split(":");
-        const og = document.createElement("optgroup");
-        og.label = sido;
+        regionGroups[sido] = [];
         rest.split(";").forEach(item => {
           const [name, lat, lon] = item.split(",");
-          const idx = places.length;
-          places.push({
-            label: sido + " " + name,
-            display: METRO.includes(sido) ? sido : name,
-            lat: +lat, lon: +lon
-          });
-          const o = document.createElement("option");
-          o.value = idx;
-          o.textContent = name;
-          og.appendChild(o);
+          regionGroups[sido].push({ name, lat: +lat, lon: +lon });
         });
-        regionSelectEl.appendChild(og);
       });
+    }
 
-      currentPlaceIdx = places.findIndex(p => p.label === "대구 중구");
+    function loadSavedRegion() {
       try {
-        const saved = localStorage.getItem("wsbar-region");
-        if (saved !== null && places[+saved]) currentPlaceIdx = +saved;
+        const saved = localStorage.getItem("wsbar-region-obj");
+        if (saved) {
+          currentRegion = JSON.parse(saved);
+        }
       } catch (e) {}
-      regionSelectEl.value = currentPlaceIdx;
+    }
 
-      regionSelectEl.addEventListener("change", () => {
-        currentPlaceIdx = +regionSelectEl.value;
-        try { localStorage.setItem("wsbar-region", currentPlaceIdx); } catch (e) {}
-        updateWeather();
+    function openRegionModal() {
+      renderRegionModal("서울");
+      regionModalEl.classList.add('active');
+    }
+
+    function renderRegionModal(activeSido) {
+      sidoTabsEl.innerHTML = '';
+      regionGridEl.innerHTML = '';
+
+      Object.keys(regionGroups).forEach(sido => {
+        const btn = document.createElement('button');
+        btn.className = `sido-tab-btn ${sido === activeSido ? 'active' : ''}`;
+        btn.textContent = sido;
+        btn.onclick = () => renderRegionModal(sido);
+        sidoTabsEl.appendChild(btn);
       });
+
+      if (regionGroups[activeSido]) {
+        regionGroups[activeSido].forEach(loc => {
+          const chip = document.createElement('div');
+          chip.className = `region-chip ${currentRegion.sido === activeSido && currentRegion.name === loc.name ? 'active' : ''}`;
+          chip.textContent = loc.name;
+          chip.onclick = () => {
+            currentRegion = { sido: activeSido, name: loc.name, lat: loc.lat, lon: loc.lon };
+            try { localStorage.setItem("wsbar-region-obj", JSON.stringify(currentRegion)); } catch(e){}
+            regionModalEl.classList.remove('active');
+            updateWeather();
+          };
+          regionGridEl.appendChild(chip);
+        });
+      }
     }
 
     function startClockAndDataUpdater() {
@@ -635,49 +675,18 @@
       currentDateTimeDisplayEl.textContent = `${yyyy}.${mm}.${dd}. (${day}) ${hours}:${mins}:${secs}`;
     }
 
-    // ===== 다중 프록시 및 백엔드 JSON 우회 수집 함수 (CORS 완전히 방지) =====
-    async function getText(url) {
-      const target = encodeURIComponent(url);
-      const proxies = [
-        `https://api.allorigins.win/get?url=${target}`,
-        `https://api.rss2json.com/v1/api.json?rss_url=${target}`
-      ];
-
-      for (const proxyUrl of proxies) {
-        try {
-          const ctrl = new AbortController();
-          const tid = setTimeout(() => ctrl.abort(), 8000);
-          const res = await fetch(proxyUrl, { signal: ctrl.signal });
-          clearTimeout(tid);
-          if (!res.ok) continue;
-
-          if (proxyUrl.includes('allorigins')) {
-            const data = await res.json();
-            if (data && data.contents) return data.contents;
-          } else if (proxyUrl.includes('rss2json')) {
-            const data = await res.json();
-            if (data && data.status === 'ok') return JSON.stringify(data);
-          }
-        } catch (e) {}
-      }
-      throw new Error("모든 외부 프록시 연결 실패");
-    }
-
-    const getJSON = async url => JSON.parse(await getText(url));
-
     async function updateWeather() {
-      const p = places[currentPlaceIdx];
-      if (!p) return;
       try {
-        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${p.lat}&longitude=${p.lon}&current=temperature_2m,weather_code&timezone=Asia%2FSeoul`;
+        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${currentRegion.lat}&longitude=${currentRegion.lon}&current=temperature_2m,weather_code&timezone=Asia%2FSeoul`;
         const res = await fetch(weatherUrl);
         const j = await res.json();
         const temp = Math.round(j.current.temperature_2m);
         const text = WEATHER_TEXT[j.current.weather_code] || "알 수 없음";
-        weatherDisplayEl.textContent = `${p.display} ${text} ${temp}°C`;
-        weatherDisplayEl.title = p.label;
+        // 선택한 구 이름(currentRegion.name)이 정확히 표시되도록 수정
+        weatherDisplayEl.textContent = `${currentRegion.name} ${text} ${temp}°C`;
+        weatherDisplayEl.title = `${currentRegion.sido} ${currentRegion.name}`;
       } catch (e) {
-        weatherDisplayEl.textContent = `${p.display} 날씨 --`;
+        weatherDisplayEl.textContent = `${currentRegion.name} 날씨 --`;
       }
     }
 
@@ -696,8 +705,9 @@
         return (m.regularMarketPrice - prev) / prev * 100;
       } catch (e) {}
       try {
-        const txt = await getText(`https://m.stock.naver.com/api/index/${naverCode}/basic`);
-        const j = JSON.parse(txt);
+        const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://m.stock.naver.com/api/index/${naverCode}/basic`)}`);
+        const data = await res.json();
+        const j = JSON.parse(data.contents);
         let v = parseFloat(String(j.fluctuationsRatio).replace(/,/g, ""));
         const code = j.compareToPreviousPrice && j.compareToPreviousPrice.code;
         if ((code === "4" || code === "5") && v > 0) v = -v;
@@ -718,7 +728,7 @@
       refreshStockBtnEl.classList.remove("spin");
     }
 
-    /* ===== 뉴스 정보 안정화 연동 (AllOrigins JSON 프록시 구조) ===== */
+    /* ===== 안정적인 JTBC 주요뉴스 수집 연동 (rss2json 활용) ===== */
     const pad = n => String(n).padStart(2, "0");
     function fmtDateTime(d) {
       return `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
@@ -728,61 +738,54 @@
     async function loadNewsList(containerEl, timeEl, msgEl) {
       containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 불러오는 중...</p>';
       
-      const targetUrl = 'https://imnews.imbc.com/rss/news/news_00.xml';
-      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
+      const feedUrl = 'https://news-ex.jtbc.co.kr/v1/get/rss/issue';
+      const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
 
       try {
         const res = await fetch(proxyUrl);
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.contents) {
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(data.contents, 'text/xml');
-            const items = xmlDoc.querySelectorAll('item');
+        const data = await res.json();
 
-            if (items && items.length > 0) {
-              containerEl.innerHTML = '';
-              const limit = Math.min(items.length, 8);
-              for (let i = 0; i < limit; i++) {
-                const item = items[i];
-                const title = item.querySelector('title')?.textContent || '제목 없음';
-                const link = item.querySelector('link')?.textContent || '#';
-                const pubDate = item.querySelector('pubDate')?.textContent || '';
+        if (data && data.status === 'ok' && data.items && data.items.length > 0) {
+          containerEl.innerHTML = '';
+          const limit = Math.min(data.items.length, 8);
+          for (let i = 0; i < limit; i++) {
+            const item = data.items[i];
+            const title = item.title || '제목 없음';
+            const link = item.link || '#';
+            const pubDate = item.pubDate || '';
 
-                const a = document.createElement('a');
-                a.className = 'news-item';
-                a.href = link;
-                a.target = '_blank';
-                a.rel = 'noopener noreferrer';
+            const a = document.createElement('a');
+            a.className = 'news-item';
+            a.href = link;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
 
-                const titleEl = document.createElement('div');
-                titleEl.className = 'news-item-title';
-                titleEl.textContent = title;
+            const titleEl = document.createElement('div');
+            titleEl.className = 'news-item-title';
+            titleEl.textContent = title;
 
-                const timeElItem = document.createElement('div');
-                timeElItem.className = 'news-item-time';
+            const timeElItem = document.createElement('div');
+            timeElItem.className = 'news-item-time';
 
-                let pubDateStr = '';
-                if (pubDate) {
-                  try {
-                    const dateObj = new Date(pubDate);
-                    if (!isNaN(dateObj)) pubDateStr = fmtShort(dateObj);
-                  } catch(e) {}
-                }
-                timeElItem.textContent = pubDateStr;
-
-                a.appendChild(titleEl);
-                a.appendChild(timeElItem);
-                containerEl.appendChild(a);
-              }
-
-              if (timeEl) timeEl.textContent = fmtDateTime(new Date());
-              if (msgEl) msgEl.textContent = '';
-              return;
+            let pubDateStr = '';
+            if (pubDate) {
+              try {
+                const dateObj = new Date(pubDate);
+                if (!isNaN(dateObj)) pubDateStr = fmtShort(dateObj);
+              } catch(e) {}
             }
+            timeElItem.textContent = pubDateStr;
+
+            a.appendChild(titleEl);
+            a.appendChild(timeElItem);
+            containerEl.appendChild(a);
           }
+
+          if (timeEl) timeEl.textContent = fmtDateTime(new Date());
+          if (msgEl) msgEl.textContent = '';
+          return;
         }
-        throw new Error('뉴스 XML 파싱 실패');
+        throw new Error('뉴스 데이터 파싱 실패');
       } catch (e) {
         containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 가져오지 못했습니다.</p>';
         if (timeEl) timeEl.textContent = '갱신 실패';
@@ -996,7 +999,7 @@
         gridContainerEl.appendChild(col);
       }
 
-      // 뉴스 카드
+      // 뉴스 카드 (타이틀 'JTBC 주요뉴스'로 변경)
       if (!filterQuery) {
         const newsCard = document.createElement('div');
         newsCard.className = 'section-card';
@@ -1005,7 +1008,7 @@
         newsHeader.className = 'section-header';
         newsHeader.innerHTML = `
           <div class="section-title">
-            <span><i class="fa-regular fa-newspaper" style="color:var(--primary-color);"></i> MBC 주요 뉴스</span>
+            <span><i class="fa-regular fa-newspaper" style="color:var(--primary-color);"></i> JTBC 주요뉴스</span>
             <span id="newsUpdateTime" style="font-size:0.75rem; font-weight:normal; color:var(--text-muted);">(--)</span>
           </div>
           <div class="section-actions">
@@ -1524,6 +1527,9 @@
     }
 
     function setupEventListeners() {
+      regionModalBtn.addEventListener('click', openRegionModal);
+      closeRegionModalBtn.addEventListener('click', () => regionModalEl.classList.remove('active'));
+
       newMemoBtnEl.addEventListener('click', clearMemoEditor);
       saveMemoBtnEl.addEventListener('click', saveMemo);
       deleteMemoBtnEl.addEventListener('click', deleteMemo);
