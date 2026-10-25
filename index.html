@@ -144,6 +144,45 @@
     .memo-editor textarea { flex: 1; border: none; background: none; color: var(--text-color); outline: none; resize: none; font-size: 0.95rem; line-height: 1.5; }
     .memo-editor-footer { display: flex; justify-content: space-between; align-items: center; }
 
+    /* AI Directory Layout */
+    .ai-container { display: flex; gap: 1.2rem; height: calc(100vh - 110px); }
+    .ai-sidebar { width: 280px; background: rgba(var(--card-bg-light), var(--card-opacity)); backdrop-filter: var(--card-blur); border-radius: 12px; border: 1px solid var(--border-color); padding: 0.8rem; display: flex; flex-direction: column; gap: 0.8rem; overflow-y: auto; flex-shrink: 0; }
+    [data-theme="dark"] .ai-sidebar { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
+    
+    .ai-category-group { display: flex; flex-direction: column; gap: 0.3rem; }
+    .ai-category-title { font-size: 0.78rem; font-weight: 800; color: var(--primary-color); text-transform: uppercase; letter-spacing: 0.5px; padding: 0.4rem 0.5rem 0.2rem; border-bottom: 1px solid var(--border-color); margin-top: 0.4rem; }
+    .ai-menu-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.45rem 0.6rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; color: var(--text-color); cursor: pointer; transition: all 0.2s; border: 1px solid transparent; }
+    .ai-menu-item:hover { background: rgba(0,0,0,0.05); }
+    .ai-menu-item.active { background: var(--primary-color); color: #fff; }
+
+    .ai-content { flex: 1; background: rgba(var(--card-bg-light), var(--card-opacity)); backdrop-filter: var(--card-blur); border-radius: 12px; border: 1px solid var(--border-color); padding: 1.2rem; display: flex; flex-direction: column; gap: 1rem; overflow-y: auto; }
+    [data-theme="dark"] .ai-content { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
+
+    .ai-header-card { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border-color); flex-wrap: wrap; gap: 0.8rem; }
+    .ai-header-info { display: flex; align-items: center; gap: 0.8rem; }
+    .ai-header-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--primary-color); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .ai-header-title { font-size: 1.25rem; font-weight: 800; }
+    .ai-header-badge { font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 12px; background: rgba(0,0,0,0.08); color: var(--text-muted); font-weight: 600; }
+
+    .ai-launch-btn { background: var(--primary-color); color: #fff; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.9rem; font-weight: 700; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: background 0.2s; }
+    .ai-launch-btn:hover { background: var(--primary-hover); }
+
+    .ai-card-box { background: rgba(0,0,0,0.02); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.9rem; font-size: 0.9rem; line-height: 1.5; }
+    [data-theme="dark"] .ai-card-box { background: rgba(255,255,255,0.03); }
+
+    .ai-features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.8rem; }
+    .ai-feature-card { background: rgba(0,0,0,0.02); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.8rem; }
+    [data-theme="dark"] .ai-feature-card { background: rgba(255,255,255,0.03); }
+    .ai-feature-title { font-weight: 700; font-size: 0.85rem; color: var(--primary-color); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.4rem; }
+
+    .ai-prompt-card { background: rgba(0,0,0,0.03); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.9rem; position: relative; }
+    [data-theme="dark"] .ai-prompt-card { background: rgba(0,0,0,0.25); }
+    .ai-prompt-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+    .ai-prompt-title { font-weight: 700; font-size: 0.88rem; display: flex; align-items: center; gap: 0.4rem; color: var(--text-color); }
+    .ai-prompt-text { font-family: monospace, 'Courier New', Courier; font-size: 0.85rem; line-height: 1.55; white-space: pre-wrap; word-break: break-all; background: rgba(0,0,0,0.03); padding: 0.8rem; border-radius: 6px; border: 1px solid var(--border-color); color: var(--text-color); }
+    .btn-copy-prompt { background: none; border: 1px solid var(--border-color); padding: 0.25rem 0.55rem; border-radius: 4px; font-size: 0.75rem; color: var(--text-muted); cursor: pointer; transition: all 0.2s; }
+    .btn-copy-prompt:hover { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+
     /* Modals */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
     .modal-overlay.active { opacity: 1; pointer-events: auto; }
@@ -241,6 +280,12 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- AI Directory Container -->
+    <div class="ai-container" id="aiContainer" style="display: none;">
+      <div class="ai-sidebar" id="aiSidebar"></div>
+      <div class="ai-content" id="aiContent"></div>
     </div>
   </div>
 
@@ -451,17 +496,526 @@
     let memoCurrentPage = 1;
     const MEMOS_PER_PAGE = 30;
 
-    let sectionModalMode = 'add';
-    let targetSectionIdx = null;
+    let selectedAiId = 'chatgpt';
 
-    let linkModalMode = 'add';
-    let targetLinkSecIdx = null;
-    let targetLinkIdx = null;
+    /* ===== AI 디렉토리 데이터 (Gemini 포함 16개 카테고리) ===== */
+    const AI_DIRECTORY = [
+      {
+        category: "종합 어시스턴트",
+        items: [
+          {
+            id: "chatgpt",
+            name: "ChatGPT",
+            provider: "OpenAI",
+            icon: "fa-comments",
+            url: "https://chatgpt.com",
+            description: "글쓰기, 기획, 코딩, 복잡한 문제 해결 및 추론에 특화된 범용 AI 보조 플랫폼입니다.",
+            feat1Title: "고급 추론 (GPT-4o)", feat1Desc: "텍스트, 코드, 이미지를 동시 분석하는 강력한 대화형 멀티모달 모델 지원",
+            feat2Title: "Custom GPTs", feat2Desc: "특정 업무 목적에 맞춘 전용 AI 챗봇을 손쉽게 설정 및 사용",
+            prompt: "당신은 10년 차 IT 전문 기획자입니다. 소상공인을 위한 모바일 재고 관리 SaaS 웹 서비스의 주요 핵심 기능 5가지를 정의하고, 유저 타겟별 차별화 전략을 포함해 서론-본론-결론 구조의 보고서 초안을 작성해 주세요."
+          },
+          {
+            id: "gemini",
+            name: "Gemini",
+            provider: "Google",
+            icon: "fa-sparkles",
+            url: "https://gemini.google.com",
+            description: "구글의 최신 멀티모달 AI로, 방대한 웹 정보 검색과 텍스트·코드·이미지 통합 분석에 뛰어납니다.",
+            feat1Title: "실시간 구글 검색 연동", feat1Desc: "구글 검색 엔진과 직접 연동되어 가장 최신의 웹 정보를 실시간으로 반영",
+            feat2Title: "대용량 컨텍스트 처리", feat2Desc: "매우 긴 문서나 대화 맥락을 한 번에 이해하고 정확한 답변 도출",
+            prompt: "당신은 전문 리서치 어시스턴트입니다. 최근 발표된 AI 트렌드와 주요 기술 이슈를 바탕으로 일반 독자가 이해하기 쉽게 서론-핵심 트렌드-시사점 구조로 블로그 글 초안을 작성해 주세요."
+          },
+          {
+            id: "claude",
+            name: "Claude",
+            provider: "Anthropic",
+            icon: "fa-brain",
+            url: "https://claude.ai",
+            description: "자연스러운 문맥 이해와 방대한 문서 요약, 뛰어난 코딩 능력을 자랑하는 AI입니다.",
+            feat1Title: "긴 문서 심층 분석", feat1Desc: "수십 페이지의 보고서 및 논문을 순식간에 분석하고 핵심 요약 제공",
+            feat2Title: "Artifacts 프레임", feat2Desc: "생성된 코드나 HTML 시안을 오른쪽 분할 화면에서 즉시 실시간 미리보기",
+            prompt: "아래 제공하는 신규 사업 설명글을 읽고, SWOT(강점, 약점, 기회, 위협) 요인을 각각 3가지씩 분석해 주세요. 또한 핵심 가치 제안(Value Proposition)을 다각도에서 문장으로 정리해 주세요."
+          },
+          {
+            id: "perplexity",
+            name: "Perplexity AI",
+            provider: "Perplexity",
+            icon: "fa-magnifying-glass",
+            url: "https://www.perplexity.ai",
+            description: "실시간 웹 검색과 최신 뉴스 출처를 함께 제공하는 대표적인 대화형 AI 검색 엔진입니다.",
+            feat1Title: "실시간 출처 명시", feat1Desc: "답변의 모든 문장에 검증 가능한 웹 출처 링크를 명확히 제시",
+            feat2Title: "Deep Research", feat2Desc: "주제에 대해 다각도로 최신 시장 동향 분석 및 전문 리포트 작성",
+            prompt: "2026년 최신 생성형 AI 시장 규모 및 국내 주요 스타트업 트렌드 동향을 출처 링크와 함께 상세히 조사해 주세요. 최근 6개월 이내의 최신 통계 수치를 강조해 정리해 주세요."
+          }
+        ]
+      },
+      {
+        category: "사업계획서 작성",
+        items: [
+          {
+            id: "gamma_biz",
+            name: "Gamma (사업계획서)",
+            provider: "Gamma Tech",
+            icon: "fa-file-signature",
+            url: "https://gamma.app",
+            description: "텍스트 입력만으로 사업계획서, 제안서, 문서 레이아웃을 자동 생성해 주는 AI 툴입니다.",
+            feat1Title: "AI 문서 자동 구성", feat1Desc: "사업 아이템 개요 입력 시 완벽한 디자인과 문서 세션을 순식간에 구현",
+            feat2Title: "수정 및 내보내기", feat2Desc: "마우스 클릭만으로 디자인 수정 및 PDF/PPTX 형식 내보내기 지원",
+            prompt: "친환경 텀블러 세척 서비스 스타트업을 위한 사업계획서 목차 5개와 각 섹션별 핵심 사업 추진 내용(시장 분석, 수익 모델, 마케팅 전략, 재무 목표)을 카드 형태로 구성해 줘."
+          },
+          {
+            id: "claude_biz",
+            name: "Claude (기획서 뼈대)",
+            provider: "Anthropic",
+            icon: "fa-file-lines",
+            url: "https://claude.ai",
+            description: "정교하고 수려한 문장 구성으로 정부지원사업 및 투자가 유치용 기획서 초안 작성에 최적화되어 있습니다.",
+            feat1Title: "정부 지원 양식 대입", feat1Desc: "창업사관학교, 예비창업패키지 등 표준 지원사업 서식에 맞춰 글 구성",
+            feat2Title: "논리적 뼈대 완성", feat2Desc: "문제 제기부터 기술성, 시장성, 팀 구성까지 짜임새 있는 구조 제공",
+            prompt: "정부지원 창업패키지 사업계획서 표준 양식에 맞춰 'AI 기반 맞춤형 반려동물 건강 관리 앱'의 사업화 개요, 문제 인식(Problem), 실현 가능성(Solution), 성장 전략(Scale-up) 문단을 작성해 줘."
+          }
+        ]
+      },
+      {
+        category: "PPT 작성",
+        items: [
+          {
+            id: "gamma_ppt",
+            name: "Gamma (PPT)",
+            provider: "Gamma Tech",
+            icon: "fa-file-powerpoint",
+            url: "https://gamma.app",
+            description: "발표 슬라이드 뼈대부터 레이아웃, 시각 자료까지 AI가 순식간에 제작해 주는 프레젠테이션 툴입니다.",
+            feat1Title: "아이디어 슬라이드화", feat1Desc: "주제어 한 줄만 입력해도 8~10장 분량의 시각적 발표 자료 자동 구성",
+            feat2Title: "디자인 테마 변경", feat2Desc: "원클릭으로 컬러 스키마, 폰트, 레이아웃 분위기를 손쉽게 일괄 변환",
+            prompt: "기업 신입사원 대상 '업무 생산성을 높이는 AI 도구 활용법'을 주제로 8장 분량의 발표 슬라이드를 만들어 줘. 각 슬라이드에는 제목, 핵심 요약 3가지, 적절한 아이콘 배치가 포함되어야 해."
+          },
+          {
+            id: "copilot_ppt",
+            name: "Microsoft Copilot",
+            provider: "Microsoft",
+            icon: "fa-window-maximize",
+            url: "https://copilot.microsoft.com",
+            description: "마이크로소프트의 AI 조수로 프레젠테이션 개요와 슬라이드 구성을 지원합니다.",
+            feat1Title: "문서 기반 PPT 전환", feat1Desc: "워드나 요약 문서를 바탕으로 발표 슬라이드 목차 및 대본 자동 구성",
+            feat2Title: "발표 대본 작성", feat2Desc: "각 슬라이드별 발표자가 말할 발표 스크립트까지 동시에 생성",
+            prompt: "2026년 3분기 실적 보고서를 바탕으로 CEO 발표용 5분 프레젠테이션 슬라이드 구성안과 발표 대본을 함께 작성해 줘."
+          }
+        ]
+      },
+      {
+        category: "엑셀/데이터 처리",
+        items: [
+          {
+            id: "chatgpt_excel",
+            name: "ChatGPT (엑셀 마스터)",
+            provider: "OpenAI",
+            icon: "fa-file-excel",
+            url: "https://chatgpt.com",
+            description: "복잡한 엑셀 수식, VLOOKUP, INDEX/MATCH 및 자동화 VBA 매크로 코드를 즉시 생성해 줍니다.",
+            feat1Title: "엑셀 수식 교정", feat1Desc: "오류가 나는 복잡한 조건 수식을 분석하여 바르고 효율적인 수식으로 재구성",
+            feat2Title: "VBA 자동화 스크립트", feat2Desc: "반복적인 데이터 정리 및 엑셀 파싱 작업을 처리하는 VBA 매크로 생성",
+            prompt: "A열에 '날짜(YYYY-MM-DD)', B열에 '고객명', C열에 '결제금액'이 있습니다. '2026년 3월' 데이터 중 결제금액이 10만 원 이상인 건수와 총 합계를 구하는 SUMIFS 및 COUNTIFS 수식을 작성해 주고 사용법을 설명해 줘."
+          },
+          {
+            id: "claude_excel",
+            name: "Claude (데이터 정제)",
+            provider: "Anthropic",
+            icon: "fa-table",
+            url: "https://claude.ai",
+            description: "비정형 텍스트 데이터를 엑셀용 CSV 형태나 대시보드 구조로 정리하는 데 탁월한 능력을 발휘합니다.",
+            feat1Title: "비정형 데이터 정리", feat1Desc: "자유 형식 이메일이나 문의글 데이터를 엑셀 표 구조로 재정리",
+            feat2Title: "파이썬 데이터 분석", feat2Desc: "Pandas를 활용한 데이터 정제 및 이상치 처리 코드 생성 지원",
+            prompt: "아래 자유 형식으로 작성된 고객 리뷰 텍스트 모음을 [고객ID, 만족도점수(1-5), 핵심요구사항, 감정분석(긍정/부정)] 형태의 엑셀 CSV 표 형식으로 정제해 정리해 줘."
+          }
+        ]
+      },
+      {
+        category: "화면설계",
+        items: [
+          {
+            id: "visily",
+            name: "Visily",
+            provider: "Visily AI",
+            icon: "fa-cubes",
+            url: "https://www.visily.ai",
+            description: "기획자와 비전공자에게 강력 추천하는 AI 기반 와이어프레임 및 화면설계서 제작 툴입니다.",
+            feat1Title: "Text / Sketch to UI", feat1Desc: "텍스트 프롬프트나 종이에 그린 손스케치 사진을 편집 가능한 UI 화면으로 자동 전환",
+            feat2Title: "스마트 템플릿", feat2Desc: "1,500개 이상의 웹/앱 화면 컴포넌트를 기반으로 빠르게 와이어프레임 제작",
+            prompt: "스마트폰용 '중고거래 마켓 앱'의 홈 화면 와이어프레임을 만들어 줘. 상단 검색바, 카테고리 아이콘 롤링 영역, 추천 상품 피드 카드, 하단 5개 탭바(홈, 동네생활, 채팅, My) 레이아웃이 들어가야 해."
+          },
+          {
+            id: "uizard",
+            name: "Uizard",
+            provider: "Uizard Technologies",
+            icon: "fa-mobile-screen",
+            url: "https://uizard.io",
+            description: "아이디어 텍스트만으로 연관된 여러 개의 앱 화면과 흐름을 순식간에 생성해 주는 프로토타이핑 툴입니다.",
+            feat1Title: "멀티 스크린 생성", feat1Desc: "로그인부터 메인, 상세페이지까지 연관된 프로토타입 화면 세트 제작",
+            feat2Title: "인터랙티브 플로우", feat2Desc: "클릭 시 화면이 전환되는 대화형 시뮬레이션 연결 지원",
+            prompt: "대학생을 위한 '스터디 모임 관리 앱' 디자인을 만들어 줘. 메인 스터디 목록 화면, 스터디 모집 상세 화면, 출석 체크 화면의 3가지 스크린 레이아웃을 구성해 줘."
+          },
+          {
+            id: "uxpilot",
+            name: "UX Pilot",
+            provider: "UX Pilot",
+            icon: "fa-compass-drafting",
+            url: "https://uxpilot.ai",
+            description: "실무 UI/UX 기획 및 피그마(Figma) 연동에 특화된 와이어프레임 전문 생성 AI입니다.",
+            feat1Title: "컴포넌트 계층화", feat1Desc: "GNB, 사이드바, 데이터 테이블 등 표준 와이어프레임 요소 레이아웃 구성",
+            feat2Title: "Figma 연동 추출", feat2Desc: "생성된 화면을 피그마 플러그인으로 바로 내보내 수정 가능한 레이어로 변환",
+            prompt: "기업용 '인사 관리 사내 대시보드' 화면설계서를 만들어 줘. 좌측 서브메뉴 툴바, 상단 사용자 프로필, 중앙 사원 목록 데이터 테이블 및 검색 필터 영역을 배치해 줘."
+          },
+          {
+            id: "relume",
+            name: "Relume",
+            provider: "Relume.io",
+            icon: "fa-sitemap",
+            url: "https://relume.io",
+            description: "웹사이트 전체 사이트맵과 각 페이지의 섹션별 와이어프레임을 동시에 설계해 줍니다.",
+            feat1Title: "AI 사이트맵 구성", feat1Desc: "사업 아이디어를 기반으로 필요한 전체 웹페이지 메뉴 구조도 자동 작성",
+            feat2Title: "섹션 와이어프레임", feat2Desc: "각 페이지별 히어로 섹션, 특장점, 히스토리, CTA 컴포넌트 자동 배치",
+            prompt: "B2B SaaS 솔루션 기업 웹사이트의 전체 사이트맵(홈, 기능 소개, 요금제, 고객사 사례, 문의)을 짜고, '홈 페이지'의 7개 핵심 섹션 와이어프레임을 구성해 줘."
+          },
+          {
+            id: "v0_ui",
+            name: "v0 (화면 시안)",
+            provider: "Vercel",
+            icon: "fa-code",
+            url: "https://v0.dev",
+            description: "텍스트 입력만으로 고품질의 완성형 UI 시안과 프론트엔드 코드를 동시에 생성해 줍니다.",
+            feat1Title: "실시간 웹 컴포넌트", feat1Desc: "Tailwind CSS 기반의 현대적이고 깔끔한 UI 컴포넌트 즉시 생성",
+            feat2Title: "다채로운 스타일", feat2Desc: "대시보드, 랜딩페이지, 폼 요소 등 동작 가능한 UI 화면 구현",
+            prompt: "반응형 '실시간 암호화폐 거래소 대시보드' UI 화면을 설계해 줘. 좌측 코인 리스트, 중앙 실시간 차트 영역, 우측 매수/매도 주문 폼이 배치되어야 해."
+          }
+        ]
+      },
+      {
+        category: "노코드",
+        items: [
+          {
+            id: "cursor",
+            name: "Cursor",
+            provider: "Anysphere",
+            icon: "fa-terminal",
+            url: "https://www.cursor.com",
+            description: "AI가 코드를 직접 읽고 수정하며 대화하며 프로그램을 만들어내는 차세대 AI 코딩 에디터입니다.",
+            feat1Title: "전체 프로젝트 이해", feat1Desc: "소프트웨어 소스코드 전체 맥락을 이해하고 버그 수정 및 신규 기능 구현",
+            feat2Title: "자연어 코딩", feat2Desc: "명령어 입력만으로 파일 생성, 함수 추가, UI 디자인 변경 자동 처리",
+            prompt: "HTML/CSS/JS로 동작하는 '오늘의 할 일(To-Do) 관리 웹 앱'을 작성해 줘. 로컬스토리지에 저장되고, 완료 항목 체크 및 다크모드 전환 기능이 포함되어야 해."
+          },
+          {
+            id: "v0_nocode",
+            name: "v0",
+            provider: "Vercel",
+            icon: "fa-laptop-code",
+            url: "https://v0.dev",
+            description: "아이디어를 자연어로 설명하면 React와 Tailwind 기반의 완성형 웹 서비스를 만들어 줍니다.",
+            feat1Title: "프론트엔드 자동 생성", feat1Desc: "설명문 한 줄로 실무 수준의 복잡한 웹 컴포넌트 및 랜딩페이지 완성",
+            feat2Title: "코드 복사 및 배포", feat2Desc: "생성된 React/HTML 코드를 복사하거나 Vercel로 클릭 한 번에 배포",
+            prompt: "모던한 디자인의 '개인 포트폴리오 웹사이트'를 만들어 줘. 자기소개 히어로 섹션, 프로젝트 카드리스트, 기술 스택 뱃지, 연락처 폼이 포함되어야 해."
+          },
+          {
+            id: "bolt",
+            name: "Bolt.new",
+            provider: "StackBlitz",
+            icon: "fa-bolt",
+            url: "https://bolt.new",
+            description: "브라우저 안에서 풀스택 웹 애플리케이션을 직접 빌드하고 실행해 볼 수 있는 노코드 AI 빌더입니다.",
+            feat1Title: "풀스택 개발 인프라", feat1Desc: "프론트엔드부터 Node.js 백엔드 패키지까지 풀스택 앱 실행 환경 제공",
+            feat2Title: "실시간 라이브 미리보기", feat2Desc: "코드 수정과 동시에 오른쪽에 실제 동작하는 웹 사이트 확인",
+            prompt: "실시간으로 맛집을 검색하고 지도에 마커로 표시하는 풀스택 웹 앱 프로젝트를 생성해 줘. 검색 필터와 맛집 상세정보 모달창이 동작해야 해."
+          }
+        ]
+      },
+      {
+        category: "업무 자동화",
+        items: [
+          {
+            id: "make_auto",
+            name: "Make",
+            provider: "Make.com",
+            icon: "fa-diagram-project",
+            url: "https://www.make.com",
+            description: "시각적인 시나리오 드래그 앤 드롭으로 다양한 업무 앱들을 연결해 자동화 파이프라인을 구축합니다.",
+            feat1Title: "시각적 노코드 흐름", feat1Desc: "수백 개의 웹 서비스(Gmail, Slack, Notion 등)를 클릭만으로 자유롭게 연결",
+            feat2Title: "AI 모듈 탑재", feat2Desc: "흐름 중간에 OpenAI, Claude 등 AI를 배치해 데이터 자동 분류 및 요약",
+            prompt: "신규 구글 폼 응답이 제출되면 → 내용을 ChatGPT로 요약한 후 → 잔디(Jandi) 또는 슬랙 채널로 알림 메시지를 자동 전송하는 Make 자동화 시나리오 연결 방법을 단계별로 안내해 줘."
+          },
+          {
+            id: "zapier_auto",
+            name: "Zapier",
+            provider: "Zapier Inc.",
+            icon: "fa-gears",
+            url: "https://zapier.com",
+            description: "세계에서 가장 많은 앱 생태계를 연결하는 가장 대중적인 업무 자동화 도구입니다.",
+            feat1Title: "자연어 Zap 생성", feat1Desc: "내가 원하는 자동화 동작을 문장으로 적으면 AI가 자동으로 잽(Zap) 구성",
+            feat2Title: "7,000+ 앱 연동", feat2Desc: "이메일, 엑셀, CRM, SNS 등 사실상 모든 글로벌 웹서비스 연결 지원",
+            prompt: "새로운 문의 이메일이 Gmail로 도착하면 → 첨부파일을 구글 드라이브에 저장하고 → 이메일 내용을 요약해 구글 시트에 행으로 자동 추가하는 Zapier 연동법을 알려줘."
+          }
+        ]
+      },
+      {
+        category: "자동화/워크플로우 연동",
+        items: [
+          {
+            id: "make_workflow",
+            name: "Make (워크플로우)",
+            provider: "Make.com",
+            icon: "fa-network-wired",
+            url: "https://www.make.com",
+            description: "복잡한 조건문(If/Else)과 분기 처리가 있는 고도화된 비즈니스 워크플로우 연동을 처리합니다.",
+            feat1Title: "복잡한 데이터 변환", feat1Desc: "JSON 파싱, 배열 수집, 반복문(Iterator) 등 고도화된 데이터 처리 능숙",
+            feat2Title: "에러 핸들링 모듈", feat2Desc: "연동 실패 시 자동으로 재시도하거나 담당자에게 알림을 보내는 예외 처리",
+            prompt: "쇼핑몰 주문 데이터가 들어왔을 때, 결제 금액에 따라 VIP 고객 그룹과 일반 고객 그룹을 분기하여 서로 다른 안내 카카오톡 메시지를 자동 발송하는 Make 흐름을 구성하는 법을 알려줘."
+          },
+          {
+            id: "zapier_workflow",
+            name: "Zapier (AI 챗봇 연동)",
+            provider: "Zapier Inc.",
+            icon: "fa-robot",
+            url: "https://zapier.com",
+            description: "자체 AI Interfaces 및 Tables 기능을 통해 데이터베이스 및 고객 응대 AI 워크플로우를 완성합니다.",
+            feat1Title: "Zapier Central", feat1Desc: "내 업무 앱을 능동적으로 제어하는 AI 에이전트를 생성하여 자동 업무 수행",
+            feat2Title: "AI Interfaces", feat2Desc: "고객 문의를 받아 internal DB와 연동해 자동 답변하는 맞춤형 AI 페이지 제작",
+            prompt: "Zapier Interfaces를 활용해 우리 회사 고객 FAQ 데이터를 학습시키고, 웹사이트 방문자가 문의를 남기면 자동 답변 후 상담원 이메일로 전달하는 AI 워크플로우 제작법을 작성해 줘."
+          }
+        ]
+      },
+      {
+        category: "웹 리서치/문석분석",
+        items: [
+          {
+            id: "notebooklm",
+            name: "NotebookLM",
+            provider: "Google",
+            icon: "fa-book-open-reader",
+            url: "https://notebooklm.google.com",
+            description: "내가 업로드한 문서, PDF, 링크만을 바탕으로 출처가 명확한 분석과 요약을 제공하는 연구 보조 AI입니다.",
+            feat1Title: "완벽한 환각 방지", feat1Desc: "사용자가 제공한 문서 데이터 내부의 사실에만 근거하여 정확히 답변",
+            feat2Title: "오디오 팟캐스트 생성", feat2Desc: "업로드한 문서 내용을 두 명의 AI 대화형 오디오 음성(팟캐스트)으로 자동 변환",
+            prompt: "업로드한 2026년 신규 법안 개정안 PDF 문서를 분석해서, 소상공인 사업자가 반드시 알아야 할 법적 준수 사항 3가지와 세제 혜택 변경점을 요약 정리해 줘."
+          },
+          {
+            id: "consensus",
+            name: "Consensus",
+            provider: "Consensus AI",
+            icon: "fa-graduation-cap",
+            url: "https://consensus.app",
+            description: "2억 건 이상의 논문 및 학술 자료 데이터를 기반으로 신뢰성 높은 과학적 근거를 찾아주는 학술 검색 AI입니다.",
+            feat1Title: "논문 합의점 요약", feat1Desc: "특정 질문에 대한 다수 학술 논문들의 연구 결과 및 찬반 비율 요약",
+            feat2Title: "명확한 APA 인용", feat2Desc: "주장에 필요한 논문 저자, 연도, 저널명 및 인용구를 자동으로 정리",
+            prompt: "주 4일 근무제가 직원의 업무 몰입도와 생산성에 미치는 영향에 대해 최근 5년간 발표된 학술 연구 논문들의 핵심 결론을 요약하고 인용 근거를 제시해 줘."
+          }
+        ]
+      },
+      {
+        category: "디자인/마케팅",
+        items: [
+          {
+            id: "canva",
+            name: "Canva",
+            provider: "Canva Pty Ltd",
+            icon: "fa-palette",
+            url: "https://www.canva.com",
+            description: "수많은 디자인 템플릿과 AI 매직 스튜디오 기능이 결합된 마케팅 홍보물 제작 플랫폼입니다.",
+            feat1Title: "Magic Studio", feat1Desc: "AI 이미지 생성, 자동 배경 제거, 텍스트 자동 번역 및 레이아웃 자동 다듬기",
+            feat2Title: "SNS 포스터 제작", feat2Desc: "인스타그램 카드뉴스, 유튜브 썸네일, 포스터 등을 몇 초 만에 디자인",
+            prompt: "신제품 '유기농 친환경 샴푸' 출시 홍보를 위한 인스타그램 카드뉴스 5장 슬라이드 디자인 문구와 어울리는 시각적 이미지 배치를 추천해 줘."
+          },
+          {
+            id: "miricanvas",
+            name: "미리캔버스",
+            provider: "Miri Dihye",
+            icon: "fa-object-group",
+            url: "https://www.miricanvas.com",
+            description: "한국 시장에 최적화된 상세페이지, 현수막, 카드뉴스 템플릿과 AI 도구를 제공합니다.",
+            feat1Title: "국내 최적화 템플릿", feat1Desc: "한글 폰트 디자인과 국내 마케팅 트렌드에 최적화된 고품질 템플릿 제공",
+            feat2Title: "AI 에디터", feat2Desc: "텍스트 문구에 어울리는 이미지 요소 자동 제작 및 누끼 따기 기능",
+            prompt: "스마트스토어 판매용 '수제 견과류 선물세트' 상세페이지 상단 메인 배너에 들어갈 카피라이팅 문구 3개와 시선 집중 레이아웃 구성을 추천해 줘."
+          }
+        ]
+      },
+      {
+        category: "동영상 제작",
+        items: [
+          {
+            id: "invideo",
+            name: "Invideo AI",
+            provider: "Invideo",
+            icon: "fa-video",
+            url: "https://invideo.io",
+            description: "대본(텍스트)만 입력하면 스톡 영상, 자막, 배경음악, 성우 나레이션까지 포함된 완제 영상을 제작합니다.",
+            feat1Title: "텍스트 기반 비디오 생성", feat1Desc: "주제만 입력하면 AI가 대본 작성부터 영상 편집 및 자막까지 자동 처리",
+            feat2Title: "자연어 영상 수정", feat2Desc: "채팅창에 '2번 씬을 더 밝은 분위기로 바꿔줘'라고 적어 간편하게 재편집",
+            prompt: "유튜브 쇼츠용 '직장인 스트레스 해소를 위한 5분 스트레칭 꿀팁' 영상을 만들어 줘. 밝고 경쾌한 배경음악과 한국어 성우 나레이션을 포함해 60초 분량으로 만들어 줘."
+          },
+          {
+            id: "kling",
+            name: "Kling AI",
+            provider: "Kuaishou Technology",
+            icon: "fa-film",
+            url: "https://klingai.com",
+            description: "영화 같은 고품질 모션 연출과 텍스트/이미지 기반 비디오 생성을 지원하는 비디오 AI입니다.",
+            feat1Title: "고화질 시네마틱 렌더링", feat1Desc: "물리 법칙이 정교하게 적용된 자연스럽고 화려한 동영상 클립 생성",
+            feat2Title: "Motion Brush", feat2Desc: "정지 이미지의 특정 부분만 선택해 자연스럽게 움직이도록 모션 부여",
+            prompt: "우주비행사가 미래 도시의 야경을 배경으로 빛나는 글래스 타워 위를 천천히 걸어가는 5초 분량의 시네마틱 4K 비디오 영상 클립을 생성해 줘."
+          }
+        ]
+      },
+      {
+        category: "이미지 제작",
+        items: [
+          {
+            id: "designer",
+            name: "Microsoft Designer",
+            provider: "Microsoft (DALL·E 3)",
+            icon: "fa-wand-magic-sparkles",
+            url: "https://designer.microsoft.com",
+            description: "DALL·E 3 엔진을 기반으로 무료 고품질 이미지 생성 및 글자 렌더링을 지원하는 디자인 AI입니다.",
+            feat1Title: "선명한 영문 글자 표현", feat1Desc: "이미지 내부에 원하는 영문 텍스트 그래픽을 깨끗하고 선명하게 렌더링",
+            feat2Title: "무료 DALL·E 3 이용", feat2Desc: "MS 계정 로그인만으로 최고 수준의 AI 이미지 생성 모델 무료 활용",
+            prompt: "A modern startup office with a glowing holographic neon sign that reads 'INNOVATION', isometric 3D render style, vibrant lighting, highly detailed."
+          },
+          {
+            id: "leonardo",
+            name: "Leonardo.ai",
+            provider: "Leonardo Interactive",
+            icon: "fa-image",
+            url: "https://leonardo.ai",
+            description: "매일 무료 크레딧을 제공하며, 일러스트, 실사, 게임 원화 등 다채로운 스타일의 이미지를 생성합니다.",
+            feat1Title: "다양한 Fine-tuned 모델", feat1Desc: "Anime, Realism, 3D Asset 등 목적별 세분화된 이미지 모델 선택",
+            feat2Title: "AI Canvas & Upscale", feat2Desc: "이미지 외곽 확장(Outpainting) 및 고해상도 해상도 4K 업스케일링 지원",
+            prompt: "A cute fluffy baby fox sitting under a cherry blossom tree, digital art style, soft pastel lighting, 8k resolution, cinematic composition."
+          },
+          {
+            id: "recraft",
+            name: "Recraft AI",
+            provider: "Recraft AI",
+            icon: "fa-bezier-curve",
+            url: "https://www.recraft.ai",
+            description: "확대해도 깨지지 않는 벡터(SVG) 일러스트, 아이콘, 3D 그래픽 소스 제작에 특화되어 있습니다.",
+            feat1Title: "SVG 벡터 추출", feat1Desc: "웹 디자인 및 인쇄용으로 바로 쓸 수 있는 벡터 형태 일러스트 파일 생성",
+            feat2Title: "일관된 브랜드 스타일", feat2Desc: "지정한 팔레트 색상과 팔로잉 팔레트에 맞춰 일관된 아이콘 세트 제작",
+            prompt: "Vector flat style icon set for a fintech app, including icons for 'wallet', 'transfer', 'chart', 'security', clean lines, blue and mint color scheme."
+          }
+        ]
+      },
+      {
+        category: "음성/오디오 제작",
+        items: [
+          {
+            id: "elevenlabs_audio",
+            name: "ElevenLabs (오디오)",
+            provider: "ElevenLabs",
+            icon: "fa-headphones",
+            url: "https://elevenlabs.io",
+            description: "인간과 구별할 수 없을 정도로 자연스러운 감정 표현과 음색을 자랑하는 오디오 생성 AI입니다.",
+            feat1Title: "다국어 보이스 생성", feat1Desc: "한국어를 포함한 29개국 언어로 자연스러운 호흡과 억양 표현",
+            feat2Title: "음성 디자인", feat2Desc: "성별, 연령, 억양, 분위기를 조합해 이 세상에 없는 나만의 오디오 보이스 제작",
+            prompt: "따뜻하고 신뢰감 있는 30대 여성 아나운서 톤으로 '안녕하십니까, YUS 노트에 오신 것을 환영합니다. 오늘 전달해 드릴 주요 소식을 말씀드리겠습니다.' 문장을 낭독해 줘."
+          },
+          {
+            id: "typecast_audio",
+            name: "Typecast",
+            provider: "Neosapience",
+            icon: "fa-microphone-lines",
+            url: "https://typecast.ai",
+            description: "국내 대표 AI 성우 플랫폼으로, 캐릭터, 쇼호스트, 뉴스 아나운서 등 다양한 목소리를 지원합니다.",
+            feat1Title: "풍부한 한국어 캐릭터", feat1Desc: "어린이, 노인, 가상 인플루언서 등 500여 개 이상의 다양한 보이스 캐릭터",
+            feat2Title: "대화 스타일 연출", feat2Desc: "기쁨, 슬픔, 화남 등 감정 조절 및 속도, 끊어 읽기 세밀 제어",
+            prompt: "신나는 홈쇼핑 쇼호스트 캐릭터를 선택하여 '단 10분간의 역대급 특가 찬스! 지금 주문하셔야 이 구성, 이 가격으로 가져가실 수 있습니다!' 문장을 활기차게 연출해 줘."
+          }
+        ]
+      },
+      {
+        category: "음성인식/회의록 작성",
+        items: [
+          {
+            id: "clovanote",
+            name: "ClovaNote (클로바노트)",
+            provider: "NAVER",
+            icon: "fa-file-audio",
+            url: "https://clovanote.naver.com",
+            description: "한국어 음성 인식률이 매우 뛰어나며 회의 녹음 파일을 요약 및 화자 분리해 줍니다.",
+            feat1Title: "정확한 화자 분리", feat1Desc: "참석자 1, 참석자 2 등 말을 한 사람을 구분하여 음성을 텍스트로 전환",
+            feat2Title: "AI 회의록 요약", feat2Desc: "긴 회의 내용 중 핵심 안건과 결정 사항, 다음 할 일(Action Item) 자동 추출",
+            prompt: "업로드된 45분 분량의 팀 주간 진행 상황 회의 녹음 파일에서 주요 결정 사항 3가지와 담당자별 차주 업무 할 일(Action Item) 목록을 요약해 줘."
+          },
+          {
+            id: "daglo",
+            name: "Daglo (다글로)",
+            provider: "Action Power",
+            icon: "fa-align-left",
+            url: "https://daglo.ai",
+            description: "통화 녹음, 회의, 강연 등 다양한 음성/영상 파일의 텍스트 변환 및 키워드 검색을 지원합니다.",
+            feat1Title: "다양한 도메인 맞춤인식", feat1Desc: "의학, 법률, IT 전문 용어가 자주 쓰이는 회의 음성도 높은 정확도로 인지",
+            feat2Title: "유튜브 링크 변환", feat2Desc: "유튜브 영상 URL만 넣으면 자막 및 전체 대본을 즉시 추출하여 정리",
+            prompt: "IT 기술 세미나 강연 음성 파일을 변환한 후, 주요 기술 용어 중심의 마인드맵 형태 텍스트 요약본을 만들어 줘."
+          }
+        ]
+      },
+      {
+        category: "음성 성우 (TTS)",
+        items: [
+          {
+            id: "elevenlabs_tts",
+            name: "ElevenLabs (TTS)",
+            provider: "ElevenLabs",
+            icon: "fa-bullhorn",
+            url: "https://elevenlabs.io",
+            description: "글자를 정교한 고품질 사람 목소리로 바꾸는 전문 Text-to-Speech 서비스입니다.",
+            feat1Title: "Voice Cloning", feat1Desc: "1분 분량의 내 목소리 녹음본으로 나만의 맞춤형 음성 클론 모델 생성",
+            feat2Title: "실시간 감정 제어", feat2Desc: "속삭임, 차분함, 격양된 목소리 등 세밀한 감정 조절 지원",
+            prompt: "다큐멘터리 성우 톤으로 차분하고 웅장하게 '지구의 깊은 바닷속, 인류가 아직 발을 디디지 못한 미지의 세계가 펼쳐집니다.'라는 구절을 리얼하게 읽어 줘."
+          },
+          {
+            id: "typecast_tts",
+            name: "Typecast (성우)",
+            provider: "Neosapience",
+            icon: "fa-user-astronaut",
+            url: "https://typecast.ai",
+            description: "유튜브 오디오, 강의 영상 나레이션에 가장 많이 활용되는 전문 성우 TTS 서비스입니다.",
+            feat1Title: "캐릭터 아바타 영상", feat1Desc: "음성에 맞춰 가상 캐릭터 가 입 모양을 뻥긋거리는 영상 스크립트 제작",
+            feat2Title: "다양한 연령대 보이스", feat2Desc: "초등학생부터 할머니 목소리까지 폭넓은 성우 라인업 보유",
+            prompt: "지식 정보 채널 유튜버 톤으로 '여러분, 왜 하늘은 파란색일까요? 오늘 그 숨겨진 과학적 이유를 딱 3분 만에 설명해 드립니다.'를 전달력 있게 표현해 줘."
+          }
+        ]
+      },
+      {
+        category: "음악/효과음 제작",
+        items: [
+          {
+            id: "suno",
+            name: "Suno AI",
+            provider: "Suno Inc.",
+            icon: "fa-music",
+            url: "https://suno.com",
+            description: "원하는 장르와 가사를 텍스트로 적으면 완벽한 보컬 곡을 1분 만에 작곡해 줍니다.",
+            feat1Title: "보컬 포함 완곡 작곡", feat1Desc: "팝, 록, 재즈, 히스패닉 등 모든 장르의 완성형 음원 생성",
+            feat2Title: "가사 자동 생성", feat2Desc: "주제만 입력하면 노래 가사와 곡 구조(Verse, Chorus) 자동 작성",
+            prompt: "[Genre: Upbeat K-Pop] [Mood: Energetic, Fresh] 비 오는 날 카페에서 따뜻한 라떼를 마시며 여유를 즐기는 기분 좋은 설렘을 표현한 밝은 K-Pop 스타일 노래를 만들어 줘."
+          },
+          {
+            id: "udio",
+            name: "Udio",
+            provider: "Udio Music",
+            icon: "fa-record-vinyl",
+            url: "https://www.udio.com",
+            description: "압도적인 음질과 음악적 완성도로 상업용 BGM 및 고품질 사운드트랙을 만듭니다.",
+            feat1Title: "고음질 음악 오디오", feat1Desc: "풍부한 악기 세션과 정교한 사운드 믹싱으로 완성도 높은 음악 생성",
+            feat2Title: "구간 확장 (Extend)", feat2Desc: "마음에 드는 30초 구간 앞뒤로 트랙을 연장해 3분짜리 완성곡으로 발전",
+            prompt: "A relaxed Lofi Hip-Hop beat with soft jazz piano chords, vintage vinyl crackle, and chill ambient synth, perfect for study and relaxation background music."
+          }
+        ]
+      }
+    ];
 
-    let pageTabsEl, gridContainerEl, memoContainerEl, searchInputEl, themeBtnEl, authBtn;
+    let pageTabsEl, gridContainerEl, memoContainerEl, aiContainerEl, searchInputEl, themeBtnEl, authBtn;
     let addSectionHeaderBtn, deleteSectionHeaderBtn, bgImageModalBtn, opacityHeaderBtn;
     let exportBtn, importBtn, importFileInput;
     let memoListEl, memoTitleInputEl, memoDateBadgeEl, memoContentInputEl, memoImportantInputEl, newMemoBtnEl, saveMemoBtnEl, deleteMemoBtnEl;
+    let aiSidebarEl, aiContentEl;
     let sectionModalEl, sectionModalTitleEl, sectionTitleInputEl, sectionHeightSelectEl, sectionHeightInputEl, sectionOrderInputEl, closeSectionModalBtn, saveSectionBtn;
     let deleteSectionModalEl, deleteSectionListEl, closeDeleteSectionModalBtn;
     let linkModalEl, linkModalTitleEl, linkSectionSelectEl, linkNameInputEl, linkUrlInputEl, linkOrderInputEl, closeLinkModalBtn, saveLinkBtn;
@@ -471,7 +1025,6 @@
     let currentDateTimeDisplayEl, weatherDisplayEl, kospiDisplayEl, kosdaqDisplayEl, refreshStockBtnEl, stockUpdateTimeEl;
     let regionModalEl, regionModalBtn, closeRegionModalBtn, sidoTabsEl, regionGridEl;
 
-    // ===== 세종, 대전, 광주, 울산 포함 지역 및 날씨 코드 데이터 =====
     const DATA =
     "서울:강남구,37.517,127.047;강동구,37.530,127.124;강북구,37.640,127.011;강서구,37.551,126.850;관악구,37.478,126.951;광진구,37.538,127.082;구로구,37.495,126.887;금천구,37.457,126.895;노원구,37.654,127.056;도봉구,37.669,127.047;동대문구,37.574,127.040;동작구,37.512,126.939;마포구,37.566,126.902;서대문구,37.579,126.937;서초구,37.484,127.033;성동구,37.563,127.037;성북구,37.589,127.017;송파구,37.515,127.106;양천구,37.517,126.867;영등포구,37.526,126.896;용산구,37.532,126.990;은평구,37.603,126.929;종로구,37.573,126.979;중구,37.564,126.998;중랑구,37.606,127.093|" +
     "인천:강화군,37.747,126.488;옹진군,37.447,126.631;제물포구,37.473,126.637;영종구,37.495,126.474;미추홀구,37.464,126.650;연수구,37.410,126.678;남동구,37.447,126.731;부평구,37.507,126.722;계양구,37.537,126.738;서해구,37.546,126.676;검단구,37.573,126.676|" +
@@ -503,6 +1056,7 @@
       pageTabsEl = document.getElementById('pageTabs');
       gridContainerEl = document.getElementById('gridContainer');
       memoContainerEl = document.getElementById('memoContainer');
+      aiContainerEl = document.getElementById('aiContainer');
       searchInputEl = document.getElementById('searchInput');
       themeBtnEl = document.getElementById('themeBtn');
 
@@ -531,6 +1085,9 @@
       newMemoBtnEl = document.getElementById('newMemoBtn');
       saveMemoBtnEl = document.getElementById('saveMemoBtn');
       deleteMemoBtnEl = document.getElementById('deleteMemoBtn');
+
+      aiSidebarEl = document.getElementById('aiSidebar');
+      aiContentEl = document.getElementById('aiContent');
 
       sectionModalEl = document.getElementById('sectionModal');
       sectionModalTitleEl = document.getElementById('sectionModalTitle');
@@ -750,7 +1307,6 @@
       refreshStockBtnEl.classList.remove("spin");
     }
 
-    /* ===== GitHub Actions가 만든 news.json 으로 뉴스 표시 ===== */
     const pad = n => String(n).padStart(2, "0");
     function fmtDateTime(d) {
       return `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
@@ -767,20 +1323,6 @@
       let t = Date.parse(str);
       if (isNaN(t)) t = Date.parse(String(str).replace(" ", "T") + "Z");
       return isNaN(t) ? null : new Date(t);
-    }
-    function parseItems(text) {
-      const blobs = text.match(/<(item|entry)[\s>][\s\S]*?<\/\1>/gi) || [];
-      return blobs.map(raw => {
-        const b = raw.replace(/<!\[CDATA\[|\]\]>/g, "").replace(/&amp;/g, "&");
-        const tm = b.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
-        const dm = b.match(/<(?:pubDate|dc:date|published|updated)[^>]*>([^<]+)</i);
-        const lm = b.match(/<link[^>]*>([^<]+)<\/link>/i);
-        return { 
-          title: stripTags(tm ? tm[1] : ""), 
-          link: lm ? lm[1].trim() : "#",
-          date: parseDate(dm && dm[1].trim()) 
-        };
-      }).filter(i => i.title);
     }
 
     async function loadNewsList(containerEl, timeEl, msgEl) {
@@ -998,22 +1540,159 @@
         renderCurrentView();
       });
       pageTabsEl.appendChild(memoBtn);
+
+      const aiBtn = document.createElement('button');
+      aiBtn.className = `tab-btn ${activeTab === 'ai' ? 'active' : ''}`;
+      aiBtn.innerHTML = '<i class="fa-solid fa-robot"></i> AI';
+      aiBtn.addEventListener('click', () => {
+        activeTab = 'ai';
+        renderPageTabs();
+        renderCurrentView();
+      });
+      pageTabsEl.appendChild(aiBtn);
     }
 
     function renderCurrentView() {
       if (activeTab === 'memo') {
         gridContainerEl.style.display = 'none';
         memoContainerEl.style.display = 'flex';
+        aiContainerEl.style.display = 'none';
         addSectionHeaderBtn.style.display = 'none';
         deleteSectionHeaderBtn.style.display = 'none';
         renderMemoView();
+      } else if (activeTab === 'ai') {
+        gridContainerEl.style.display = 'none';
+        memoContainerEl.style.display = 'none';
+        aiContainerEl.style.display = 'flex';
+        addSectionHeaderBtn.style.display = 'none';
+        deleteSectionHeaderBtn.style.display = 'none';
+        renderAiView();
       } else {
         gridContainerEl.style.display = 'flex';
         memoContainerEl.style.display = 'none';
+        aiContainerEl.style.display = 'none';
         addSectionHeaderBtn.style.display = 'flex';
         deleteSectionHeaderBtn.style.display = 'flex';
         renderDashboard(searchInputEl.value.trim());
       }
+    }
+
+    function renderAiView() {
+      renderAiSidebar();
+      renderAiContent();
+    }
+
+    function renderAiSidebar() {
+      aiSidebarEl.innerHTML = '';
+      const query = (searchInputEl?.value || '').trim().toLowerCase();
+
+      AI_DIRECTORY.forEach(cat => {
+        const filteredItems = cat.items.filter(item => 
+          item.name.toLowerCase().includes(query) || 
+          cat.category.toLowerCase().includes(query) ||
+          item.description.toLowerCase().includes(query)
+        );
+
+        if (query && filteredItems.length === 0) return;
+
+        const group = document.createElement('div');
+        group.className = 'ai-category-group';
+
+        const catTitle = document.createElement('div');
+        catTitle.className = 'ai-category-title';
+        catTitle.textContent = cat.category;
+        group.appendChild(catTitle);
+
+        const itemsToRender = query ? filteredItems : cat.items;
+        itemsToRender.forEach(item => {
+          const menuItem = document.createElement('div');
+          menuItem.className = `ai-menu-item ${item.id === selectedAiId ? 'active' : ''}`;
+          menuItem.innerHTML = `<i class="fa-solid ${item.icon}"></i> <span>${item.name}</span>`;
+          menuItem.onclick = () => {
+            selectedAiId = item.id;
+            renderAiView();
+          };
+          group.appendChild(menuItem);
+        });
+
+        aiSidebarEl.appendChild(group);
+      });
+    }
+
+    function renderAiContent() {
+      aiContentEl.innerHTML = '';
+      let targetItem = null;
+
+      for (const cat of AI_DIRECTORY) {
+        const found = cat.items.find(i => i.id === selectedAiId);
+        if (found) { targetItem = found; break; }
+      }
+
+      if (!targetItem) {
+        targetItem = AI_DIRECTORY[0].items[0];
+        selectedAiId = targetItem.id;
+      }
+
+      const headerCard = document.createElement('div');
+      headerCard.className = 'ai-header-card';
+      headerCard.innerHTML = `
+        <div class="ai-header-info">
+          <div class="ai-header-icon"><i class="fa-solid ${targetItem.icon}"></i></div>
+          <div>
+            <div class="ai-header-title">${targetItem.name}</div>
+            <span class="ai-header-badge">${targetItem.provider}</span>
+          </div>
+        </div>
+        <a href="${targetItem.url}" target="_blank" rel="noopener noreferrer" class="ai-launch-btn">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> ${targetItem.name} 실행하기
+        </a>
+      `;
+
+      const descBox = document.createElement('div');
+      descBox.className = 'ai-card-box';
+      descBox.innerHTML = `<strong>소개:</strong> ${targetItem.description}`;
+
+      const featGrid = document.createElement('div');
+      featGrid.className = 'ai-features-grid';
+      featGrid.innerHTML = `
+        <div class="ai-feature-card">
+          <div class="ai-feature-title"><i class="fa-solid fa-circle-check"></i> ${targetItem.feat1Title}</div>
+          <div style="font-size:0.82rem; color:var(--text-muted);">${targetItem.feat1Desc}</div>
+        </div>
+        <div class="ai-feature-card">
+          <div class="ai-feature-title"><i class="fa-solid fa-circle-check"></i> ${targetItem.feat2Title}</div>
+          <div style="font-size:0.82rem; color:var(--text-muted);">${targetItem.feat2Desc}</div>
+        </div>
+      `;
+
+      const promptCard = document.createElement('div');
+      promptCard.className = 'ai-prompt-card';
+      promptCard.innerHTML = `
+        <div class="ai-prompt-header">
+          <div class="ai-prompt-title"><i class="fa-solid fa-terminal"></i> 실무 추천 예시 프롬프트</div>
+          <button class="btn-copy-prompt" id="copyPromptBtn"><i class="fa-regular fa-copy"></i> 복사하기</button>
+        </div>
+        <div class="ai-prompt-text" id="promptTextEl">${targetItem.prompt}</div>
+      `;
+
+      aiContentEl.appendChild(headerCard);
+      aiContentEl.appendChild(descBox);
+      aiContentEl.appendChild(featGrid);
+      aiContentEl.appendChild(promptCard);
+
+      setTimeout(() => {
+        const copyBtn = document.getElementById('copyPromptBtn');
+        if (copyBtn) {
+          copyBtn.onclick = () => {
+            navigator.clipboard.writeText(targetItem.prompt).then(() => {
+              copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> 복사 완료!';
+              setTimeout(() => {
+                copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> 복사하기';
+              }, 1500);
+            });
+          };
+        }
+      }, 50);
     }
 
     function getColumnCount() {
@@ -1040,7 +1719,6 @@
         gridContainerEl.appendChild(col);
       }
 
-      // 뉴스 카드 ('JTBC 주요뉴스' 타이틀 적용)
       if (!filterQuery) {
         const newsCard = document.createElement('div');
         newsCard.className = 'section-card';
@@ -1341,6 +2019,12 @@
       renderCurrentView();
     }
 
+    let sectionModalMode = 'add';
+    let targetSectionIdx = null;
+    let linkModalMode = 'add';
+    let targetLinkSecIdx = 0;
+    let targetLinkIdx = null;
+
     function openSectionModal(mode = 'add', sIdx = null) {
       sectionModalMode = mode;
       targetSectionIdx = sIdx;
@@ -1599,6 +2283,7 @@
       searchInputEl.addEventListener('input', (e) => {
         memoCurrentPage = 1;
         if (activeTab === 'memo') renderMemoView();
+        else if (activeTab === 'ai') renderAiView();
         else renderDashboard(e.target.value.trim());
       });
       searchInputEl.addEventListener('keydown', (e) => {
@@ -1615,7 +2300,7 @@
       });
 
       window.addEventListener('resize', () => {
-        if (activeTab !== 'memo') renderDashboard(searchInputEl.value.trim());
+        if (activeTab !== 'memo' && activeTab !== 'ai') renderDashboard(searchInputEl.value.trim());
       });
 
       addSectionHeaderBtn.addEventListener('click', () => openSectionModal('add'));
