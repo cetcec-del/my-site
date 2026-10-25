@@ -742,28 +742,7 @@
       refreshStockBtnEl.classList.remove("spin");
     }
 
-    /* ===== 안정적인 다중 CORS 우회 뉴스 수집 함수 (첨부파일 코드 반영) =====[cite: 3] */
-    async function getText(url) {
-      const routes = [
-        url,
-        "https://corsproxy.io/?" + encodeURIComponent(url),
-        "https://api.allorigins.win/raw?url=" + encodeURIComponent(url),
-        "https://api.codetabs.com/v1/proxy/?quest=" + encodeURIComponent(url),
-        "https://thingproxy.freeboard.io/fetch/" + url
-      ];
-      return Promise.any(routes.map(async u => {
-        const ctrl = new AbortController();
-        const t = setTimeout(() => ctrl.abort(), 10000);
-        try {
-          const r = await fetch(u, { signal: ctrl.signal, cache: "no-store" });
-          if (!r.ok) throw new Error("http " + r.status);
-          const buf = await r.arrayBuffer();
-          let txt = new TextDecoder("utf-8").decode(buf);
-          return txt;
-        } finally { clearTimeout(t); }
-      }));
-    }
-
+    /* ===== Vercel 서버리스 API(/api/news)를 통한 100% 안정적 뉴스 수집 ===== */
     const pad = n => String(n).padStart(2, "0");
     function fmtDateTime(d) {
       return `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
@@ -787,52 +766,39 @@
         const b = raw.replace(/<!\[CDATA\[|\]\]>/g, "").replace(/&amp;/g, "&");
         const tm = b.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
         const dm = b.match(/<(?:pubDate|dc:date|published|updated)[^>]*>([^<]+)</i);
-        return { title: stripTags(tm ? tm[1] : ""), blob: b, date: parseDate(dm && dm[1].trim()) };
+        const lm = b.match(/<link[^>]*>([^<]+)<\/link>/i);
+        return { 
+          title: stripTags(tm ? tm[1] : ""), 
+          link: lm ? lm[1].trim() : "#",
+          date: parseDate(dm && dm[1].trim()) 
+        };
       }).filter(i => i.title);
-    }
-    async function viaRss2json(feedUrl) {
-      const ctrl = new AbortController();
-      const t = setTimeout(() => ctrl.abort(), 10000);
-      try {
-        const r = await fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(feedUrl), { signal: ctrl.signal });
-        const j = await r.json();
-        if (j.status !== "ok" || !j.items || !j.items.length) throw new Error("rss2json");
-        return j.items.map(i => ({ title: stripTags(i.title || ""), blob: JSON.stringify(i), date: parseDate(i.pubDate) })).filter(i => i.title);
-      } finally { clearTimeout(t); }
     }
 
     async function loadNewsList(containerEl, timeEl, msgEl) {
       containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 불러오는 중...</p>';
       
-      const feedUrl = 'https://news-ex.jtbc.co.kr/v1/get/rss/issue';
-      let items = [];
       try {
-        const rawText = await getText(feedUrl);
-        items = parseItems(rawText);
-        if (!items.length) throw new Error("파싱 결과 없음");
-      } catch (e) {
-        try {
-          items = await viaRss2json(feedUrl);
-        } catch (e2) {}
-      }
+        const res = await fetch('/api/news');
+        if (!res.ok) throw new Error('서버 응답 오류');
+        const xmlText = await res.text();
+        const items = parseItems(xmlText);
+        
+        if (!items || items.length === 0) throw new Error('파싱 결과 없음');
 
-      if (items && items.length > 0) {
         containerEl.innerHTML = '';
         const limit = Math.min(items.length, 8);
         for (let i = 0; i < limit; i++) {
           const item = items[i];
-          const title = item.title || '제목 없음';
-          const link = item.blob.match(/<link[^>]*>([^<]+)<\/link>/i)?.[1] || '#';
-
           const a = document.createElement('a');
           a.className = 'news-item';
-          a.href = link.replace(/<!\[CDATA\[|\]\]>/g, "").trim();
+          a.href = item.link.replace(/<!\[CDATA\[|\]\]>/g, "").trim();
           a.target = '_blank';
           a.rel = 'noopener noreferrer';
 
           const titleEl = document.createElement('div');
           titleEl.className = 'news-item-title';
-          titleEl.textContent = title;
+          titleEl.textContent = item.title;
 
           const timeElItem = document.createElement('div');
           timeElItem.className = 'news-item-time';
@@ -846,11 +812,11 @@
         if (timeEl) timeEl.textContent = fmtDateTime(new Date());
         if (msgEl) msgEl.textContent = '';
         return;
+      } catch (e) {
+        containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 가져오지 못했습니다.</p>';
+        if (timeEl) timeEl.textContent = '갱신 실패';
+        if (msgEl) msgEl.textContent = '네트워크 응답 오류가 발생했습니다.';
       }
-
-      containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 가져오지 못했습니다.</p>';
-      if (timeEl) timeEl.textContent = '갱신 실패';
-      if (msgEl) msgEl.textContent = '네트워크 응답 오류가 발생했습니다.';
     }
 
     function refreshUI() {
