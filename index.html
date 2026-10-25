@@ -742,7 +742,7 @@
       refreshStockBtnEl.classList.remove("spin");
     }
 
-    /* ===== Vercel 서버리스 API(/api/news)를 통한 100% 안정적 뉴스 수집 ===== */
+    /* ===== GitHub Actions가 만든 news.json 으로 뉴스 표시 ===== */
     const pad = n => String(n).padStart(2, "0");
     function fmtDateTime(d) {
       return `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
@@ -779,10 +779,11 @@
       containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 불러오는 중...</p>';
       
       try {
-        const res = await fetch('/api/news');
-        if (!res.ok) throw new Error('서버 응답 오류');
-        const xmlText = await res.text();
-        const items = parseItems(xmlText);
+        // GitHub Actions가 10분마다 갱신해 두는 news.json 을 읽습니다 (같은 사이트 파일이라 CORS 문제 없음)
+        const res = await fetch('news.json?t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error('news.json 없음');
+        const data = await res.json();
+        const items = (data.items || []).map(i => ({ title: i.title, link: i.link, date: i.date ? new Date(i.date) : null }));
         
         if (!items || items.length === 0) throw new Error('파싱 결과 없음');
 
@@ -809,8 +810,10 @@
           containerEl.appendChild(a);
         }
 
-        if (timeEl) timeEl.textContent = fmtDateTime(new Date());
-        if (msgEl) msgEl.textContent = '';
+        const upd = data.updatedAt ? new Date(data.updatedAt) : new Date();
+        if (timeEl) timeEl.textContent = fmtDateTime(upd);
+        const staleMin = (Date.now() - upd.getTime()) / 60000;
+        if (msgEl) msgEl.textContent = staleMin > 360 ? '※ 최근 6시간 동안 새 기사가 없거나 갱신이 지연되고 있습니다.' : '';
         return;
       } catch (e) {
         containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 가져오지 못했습니다.</p>';
