@@ -60,11 +60,18 @@
     .search-box input { width: 100%; padding: 0.4rem 1rem 0.4rem 2.2rem; border-radius: 20px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); outline: none; font-size: 0.88rem; }
     .search-box i { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.85rem; }
 
-    .header-actions { display: flex; gap: 0.35rem; align-items: center; }
+    .header-actions { display: flex; gap: 0.35rem; align-items: center; flex-wrap: wrap; }
     .btn-icon { background: none; border: 1px solid var(--border-color); width: 34px; height: 34px; border-radius: 8px; color: var(--text-color); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.88rem; transition: all 0.2s; }
     .btn-icon:hover { background: rgba(0,0,0,0.05); }
 
-    /* Info Bar (날씨, 증시, 지역 선택 통합) */
+    /* 헤더 영역 날씨 지역 선택 드롭다운 */
+    select#regionSelect { 
+      font: inherit; font-size: 0.82rem; color: var(--text-color); background: var(--bg-color); 
+      border: 1px solid var(--border-color); border-radius: 8px; padding: 0.35rem 0.5rem; 
+      outline: none; cursor: pointer; height: 34px; 
+    }
+
+    /* Info Bar (일시, 날씨, 증시) */
     .info-bar {
       max-width: 1400px; margin: 0.5rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center;
       font-size: 0.85rem; font-weight: 600; color: var(--text-muted); flex-wrap: wrap; gap: 0.5rem;
@@ -74,7 +81,7 @@
     .sep { color: var(--border-color); }
     .market-up { color: var(--up-color); }
     .market-down { color: var(--down-color); }
-    select#regionSelect { font: inherit; font-size: 0.8rem; color: var(--text-color); background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 4px; padding: 2px 4px; max-width: 120px; outline: none; cursor: pointer; }
+    
     button#refreshStockBtn { background: none; border: 0; padding: 2px; cursor: pointer; color: var(--text-muted); display: inline-flex; align-items: center; }
     button#refreshStockBtn:hover { color: var(--text-color); }
     button#refreshStockBtn.spin svg { animation: spin 0.8s linear infinite; }
@@ -177,7 +184,9 @@
       <input type="text" id="searchInput" placeholder="검색어 또는 URL 입력...">
     </div>
 
+    <!-- 헤더 우측 영역에 날씨 지역 선택 드롭다운 포함 -->
     <div class="header-actions">
+      <select id="regionSelect" title="날씨 지역 선택"></select>
       <button class="btn-icon" id="addSectionHeaderBtn" title="카테고리 추가"><i class="fa-solid fa-folder-plus"></i></button>
       <button class="btn-icon" id="deleteSectionHeaderBtn" title="카테고리 삭제"><i class="fa-solid fa-folder-minus"></i></button>
       <button class="btn-icon" id="bgImageModalBtn" title="배경 이미지 설정"><i class="fa-solid fa-image"></i></button>
@@ -190,7 +199,7 @@
     </div>
   </div>
 
-  <!-- Info Bar: 날짜/시간 오른쪽에 날씨, 증시, 지역 선택 추가 -->
+  <!-- Info Bar -->
   <div class="info-bar">
     <div class="info-bar-left">
       <i class="fa-regular fa-calendar-days" style="color:var(--primary-color);"></i>
@@ -207,7 +216,6 @@
           <path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/>
         </svg>
       </button>
-      <select id="regionSelect" title="지역 선택"></select>
     </div>
   </div>
 
@@ -446,7 +454,7 @@
     let opacityModalEl, headerOpacityInputEl, headerOpacityValTextEl, closeOpacityModalBtnEl, saveOpacityBtnEl;
     let currentDateTimeDisplayEl, weatherDisplayEl, kospiDisplayEl, kosdaqDisplayEl, regionSelectEl, refreshStockBtnEl;
 
-    // ===== 지역 및 날씨 코드 (참조 코드 반영)[cite: 6] =====
+    // ===== 지역 및 날씨 코드 =====
     const METRO = ["서울","부산","대구","인천","광주","대전","울산","세종"];
     const DATA =
     "서울:종로구,37.573,126.979;중구,37.564,126.998;용산구,37.532,126.990;성동구,37.563,127.037;광진구,37.538,127.082;동대문구,37.574,127.040;중랑구,37.606,127.093;성북구,37.589,127.017;강북구,37.640,127.011;도봉구,37.669,127.047;노원구,37.654,127.056;은평구,37.603,126.929;서대문구,37.579,126.937;마포구,37.566,126.902;양천구,37.517,126.867;강서구,37.551,126.850;구로구,37.495,126.887;금천구,37.457,126.895;영등포구,37.526,126.896;동작구,37.512,126.939;관악구,37.478,126.951;서초구,37.484,127.033;강남구,37.517,127.047;송파구,37.515,127.106;강동구,37.530,127.124|" +
@@ -627,38 +635,43 @@
       currentDateTimeDisplayEl.textContent = `${yyyy}.${mm}.${dd}. (${day}) ${hours}:${mins}:${secs}`;
     }
 
-    // ===== 공통 fetch (다중 CORS 프록시 우회)[cite: 6] =====
-    async function getText(url, check) {
-      const routes = [
-        url,
-        "https://corsproxy.io/?" + encodeURIComponent(url),
-        "https://api.allorigins.win/raw?url=" + encodeURIComponent(url),
-        "https://api.codetabs.com/v1/proxy/?quest=" + encodeURIComponent(url),
-        "https://thingproxy.freeboard.io/fetch/" + url
+    // ===== 다중 프록시 및 백엔드 JSON 우회 수집 함수 (CORS 완전히 방지) =====
+    async function getText(url) {
+      const target = encodeURIComponent(url);
+      const proxies = [
+        `https://api.allorigins.win/get?url=${target}`,
+        `https://api.rss2json.com/v1/api.json?rss_url=${target}`
       ];
-      return Promise.any(routes.map(async u => {
-        const ctrl = new AbortController();
-        const t = setTimeout(() => ctrl.abort(), 10000);
+
+      for (const proxyUrl of proxies) {
         try {
-          const r = await fetch(u, { signal: ctrl.signal, cache: "no-store" });
-          if (!r.ok) throw new Error("http " + r.status);
-          const buf = await r.arrayBuffer();
-          let txt = new TextDecoder("utf-8").decode(buf);
-          const m = txt.slice(0, 200).match(/encoding=["']([\w-]+)/i);
-          if (m && !/utf-?8/i.test(m[1])) { try { txt = new TextDecoder(m[1]).decode(buf); } catch (e) {} }
-          if (check) check(txt);
-          return txt;
-        } finally { clearTimeout(t); }
-      }));
+          const ctrl = new AbortController();
+          const tid = setTimeout(() => ctrl.abort(), 8000);
+          const res = await fetch(proxyUrl, { signal: ctrl.signal });
+          clearTimeout(tid);
+          if (!res.ok) continue;
+
+          if (proxyUrl.includes('allorigins')) {
+            const data = await res.json();
+            if (data && data.contents) return data.contents;
+          } else if (proxyUrl.includes('rss2json')) {
+            const data = await res.json();
+            if (data && data.status === 'ok') return JSON.stringify(data);
+          }
+        } catch (e) {}
+      }
+      throw new Error("모든 외부 프록시 연결 실패");
     }
-    const getJSON = async url => JSON.parse(await getText(url, t => JSON.parse(t)));
+
+    const getJSON = async url => JSON.parse(await getText(url));
 
     async function updateWeather() {
       const p = places[currentPlaceIdx];
       if (!p) return;
       try {
-        const j = await getJSON(
-          `https://api.open-meteo.com/v1/forecast?latitude=${p.lat}&longitude=${p.lon}&current=temperature_2m,weather_code&timezone=Asia%2FSeoul`);
+        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${p.lat}&longitude=${p.lon}&current=temperature_2m,weather_code&timezone=Asia%2FSeoul`;
+        const res = await fetch(weatherUrl);
+        const j = await res.json();
         const temp = Math.round(j.current.temperature_2m);
         const text = WEATHER_TEXT[j.current.weather_code] || "알 수 없음";
         weatherDisplayEl.textContent = `${p.display} ${text} ${temp}°C`;
@@ -676,13 +689,15 @@
 
     async function fetchRate(yahooSym, naverCode) {
       try {
-        const j = await getJSON(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(yahooSym)}?interval=1d&range=1d`);
+        const res = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(yahooSym)}?interval=1d&range=1d`);
+        const j = await res.json();
         const m = j.chart.result[0].meta;
         const prev = m.previousClose ?? m.chartPreviousClose;
         return (m.regularMarketPrice - prev) / prev * 100;
       } catch (e) {}
       try {
-        const j = await getJSON(`https://m.stock.naver.com/api/index/${naverCode}/basic`);
+        const txt = await getText(`https://m.stock.naver.com/api/index/${naverCode}/basic`);
+        const j = JSON.parse(txt);
         let v = parseFloat(String(j.fluctuationsRatio).replace(/,/g, ""));
         const code = j.compareToPreviousPrice && j.compareToPreviousPrice.code;
         if ((code === "4" || code === "5") && v > 0) v = -v;
@@ -703,120 +718,76 @@
       refreshStockBtnEl.classList.remove("spin");
     }
 
-    /* ===== 주요 뉴스 (JTBC / 첨부파일 로직 반영) =====[cite: 6] */
-    const NEWS_COUNT = 7, MAX_AGE_DAYS = 7;
-    const JTBC_ISSUE = "https://news-ex.jtbc.co.kr/v1/get/rss/issue";
-    const JTBC_GOOGLE = "https://news.google.com/rss/search?q=" + encodeURIComponent("site:news.jtbc.co.kr when:2d") + "&hl=ko&gl=KR&ceid=KR:ko";
-    const GOOGLE_ART = /https:\/\/news\.google\.com\/(?:rss\/)?articles\/[^\s"'<>\]]+/i;
-
+    /* ===== 뉴스 정보 안정화 연동 (AllOrigins JSON 프록시 구조) ===== */
     const pad = n => String(n).padStart(2, "0");
     function fmtDateTime(d) {
       return `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
     }
     const fmtShort = d => `${pad(d.getMonth() + 1)}.${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
 
-    function stripTags(s) {
-      const ta = document.createElement("textarea");
-      ta.innerHTML = s.replace(/<[^>]+>/g, "");
-      return ta.value.trim();
-    }
-    function parseDate(str) {
-      if (!str) return null;
-      let t = Date.parse(str);
-      if (isNaN(t)) t = Date.parse(String(str).replace(" ", "T") + "Z");
-      return isNaN(t) ? null : new Date(t);
-    }
-    function parseItems(text) {
-      const blobs = text.match(/<(item|entry)[\s>][\s\S]*?<\/\1>/gi) || [];
-      return blobs.map(raw => {
-        const b = raw.replace(/<!\[CDATA\[|\]\]>/g, "").replace(/&amp;/g, "&");
-        const tm = b.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
-        const dm = b.match(/<(?:pubDate|dc:date|published|updated)[^>]*>([^<]+)</i);
-        return { title: stripTags(tm ? tm[1] : ""), blob: b, date: parseDate(dm && dm[1].trim()) };
-      }).filter(i => i.title);
-    }
-    async function viaRss2json(feedUrl) {
-      const ctrl = new AbortController();
-      const t = setTimeout(() => ctrl.abort(), 10000);
-      try {
-        const r = await fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(feedUrl), { signal: ctrl.signal });
-        const j = await r.json();
-        if (j.status !== "ok" || !j.items || !j.items.length) throw new Error("rss2json");
-        return j.items.map(i => ({ title: stripTags(i.title || ""), blob: JSON.stringify(i), date: parseDate(i.pubDate) })).filter(i => i.title);
-      } finally { clearTimeout(t); }
-    }
-    function resolveArticle(own, blob) {
-      if (!own) { const m = blob.match(GOOGLE_ART); return m ? m[0] : null; }
-      const m = blob.match(/news\.jtbc\.co\.kr\/article\/(NB\d+)/i) || blob.match(/news_id=(NB\d+)/i);
-      return m ? "https://news.jtbc.co.kr/article/" + m[1] : null;
-    }
-    async function loadCandidate(cand, strict) {
-      let items;
-      const why = [];
-      try {
-        items = parseItems(await getText(cand.u, t => { if (!/<(item|entry)[\s>]/i.test(t)) throw 0; }));
-        if (!items.length) throw 0;
-      } catch (e) {
-        why.push("직접/프록시 접속 실패");
-        try { items = await viaRss2json(cand.u); }
-        catch (e2) { why.push("rss2json 실패"); throw new Error(why.join(" + ")); }
-      }
-      const cutoff = Date.now() - MAX_AGE_DAYS * 864e5;
-      if (items.some(i => i.date)) {
-        items = items.filter(i => i.date && i.date.getTime() >= cutoff).sort((a, b) => b.date - a.date);
-      }
-      const results = items.slice(0, NEWS_COUNT).map(i => ({
-        title: cand.own ? i.title : i.title.replace(/\s+-\s+[^-]+$/, ""),
-        url: resolveArticle(cand.own, i.blob),
-        date: i.date
-      }));
-      const good = results.filter(r => r.url).length;
-      if (strict && (!good || good < results.length / 2)) throw new Error(`기사 주소 확인 ${good}/${results.length}`);
-      return results;
-    }
-
     async function loadNewsList(containerEl, timeEl, msgEl) {
       containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 불러오는 중...</p>';
-      const own = { u: JTBC_ISSUE, own: true, label: "JTBC이슈피드" };
-      const goog = { u: JTBC_GOOGLE, own: false, label: "구글뉴스" };
-      const errs = [];
-      let results = null, note = "";
-      const tasks = [own, goog].map(c => loadCandidate(c, true).catch(e => { errs.push(c.label + ": " + e.message); throw e; }));
-      try { results = await Promise.any(tasks); }
-      catch (e) {
-        try {
-          results = await loadCandidate(own, false);
-          note = "일부 기사 주소 누락 시 검색으로 연결됩니다.";
-        } catch (e2) { errs.push("이슈피드: " + e2.message); }
+      
+      const targetUrl = 'https://imnews.imbc.com/rss/news/news_00.xml';
+      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
+
+      try {
+        const res = await fetch(proxyUrl);
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.contents) {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(data.contents, 'text/xml');
+            const items = xmlDoc.querySelectorAll('item');
+
+            if (items && items.length > 0) {
+              containerEl.innerHTML = '';
+              const limit = Math.min(items.length, 8);
+              for (let i = 0; i < limit; i++) {
+                const item = items[i];
+                const title = item.querySelector('title')?.textContent || '제목 없음';
+                const link = item.querySelector('link')?.textContent || '#';
+                const pubDate = item.querySelector('pubDate')?.textContent || '';
+
+                const a = document.createElement('a');
+                a.className = 'news-item';
+                a.href = link;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+
+                const titleEl = document.createElement('div');
+                titleEl.className = 'news-item-title';
+                titleEl.textContent = title;
+
+                const timeElItem = document.createElement('div');
+                timeElItem.className = 'news-item-time';
+
+                let pubDateStr = '';
+                if (pubDate) {
+                  try {
+                    const dateObj = new Date(pubDate);
+                    if (!isNaN(dateObj)) pubDateStr = fmtShort(dateObj);
+                  } catch(e) {}
+                }
+                timeElItem.textContent = pubDateStr;
+
+                a.appendChild(titleEl);
+                a.appendChild(timeElItem);
+                containerEl.appendChild(a);
+              }
+
+              if (timeEl) timeEl.textContent = fmtDateTime(new Date());
+              if (msgEl) msgEl.textContent = '';
+              return;
+            }
+          }
+        }
+        throw new Error('뉴스 XML 파싱 실패');
+      } catch (e) {
+        containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 가져오지 못했습니다.</p>';
+        if (timeEl) timeEl.textContent = '갱신 실패';
+        if (msgEl) msgEl.textContent = '네트워크 응답 오류가 발생했습니다.';
       }
-      if (!results) {
-        containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--danger-color); text-align:center; padding:1rem;">뉴스를 불러오지 못했습니다.</p>';
-        if (msgEl) msgEl.textContent = "진단: " + errs.join(" / ");
-        if (timeEl) timeEl.textContent = "갱신 실패";
-        return;
-      }
-      containerEl.innerHTML = '';
-      results.forEach((r) => {
-        const a = document.createElement('a');
-        a.className = 'news-item';
-        a.href = r.url || "https://search.naver.com/search.naver?where=news&query=" + encodeURIComponent(r.title);
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-
-        const titleEl = document.createElement('div');
-        titleEl.className = 'news-item-title';
-        titleEl.textContent = r.title;
-
-        const timeElItem = document.createElement('div');
-        timeElItem.className = 'news-item-time';
-        timeElItem.textContent = r.date ? fmtShort(r.date) : '';
-
-        a.appendChild(titleEl);
-        a.appendChild(timeElItem);
-        containerEl.appendChild(a);
-      });
-      if (timeEl) timeEl.textContent = fmtDateTime(new Date());
-      if (msgEl) msgEl.textContent = note;
     }
 
     function refreshUI() {
@@ -1025,7 +996,7 @@
         gridContainerEl.appendChild(col);
       }
 
-      // 첫 번째 컬럼 상단에 JTBC 주요 뉴스 카드 배치
+      // 뉴스 카드
       if (!filterQuery) {
         const newsCard = document.createElement('div');
         newsCard.className = 'section-card';
@@ -1034,7 +1005,7 @@
         newsHeader.className = 'section-header';
         newsHeader.innerHTML = `
           <div class="section-title">
-            <span><i class="fa-regular fa-newspaper" style="color:var(--primary-color);"></i> 주요 뉴스 · JTBC</span>
+            <span><i class="fa-regular fa-newspaper" style="color:var(--primary-color);"></i> MBC 주요 뉴스</span>
             <span id="newsUpdateTime" style="font-size:0.75rem; font-weight:normal; color:var(--text-muted);">(--)</span>
           </div>
           <div class="section-actions">
