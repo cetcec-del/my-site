@@ -81,7 +81,7 @@
     [data-theme="dark"] .section-card { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
 
     .section-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border-color); margin-bottom: 0.5rem; }
-    .section-title { font-size: 0.98rem; font-weight: 700; color: var(--text-color); display: flex; align-items: center; gap: 0.4rem; }
+    .section-title { font-size: 0.98rem; font-weight: 700; color: var(--text-color); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
     .section-actions { display: flex; gap: 0.25rem; }
     .btn-icon-sm { background: none; border: none; padding: 0.25rem; color: var(--text-muted); cursor: pointer; border-radius: 4px; font-size: 0.82rem; }
     .btn-icon-sm:hover { color: var(--primary-color); background: rgba(0,0,0,0.05); }
@@ -719,63 +719,78 @@
       return 3;
     }
 
-    /* CORS 프록시를 통해 MBC RSS XML 데이터를 직접 로딩 및 파싱 */
-    async function loadNewsList(containerEl) {
+    /* 안정적인 JSON 프록시(allorigins/get)를 통해 MBC RSS XML 로딩 및 업데이트 일시 반영 */
+    async function loadNewsList(containerEl, timeEl) {
       containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 불러오는 중...</p>';
       
       const targetUrl = 'https://imnews.imbc.com/rss/news/news_00.xml';
-      const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
+      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
 
       try {
         const res = await fetch(proxyUrl);
         if (res.ok) {
-          const xmlText = await res.text();
-          const parser = new DOMParser();
-          const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
-          const items = xmlDoc.querySelectorAll('item');
+          const data = await res.json();
+          if (data && data.contents) {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(data.contents, 'text/xml');
+            const items = xmlDoc.querySelectorAll('item');
 
-          if (items && items.length > 0) {
-            containerEl.innerHTML = '';
-            const limit = Math.min(items.length, 7);
-            for (let i = 0; i < limit; i++) {
-              const item = items[i];
-              const title = item.querySelector('title')?.textContent || '제목 없음';
-              const link = item.querySelector('link')?.textContent || '#';
-              const pubDate = item.querySelector('pubDate')?.textContent || '';
+            if (items && items.length > 0) {
+              containerEl.innerHTML = '';
+              const limit = Math.min(items.length, 7);
+              for (let i = 0; i < limit; i++) {
+                const item = items[i];
+                const title = item.querySelector('title')?.textContent || '제목 없음';
+                const link = item.querySelector('link')?.textContent || '#';
+                const pubDate = item.querySelector('pubDate')?.textContent || '';
 
-              const a = document.createElement('a');
-              a.className = 'news-item';
-              a.href = link;
-              a.target = '_blank';
-              a.rel = 'noopener noreferrer';
+                const a = document.createElement('a');
+                a.className = 'news-item';
+                a.href = link;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
 
-              const titleEl = document.createElement('div');
-              titleEl.className = 'news-item-title';
-              titleEl.textContent = title;
+                const titleEl = document.createElement('div');
+                titleEl.className = 'news-item-title';
+                titleEl.textContent = title;
 
-              const timeEl = document.createElement('div');
-              timeEl.className = 'news-item-time';
-              
-              let pubDateStr = pubDate;
-              try {
-                const dateObj = new Date(pubDate);
-                if (!isNaN(dateObj)) {
-                  pubDateStr = `${String(dateObj.getMonth() + 1).padStart(2, '0')}.${String(dateObj.getDate()).padStart(2, '0')} ${String(dateObj.getHours()).padStart(2, '0')}:${String(dateObj.getMinutes()).padStart(2, '0')}`;
-                }
-              } catch(e) {}
+                const timeElItem = document.createElement('div');
+                timeElItem.className = 'news-item-time';
+                
+                let pubDateStr = pubDate;
+                try {
+                  const dateObj = new Date(pubDate);
+                  if (!isNaN(dateObj)) {
+                    pubDateStr = `${String(dateObj.getMonth() + 1).padStart(2, '0')}.${String(dateObj.getDate()).padStart(2, '0')} ${String(dateObj.getHours()).padStart(2, '0')}:${String(dateObj.getMinutes()).padStart(2, '0')}`;
+                  }
+                } catch(e) {}
 
-              timeEl.textContent = pubDateStr;
+                timeElItem.textContent = pubDateStr;
 
-              a.appendChild(titleEl);
-              a.appendChild(timeEl);
-              containerEl.appendChild(a);
+                a.appendChild(titleEl);
+                a.appendChild(timeElItem);
+                containerEl.appendChild(a);
+              }
+
+              // 업데이트 일시 반영 (예: 2026.01.01 15:10 형식)
+              if (timeEl) {
+                const now = new Date();
+                const yyyy = now.getFullYear();
+                const mm = String(now.getMonth() + 1).padStart(2, '0');
+                const dd = String(now.getDate()).padStart(2, '0');
+                const hh = String(now.getHours()).padStart(2, '0');
+                const min = String(now.getMinutes()).padStart(2, '0');
+                timeEl.textContent = `${yyyy}.${mm}.${dd} ${hh}:${min}`;
+              }
+              return;
             }
-            return;
           }
         }
         containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 가져오지 못했습니다.</p>';
+        if (timeEl) timeEl.textContent = '갱신 실패';
       } catch (e) {
         containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스 연결 오류가 발생했습니다.</p>';
+        if (timeEl) timeEl.textContent = '연결 오류';
       }
     }
 
@@ -805,7 +820,10 @@
         const newsHeader = document.createElement('div');
         newsHeader.className = 'section-header';
         newsHeader.innerHTML = `
-          <span class="section-title"><i class="fa-regular fa-newspaper" style="color:var(--primary-color);"></i> MBC 주요 뉴스</span>
+          <div class="section-title">
+            <span><i class="fa-regular fa-newspaper" style="color:var(--primary-color);"></i> MBC 주요 뉴스</span>
+            <span id="newsUpdateTime" style="font-size:0.75rem; font-weight:normal; color:var(--text-muted);">--</span>
+          </div>
           <div class="section-actions">
             <button class="btn-icon-sm" id="refreshNewsBtn" title="뉴스 새로고침"><i class="fa-solid fa-arrows-rotate"></i></button>
           </div>
@@ -818,11 +836,11 @@
         newsCard.appendChild(newsListEl);
 
         columns[0].appendChild(newsCard);
-        loadNewsList(newsListEl);
+        loadNewsList(newsListEl, document.getElementById('newsUpdateTime'));
 
         setTimeout(() => {
           const btn = document.getElementById('refreshNewsBtn');
-          if (btn) btn.onclick = () => loadNewsList(newsListEl);
+          if (btn) btn.onclick = () => loadNewsList(newsListEl, document.getElementById('newsUpdateTime'));
         }, 100);
       }
 
