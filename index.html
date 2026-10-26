@@ -487,7 +487,35 @@
       "memos": []
     });
 
-    let appState = getDefaultData();
+    // 로컬 스토리지 백업/로드 안전 장치 함수
+    const LOCAL_BACKUP_KEY = "yus_note_app_state_backup_v1";
+
+    function loadInitialData() {
+      try {
+        const saved = localStorage.getItem(LOCAL_BACKUP_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed && parsed.pages && Array.isArray(parsed.pages)) {
+            return parsed;
+          }
+        }
+      } catch (e) {
+        console.error("로컬 백업 로드 오류:", e);
+      }
+      return getDefaultData();
+    }
+
+    function saveLocalBackup() {
+      try {
+        if (appState && appState.pages) {
+          localStorage.setItem(LOCAL_BACKUP_KEY, JSON.stringify(appState));
+        }
+      } catch (e) {
+        console.error("로컬 백업 저장 오류:", e);
+      }
+    }
+
+    let appState = loadInitialData();
 
     let activeTab = 0;
     let currentTheme = 'light';
@@ -737,7 +765,7 @@
             provider: "Make.com",
             icon: "fa-diagram-project",
             url: "https://www.make.com",
-            description: "시각적인 시나리오 드래그 앤 드롭으로 다양한 업무 앱들을 연결해 자동화 파이프라인을 구축합니다.",
+            description: "시각적인 시나리오 드래그 앤 드롭으로 다양한 웹 서비스들을 연결해 자동화 파이프라인을 구축합니다.",
             feat1Title: "시각적 노코드 흐름", feat1Desc: "수백 개의 웹 서비스(Gmail, Slack, Notion 등)를 클릭만으로 자유롭게 연결",
             feat2Title: "AI 모듈 탑재", feat2Desc: "흐름 중간에 OpenAI, Claude 등 AI를 배치해 데이터 자동 분류 및 요약",
             prompt: "신규 구글 폼 응답이 제출되면 → 내용을 ChatGPT로 요약한 후 → 잔디(Jandi) 또는 슬랙 채널로 알림 메시지를 자동 전송하는 Make 자동화 시나리오 연결 방법을 단계별로 안내해 줘."
@@ -976,7 +1004,7 @@
             icon: "fa-user-astronaut",
             url: "https://typecast.ai",
             description: "유튜브 오디오, 강의 영상 나레이션에 가장 많이 활용되는 전문 성우 TTS 서비스입니다.",
-            feat1Title: "캐릭터 아바타 영상", feat1Desc: "음성에 맞춰 가상 캐릭터 가 입 모양을 뻥긋거리는 영상 스크립트 제작",
+            feat1Title: "캐릭터 아바타 영상", feat1Desc: "음성에 맞춰 가상 캐릭터가 입 모양을 뻥긋거리는 영상 스크립트 제작",
             feat2Title: "다양한 연령대 보이스", feat2Desc: "초등학생부터 할머니 목소리까지 폭넓은 성우 라인업 보유",
             prompt: "지식 정보 채널 유튜버 톤으로 '여러분, 왜 하늘은 파란색일까요? 오늘 그 숨겨진 과학적 이유를 딱 3분 만에 설명해 드립니다.'를 전달력 있게 표현해 줘."
           }
@@ -1382,7 +1410,9 @@
     function setupAuthListeners() {
       authBtn.addEventListener('click', () => {
         if (currentUser) {
-          signOut(auth).catch(err => alert("로그아웃 오류: " + err.message));
+          if (confirm("로그아웃 하시겠습니까?")) {
+            signOut(auth).catch(err => alert("로그아웃 오류: " + err.message));
+          }
         } else {
           provider.setCustomParameters({ prompt: 'select_account' });
           signInWithPopup(auth, provider).catch(err => alert("로그인 오류: " + err.message));
@@ -1402,8 +1432,7 @@
             unsubscribeFirestore();
             unsubscribeFirestore = null;
           }
-          appState = getDefaultData();
-          refreshUI();
+          // [수정] 일시적인 인증 끊김 시 데이터가 초기화되지 않도록 로컬 백업/현재 상태를 그대로 유지
         }
       });
     }
@@ -1413,7 +1442,11 @@
       const userDocRef = doc(db, "users", uid);
       unsubscribeFirestore = onSnapshot(userDocRef, (docSnap) => {
         if (docSnap.exists()) {
-          appState = docSnap.data();
+          const serverData = docSnap.data();
+          if (serverData && serverData.pages && serverData.pages.length > 0) {
+            appState = serverData;
+            saveLocalBackup();
+          }
           if (!appState.pages) appState.pages = [];
           if (!appState.memos) appState.memos = [];
           if (!appState.settings) appState.settings = { theme: 'light', openNewPage: false, bgImage: '', bgSize: 'cover', cardOpacity: 85, region: null };
@@ -1424,12 +1457,14 @@
           }
           refreshUI();
         } else {
+          // 서버에 문서가 없으면 현재 로컬 백업 데이터를 서버에 업로드하여 유실 방지
           saveState();
         }
       });
     }
 
     async function saveState() {
+      saveLocalBackup();
       if (currentUser) {
         try {
           const userDocRef = doc(db, "users", currentUser.uid);
@@ -1438,8 +1473,6 @@
           console.error("Firestore 저장 오류:", err);
           alert("서버 저장 실패! 상세오류: " + err.message);
         }
-      } else {
-        alert("로그인 상태가 아닙니다. 변경사항은 현재 세션에만 유지됩니다.");
       }
     }
 
