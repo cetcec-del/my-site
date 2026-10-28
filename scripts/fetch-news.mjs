@@ -3,7 +3,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 
 const OUT = process.env.OUT || "news.json";
-const COUNT = 10;
+const COUNT = 30;
 const MAX_AGE_DAYS = 7;
 const GOOGLE_ART = /https:\/\/news\.google\.com\/(?:rss\/)?articles\/[^\s"'<>\]]+/i;
 
