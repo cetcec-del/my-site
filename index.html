@@ -1289,7 +1289,7 @@
       el.className = rate > 0 ? "market-up" : rate < 0 ? "market-down" : "";
     }
 
-    /* ===== 증시 등락률: 타임아웃 + 동시 요청(먼저 성공한 값 사용) + 재시도 + 직전 값 유지 ===== */
+    /* ===== 증시 등락률 (네이버 증권 전용): 타임아웃 + 동시 요청(먼저 성공한 값 사용) + 재시도 + 직전 값 유지 ===== */
     const stockLast = {};          // 마지막으로 성공한 값 (실패 시 화면에 유지)
     let stockInflight = null;      // 중복 호출 방지
 
@@ -1307,35 +1307,38 @@
       if (!Number.isFinite(v) || Math.abs(v) > 30) throw new Error("invalid rate");
       return v;
     }
-    function parseYahoo(j) {
-      const m = j.chart.result[0].meta;
-      const prev = m.previousClose ?? m.chartPreviousClose;
-      return okRate((m.regularMarketPrice - prev) / prev * 100);
-    }
+    // 네이버 증권 응답 해석 (polling: datas[0], 모바일: 최상위)
     function parseNaver(j) {
-      let v = parseFloat(String(j.fluctuationsRatio).replace(/,/g, ""));
-      const code = j.compareToPreviousPrice && j.compareToPreviousPrice.code;
-      if ((code === "4" || code === "5") && v > 0) v = -v;
+      const d = (j.datas && j.datas[0]) || j;
+      let v = parseFloat(String(d.fluctuationsRatio).replace(/,/g, ""));
+      const diff = parseFloat(String(d.compareToPreviousClosePrice).replace(/,/g, ""));
+      const code = d.compareToPreviousPrice && String(d.compareToPreviousPrice.code);
+      if (Number.isFinite(v) && v > 0 && (diff < 0 || code === "4" || code === "5")) v = -v;   // 하락이면 음수
+      if (!Number.isFinite(v)) {
+        const close = parseFloat(String(d.closePrice).replace(/,/g, ""));
+        v = diff / (close - diff) * 100;
+      }
       return okRate(v);
     }
 
-    async function fetchRateOnce(yahooSym, naverCode) {
-      const yahoo = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(yahooSym)}?interval=1d&range=1d`;
-      const naver = `https://m.stock.naver.com/api/index/${naverCode}/basic`;
-      // 여러 경로를 동시에 요청하고, 가장 먼저 성공한 값을 사용
+    async function fetchRateOnce(naverCode) {
+      const polling = `https://polling.finance.naver.com/api/realtime/domestic/index/${naverCode}`;
+      const mobile = `https://m.stock.naver.com/api/index/${naverCode}/basic`;
+      const viaAllorigins = u => fetchJSONTimeout(`https://api.allorigins.win/get?url=${encodeURIComponent(u)}`, 7000)
+        .then(d => parseNaver(JSON.parse(d.contents)));
+      // 네이버 두 주소를 직접/중계로 동시에 요청하고, 가장 먼저 성공한 값을 사용
       return Promise.any([
-        fetchJSONTimeout(yahoo).then(parseYahoo),
-        fetchJSONTimeout(naver).then(parseNaver),
-        fetchJSONTimeout(`https://api.allorigins.win/get?url=${encodeURIComponent(naver)}`, 7000)
-          .then(d => parseNaver(JSON.parse(d.contents))),
-        fetchJSONTimeout(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(naver)}`, 7000)
-          .then(parseNaver)
+        fetchJSONTimeout(polling).then(parseNaver),
+        viaAllorigins(polling),
+        fetchJSONTimeout(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(polling)}`, 7000).then(parseNaver),
+        fetchJSONTimeout(mobile).then(parseNaver),
+        viaAllorigins(mobile)
       ]);
     }
 
-    async function fetchRate(yahooSym, naverCode) {
+    async function fetchRate(naverCode) {
       for (let attempt = 0; attempt < 2; attempt++) {
-        try { return await fetchRateOnce(yahooSym, naverCode); } catch (e) {}
+        try { return await fetchRateOnce(naverCode); } catch (e) {}
         if (attempt === 0) await new Promise(r => setTimeout(r, 2000));   // 2초 뒤 한 번 재시도
       }
       return null;
@@ -1344,7 +1347,7 @@
     function updateStocks() {
       if (stockInflight) return stockInflight;
       stockInflight = (async () => {
-        const [a, b] = await Promise.all([fetchRate("^KS11", "KOSPI"), fetchRate("^KQ11", "KOSDAQ")]);
+        const [a, b] = await Promise.all([fetchRate("KOSPI"), fetchRate("KOSDAQ")]);
         if (a !== null) stockLast.kospi = a;
         if (b !== null) stockLast.kosdaq = b;
         showRate(kospiDisplayEl, a ?? stockLast.kospi ?? null);
@@ -1406,7 +1409,7 @@
         if (!items || items.length === 0) throw new Error('파싱 결과 없음');
 
         containerEl.innerHTML = '';
-        const limit = Math.min(items.length, 8);
+        const limit = Math.min(items.length, 30);   // 최대 30개 표시 (목록 영역은 스크롤)
         for (let i = 0; i < limit; i++) {
           const item = items[i];
           const a = document.createElement('a');
