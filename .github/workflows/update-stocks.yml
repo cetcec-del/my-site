@@ -1,0 +1,34 @@
+name: Update stocks
+
+on:
+  schedule:
+    # 평일 한국시간 09:00~15:55 (UTC 00:00~06:55), 5분마다. GitHub 사정으로 몇 분 늦어질 수 있음
+    - cron: "*/5 0-6 * * 1-5"
+  workflow_dispatch:          # Actions 탭에서 수동 실행 가능
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data          # 뉴스 갱신과 동시에 커밋하지 않도록 같은 그룹 사용
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Fetch stocks
+        run: node scripts/fetch-stocks.mjs
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stocks.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update stocks"
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push
+          fi
