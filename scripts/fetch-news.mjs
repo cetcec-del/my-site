@@ -79,22 +79,40 @@ async function load(src) {
   return results.filter(r => r.link);
 }
 
-let picked = null;
+// 한 출처가 주는 기사 수가 적을 수 있어(JTBC 이슈피드는 10건), 가능한 모든 출처를 합쳐 COUNT건까지 채웁니다.
+const pool = [];
+const used = [];
 for (const src of SOURCES) {
   try {
     const items = await load(src);
-    picked = { source: src.name, items };
+    items.forEach(it => pool.push({ ...it, src: src.name }));
+    used.push(src.name);
     console.log(`OK: ${src.name} (${items.length}건)`);
-    break;
   } catch (e) {
     console.log(`실패: ${src.name} - ${e.message}`);
   }
 }
 
+// 같은 기사 제거(제목 기준) → 최신순 정렬 → COUNT건
+const keyOf = t => t.toLowerCase().replace(/[^0-9a-z가-힣]/g, "");
+const seen = [];
+const merged = [];
+for (const it of pool) {                       // pool 순서 = 출처 우선순위(기사 주소가 확실한 순)
+  const k = keyOf(it.title);
+  if (!k || seen.some(o => o === k || (k.length >= 10 && o.length >= 10 && (o.startsWith(k) || k.startsWith(o))))) continue;
+  seen.push(k);
+  merged.push(it);
+}
+merged.sort((a, b) => (b.date ? Date.parse(b.date) : 0) - (a.date ? Date.parse(a.date) : 0));
+const picked = merged.length
+  ? { source: used.join(" + "), items: merged.slice(0, COUNT).map(({ src, ...rest }) => rest) }
+  : null;
+
 if (!picked) {
   console.log("모든 출처 실패 - 기존 news.json 유지");
   process.exit(0);
 }
+console.log(`합계 ${picked.items.length}건 (출처: ${picked.source})`);
 
 let prev = null;
 try { prev = JSON.parse(await readFile(OUT, "utf8")); } catch {}
