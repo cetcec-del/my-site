@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YUS의 노트 & 뭘먹지 통합 시스템</title>
+  <title>YUS의 노트</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -39,9 +39,11 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; }
     body { background-color: var(--bg-color); color: var(--text-color); min-height: 100vh; padding-bottom: 20px; transition: background-color 0.3s, color 0.3s; }
 
+    /* Header & Navigation */
     .header { 
       display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 1.5rem; 
-      background: rgb(var(--card-bg-light)); backdrop-filter: blur(10px); 
+      background: rgb(var(--card-bg-light)); 
+      backdrop-filter: blur(10px); 
       border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; gap: 0.8rem; flex-wrap: wrap; 
     }
     [data-theme="dark"] .header { background: rgb(var(--card-bg-dark)); }
@@ -62,6 +64,7 @@
     .btn-icon { background: none; border: 1px solid var(--border-color); width: 34px; height: 34px; border-radius: 8px; color: var(--text-color); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.88rem; transition: all 0.2s; }
     .btn-icon:hover { background: rgba(0,0,0,0.05); }
 
+    /* Info Bar */
     .info-bar {
       max-width: 1400px; margin: 0.5rem auto 0; padding: 0 1rem; display: flex; justify-content: space-between; align-items: center;
       font-size: 0.85rem; font-weight: 600; color: var(--text-muted); flex-wrap: wrap; gap: 0.5rem;
@@ -77,6 +80,7 @@
     button#refreshStockBtn.spin svg { animation: spin 0.8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* 지역 선택 팝업 모달 내부 스타일 */
     .region-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 0.5rem; max-height: 350px; overflow-y: auto; padding-top: 0.5rem; }
     .region-chip { padding: 0.4rem; border: 1px solid var(--border-color); border-radius: 6px; text-align: center; font-size: 0.85rem; cursor: pointer; background: var(--bg-color); color: var(--text-color); transition: all 0.2s; }
     .region-chip:hover, .region-chip.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
@@ -84,10 +88,12 @@
     .sido-tab-btn { background: none; border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.8rem; cursor: pointer; color: var(--text-color); }
     .sido-tab-btn.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
 
+    /* Main Container */
     .container { max-width: 1400px; margin: 0.8rem auto 1rem; padding: 0 1rem; }
     .grid-container { display: flex; gap: 1.2rem; width: 100%; }
     .grid-column { flex: 1; display: flex; flex-direction: column; gap: 1.2rem; min-width: 0; }
 
+    /* Section Card */
     .section-card { 
       background: rgba(var(--card-bg-light), var(--card-opacity)); 
       backdrop-filter: var(--card-blur); 
@@ -112,6 +118,7 @@
     .link-actions { display: flex; opacity: 0; transition: opacity 0.2s; gap: 0.2rem; }
     .link-wrapper:hover .link-actions { opacity: 1; }
 
+    /* News Component Styling */
     .news-list { display: flex; flex-direction: column; gap: 0.4rem; overflow-y: auto; list-style: none; margin: 0; padding: 0; }
     .news-item { text-decoration: none; color: var(--text-color); padding: 0.35rem; border-radius: 6px; border-bottom: 1px dashed var(--border-color); transition: background 0.2s; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
     .news-item:hover { background: rgba(0,0,0,0.04); }
@@ -119,6 +126,7 @@
     .news-item-time { font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; }
     #newsMsg { color: var(--text-muted); font-size: 0.75rem; margin-top: 4px; word-break: break-all; }
 
+    /* Memo Layout */
     .memo-container { display: flex; gap: 1.2rem; height: calc(100vh - 110px); }
     .memo-sidebar { width: 250px; background: rgba(var(--card-bg-light), var(--card-opacity)); backdrop-filter: var(--card-blur); border-radius: 12px; border: 1px solid var(--border-color); padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
     [data-theme="dark"] .memo-sidebar { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
@@ -136,6 +144,7 @@
     .memo-editor textarea { flex: 1; border: none; background: none; color: var(--text-color); outline: none; resize: none; font-size: 0.95rem; line-height: 1.5; }
     .memo-editor-footer { display: flex; justify-content: space-between; align-items: center; }
 
+    /* AI Directory Layout */
     .ai-container { display: flex; gap: 1.2rem; height: calc(100vh - 110px); }
     .ai-sidebar { width: 280px; background: rgba(var(--card-bg-light), var(--card-opacity)); backdrop-filter: var(--card-blur); border-radius: 12px; border: 1px solid var(--border-color); padding: 0.8rem; display: flex; flex-direction: column; gap: 0.8rem; overflow-y: auto; flex-shrink: 0; }
     [data-theme="dark"] .ai-sidebar { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
@@ -217,6 +226,7 @@
       border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-color);
     }
 
+    /* Global Guard Screen */
     .login-guard-screen {
       background: rgba(var(--card-bg-light), var(--card-opacity));
       border: 1px solid var(--border-color); border-radius: 12px; padding: 4rem 1.5rem;
@@ -224,6 +234,7 @@
     }
     [data-theme="dark"] .login-guard-screen { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
 
+    /* Modals */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
     .modal-overlay.active { opacity: 1; pointer-events: auto; }
     .modal-box { background: rgb(var(--card-bg-light)); backdrop-filter: var(--modal-blur); border-radius: 12px; border: 1px solid var(--border-color); width: 90%; max-width: 480px; padding: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; box-shadow: var(--card-shadow); }
@@ -250,6 +261,7 @@
 </head>
 <body>
 
+  <!-- Header Nav Bar -->
   <div class="header">
     <div class="header-left">
       <div class="header-brand">
@@ -277,6 +289,7 @@
     </div>
   </div>
 
+  <!-- Info Bar -->
   <div class="info-bar">
     <div class="info-bar-left">
       <i class="fa-regular fa-calendar-days" style="color:var(--primary-color);"></i>
@@ -297,6 +310,7 @@
     </div>
   </div>
 
+  <!-- Main Container -->
   <div class="container">
     <div id="loginGuardWrapper" style="display: none;">
       <div class="login-guard-screen">
@@ -332,14 +346,17 @@
       </div>
     </div>
 
+    <!-- AI Directory Container -->
     <div class="ai-container" id="aiContainer" style="display: none;">
       <div class="ai-sidebar" id="aiSidebar"></div>
       <div class="ai-content" id="aiContent"></div>
     </div>
 
+    <!-- '뭘먹지' 맛집 추천 Container -->
     <div class="food-container" id="foodContainer" style="display: none;"></div>
   </div>
 
+  <!-- 지역 선택 팝업 모달 -->
   <div class="modal-overlay" id="regionModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -353,6 +370,7 @@
     </div>
   </div>
 
+  <!-- Modals -->
   <div class="modal-overlay" id="sectionModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -482,6 +500,7 @@
     </div>
   </div>
 
+  <!-- Firebase Modular SDK Script -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
@@ -517,7 +536,7 @@
         "foodSearch": {
           "mode": "gps",
           "sido": "서울",
-          "gungoo": "영등포구",
+          "gungoo": "종로구",
           "dong": "",
           "radius": "1km",
           "category": "전체 맛집",
@@ -554,9 +573,13 @@
         const saved = localStorage.getItem(LOCAL_BACKUP_KEY);
         if (saved) {
           const parsed = JSON.parse(saved);
-          if (parsed && parsed.pages && Array.isArray(parsed.pages)) return parsed;
+          if (parsed && parsed.pages && Array.isArray(parsed.pages)) {
+            return parsed;
+          }
         }
-      } catch (e) {}
+      } catch (e) {
+        console.error("로컬 백업 로드 오류:", e);
+      }
       return getDefaultData();
     }
 
@@ -565,35 +588,39 @@
         if (appState && appState.pages) {
           localStorage.setItem(LOCAL_BACKUP_KEY, JSON.stringify(appState));
         }
-      } catch (e) {}
+      } catch (e) {
+        console.error("로컬 백업 저장 오류:", e);
+      }
     }
 
     let appState = loadInitialData();
+
     let activeTab = 0;
     let currentTheme = 'light';
     let tempBgImage = '';
     let selectedMemoId = null;
     let memoCurrentPage = 1;
     const MEMOS_PER_PAGE = 30;
+
     let selectedAiId = 'chatgpt';
-    let currentGpsCoords = { lat: 37.526, lon: 126.896, addressName: "위도:37.52, 경도:126.90 / 서울시 영등포구 신길로 41가길 34" };
+    let currentGpsCoords = { lat: 37.573, lon: 126.979, addressName: "현재 GPS 위치" };
 
     const FOOD_CATEGORIES = [
-      "전체 맛집", "한식", "중식", "일식", "양식", "분식", "고기", "면", "찌개/탕", "샐러드", "죽", "디저트"
+      "전체 맛집", "한식", "일식/초밥", "중식", "양식/파스타", "카페/디저트", "고기", "면", "분식", "국물", "샐러드", "죽"
     ];
 
     const MENU_DATABASE = {
-      "한식": ["김치찌개", "된장찌개", "제육", "불고기", "비빔밥", "부대찌개", "감자탕", "갈비탕", "설렁탕", "순대국", "뼈해장국", "육개장", "삼겹살", "닭갈비", "찜닭", "갈비찜", "낙지볶음", "오징어볶음", "고등어구이", "생성구이", "청국장", "콩비지찌개", "추어탕", "삼계탕", "보쌈정식", "한우국밥"],
-      "중식": ["짜장면", "짬뽕", "탕수육", "볶음밥", "간짜장", "차돌짬뽕", "짬뽕밥", "깐풍기", "유린기", "마라탕", "마라샹궈", "꿔바로우", "양장피", "팔보채", "유산슬", "울면", "중식냉면", "새우볶음밥", "멘보샤", "고추잡채", "잡채밥", "마파두부밥"],
-      "일식": ["모둠초밥", "연어초밥", "광어초밥", "돈카츠", "치즈카츠", "규동", "가츠동", "에비동", "사케동", "연어덮밥", "우동", "메밀소바", "돈코츠라멘", "미소라멘", "마제소바", "규카츠", "야끼소바", "타코야키", "오코노미야키", "텐동", "튀김덮밥", "카레우동", "스키야키", "장어덮밥"],
-      "양식": ["토마토파스타", "까르보나라", "로제파스타", "알리오올리오", "봉골레파스타", "미트소스파스타", "페퍼로니피자", "고구마피자", "마르게리타피자", "시카고피자", "스테이크", "함박스테이크", "수제버거", "치즈버거", "리조또", "빠네파스타", "라자냐", "치킨도리아", "오븐스파게티", "감자튀김", "콥샐러드", "바비큐립"],
-      "분식": ["떡볶이", "김밥", "튀김", "순대", "순대국밥", "어묵", "라면", "쫄면", "만두", "컵밥", "떡꼬치", "소떡소떡", "닭강정", "만두"],
-      "고기": ["삼겹살", "목살", "항정살", "가브리살", "우삼겹", "차돌박이", "한우등심구이", "LA갈비", "돼지갈비", "양갈비", "소곱창", "소대창", "막창", "닭목살", "닭발", "오리고기", "훈제오리", "껍데기", "떡갈비", "제육"],
-      "면": ["잔치국수", "칼국수", "막국수", "물냉면", "비빔냉면", "쫄면", "비빔국수", "콩국수", "장칼국수", "바지락칼국수", "얼큰칼국수", "메밀소바", "우동", "라면", "짬뽕라면", "짜파게티", "파스타", "마제소바", "쌀국수", "팟타이"],
-      "찌개/탕": ["김치찌개", "된장찌개", "부대찌개", "순대국", "설렁탕", "갈비탕", "뼈해장국", "감자탕", "육개장", "곰탕", "추어탕", "삼계탕", "청국장", "콩비지찌개", "동태탕", "알탕", "대구탕", "미역국", "소고기국밥", "어묵탕"],
-      "샐러드": ["닭가슴살샐러드", "리코타치즈샐러드", "연어샐러드", "아보카도샐러드", "우삼겹샐러드", "단호박샐러드", "리코타연어샐러드", "쉬림프샐러드", "소고기안심샐러드", "콥샐러드", "부라타치즈토마토샐러드", "케이준치킨샐러드"],
-      "죽": ["야채죽", "단호박죽", "전복죽", "소고기버섯죽", "참치야채죽", "닭죽", "낙지김치죽", "잣죽", "흑임자죽", "삼계죽"],
-      "디저트": ["크로플", "조각케이크", "마카롱", "스콘", "휘낭시에", "소금빵", "샌드위치", "허니브레드", "팥빙수", "망고빙수", "홍합미역죽", "새우죽"]
+      "한식": ["제육볶음 정식", "김치찌개와 불고기", "돌솥비빔밥", "간장게장 정식", "우렁된장찌개"],
+      "일식/초밥": ["모둠 초밥 세트", "사케동 (연어덮밥)", "돈코츠 라멘", "규동 (소고기덮밥)", "로스카츠 정식"],
+      "중식": ["짬뽕라면", "유니짜장면", "찹쌀 꿔바로우", "마라탕", "간짜장과 탕수육"],
+      "양식/파스타": ["트러플 크림 파스타", "수제 채끝 스테이크", "마르게리타 피자", "쉬림프 로제 파스타", "클래식 치즈버거"],
+      "카페/디저트": ["아이스 카페라떼 & 크로플", "말차라떼 & 바스크 치즈케이크", "아메리카노 & 마카롱", "수제 과일 타르트"],
+      "고기": ["생삼겹살 구이", "숙성 한우 등심", "소갈비살 숯불구이", "매운 갈비찜", "훈제 오리고기"],
+      "면": ["얼큰 칼국수", "시원한 메밀소바", "잔치국수와 김밥", "비빔냉면", "들기름 메밀국수"],
+      "분식": ["모둠 떡볶이와 튀김", "김밥과 쫄면", "참치김치 수제비", "라볶이와 순대"],
+      "국물": ["진한 설렁탕", "얼큰한 육개장", "바지락 칼국수", "추어탕", "한방 삼계탕"],
+      "샐러드": ["리코타 치즈 샐러드", "닭가슴살 콥 샐러드", "연어 아보카도 샐러드", "단호박 구이 샐러드"],
+      "죽": ["전복죽", "야채죽", "소고기 버섯죽", "단호박죽"]
     };
 
     const AI_DIRECTORY = [
@@ -637,12 +664,25 @@
     "서울:강남구,37.517,127.047;강동구,37.530,127.124;강북구,37.640,127.011;강서구,37.551,126.850;관악구,37.478,126.951;광진구,37.538,127.082;구로구,37.495,126.887;금천구,37.457,126.895;노원구,37.654,127.056;도봉구,37.669,127.047;동대문구,37.574,127.040;동작구,37.512,126.939;마포구,37.566,126.902;서대문구,37.579,126.937;서초구,37.484,127.033;성동구,37.563,127.037;성북구,37.589,127.017;송파구,37.515,127.106;양천구,37.517,126.867;영등포구,37.526,126.896;용산구,37.532,126.990;은평구,37.603,126.929;종로구,37.573,126.979;중구,37.564,126.998;중랑구,37.606,127.093|" +
     "인천:강화군,37.747,126.488;옹진군,37.447,126.631;제물포구,37.473,126.637;영종구,37.495,126.474;미추홀구,37.464,126.650;연수구,37.410,126.678;남동구,37.447,126.731;부평구,37.507,126.722;계양구,37.537,126.738;서해구,37.546,126.676;검단구,37.573,126.676|" +
     "경기:수원시,37.263,127.029;성남시,37.420,127.127;의정부시,37.738,127.034;안양시,37.394,126.957;부천시,37.504,126.766;광명시,37.478,126.865;평택시,36.992,127.113;동두천시,37.903,127.060;안산시,37.322,126.831;고양시,37.658,126.832;과천시,37.429,126.987;구리시,37.594,127.129;남양주시,37.636,127.216;오산시,37.149,127.077;시흥시,37.380,126.803;군포시,37.361,126.935;의왕시,37.344,126.970;하남시,37.539,127.215;용인시,37.241,127.178;파주시,37.760,126.780;이천시,37.272,127.435;안성시,37.008,127.279;김포시,37.615,126.716;화성시,37.199,126.831;광주시,37.429,127.255;양주시,37.785,127.045;포천시,37.894,127.200;여주시,37.298,127.636;연천군,38.096,127.074;가평군,37.831,127.511;양평군,37.491,127.488|" +
+    "세종:세종시,36.480,127.289|" +
+    "대전:동구,36.312,127.455;중구,36.326,127.421;서구,36.355,127.384;유성구,36.362,127.356;대덕구,36.347,127.415|" +
+    "충남:천안시,36.815,127.114;공주시,36.447,127.119;보령시,36.333,126.613;아산시,36.790,127.002;서산시,36.785,126.450;논산시,36.187,127.099;계룡시,36.275,127.250;당진시,36.890,126.628;금산군,36.108,127.488;부여군,36.275,126.918;서천군,36.079,126.691;청양군,36.446,126.802;홍성군,36.601,126.660;예산군,36.679,126.849;태안군,36.745,126.297|" +
+    "충북:청주시,36.642,127.489;충주시,36.991,127.926;제천시,37.132,128.191;보은군,36.489,127.730;옥천군,36.306,127.572;영동군,36.170,127.783;증평군,36.783,127.581;진천군,36.855,127.444;괴산군,36.811,127.799;음성군,36.940,127.593;단양군,36.984,128.365|" +
+    "광주:서구,35.152,126.890;동구,35.146,126.923;남구,35.133,126.902;북구,35.174,126.912;광산구,35.140,126.794|" +
+    "전북:전주시,35.824,127.148;군산시,35.968,126.737;익산시,35.948,126.958;정읍시,35.570,126.856;남원시,35.416,127.390;김제시,35.803,126.881;완주군,35.903,127.163;진안군,35.790,127.424;무주군,36.006,127.659;장수군,35.647,127.521;임실군,35.614,127.283;순창군,35.376,127.138;고창군,35.437,126.702;부안군,35.731,126.733|" +
+    "전남:목포시,34.812,126.392;여수시,34.760,127.662;순천시,34.951,127.487;나주시,35.016,126.711;광양시,34.940,127.696;담양군,35.321,127.004;곡성군,35.281,127.294;구례군,35.201,127.463;고흥군,34.606,127.275;보성군,34.771,127.079;화순군,35.061,126.987;장흥군,34.681,126.908;강진군,34.642,126.766;해남군,34.573,126.598;영암군,34.801,126.697;무안군,34.990,126.478;함평군,35.065,126.516;영광군,35.277,126.512;장성군,35.303,126.787;완도군,34.311,126.755;진도군,34.486,126.263;신안군,34.836,126.104|" +
     "부산:중구,35.106,129.032;서구,35.097,129.024;동구,35.129,129.045;영도구,35.091,129.068;부산진구,35.163,129.053;동래구,35.205,129.084;남구,35.136,129.084;북구,35.197,128.990;해운대구,35.163,129.164;사하구,35.104,128.975;금정구,35.255,129.092;강서구,35.212,128.980;연제구,35.176,129.079;수영구,35.153,129.118;사상구,35.155,128.985;기장군,35.245,129.222|" +
+    "대구:달서구,35.830,128.533;북구,35.886,128.583;수성구,35.858,128.631;동구,35.887,128.636;서구,35.872,128.559;남구,35.846,128.598;중구,35.869,128.606;달성군,35.775,128.431;군위군,36.242,128.631|" +
+    "울산:중구,35.569,129.332;남구,35.544,129.330;동구,35.505,129.417;북구,35.583,129.361;울주군,35.522,129.243|" +
+    "경북:포항시,36.019,129.343;경주시,35.856,129.225;김천시,36.140,128.114;안동시,36.568,128.730;구미시,36.120,128.344;영주시,36.806,128.624;영천시,35.973,128.939;상주시,36.411,128.159;문경시,36.587,128.186;경산시,35.825,128.741;군위군,36.242,128.631;의성군,36.352,128.697;청송군,36.435,129.057;영양군,36.666,129.112;영덕군,36.614,129.364;청도군,35.647,128.733;고령군,35.727,128.264;성주군,35.920,128.283;칠곡군,35.994,128.401;예천군,36.631,128.445;봉화군,36.892,128.732;울진군,36.993,129.400|" +
+    "경남:창원시,35.228,128.681;진주시,35.180,128.108;통영시,34.854,128.433;사천시,35.003,128.064;김해시,35.229,128.889;밀양시,35.504,128.746;거제시,34.881,128.621;양산시,35.335,129.037;의령군,35.321,128.260;함안군,35.273,128.406;창녕군,35.540,128.492;고성군,34.975,128.322;남해군,34.837,127.892;하동군,35.067,127.750;산청군,35.415,127.873;함양군,35.521,127.715;거창군,35.686,127.909;합천군,35.566,128.165|" +
+    "강원도:춘천시,37.881,127.730;원주시,37.342,127.920;강릉시,37.752,128.876;동해시,37.525,129.114;태백시,37.164,128.986;속초시,38.207,128.592;삼척시,37.450,129.165;홍천군,37.697,127.888;횡성군,37.491,127.984;영월군,37.183,128.460;평창군,37.370,128.390;정선군,37.380,128.660;철원군,38.146,127.313;화천군,38.106,127.706;양구군,38.110,127.990;인제군,38.058,128.171;고성군,38.379,128.473;양양군,38.075,128.618|" +
     "제주:제주시,33.500,126.531;서귀포시,33.254,126.560";
 
-    const WEATHER_TEXT = {0:"맑음",1:"대체로 맑음",2:"구름조금",3:"흐림",45:"안개",48:"안개",51:"이슬비",61:"비",63:"비",71:"눈",80:"소나기",95:"뇌우"};
+    const WEATHER_TEXT = {0:"맑음",1:"대체로 맑음",2:"구름조금",3:"흐림",45:"안개",48:"안개",51:"이슬비",53:"이슬비",55:"이슬비",56:"어는 이슬비",57:"어는 이슬비",61:"비",63:"비",65:"강한 비",66:"어는 비",67:"어는 비",71:"눈",73:"눈",75:"폭설",77:"싸락눈",80:"소나기",81:"소나기",82:"강한 소나기",85:"눈소나기",86:"눈소나기",95:"뇌우",96:"뇌우",99:"뇌우"};
+
     const regionGroups = {};
-    let currentRegion = { sido: "서울", name: "영등포구", lat: 37.526, lon: 126.896 };
+    let currentRegion = { sido: "서울", name: "종로구", lat: 37.573, lon: 126.979 };
 
     function initElements() {
       pageTabsEl = document.getElementById('pageTabs');
@@ -745,6 +785,7 @@
       renderCurrentView();
       setupEventListeners();
       setupAuthListeners();
+      
       startClockAndDataUpdater();
     }
 
@@ -766,7 +807,9 @@
           return;
         }
         const saved = localStorage.getItem("wsbar-region-obj");
-        if (saved) currentRegion = JSON.parse(saved);
+        if (saved) {
+          currentRegion = JSON.parse(saved);
+        }
       } catch (e) {}
     }
 
@@ -778,6 +821,7 @@
     function renderRegionModal(activeSido) {
       sidoTabsEl.innerHTML = '';
       regionGridEl.innerHTML = '';
+
       Object.keys(regionGroups).forEach(sido => {
         const btn = document.createElement('button');
         btn.className = `sido-tab-btn ${sido === activeSido ? 'active' : ''}`;
@@ -785,6 +829,7 @@
         btn.onclick = () => renderRegionModal(sido);
         sidoTabsEl.appendChild(btn);
       });
+
       if (regionGroups[activeSido]) {
         regionGroups[activeSido].forEach(loc => {
           const chip = document.createElement('div');
@@ -807,9 +852,11 @@
     function startClockAndDataUpdater() {
       updateDateTime();
       setInterval(updateDateTime, 1000);
+
       updateWeather();
       updateStocks();
       refreshStockBtnEl.addEventListener("click", refreshAllWeatherStock);
+
       setInterval(updateWeather, 30 * 60 * 1000);
       setInterval(updateStocks, 5 * 60 * 1000);
     }
@@ -825,16 +872,19 @@
       const hours = String(now.getHours()).padStart(2, '0');
       const mins = String(now.getMinutes()).padStart(2, '0');
       const secs = String(now.getSeconds()).padStart(2, '0');
+
       currentDateTimeDisplayEl.textContent = `${yyyy}.${mm}.${dd}. (${day}) ${hours}:${mins}:${secs}`;
     }
 
     async function updateWeather() {
       try {
-        const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${currentRegion.lat}&longitude=${currentRegion.lon}&current=temperature_2m,weather_code&timezone=Asia%2FSeoul`);
+        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${currentRegion.lat}&longitude=${currentRegion.lon}&current=temperature_2m,weather_code&timezone=Asia%2FSeoul`;
+        const res = await fetch(weatherUrl);
         const j = await res.json();
         const temp = Math.round(j.current.temperature_2m);
-        const text = WEATHER_TEXT[j.current.weather_code] || "맑음";
+        const text = WEATHER_TEXT[j.current.weather_code] || "알 수 없음";
         weatherDisplayEl.textContent = `${currentRegion.name} ${text} ${temp}°C`;
+        weatherDisplayEl.title = `${currentRegion.sido} ${currentRegion.name}`;
       } catch (e) {
         weatherDisplayEl.textContent = `${currentRegion.name} 날씨 --`;
       }
@@ -848,6 +898,7 @@
 
     const stockLast = {};
     let stockInflight = null;
+
     async function fetchJSONTimeout(url, ms = 5000) {
       const ctrl = new AbortController();
       const t = setTimeout(() => ctrl.abort(), ms);
@@ -858,17 +909,44 @@
       } finally { clearTimeout(t); }
     }
 
-    function parseNaver(j) {
-      const d = (j.datas && j.datas[0]) || j;
-      let v = parseFloat(String(d.fluctuationsRatio).replace(/,/g, ""));
+    function okRate(v) {
+      if (!Number.isFinite(v) || Math.abs(v) > 30) throw new Error("invalid rate");
       return v;
     }
 
-    async function fetchRate(code) {
-      try {
-        const j = await fetchJSONTimeout(`https://polling.finance.naver.com/api/realtime/domestic/index/${code}`);
-        return parseNaver(j);
-      } catch (e) { return null; }
+    function parseNaver(j) {
+      const d = (j.datas && j.datas[0]) || j;
+      let v = parseFloat(String(d.fluctuationsRatio).replace(/,/g, ""));
+      const diff = parseFloat(String(d.compareToPreviousClosePrice).replace(/,/g, ""));
+      const code = d.compareToPreviousPrice && String(d.compareToPreviousPrice.code);
+      if (Number.isFinite(v) && v > 0 && (diff < 0 || code === "4" || code === "5")) v = -v;
+      if (!Number.isFinite(v)) {
+        const close = parseFloat(String(d.closePrice).replace(/,/g, ""));
+        v = diff / (close - diff) * 100;
+      }
+      return okRate(v);
+    }
+
+    async function fetchRateOnce(naverCode) {
+      const polling = `https://polling.finance.naver.com/api/realtime/domestic/index/${naverCode}`;
+      const mobile = `https://m.stock.naver.com/api/index/${naverCode}/basic`;
+      const viaAllorigins = u => fetchJSONTimeout(`https://api.allorigins.win/get?url=${encodeURIComponent(u)}`, 7000)
+        .then(d => parseNaver(JSON.parse(d.contents)));
+      return Promise.any([
+        fetchJSONTimeout(polling).then(parseNaver),
+        viaAllorigins(polling),
+        fetchJSONTimeout(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(polling)}`, 7000).then(parseNaver),
+        fetchJSONTimeout(mobile).then(parseNaver),
+        viaAllorigins(mobile)
+      ]);
+    }
+
+    async function fetchRate(naverCode) {
+      for (let attempt = 0; attempt < 2; attempt++) {
+        try { return await fetchRateOnce(naverCode); } catch (e) {}
+        if (attempt === 0) await new Promise(r => setTimeout(r, 2000));
+      }
+      return null;
     }
 
     function updateStocks() {
@@ -879,14 +957,82 @@
         if (b !== null) stockLast.kosdaq = b;
         showRate(kospiDisplayEl, a ?? stockLast.kospi ?? null);
         showRate(kosdaqDisplayEl, b ?? stockLast.kosdaq ?? null);
+
+        if (a !== null || b !== null) {
+          const now = new Date();
+          const yyyy = now.getFullYear();
+          const mm = String(now.getMonth() + 1).padStart(2, '0');
+          const dd = String(now.getDate()).padStart(2, '0');
+          const hh = String(now.getHours()).padStart(2, '0');
+          const min = String(now.getMinutes()).padStart(2, '0');
+          if (stockUpdateTimeEl) {
+            stockUpdateTimeEl.textContent = `${yyyy}.${mm}.${dd}. ${hh}:${min}`;
+          }
+        }
       })().finally(() => { stockInflight = null; });
       return stockInflight;
     }
 
     async function refreshAllWeatherStock() {
       refreshStockBtnEl.classList.add("spin");
-      await Promise.all([updateWeather(), updateStocks()]);
+      await Promise.all([
+        updateWeather(), 
+        updateStocks(), 
+        loadNewsList(document.querySelector('.news-list'), document.getElementById('newsUpdateTime'), document.getElementById('newsMsg'))
+      ]);
       refreshStockBtnEl.classList.remove("spin");
+    }
+
+    const pad = n => String(n).padStart(2, "0");
+    function fmtDateTime(d) {
+      return `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    }
+    const fmtShort = d => `${pad(d.getMonth() + 1)}.${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+
+    async function loadNewsList(containerEl, timeEl, msgEl) {
+      containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 불러오는 중...</p>';
+      
+      try {
+        const res = await fetch('news.json?t=' + Date.now(), { cache: 'no-store' });
+        if (!res.ok) throw new Error('news.json 없음');
+        const data = await res.json();
+        const items = (data.items || []).map(i => ({ title: i.title, link: i.link, date: i.date ? new Date(i.date) : null }));
+        
+        if (!items || items.length === 0) throw new Error('파싱 결과 없음');
+
+        containerEl.innerHTML = '';
+        const limit = Math.min(items.length, 30);
+        for (let i = 0; i < limit; i++) {
+          const item = items[i];
+          const a = document.createElement('a');
+          a.className = 'news-item';
+          a.href = item.link.replace(/<!\[CDATA\[|\]\]>/g, "").trim();
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+
+          const titleEl = document.createElement('div');
+          titleEl.className = 'news-item-title';
+          titleEl.textContent = item.title;
+
+          const timeElItem = document.createElement('div');
+          timeElItem.className = 'news-item-time';
+          timeElItem.textContent = item.date ? fmtShort(item.date) : '';
+
+          a.appendChild(titleEl);
+          a.appendChild(timeElItem);
+          containerEl.appendChild(a);
+        }
+
+        const upd = data.updatedAt ? new Date(data.updatedAt) : new Date();
+        if (timeEl) timeEl.textContent = fmtDateTime(upd);
+        const staleMin = (Date.now() - upd.getTime()) / 60000;
+        if (msgEl) msgEl.textContent = staleMin > 360 ? '※ 최근 6시간 동안 새 기사가 없거나 갱신이 지연되고 있습니다.' : '';
+        return;
+      } catch (e) {
+        containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 가져오지 못했습니다.</p>';
+        if (timeEl) timeEl.textContent = '갱신 실패';
+        if (msgEl) msgEl.textContent = '네트워크 응답 오류가 발생했습니다.';
+      }
     }
 
     function refreshUI() {
@@ -905,7 +1051,9 @@
 
       authBtn.addEventListener('click', () => {
         if (currentUser) {
-          if (confirm("로그아웃 하시겠습니까?")) signOut(auth);
+          if (confirm("로그아웃 하시겠습니까?")) {
+            signOut(auth).catch(err => alert("로그아웃 오류: " + err.message));
+          }
         } else {
           handleLoginClick();
         }
@@ -922,7 +1070,10 @@
         } else {
           authBtn.title = "구글 로그인";
           authBtn.style.color = "var(--text-color)";
-          if (unsubscribeFirestore) { unsubscribeFirestore(); unsubscribeFirestore = null; }
+          if (unsubscribeFirestore) {
+            unsubscribeFirestore();
+            unsubscribeFirestore = null;
+          }
         }
         renderCurrentView();
       });
@@ -934,9 +1085,17 @@
       unsubscribeFirestore = onSnapshot(userDocRef, (docSnap) => {
         if (docSnap.exists()) {
           const serverData = docSnap.data();
-          if (serverData && serverData.pages) {
+          if (serverData && serverData.pages && serverData.pages.length > 0) {
             appState = serverData;
             saveLocalBackup();
+          }
+          if (!appState.pages) appState.pages = [];
+          if (!appState.memos) appState.memos = [];
+          if (!appState.settings) appState.settings = { theme: 'light', openNewPage: false, bgImage: '', bgSize: 'cover', cardOpacity: 85, region: null };
+          if (appState.settings.region) {
+            currentRegion = appState.settings.region;
+            try { localStorage.setItem("wsbar-region-obj", JSON.stringify(currentRegion)); } catch(e){}
+            updateWeather();
           }
           refreshUI();
         } else {
@@ -948,21 +1107,34 @@
     async function saveState() {
       saveLocalBackup();
       if (currentUser) {
-        try { await setDoc(doc(db, "users", currentUser.uid), appState); } catch (err) {}
+        try {
+          const userDocRef = doc(db, "users", currentUser.uid);
+          await setDoc(userDocRef, appState);
+        } catch (err) {
+          console.error("Firestore 저장 오류:", err);
+        }
       }
     }
 
     function applyTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
       themeBtnEl.innerHTML = theme === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+      applyBgStyle(appState.settings?.bgImage || '', appState.settings?.bgSize || 'cover', appState.settings?.cardOpacity ?? 85);
     }
 
     function applyBgStyle(bgDataUrl, bgSize = 'cover', opacity = 85) {
-      const opacityVal = Math.max(0, Math.min(100, opacity)) / 100;
+      const numericOpacity = Number(opacity);
+      const opacityVal = Math.max(0, Math.min(100, Number.isFinite(numericOpacity) ? numericOpacity : 85)) / 100;
       document.documentElement.style.setProperty('--card-opacity', String(opacityVal));
+      document.documentElement.style.setProperty('--card-blur', 'none');
+      document.documentElement.style.setProperty('--modal-blur', 'none');
+
       if (bgDataUrl) {
         document.body.style.backgroundImage = `url('${bgDataUrl}')`;
         document.body.style.backgroundSize = bgSize;
+        document.body.style.backgroundRepeat = bgSize === 'repeat' ? 'repeat' : 'no-repeat';
+        document.body.style.backgroundPosition = 'center center';
+        document.body.style.backgroundAttachment = bgSize === 'repeat' ? 'scroll' : 'fixed';
       } else {
         document.body.style.backgroundImage = 'none';
       }
@@ -970,38 +1142,96 @@
 
     function getFaviconUrl(url) {
       try {
-        return `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}&sz=64`;
-      } catch (e) { return ''; }
+        const domain = new URL(url).hostname;
+        return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+      } catch (e) {
+        return '';
+      }
+    }
+
+    function parseChromeBookmarksHtml(htmlContent) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(htmlContent, 'text/html');
+      const sections = [];
+      const h3Tags = doc.querySelectorAll('h3');
+      if (h3Tags.length > 0) {
+        h3Tags.forEach(h3 => {
+          const title = h3.textContent.trim() || '북마크';
+          const dl = h3.nextElementSibling;
+          const links = [];
+          if (dl && dl.tagName === 'DL') {
+            const aTags = dl.querySelectorAll('a');
+            aTags.forEach(a => {
+              if (a.href && a.textContent) {
+                links.push({ name: a.textContent.trim(), url: a.href, iconKind: 'auto' });
+              }
+            });
+          }
+          if (links.length > 0) {
+            sections.push({ title, height: 'auto', links });
+          }
+        });
+      }
+      if (sections.length === 0) {
+        const allLinks = [];
+        doc.querySelectorAll('a').forEach(a => {
+          if (a.href && a.textContent) {
+            allLinks.push({ name: a.textContent.trim(), url: a.href, iconKind: 'auto' });
+          }
+        });
+        if (allLinks.length > 0) {
+          sections.push({ title: '불러온 북마크', height: 'auto', links: allLinks });
+        }
+      }
+      return sections;
     }
 
     function renderPageTabs() {
       pageTabsEl.innerHTML = '';
-      if (typeof activeTab === 'number' && activeTab >= appState.pages.length) activeTab = 0;
+      if (typeof activeTab === 'number' && activeTab >= appState.pages.length) {
+        activeTab = 0;
+      }
 
       appState.pages.forEach((page, index) => {
         const btn = document.createElement('button');
         btn.className = `tab-btn ${activeTab === index ? 'active' : ''}`;
         btn.textContent = page.name === 'Home' ? 'B.mark' : page.name;
-        btn.addEventListener('click', () => { activeTab = index; renderPageTabs(); renderCurrentView(); });
+        btn.addEventListener('click', () => {
+          activeTab = index;
+          renderPageTabs();
+          renderCurrentView();
+        });
         pageTabsEl.appendChild(btn);
       });
 
       const memoBtn = document.createElement('button');
       memoBtn.className = `tab-btn ${activeTab === 'memo' ? 'active' : ''}`;
       memoBtn.innerHTML = '<i class="fa-solid fa-note-sticky"></i> Memo';
-      memoBtn.addEventListener('click', () => { activeTab = 'memo'; renderPageTabs(); renderCurrentView(); });
+      memoBtn.addEventListener('click', () => {
+        activeTab = 'memo';
+        renderPageTabs();
+        renderCurrentView();
+      });
       pageTabsEl.appendChild(memoBtn);
 
       const aiBtn = document.createElement('button');
       aiBtn.className = `tab-btn ${activeTab === 'ai' ? 'active' : ''}`;
       aiBtn.innerHTML = '<i class="fa-solid fa-robot"></i> AI';
-      aiBtn.addEventListener('click', () => { activeTab = 'ai'; renderPageTabs(); renderCurrentView(); });
+      aiBtn.addEventListener('click', () => {
+        activeTab = 'ai';
+        renderPageTabs();
+        renderCurrentView();
+      });
       pageTabsEl.appendChild(aiBtn);
 
       const foodBtn = document.createElement('button');
       foodBtn.className = `tab-btn ${activeTab === 'food' ? 'active' : ''}`;
       foodBtn.innerHTML = '<i class="fa-solid fa-utensils"></i> 뭘먹지';
-      foodBtn.addEventListener('click', () => { activeTab = 'food'; renderPageTabs(); renderCurrentView(); });
+      foodBtn.addEventListener('click', () => {
+        activeTab = 'food';
+        renderPageTabs();
+        renderCurrentView();
+      });
       pageTabsEl.appendChild(foodBtn);
     }
 
@@ -1020,34 +1250,51 @@
       loginGuardWrapperEl.style.display = 'none';
 
       if (activeTab === 'memo') {
-        gridContainerEl.style.display = 'none'; memoContainerEl.style.display = 'flex'; aiContainerEl.style.display = 'none'; foodContainerEl.style.display = 'none';
-        addSectionHeaderBtn.style.display = 'none'; deleteSectionHeaderBtn.style.display = 'none';
+        gridContainerEl.style.display = 'none';
+        memoContainerEl.style.display = 'flex';
+        aiContainerEl.style.display = 'none';
+        foodContainerEl.style.display = 'none';
+        addSectionHeaderBtn.style.display = 'none';
+        deleteSectionHeaderBtn.style.display = 'none';
         renderMemoView();
       } else if (activeTab === 'ai') {
-        gridContainerEl.style.display = 'none'; memoContainerEl.style.display = 'none'; aiContainerEl.style.display = 'flex'; foodContainerEl.style.display = 'none';
-        addSectionHeaderBtn.style.display = 'none'; deleteSectionHeaderBtn.style.display = 'none';
+        gridContainerEl.style.display = 'none';
+        memoContainerEl.style.display = 'none';
+        aiContainerEl.style.display = 'flex';
+        foodContainerEl.style.display = 'none';
+        addSectionHeaderBtn.style.display = 'none';
+        deleteSectionHeaderBtn.style.display = 'none';
         renderAiView();
       } else if (activeTab === 'food') {
-        gridContainerEl.style.display = 'none'; memoContainerEl.style.display = 'none'; aiContainerEl.style.display = 'none'; foodContainerEl.style.display = 'flex';
-        addSectionHeaderBtn.style.display = 'none'; deleteSectionHeaderBtn.style.display = 'none';
+        gridContainerEl.style.display = 'none';
+        memoContainerEl.style.display = 'none';
+        aiContainerEl.style.display = 'none';
+        foodContainerEl.style.display = 'flex';
+        addSectionHeaderBtn.style.display = 'none';
+        deleteSectionHeaderBtn.style.display = 'none';
         renderFoodView();
       } else {
-        gridContainerEl.style.display = 'flex'; memoContainerEl.style.display = 'none'; aiContainerEl.style.display = 'none'; foodContainerEl.style.display = 'none';
-        addSectionHeaderBtn.style.display = 'flex'; deleteSectionHeaderBtn.style.display = 'flex';
+        gridContainerEl.style.display = 'flex';
+        memoContainerEl.style.display = 'none';
+        aiContainerEl.style.display = 'none';
+        foodContainerEl.style.display = 'none';
+        addSectionHeaderBtn.style.display = 'flex';
+        deleteSectionHeaderBtn.style.display = 'flex';
         renderDashboard(searchInputEl.value.trim());
       }
     }
 
-    /* ===== '뭘먹지' 탭 구현 (요청사항 1~6번 전면 반영) ===== */
+    /* ===== '뭘먹지' 맛집 추천 뷰 구현 (GPS/주소중심 스위치, 3단계 셀렉트, 반경, 카테고리, 취향별, 즐겨찾기) ===== */
     function renderFoodView() {
       foodContainerEl.innerHTML = '';
+
       if (!appState.settings) appState.settings = {};
       if (!appState.settings.foodSearch) {
         appState.settings.foodSearch = {
           mode: "gps",
           sido: "서울",
-          gungoo: "영등포구",
-          dong: "신길로 34가길 34",
+          gungoo: "종로구",
+          dong: "",
           radius: "1km",
           category: "전체 맛집",
           situation: "",
@@ -1055,16 +1302,19 @@
           parking: false
         };
       }
-      if (!appState.settings.foodFavorites) appState.settings.foodFavorites = [];
+      if (!appState.settings.foodFavorites) {
+        appState.settings.foodFavorites = [];
+      }
 
       const fState = appState.settings.foodSearch;
+
       const mainCard = document.createElement('div');
       mainCard.className = 'food-card';
 
-      // 1. 위치 선택 타이틀 및 스위치
+      // 1. 모드 선택 스위치 (GPS중심 vs 주소중심)
       const switchRow = document.createElement('div');
       switchRow.innerHTML = `
-        <div style="font-weight:800; font-size:1.1rem; margin-bottom:0.5rem;"><i class="fa-solid fa-utensils" style="color:var(--primary-color);"></i> 위치 선택</div>
+        <div style="font-weight:800; font-size:1.1rem; margin-bottom:0.5rem;"><i class="fa-solid fa-utensils" style="color:var(--primary-color);"></i> 뭘먹지 맛집 탐색 및 메뉴 추천</div>
         <div class="switch-group">
           <button class="switch-btn ${fState.mode === 'gps' ? 'active' : ''}" id="modeGpsBtn"><i class="fa-solid fa-location-crosshairs"></i> GPS중심</button>
           <button class="switch-btn ${fState.mode === 'address' ? 'active' : ''}" id="modeAddrBtn"><i class="fa-solid fa-map-location-dot"></i> 주소중심</button>
@@ -1072,7 +1322,7 @@
       `;
       mainCard.appendChild(switchRow);
 
-      // 2. 위치 설정 영역 (GPS vs 주소 3단계)
+      // 2. 위치 설정 영역 (GPS 또는 주소 3단계)
       const locationArea = document.createElement('div');
       locationArea.className = 'form-row';
       locationArea.style.background = 'rgba(0,0,0,0.02)';
@@ -1084,8 +1334,8 @@
         locationArea.innerHTML = `
           <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:0.5rem;">
             <div>
-              <div style="font-weight:700; font-size:0.92rem;"><i class="fa-solid fa-satellite-dish" style="color:var(--primary-color);"></i> GPS 기반 맛집 탐색</div>
-              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2px;" id="gpsStatusText">현재 위치: 위도:37.51, 경도:126.92 / 서울시 영등포구 신길로 41가길 34</div>
+              <div style="font-weight:700; font-size:0.92rem;"><i class="fa-solid fa-satellite-dish" style="color:var(--primary-color);"></i> GPS 기반 주변 맛집 탐색</div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2.px;" id="gpsStatusText">현재 위치: ${currentGpsCoords.addressName} (좌표 연동됨)</div>
             </div>
             <button class="btn-primary" id="getGpsBtn" style="font-size:0.82rem; padding:0.35rem 0.8rem;"><i class="fa-solid fa-location-crosshairs"></i> 현재 위치 갱신</button>
           </div>
@@ -1093,6 +1343,7 @@
       } else {
         const sidoList = Object.keys(regionGroups);
         const sidoOptions = sidoList.map(s => `<option value="${s}" ${s === fState.sido ? 'selected' : ''}>${s}</option>`).join('');
+        
         let gungooOptions = '';
         if (regionGroups[fState.sido]) {
           gungooOptions = regionGroups[fState.sido].map(g => `<option value="${g.name}" ${g.name === fState.gungoo ? 'selected' : ''}>${g.name}</option>`).join('');
@@ -1100,19 +1351,19 @@
 
         locationArea.innerHTML = `
           <div style="display:flex; flex-direction:column; gap:0.5rem; width:100%;">
-            <div style="font-weight:700; font-size:0.92rem;"><i class="fa-solid fa-map" style="color:var(--primary-color);"></i> 주소 기반 맛집 탐색</div>
+            <div style="font-weight:700; font-size:0.92rem;"><i class="fa-solid fa-map" style="color:var(--primary-color);"></i> 주소 중심 검색 (3단계 설정)</div>
             <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-              <div class="form-group" style="flex:1; min-width:110px;">
+              <div class="form-group" style="flex:1; min-width:120px;">
                 <label>1단계: 시/도 (필수)</label>
                 <select class="food-select" id="addrSidoSelect" style="width:100%;">${sidoOptions}</select>
               </div>
-              <div class="form-group" style="flex:1; min-width:110px;">
+              <div class="form-group" style="flex:1; min-width:120px;">
                 <label>2단계: 시/군/구 (필수)</label>
                 <select class="food-select" id="addrGungooSelect" style="width:100%;">${gungooOptions}</select>
               </div>
-              <div class="form-group" style="flex:1; min-width:150px;">
-                <label>3단계: 상세주소 (선택)</label>
-                <input type="text" id="addrDongInput" class="food-select" placeholder="예: 신길로 34가길 34" value="${fState.dong || ''}" style="width:100%; height:34px;">
+              <div class="form-group" style="flex:1; min-width:120px;">
+                <label>3단계: 읍/면/동 (선택)</label>
+                <input type="text" id="addrDongInput" class="food-select" placeholder="예: 여의도동" value="${fState.dong || ''}" style="width:100%; height:34px;">
               </div>
             </div>
           </div>
@@ -1120,7 +1371,7 @@
       }
       mainCard.appendChild(locationArea);
 
-      // 3. 반경 설정
+      // 3. 반경 필터 설정
       const radiusRow = document.createElement('div');
       radiusRow.className = 'form-row';
       const radii = ["300m", "500m", "1km", "2km", "5km"];
@@ -1131,7 +1382,7 @@
       `;
       mainCard.appendChild(radiusRow);
 
-      // 4. 카테고리 그리드
+      // 4. 카테고리 선택 (필수 옵션)
       const catBox = document.createElement('div');
       catBox.style.display = 'flex';
       catBox.style.flexDirection = 'column';
@@ -1147,11 +1398,44 @@
         const chip = document.createElement('div');
         chip.className = `category-chip ${fState.category === cat ? 'active' : ''}`;
         chip.textContent = cat;
-        chip.onclick = () => { fState.category = cat; saveState(); renderFoodView(); };
+        chip.onclick = () => {
+          fState.category = cat;
+          saveState();
+          renderFoodView();
+        };
         catGridEl.appendChild(chip);
       });
 
-      // 5. 취향 및 추천 버튼
+      // 5. 상황별·취향별 필터링 (선택 옵션)
+      const optionsRow = document.createElement('div');
+      optionsRow.style.display = 'flex';
+      optionsRow.style.flexDirection = 'column';
+      optionsRow.style.gap = '0.5rem';
+      optionsRow.innerHTML = `
+        <div style="font-size:0.88rem; font-weight:700;"><i class="fa-solid fa-sliders"></i> 상황별·취향별 필터링 (선택)</div>
+        <div style="display:flex; gap:0.4rem; flex-wrap:wrap;" id="situationTags">
+          <button class="tag-chip ${fState.situation === '혼밥' ? 'active' : ''}" data-sit="혼밥">혼밥</button>
+          <button class="tag-chip ${fState.situation === '회식' ? 'active' : ''}" data-sit="회식">회식</button>
+          <button class="tag-chip ${fState.situation === '데이트' ? 'active' : ''}" data-sit="데이트">데이트</button>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap; margin-top:0.3rem;">
+          <div>
+            <span style="font-size:0.82rem; font-weight:600; color:var(--text-muted);">가격대:</span>
+            <select class="food-select" id="priceFilterSelect" style="padding:0.3rem 0.5rem; font-size:0.82rem;">
+              <option value="">상관없음</option>
+              <option value="가성비" ${fState.price === '가성비' ? 'selected' : ''}>가성비 (저렴)</option>
+              <option value="일반" ${fState.price === '일반' ? 'selected' : ''}>일반</option>
+              <option value="고급" ${fState.price === '고급' ? 'selected' : ''}>고급 (프리미엄)</option>
+            </select>
+          </div>
+          <label style="display:flex; align-items:center; gap:0.4rem; font-size:0.82rem; font-weight:600; cursor:pointer;">
+            <input type="checkbox" id="parkingCheck" ${fState.parking ? 'checked' : ''}> 주차 가능 여부 우선
+          </label>
+        </div>
+      `;
+      mainCard.appendChild(optionsRow);
+
+      // 6. '추천해죠' 버튼 및 결과 상자
       const actionRow = document.createElement('div');
       actionRow.style.textAlign = 'center';
       actionRow.style.marginTop = '0.5rem';
@@ -1167,85 +1451,162 @@
 
       foodContainerEl.appendChild(mainCard);
 
-      // 6. 나의 메뉴 즐겨찾기 카드
+      // 7. 나의 메뉴 (즐겨찾기 목록) 카드 추가
       const favCard = document.createElement('div');
       favCard.className = 'food-card';
       favCard.innerHTML = `
         <div style="font-weight:800; font-size:1.05rem; display:flex; align-items:center; gap:0.5rem;">
-          <i class="fa-solid fa-star" style="color:#f1c40f;"></i> 나의 메뉴 (<span id="favCount">0</span>/100)
+          <i class="fa-solid fa-star" style="color:#f1c40f;"></i> 나의 메뉴 즐겨찾기 목록 (<span id="favCount">0</span>/100)
         </div>
         <div class="favorite-list" id="favoriteListContainer"></div>
       `;
       foodContainerEl.appendChild(favCard);
+
       renderFavoritesList();
 
+      // 이벤트 바인딩
       setTimeout(() => {
-        document.getElementById('modeGpsBtn').onclick = () => { fState.mode = 'gps'; saveState(); renderFoodView(); };
-        document.getElementById('modeAddrBtn').onclick = () => { fState.mode = 'address'; saveState(); renderFoodView(); };
+        document.getElementById('modeGpsBtn').onclick = () => {
+          fState.mode = 'gps';
+          saveState();
+          renderFoodView();
+        };
+        document.getElementById('modeAddrBtn').onclick = () => {
+          fState.mode = 'address';
+          saveState();
+          renderFoodView();
+        };
 
         if (fState.mode === 'gps') {
           document.getElementById('getGpsBtn').onclick = () => {
             if (navigator.geolocation) {
               navigator.geolocation.getCurrentPosition(
                 (pos) => {
-                  const lat = pos.coords.latitude.toFixed(2);
-                  const lon = pos.coords.longitude.toFixed(2);
-                  currentGpsCoords.addressName = `위도:${lat}, 경도:${lon} / 서울시 영등포구 신길로 41가길 34`;
+                  currentGpsCoords = {
+                    lat: pos.coords.latitude,
+                    lon: pos.coords.longitude,
+                    addressName: `현재 위치 (위도:${pos.coords.latitude.toFixed(2)}, 경도:${pos.coords.longitude.toFixed(2)})`
+                  };
                   document.getElementById('gpsStatusText').textContent = `현재 위치: ${currentGpsCoords.addressName}`;
-                  alert('현재 GPS 위치가 갱신되었습니다.');
+                  alert('현재 GPS 위치가 성공적으로 갱신되었습니다.');
                 },
-                (err) => { alert('GPS 오류: ' + err.message); }
+                (err) => {
+                  alert('GPS 위치를 가져오지 못했습니다: ' + err.message);
+                }
               );
+            } else {
+              alert('이 브라우저는 위치 정보를 지원하지 않습니다.');
             }
           };
         } else {
-          document.getElementById('addrSidoSelect').onchange = (e) => {
+          const sidoSel = document.getElementById('addrSidoSelect');
+          const gungooSel = document.getElementById('addrGungooSelect');
+          const dongInput = document.getElementById('addrDongInput');
+
+          sidoSel.onchange = (e) => {
             fState.sido = e.target.value;
-            fState.gungoo = regionGroups[fState.sido]?.[0]?.name || '';
-            saveState(); renderFoodView();
+            const firstG = regionGroups[fState.sido] && regionGroups[fState.sido][0] ? regionGroups[fState.sido][0].name : '';
+            fState.gungoo = firstG;
+            saveState();
+            renderFoodView();
           };
-          document.getElementById('addrGungooSelect').onchange = (e) => {
+
+          gungooSel.onchange = (e) => {
             fState.gungoo = e.target.value;
-            saveState(); renderFoodView();
+            saveState();
+            renderFoodView();
           };
-          document.getElementById('addrDongInput').oninput = (e) => {
+
+          dongInput.oninput = (e) => {
             fState.dong = e.target.value;
             saveState();
           };
         }
 
+        // 반경 버튼 이벤트
         document.querySelectorAll('#radiusChipsContainer .tag-chip').forEach(btn => {
-          btn.onclick = () => { fState.radius = btn.getAttribute('data-radius'); saveState(); renderFoodView(); };
+          btn.onclick = () => {
+            fState.radius = btn.getAttribute('data-radius');
+            saveState();
+            renderFoodView();
+          };
         });
 
+        // 상황별 태그 이벤트
+        document.querySelectorAll('#situationTags .tag-chip').forEach(btn => {
+          btn.onclick = () => {
+            const sit = btn.getAttribute('data-sit');
+            fState.situation = fState.situation === sit ? '' : sit;
+            saveState();
+            renderFoodView();
+          };
+        });
+
+        document.getElementById('priceFilterSelect').onchange = (e) => {
+          fState.price = e.target.value;
+          saveState();
+        };
+
+        document.getElementById('parkingCheck').onchange = (e) => {
+          fState.parking = e.target.checked;
+          saveState();
+        };
+
+        // 추천해죠 버튼 클릭 이벤트
         document.getElementById('recommendBtn').onclick = () => {
           const cat = fState.category;
-          let pool = cat === '전체 맛집' ? Object.values(MENU_DATABASE).flat() : (MENU_DATABASE[cat] || ["대표 메뉴"]);
-          const pickedMenu = pool[Math.floor(Math.random() * pool.length)];
+          let pool = [];
+          if (cat === '전체 맛집') {
+            Object.values(MENU_DATABASE).forEach(arr => pool.push(...arr));
+          } else {
+            pool = MENU_DATABASE[cat] || ["대표 맛집 메뉴"];
+          }
 
-          let locationStr = fState.mode === 'gps' ? currentGpsCoords.addressName : `${fState.sido} ${fState.gungoo} ${fState.dong || ''}`.trim();
+          const pickedMenu = pool[Math.floor(Math.random() * pool.length)];
+          
+          let locationStr = "";
+          if (fState.mode === 'gps') {
+            locationStr = currentGpsCoords.addressName;
+          } else {
+            locationStr = `${fState.sido} ${fState.gungoo} ${fState.dong || ''}`.trim();
+          }
+
           const searchQuery = `${locationStr} ${pickedMenu} 맛집`;
           const naverUrl = `https://m.map.naver.com/search2/search.naver?query=${encodeURIComponent(searchQuery)}`;
 
           resultBox.style.display = 'flex';
           resultBox.className = 'result-recommend-box';
           resultBox.innerHTML = `
-            <div style="font-size:0.85rem; color:var(--text-muted);">설정 위치 [${locationStr}] 주변 추천 메뉴!</div>
+            <div style="font-size:0.85rem; color:var(--text-muted);">설정하신 조건 [${locationStr} / 반경 ${fState.radius} / ${cat}]에 딱 맞는 추천 메뉴!</div>
             <div class="recommend-title">🎉 ${pickedMenu}</div>
-            <div style="display:flex; gap:0.8rem; align-items:center; justify-content:center; flex-wrap:wrap;">
-              <a href="${naverUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:0.5rem 1.2rem; text-decoration:none;">
-                <i class="fa-solid fa-map-location-dot"></i> 네이버 맛집 조회하기
+            <div style="display:flex; gap:0.8rem; align-items:center; flex-wrap:wrap; justify-content:center;">
+              <a href="${naverUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:0.5rem 1.2rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">
+                <i class="fa-solid fa-map-location-dot"></i> 네이버에서 맛집 조회하기
               </a>
-              <button class="btn-secondary" id="saveFavMenuBtn" style="padding:0.5rem 1rem;"><i class="fa-solid fa-star" style="color:#f1c40f;"></i> 나의 메뉴 저장</button>
+              <button class="btn-secondary" id="saveFavMenuBtn" style="padding:0.5rem 1rem;"><i class="fa-solid fa-star" style="color:#f1c40f;"></i> 나의 메뉴 즐겨찾기 저장</button>
             </div>
           `;
 
           document.getElementById('saveFavMenuBtn').onclick = () => {
             const favs = appState.settings.foodFavorites;
-            if (favs.length >= 100) { alert('즐겨찾기는 최대 100개까지 가능합니다.'); return; }
-            favs.unshift({ id: 'fav-' + Date.now(), menu: pickedMenu, location: locationStr, url: naverUrl, createdAt: new Date().toLocaleString() });
-            saveState(); renderFavoritesList();
-            alert(`'${pickedMenu}' 메뉴가 나의 메뉴에 저장되었습니다.`);
+            if (favs.length >= 100) {
+              alert('즐겨찾기는 최대 100개까지만 저장할 수 있습니다.');
+              return;
+            }
+            if (favs.some(f => f.menu === pickedMenu && f.location === locationStr)) {
+              alert('이미 즐겨찾기에 등록된 메뉴입니다.');
+              return;
+            }
+            favs.unshift({
+              id: 'fav-' + Date.now(),
+              menu: pickedMenu,
+              location: locationStr,
+              url: naverUrl,
+              createdAt: new Date().toLocaleString()
+            });
+            saveState();
+            renderFavoritesList();
+            alert(`'${pickedMenu}' 메뉴가 즐겨찾기에 저장되었습니다!`);
           };
         };
       }, 50);
@@ -1255,75 +1616,179 @@
       const container = document.getElementById('favoriteListContainer');
       const countEl = document.getElementById('favCount');
       if (!container) return;
+
       const favs = appState.settings.foodFavorites || [];
       countEl.textContent = favs.length;
       container.innerHTML = '';
+
       if (favs.length === 0) {
-        container.innerHTML = '<p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0.8rem;">저장된 나의 메뉴가 없습니다.</p>';
+        container.innerHTML = '<p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0.8rem;">저장된 즐겨찾기 메뉴가 없습니다.</p>';
         return;
       }
+
       favs.forEach((fav, idx) => {
         const item = document.createElement('div');
         item.className = 'favorite-item';
         item.innerHTML = `
-          <div style="cursor:pointer; flex:1;">
+          <div style="display:flex; flex-direction:column; gap:0.2rem; cursor:pointer; flex:1;" title="클릭시 네이버 맛집 정보로 이동">
             <div style="font-weight:700; font-size:0.92rem; color:var(--primary-color);">⭐ ${fav.menu}</div>
-            <div style="font-size:0.75rem; color:var(--text-muted);">위치: ${fav.location}</div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">위치: ${fav.location} (${fav.createdAt})</div>
           </div>
           <div style="display:flex; gap:0.4rem;">
-            <a href="${fav.url}" target="_blank" rel="noopener noreferrer" class="btn-icon-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            <button class="btn-icon-sm danger" onclick="window.deleteFoodFavorite(${idx})"><i class="fa-solid fa-trash"></i></button>
+            <a href="${fav.url}" target="_blank" rel="noopener noreferrer" class="btn-icon-sm" title="맛집 조회"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <button class="btn-icon-sm danger" title="즐겨찾기 삭제" onclick="window.deleteFoodFavorite(${idx})"><i class="fa-solid fa-trash"></i></button>
           </div>
         `;
-        item.querySelector('div').onclick = () => window.open(fav.url, '_blank');
+        item.querySelector('div').onclick = () => {
+          window.open(fav.url, '_blank', 'noopener,noreferrer');
+        };
         container.appendChild(item);
       });
     }
 
     function deleteFoodFavorite(idx) {
-      if (confirm('삭제하시겠습니까?')) {
+      if (verifyDeletePassword() && confirm('이 즐겨찾기 항목을 삭제하시겠습니까?')) {
         appState.settings.foodFavorites.splice(idx, 1);
-        saveState(); renderFavoritesList();
+        saveState();
+        renderFavoritesList();
       }
     }
     window.deleteFoodFavorite = deleteFoodFavorite;
 
     function renderAiView() {
-      aiSidebarEl.innerHTML = '';
-      const cat = AI_DIRECTORY[0];
-      const group = document.createElement('div');
-      group.className = 'ai-category-group';
-      cat.items.forEach(item => {
-        const menuItem = document.createElement('div');
-        menuItem.className = `ai-menu-item ${item.id === selectedAiId ? 'active' : ''}`;
-        menuItem.innerHTML = `<i class="fa-solid ${item.icon}"></i> <span>${item.name}</span>`;
-        menuItem.onclick = () => { selectedAiId = item.id; renderAiView(); };
-        group.appendChild(menuItem);
-      });
-      aiSidebarEl.appendChild(group);
+      renderAiSidebar();
       renderAiContent();
+    }
+
+    function renderAiSidebar() {
+      aiSidebarEl.innerHTML = '';
+      const query = (searchInputEl?.value || '').trim().toLowerCase();
+
+      AI_DIRECTORY.forEach(cat => {
+        const filteredItems = cat.items.filter(item => 
+          item.name.toLowerCase().includes(query) || 
+          cat.category.toLowerCase().includes(query) ||
+          item.description.toLowerCase().includes(query)
+        );
+
+        if (query && filteredItems.length === 0) return;
+
+        const group = document.createElement('div');
+        group.className = 'ai-category-group';
+
+        const catTitle = document.createElement('div');
+        catTitle.className = 'ai-category-title';
+        catTitle.textContent = cat.category;
+        group.appendChild(catTitle);
+
+        const itemsToRender = query ? filteredItems : cat.items;
+        itemsToRender.forEach(item => {
+          const menuItem = document.createElement('div');
+          menuItem.className = `ai-menu-item ${item.id === selectedAiId ? 'active' : ''}`;
+          menuItem.innerHTML = `<i class="fa-solid ${item.icon}"></i> <span>${item.name}</span>`;
+          menuItem.onclick = () => {
+            selectedAiId = item.id;
+            renderAiView();
+          };
+          group.appendChild(menuItem);
+        });
+
+        aiSidebarEl.appendChild(group);
+      });
     }
 
     function renderAiContent() {
       aiContentEl.innerHTML = '';
-      const targetItem = AI_DIRECTORY[0].items.find(i => i.id === selectedAiId) || AI_DIRECTORY[0].items[0];
-      aiContentEl.innerHTML = `
-        <div class="ai-header-card">
-          <div class="ai-header-info">
-            <div class="ai-header-icon"><i class="fa-solid ${targetItem.icon}"></i></div>
-            <div><div class="ai-header-title">${targetItem.name}</div><span class="ai-header-badge">${targetItem.provider}</span></div>
+      let targetItem = null;
+
+      for (const cat of AI_DIRECTORY) {
+        const found = cat.items.find(i => i.id === selectedAiId);
+        if (found) { targetItem = found; break; }
+      }
+
+      if (!targetItem) {
+        targetItem = AI_DIRECTORY[0].items[0];
+        selectedAiId = targetItem.id;
+      }
+
+      const headerCard = document.createElement('div');
+      headerCard.className = 'ai-header-card';
+      headerCard.innerHTML = `
+        <div class="ai-header-info">
+          <div class="ai-header-icon"><i class="fa-solid ${targetItem.icon}"></i></div>
+          <div>
+            <div class="ai-header-title">${targetItem.name}</div>
+            <span class="ai-header-badge">${targetItem.provider}</span>
           </div>
-          <a href="${targetItem.url}" target="_blank" class="ai-launch-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> 실행하기</a>
         </div>
-        <div class="ai-card-box"><strong>소개:</strong> ${targetItem.description}</div>
+        <a href="${targetItem.url}" target="_blank" rel="noopener noreferrer" class="ai-launch-btn">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> ${targetItem.name} 실행하기
+        </a>
       `;
+
+      const descBox = document.createElement('div');
+      descBox.className = 'ai-card-box';
+      descBox.innerHTML = `<strong>소개:</strong> ${targetItem.description}`;
+
+      const featGrid = document.createElement('div');
+      featGrid.className = 'ai-features-grid';
+      featGrid.innerHTML = `
+        <div class="ai-feature-card">
+          <div class="ai-feature-title"><i class="fa-solid fa-circle-check"></i> ${targetItem.feat1Title}</div>
+          <div style="font-size:0.82rem; color:var(--text-muted);">${targetItem.feat1Desc}</div>
+        </div>
+        <div class="ai-feature-card">
+          <div class="ai-feature-title"><i class="fa-solid fa-circle-check"></i> ${targetItem.feat2Title}</div>
+          <div style="font-size:0.82rem; color:var(--text-muted);">${targetItem.feat2Desc}</div>
+        </div>
+      `;
+
+      const promptCard = document.createElement('div');
+      promptCard.className = 'ai-prompt-card';
+      promptCard.innerHTML = `
+        <div class="ai-prompt-header">
+          <div class="ai-prompt-title"><i class="fa-solid fa-terminal"></i> 실무 추천 예시 프롬프트</div>
+          <button class="btn-copy-prompt" id="copyPromptBtn"><i class="fa-regular fa-copy"></i> 복사하기</button>
+        </div>
+        <div class="ai-prompt-text" id="promptTextEl">${targetItem.prompt}</div>
+      `;
+
+      aiContentEl.appendChild(headerCard);
+      aiContentEl.appendChild(descBox);
+      aiContentEl.appendChild(featGrid);
+      aiContentEl.appendChild(promptCard);
+
+      setTimeout(() => {
+        const copyBtn = document.getElementById('copyPromptBtn');
+        if (copyBtn) {
+          copyBtn.onclick = () => {
+            navigator.clipboard.writeText(targetItem.prompt).then(() => {
+              copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> 복사 완료!';
+              setTimeout(() => {
+                copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> 복사하기';
+              }, 1500);
+            });
+          };
+        }
+      }, 50);
+    }
+
+    function getColumnCount() {
+      const width = window.innerWidth;
+      if (width < 768) return 1;
+      if (width < 1200) return 2;
+      return 3;
     }
 
     function renderDashboard(filterQuery = '') {
       gridContainerEl.innerHTML = '';
+      if (typeof activeTab === 'number' && activeTab >= appState.pages.length) {
+        activeTab = 0;
+      }
       const currentPage = appState.pages[activeTab];
       if (!currentPage || !currentPage.sections) return;
-      const colCount = window.innerWidth < 768 ? 1 : 2;
+
+      const colCount = getColumnCount();
       const columns = [];
       for (let i = 0; i < colCount; i++) {
         const col = document.createElement('div');
@@ -1331,74 +1796,750 @@
         columns.push(col);
         gridContainerEl.appendChild(col);
       }
+
+      if (!filterQuery) {
+        const newsCard = document.createElement('div');
+        newsCard.className = 'section-card';
+
+        const newsHeader = document.createElement('div');
+        newsHeader.className = 'section-header';
+        newsHeader.innerHTML = `
+          <div class="section-title">
+            <span><i class="fa-regular fa-newspaper" style="color:var(--primary-color);"></i> JTBC 주요뉴스</span>
+            <span id="newsUpdateTime" style="font-size:0.75rem; font-weight:normal; color:var(--text-muted);">(--)</span>
+          </div>
+          <div class="section-actions">
+            <button class="btn-icon-sm" id="refreshNewsBtn" title="뉴스 새로고침"><i class="fa-solid fa-arrows-rotate"></i></button>
+          </div>
+        `;
+        newsCard.appendChild(newsHeader);
+
+        const newsListEl = document.createElement('div');
+        newsListEl.className = 'news-list';
+        newsListEl.style.height = '260px';
+        newsCard.appendChild(newsListEl);
+
+        const newsMsgEl = document.createElement('div');
+        newsMsgEl.id = 'newsMsg';
+        newsCard.appendChild(newsMsgEl);
+
+        columns[0].appendChild(newsCard);
+        loadNewsList(newsListEl, document.getElementById('newsUpdateTime'), newsMsgEl);
+
+        setTimeout(() => {
+          const btn = document.getElementById('refreshNewsBtn');
+          if (btn) btn.onclick = () => loadNewsList(newsListEl, document.getElementById('newsUpdateTime'), newsMsgEl);
+        }, 100);
+      }
+
+      const totalSections = currentPage.sections.length;
+      let visibleIdx = filterQuery ? 0 : 1;
+
       currentPage.sections.forEach((section, sIdx) => {
+        const filteredLinks = section.links.filter(link => 
+          link.name.toLowerCase().includes(filterQuery.toLowerCase()) || 
+          link.url.toLowerCase().includes(filterQuery.toLowerCase())
+        );
+
+        if (filterQuery && filteredLinks.length === 0) return;
+
         const card = document.createElement('div');
         card.className = 'section-card';
-        card.innerHTML = `<div class="section-header"><span class="section-title">${section.title}</span></div>`;
+
+        const header = document.createElement('div');
+        header.className = 'section-header';
+        header.innerHTML = `
+          <span class="section-title">${section.title}</span>
+          <div class="section-actions">
+            <button class="btn-icon-sm" title="위로 이동" onclick="window.moveSection(${sIdx}, -1)" ${sIdx === 0 ? 'disabled' : ''}><i class="fa-solid fa-chevron-up"></i></button>
+            <button class="btn-icon-sm" title="아래로 이동" onclick="window.moveSection(${sIdx}, 1)" ${sIdx === totalSections - 1 ? 'disabled' : ''}><i class="fa-solid fa-chevron-down"></i></button>
+            <button class="btn-icon-sm" title="링크 추가" onclick="window.openLinkModal('add', ${sIdx})"><i class="fa-solid fa-plus"></i></button>
+            <button class="btn-icon-sm" title="카테고리 수정" onclick="window.openSectionModal('edit', ${sIdx})"><i class="fa-solid fa-pen"></i></button>
+            <button class="btn-icon-sm danger" title="링크 삭제" onclick="window.openDeleteLinkModal(${sIdx})"><i class="fa-solid fa-link-slash"></i></button>
+          </div>
+        `;
+        card.appendChild(header);
+
         const linkList = document.createElement('div');
         linkList.className = 'link-list';
-        section.links.forEach(link => {
+        const rawHeight = (section.height || '260px').toString().trim().toLowerCase();
+
+        if (rawHeight === 'auto' || rawHeight === 'none' || rawHeight === '') {
+          linkList.style.height = 'auto';
+          linkList.style.maxHeight = 'none';
+          linkList.style.overflow = 'visible';
+        } else {
+          const finalHeight = /^\d+$/.test(rawHeight) ? `${rawHeight}px` : rawHeight;
+          linkList.style.height = finalHeight;
+          linkList.style.maxHeight = finalHeight;
+          linkList.style.overflowY = 'auto';
+        }
+
+        const linksToDisplay = filterQuery ? filteredLinks : section.links;
+
+        linksToDisplay.forEach((link, lIdx) => {
           const wrapper = document.createElement('div');
           wrapper.className = 'link-wrapper';
-          wrapper.innerHTML = `<a class="link-item" href="${link.url}" target="_blank"><img class="favicon" src="${getFaviconUrl(link.url)}"><span class="link-name">${link.name}</span></a>`;
+
+          const a = document.createElement('a');
+          a.className = 'link-item';
+          a.href = link.url;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+
+          const img = document.createElement('img');
+          img.className = 'favicon';
+          img.src = getFaviconUrl(link.url);
+          img.alt = link.name;
+          img.onerror = function() {
+            this.style.display = 'none';
+            const fallback = document.createElement('div');
+            fallback.className = 'monogram-icon';
+            fallback.textContent = link.name.charAt(0);
+            a.insertBefore(fallback, a.firstChild);
+          };
+          a.appendChild(img);
+
+          const span = document.createElement('span');
+          span.className = 'link-name';
+          span.textContent = link.name;
+          a.appendChild(span);
+
+          const actions = document.createElement('div');
+          actions.className = 'link-actions';
+
+          const editBtn = document.createElement('button');
+          editBtn.className = 'btn-icon-sm';
+          editBtn.title = '링크 수정';
+          editBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
+          editBtn.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            openLinkModal('edit', sIdx, lIdx);
+          };
+
+          const delBtn = document.createElement('button');
+          delBtn.className = 'btn-icon-sm danger';
+          delBtn.title = '링크 삭제';
+          delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+          delBtn.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            deleteSingleLink(sIdx, lIdx);
+          };
+
+          actions.appendChild(editBtn);
+          actions.appendChild(delBtn);
+
+          wrapper.appendChild(a);
+          wrapper.appendChild(actions);
           linkList.appendChild(wrapper);
         });
+
         card.appendChild(linkList);
-        columns[sIdx % colCount].appendChild(card);
+        columns[visibleIdx % colCount].appendChild(card);
+        visibleIdx++;
       });
     }
 
     function renderMemoView() {
       memoListEl.innerHTML = '';
-      const memos = appState.memos || [];
-      memos.forEach(m => {
+      const query = (searchInputEl?.value || '').trim().toLowerCase();
+      const allMemos = Array.isArray(appState.memos) ? appState.memos : [];
+      const sortedMemos = [...allMemos].sort((a, b) => Number(!!b.important) - Number(!!a.important));
+      const filteredMemos = query ? sortedMemos.filter(m =>
+        String(m.title || '').toLowerCase().includes(query) ||
+        String(m.content || '').toLowerCase().includes(query)
+      ) : sortedMemos;
+
+      if (filteredMemos.length === 0) {
+        memoListEl.innerHTML = '<p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:1rem;">검색 결과가 없거나 저장된 메모가 없습니다.</p>';
+        const pager = document.getElementById('memoPagination');
+        if (pager) pager.remove();
+        if (!query) clearMemoEditor();
+        return;
+      }
+
+      const totalPages = Math.max(1, Math.ceil(filteredMemos.length / MEMOS_PER_PAGE));
+      memoCurrentPage = Math.min(Math.max(1, memoCurrentPage), totalPages);
+      if (!selectedMemoId || !filteredMemos.some(m => m.id === selectedMemoId)) {
+        selectedMemoId = filteredMemos[0].id;
+      }
+      const startIdx = (memoCurrentPage - 1) * MEMOS_PER_PAGE;
+      const pageMemos = filteredMemos.slice(startIdx, startIdx + MEMOS_PER_PAGE);
+
+      pageMemos.forEach(memo => {
         const item = document.createElement('div');
-        item.className = `memo-item ${m.id === selectedMemoId ? 'active' : ''}`;
-        item.textContent = m.title || '제목 없음';
-        item.onclick = () => { selectedMemoId = m.id; renderMemoView(); };
+        item.className = `memo-item ${memo.id === selectedMemoId ? 'active' : ''}`;
+        const title = document.createElement('div');
+        title.className = 'memo-item-title';
+        if (memo.important) {
+          const tag = document.createElement('span');
+          tag.className = 'memo-important-tag';
+          tag.textContent = '★ 중요';
+          title.appendChild(tag);
+        }
+        title.appendChild(document.createTextNode(memo.title || '제목 없음'));
+        const date = document.createElement('div');
+        date.className = 'memo-item-date';
+        date.textContent = memo.createdAt || '';
+        item.append(title, date);
+        item.onclick = () => {
+          selectedMemoId = memo.id;
+          renderMemoView();
+        };
         memoListEl.appendChild(item);
       });
-      const cur = memos.find(m => m.id === selectedMemoId);
-      if (cur) {
-        memoTitleInputEl.value = cur.title || '';
-        memoContentInputEl.value = cur.content || '';
+
+      let pager = document.getElementById('memoPagination');
+      if (pager) pager.remove();
+      if (filteredMemos.length > MEMOS_PER_PAGE) {
+        pager = document.createElement('div');
+        pager.id = 'memoPagination';
+        pager.className = 'memo-pagination';
+        const prev = document.createElement('button');
+        prev.textContent = '이전';
+        prev.disabled = memoCurrentPage === 1;
+        prev.onclick = () => { memoCurrentPage--; renderMemoView(); };
+        const label = document.createElement('span');
+        label.style.fontSize = '.8rem';
+        label.textContent = `${memoCurrentPage} / ${totalPages}`;
+        const next = document.createElement('button');
+        next.textContent = '다음';
+        next.disabled = memoCurrentPage === totalPages;
+        next.onclick = () => { memoCurrentPage++; renderMemoView(); };
+        pager.append(prev, label, next);
+        memoListEl.parentElement.appendChild(pager);
       }
+
+      const currentMemo = allMemos.find(m => m.id === selectedMemoId);
+      if (currentMemo) {
+        memoTitleInputEl.value = currentMemo.title || '';
+        memoContentInputEl.value = currentMemo.content || '';
+        memoImportantInputEl.checked = !!currentMemo.important;
+        memoDateBadgeEl.innerHTML = `<i class="fa-regular fa-clock"></i> 작성일시: ${currentMemo.createdAt || ''}`;
+      } else {
+        clearMemoEditor();
+      }
+    }
+
+    function clearMemoEditor() {
+      selectedMemoId = null;
+      memoTitleInputEl.value = '';
+      memoContentInputEl.value = '';
+      memoImportantInputEl.checked = false;
+      memoDateBadgeEl.innerHTML = `<i class="fa-regular fa-clock"></i> 새 메모 작성 중`;
     }
 
     function saveMemo() {
       const title = memoTitleInputEl.value.trim() || '제목 없음';
       const content = memoContentInputEl.value.trim();
+      const now = new Date();
+      const dateString = `${now.getFullYear()}. ${String(now.getMonth() + 1).padStart(2, '0')}. ${String(now.getDate()).padStart(2, '0')}. ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+
       if (selectedMemoId) {
-        const m = appState.memos.find(x => x.id === selectedMemoId);
-        if (m) { m.title = title; m.content = content; }
+        const idx = appState.memos.findIndex(m => m.id === selectedMemoId);
+        if (idx !== -1) {
+          appState.memos[idx].title = title;
+          appState.memos[idx].content = content;
+          appState.memos[idx].important = memoImportantInputEl.checked;
+          appState.memos[idx].createdAt = dateString;
+        }
       } else {
-        const newM = { id: 'memo-' + Date.now(), title, content, createdAt: new Date().toLocaleString() };
-        appState.memos.unshift(newM);
-        selectedMemoId = newM.id;
+        const newMemo = {
+          id: 'memo-' + Date.now(),
+          title: title,
+          content: content,
+          important: memoImportantInputEl.checked,
+          createdAt: dateString
+        };
+        appState.memos.unshift(newMemo);
+        selectedMemoId = newMemo.id;
       }
-      saveState(); renderMemoView(); alert('메모가 저장되었습니다.');
+
+      memoCurrentPage = 1;
+      saveState();
+      renderMemoView();
+      alert('메모가 저장되었습니다.');
+    }
+
+    function verifyDeletePassword() {
+      const password = prompt('삭제 비밀번호를 입력하세요.');
+      if (password === null) return false;
+      if (password !== '7337') {
+        alert('비밀번호가 올바르지 않습니다.');
+        return false;
+      }
+      return true;
+    }
+
+    function deleteMemo() {
+      if (!selectedMemoId) {
+        alert('삭제할 메모가 선택되지 않았습니다.');
+        return;
+      }
+      if (verifyDeletePassword() && confirm('현재 메모를 삭제하시겠습니까?')) {
+        appState.memos = appState.memos.filter(m => m.id !== selectedMemoId);
+        selectedMemoId = appState.memos.length > 0 ? appState.memos[0].id : null;
+        saveState();
+        renderMemoView();
+      }
+    }
+
+    function moveSection(sIdx, direction) {
+      const sections = appState.pages[activeTab].sections;
+      const targetIdx = sIdx + direction;
+      if (targetIdx < 0 || targetIdx >= sections.length) return;
+      const temp = sections[sIdx];
+      sections[sIdx] = sections[targetIdx];
+      sections[targetIdx] = temp;
+      saveState();
+      renderCurrentView();
+    }
+
+    let sectionModalMode = 'add';
+    let targetSectionIdx = null;
+    let linkModalMode = 'add';
+    let targetLinkSecIdx = 0;
+    let targetLinkIdx = null;
+
+    function openSectionModal(mode = 'add', sIdx = null) {
+      sectionModalMode = mode;
+      targetSectionIdx = sIdx;
+      const presetValues = ['180px', '260px', '380px', 'auto'];
+
+      if (mode === 'edit' && sIdx !== null) {
+        sectionModalTitleEl.textContent = '카테고리 수정';
+        const section = appState.pages[activeTab].sections[sIdx];
+        sectionTitleInputEl.value = section.title;
+        sectionOrderInputEl.value = sIdx + 1;
+        const currentHeight = (section.height || '260px').toString().toLowerCase();
+
+        if (presetValues.includes(currentHeight)) {
+          sectionHeightSelectEl.value = currentHeight;
+          sectionHeightInputEl.style.display = 'none';
+          sectionHeightInputEl.value = currentHeight;
+        } else {
+          sectionHeightSelectEl.value = 'custom';
+          sectionHeightInputEl.style.display = 'block';
+          sectionHeightInputEl.value = section.height || '';
+        }
+      } else {
+        sectionModalTitleEl.textContent = '카테고리 추가';
+        sectionTitleInputEl.value = '';
+        sectionOrderInputEl.value = appState.pages[activeTab].sections.length + 1;
+        sectionHeightSelectEl.value = '260px';
+        sectionHeightInputEl.style.display = 'none';
+        sectionHeightInputEl.value = '260px';
+      }
+      sectionModalEl.classList.add('active');
+    }
+
+    function saveSection() {
+      const title = sectionTitleInputEl.value.trim();
+      const selectedOption = sectionHeightSelectEl.value;
+      const orderVal = Math.max(1, parseInt(sectionOrderInputEl.value, 10) || 1);
+      let finalHeight = '260px';
+
+      if (!title) {
+        alert('카테고리 이름을 입력하세요.');
+        return;
+      }
+
+      if (selectedOption === 'custom') {
+        const customValue = sectionHeightInputEl.value.trim();
+        if (!customValue) finalHeight = '260px';
+        else if (/^\d+$/.test(customValue)) finalHeight = customValue + 'px';
+        else finalHeight = customValue;
+      } else {
+        finalHeight = selectedOption;
+      }
+
+      const sections = appState.pages[activeTab].sections;
+
+      if (sectionModalMode === 'add') {
+        const insertIdx = Math.max(0, Math.min(orderVal - 1, sections.length));
+        sections.splice(insertIdx, 0, { title: title, height: finalHeight, links: [] });
+      } else if (sectionModalMode === 'edit' && targetSectionIdx !== null) {
+        const [section] = sections.splice(targetSectionIdx, 1);
+        section.title = title;
+        section.height = finalHeight;
+        const insertIdx = Math.max(0, Math.min(orderVal - 1, sections.length));
+        sections.splice(insertIdx, 0, section);
+      }
+
+      saveState();
+      renderCurrentView();
+      sectionModalEl.classList.remove('active');
+    }
+
+    function openDeleteSectionModal() {
+      const sections = appState.pages[activeTab].sections;
+      deleteSectionListEl.innerHTML = '';
+
+      if (!sections || sections.length === 0) {
+        deleteSectionListEl.innerHTML = '<p style="text-align:center; color:var(--text-muted); font-size:0.9rem;">삭제할 카테고리가 없습니다.</p>';
+      } else {
+        sections.forEach((sec, idx) => {
+          const row = document.createElement('div');
+          row.className = 'item-delete-row';
+          row.innerHTML = `
+            <span>${sec.title} (${sec.links.length}개 링크)</span>
+            <button class="btn-icon-sm danger" title="카테고리 삭제" onclick="window.deleteSection(${idx})"><i class="fa-solid fa-trash"></i></button>
+          `;
+          deleteSectionListEl.appendChild(row);
+        });
+      }
+      deleteSectionModalEl.classList.add('active');
+    }
+
+    function deleteSection(sIdx) {
+      const sec = appState.pages[activeTab].sections[sIdx];
+      if (verifyDeletePassword() && confirm(`'${sec.title}' 카테고리와 내부 전체 링크를 삭제하시겠습니까?`)) {
+        appState.pages[activeTab].sections.splice(sIdx, 1);
+        saveState();
+        renderCurrentView();
+        openDeleteSectionModal();
+      }
+    }
+
+    function openLinkModal(mode = 'add', sIdx = 0, lIdx = null) {
+      const currentPage = appState.pages[activeTab];
+      if (!currentPage.sections || currentPage.sections.length === 0) {
+        alert('먼저 카테고리를 하나 이상 추가해 주세요.');
+        return;
+      }
+
+      linkModalMode = mode;
+      targetLinkSecIdx = sIdx;
+      targetLinkIdx = lIdx;
+
+      linkSectionSelectEl.innerHTML = '';
+      currentPage.sections.forEach((sec, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.textContent = sec.title;
+        if (idx === sIdx) opt.selected = true;
+        linkSectionSelectEl.appendChild(opt);
+      });
+
+      if (mode === 'edit' && lIdx !== null) {
+        linkModalTitleEl.textContent = '링크 수정';
+        const currentLink = currentPage.sections[sIdx].links[lIdx];
+        linkNameInputEl.value = currentLink.name;
+        linkUrlInputEl.value = currentLink.url;
+        linkOrderInputEl.value = lIdx + 1;
+      } else {
+        linkModalTitleEl.textContent = '링크 추가';
+        linkNameInputEl.value = '';
+        linkUrlInputEl.value = '';
+        const targetSec = currentPage.sections[sIdx];
+        linkOrderInputEl.value = targetSec ? targetSec.links.length + 1 : 1;
+      }
+
+      linkModalEl.classList.add('active');
+    }
+
+    function saveLink() {
+      const newSecIdx = parseInt(linkSectionSelectEl.value, 10);
+      const name = linkNameInputEl.value.trim();
+      let url = linkUrlInputEl.value.trim();
+      const orderVal = parseInt(linkOrderInputEl.value, 10) || 1;
+
+      if (!name || !url) {
+        alert('이름과 URL을 모두 입력해 주세요.');
+        return;
+      }
+
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'https://' + url;
+      }
+
+      const sections = appState.pages[activeTab].sections;
+      const newLink = { name, url, iconKind: 'auto' };
+
+      if (linkModalMode === 'edit') {
+        sections[targetLinkSecIdx].links.splice(targetLinkIdx, 1);
+      }
+
+      const targetLinks = sections[newSecIdx].links;
+      const insertIdx = Math.max(0, Math.min(orderVal - 1, targetLinks.length));
+      targetLinks.splice(insertIdx, 0, newLink);
+
+      saveState();
+      renderCurrentView();
+      linkModalEl.classList.remove('active');
+    }
+
+    function openDeleteLinkModal(sIdx) {
+      targetLinkSecIdx = sIdx;
+      const section = appState.pages[activeTab].sections[sIdx];
+      deleteLinkModalTitleEl.textContent = `'${section.title}' 링크 삭제`;
+      deleteLinkListEl.innerHTML = '';
+
+      if (!section.links || section.links.length === 0) {
+        deleteLinkListEl.innerHTML = '<p style="text-align:center; color:var(--text-muted); font-size:0.9rem;">삭제할 링크가 없습니다.</p>';
+      } else {
+        section.links.forEach((link, lIdx) => {
+          const row = document.createElement('div');
+          row.className = 'item-delete-row';
+          row.innerHTML = `
+            <span>${link.name}</span>
+            <button class="btn-icon-sm danger" title="링크 삭제" onclick="window.deleteSingleLink(${sIdx}, ${lIdx}, true)"><i class="fa-solid fa-trash"></i></button>
+          `;
+          deleteLinkListEl.appendChild(row);
+        });
+      }
+      deleteLinkModalEl.classList.add('active');
+    }
+
+    function deleteSingleLink(sIdx, lIdx, fromModal = false) {
+      if (verifyDeletePassword() && confirm('이 링크를 삭제하시겠습니까?')) {
+        appState.pages[activeTab].sections[sIdx].links.splice(lIdx, 1);
+        saveState();
+        renderCurrentView();
+        if (fromModal) openDeleteLinkModal(sIdx);
+      }
+    }
+
+    function openBgModal() {
+      tempBgImage = appState.settings.bgImage || '';
+      bgSizeSelectEl.value = appState.settings.bgSize || 'cover';
+      updateBgPreview();
+      bgModalEl.classList.add('active');
+    }
+
+    function updateBgPreview() {
+      const sizeVal = bgSizeSelectEl.value;
+      if (tempBgImage) {
+        bgPreviewBoxEl.style.backgroundImage = `url('${tempBgImage}')`;
+        bgPreviewBoxEl.style.backgroundSize = sizeVal === 'repeat' ? 'auto' : sizeVal;
+        bgPreviewBoxEl.style.backgroundRepeat = sizeVal === 'repeat' ? 'repeat' : 'no-repeat';
+        bgPreviewBoxEl.innerHTML = '';
+      } else {
+        bgPreviewBoxEl.style.backgroundImage = 'none';
+        bgPreviewBoxEl.innerHTML = '<span>이미지 없음</span>';
+      }
+    }
+
+    function openOpacityModal() {
+      const curOpacity = appState.settings.cardOpacity ?? 85;
+      headerOpacityInputEl.value = curOpacity;
+      headerOpacityValTextEl.textContent = curOpacity + '%';
+      opacityModalEl.classList.add('active');
     }
 
     function setupEventListeners() {
       regionModalBtn.addEventListener('click', openRegionModal);
       closeRegionModalBtn.addEventListener('click', () => regionModalEl.classList.remove('active'));
-      newMemoBtnEl.addEventListener('click', () => { selectedMemoId = null; memoTitleInputEl.value=''; memoContentInputEl.value=''; });
+
+      newMemoBtnEl.addEventListener('click', clearMemoEditor);
       saveMemoBtnEl.addEventListener('click', saveMemo);
+      deleteMemoBtnEl.addEventListener('click', deleteMemo);
+
+      sectionHeightSelectEl.addEventListener('change', (e) => {
+        if (e.target.value === 'custom') {
+          sectionHeightInputEl.style.display = 'block';
+          sectionHeightInputEl.focus();
+        } else {
+          sectionHeightInputEl.style.display = 'none';
+        }
+      });
+
+      linkSectionSelectEl.addEventListener('change', (e) => {
+        const selectedSecIdx = parseInt(e.target.value, 10);
+        const sec = appState.pages[activeTab].sections[selectedSecIdx];
+        if (linkModalMode === 'add') {
+          linkOrderInputEl.value = sec ? sec.links.length + 1 : 1;
+        } else if (linkModalMode === 'edit' && selectedSecIdx === targetLinkSecIdx) {
+          linkOrderInputEl.value = targetLinkIdx + 1;
+        } else {
+          linkOrderInputEl.value = sec ? sec.links.length + 1 : 1;
+        }
+      });
+
       searchInputEl.addEventListener('input', (e) => {
+        memoCurrentPage = 1;
         if (activeTab === 'memo') renderMemoView();
         else if (activeTab === 'ai') renderAiView();
         else if (activeTab === 'food') renderFoodView();
         else renderDashboard(e.target.value.trim());
       });
+
+      searchInputEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const query = searchInputEl.value.trim();
+          if (query) {
+            if (query.startsWith('http://') || query.startsWith('https://')) {
+              window.open(query, '_blank', 'noopener,noreferrer');
+            } else {
+              window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+            }
+          }
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (activeTab !== 'memo' && activeTab !== 'ai' && activeTab !== 'food') renderDashboard(searchInputEl.value.trim());
+      });
+
+      addSectionHeaderBtn.addEventListener('click', () => openSectionModal('add'));
+      deleteSectionHeaderBtn.addEventListener('click', openDeleteSectionModal);
+      bgImageModalBtn.addEventListener('click', openBgModal);
+      opacityHeaderBtn.addEventListener('click', openOpacityModal);
+
+      exportBtn.addEventListener('click', () => {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appState, null, 2));
+        const downloadAnchor = document.createElement('a');
+        downloadAnchor.setAttribute("href", dataStr);
+        downloadAnchor.setAttribute("download", `linkofy_backup_${new Date().toISOString().slice(0,10)}.json`);
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        downloadAnchor.remove();
+      });
+
+      importBtn.addEventListener('click', () => {
+        importFileInput.click();
+      });
+
+      importFileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = async function(evt) {
+          try {
+            const content = evt.target.result;
+            let newPages = null;
+            let newMemos = null;
+            let newSettings = null;
+
+            if (file.name.endsWith('.html') || file.name.endsWith('.htm') || content.trim().startsWith('<')) {
+              const parsedSections = parseChromeBookmarksHtml(content);
+              if (parsedSections && parsedSections.length > 0) {
+                newPages = [{ name: "북마크", sections: parsedSections }];
+              } else {
+                alert('HTML 파일에서 유효한 북마크를 찾을 수 없습니다.');
+                return;
+              }
+            } else {
+              const importedData = JSON.parse(content);
+              if (Array.isArray(importedData)) {
+                newPages = importedData;
+              } else if (importedData.pages && Array.isArray(importedData.pages)) {
+                newPages = importedData.pages;
+                newMemos = importedData.memos;
+                newSettings = importedData.settings;
+              } else if (importedData.sections && Array.isArray(importedData.sections)) {
+                newPages = [{ name: importedData.name || "Home", sections: importedData.sections }];
+              } else if (importedData.links && Array.isArray(importedData.links)) {
+                newPages = [{ name: "Home", sections: [{ title: "가져온 링크", height: "auto", links: importedData.links }] }];
+              } else if (importedData.memos && Array.isArray(importedData.memos)) {
+                newMemos = importedData.memos;
+              } else {
+                alert('지원하지 않는 백업 파일 형식입니다.');
+                return;
+              }
+            }
+
+            if (newPages) appState.pages = newPages;
+            if (newMemos) appState.memos = newMemos;
+            if (newSettings) appState.settings = { ...appState.settings, ...newSettings };
+
+            if (!appState.pages || appState.pages.length === 0) {
+              appState.pages = [{ name: "Home", sections: [] }];
+            }
+            if (!appState.memos) appState.memos = [];
+
+            activeTab = 0;
+            await saveState();
+            refreshUI();
+            alert('데이터를 성공적으로 불러왔습니다!');
+          } catch (err) {
+            alert('파일을 불러오는 도중 오류가 발생했습니다: ' + err.message);
+          }
+        };
+        reader.readAsText(file, 'UTF-8');
+        e.target.value = '';
+      });
+
       themeBtnEl.addEventListener('click', () => {
         currentTheme = currentTheme === 'light' ? 'dark' : 'light';
         appState.settings.theme = currentTheme;
-        applyTheme(currentTheme); saveState();
+        applyTheme(currentTheme);
+        saveState();
       });
+
+      bgFileInputEl.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(evt) {
+            tempBgImage = evt.target.result;
+            updateBgPreview();
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      bgSizeSelectEl.addEventListener('change', updateBgPreview);
+
+      saveBgBtnEl.addEventListener('click', () => {
+        appState.settings.bgImage = tempBgImage;
+        appState.settings.bgSize = bgSizeSelectEl.value;
+        applyBgStyle(appState.settings.bgImage, appState.settings.bgSize, appState.settings.cardOpacity);
+        saveState();
+        bgModalEl.classList.remove('active');
+      });
+
+      removeBgBtnEl.addEventListener('click', () => {
+        tempBgImage = '';
+        bgFileInputEl.value = '';
+        updateBgPreview();
+      });
+
+      closeBgModalBtnEl.addEventListener('click', () => bgModalEl.classList.remove('active'));
+
+      headerOpacityInputEl.addEventListener('input', (e) => {
+        const opacityVal = e.target.value;
+        headerOpacityValTextEl.textContent = opacityVal + '%';
+        applyBgStyle(appState.settings.bgImage, appState.settings.bgSize, opacityVal);
+      });
+
+      saveOpacityBtnEl.addEventListener('click', () => {
+        appState.settings.cardOpacity = parseInt(headerOpacityInputEl.value, 10);
+        saveState();
+        opacityModalEl.classList.remove('active');
+      });
+
+      closeOpacityModalBtnEl.addEventListener('click', () => {
+        applyBgStyle(appState.settings.bgImage, appState.settings.bgSize || 'cover', appState.settings.cardOpacity);
+        opacityModalEl.classList.remove('active');
+      });
+
+      closeSectionModalBtn.addEventListener('click', () => sectionModalEl.classList.remove('active'));
+      saveSectionBtn.addEventListener('click', saveSection);
+
+      closeDeleteSectionModalBtn.addEventListener('click', () => deleteSectionModalEl.classList.remove('active'));
+
+      closeLinkModalBtn.addEventListener('click', () => linkModalEl.classList.remove('active'));
+      saveLinkBtn.addEventListener('click', saveLink);
+
+      closeDeleteLinkModalBtn.addEventListener('click', () => deleteLinkModalEl.classList.remove('active'));
     }
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initApp);
-    else initApp();
+    window.moveSection = moveSection;
+    window.openSectionModal = openSectionModal;
+    window.openLinkModal = openLinkModal;
+    window.openDeleteLinkModal = openDeleteLinkModal;
+    window.deleteSection = deleteSection;
+    window.deleteSingleLink = deleteSingleLink;
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+      initApp();
+    }
   </script>
 </body>
 </html>
