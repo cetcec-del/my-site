@@ -257,65 +257,6 @@
 
     .item-delete-row { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem; border-bottom: 1px solid var(--border-color); font-size: 0.88rem; }
     .bg-preview { width: 100%; height: 100px; border-radius: 8px; border: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: center; background-position: center; background-size: cover; color: var(--text-muted); font-size: 0.82rem; }
-
-    /* ===== 뭘먹지: 상황별·취향별 필터 한 줄 나열 ===== */
-    .food-filter-row { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.4rem; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; }
-    .food-filter-row > * { flex: 0 0 auto; }
-    .food-filter-row .food-select { padding: 0.3rem 0.5rem; font-size: 0.82rem; }
-    .food-parking { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.82rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
-
-    /* ===== 반응형 (태블릿/모바일) ===== */
-    html { -webkit-text-size-adjust: 100%; }
-    img, video { max-width: 100%; }
-    .food-select, .form-group input, .form-group select { max-width: 100%; }
-
-    @media (hover: none) {
-      .link-actions { opacity: 1; }
-    }
-
-    @media (max-width: 900px) {
-      .grid-container { flex-direction: column; }
-      .memo-container, .ai-container { flex-direction: column; height: auto; }
-      .memo-sidebar { width: auto; max-height: 240px; }
-      .memo-editor { min-height: 65vh; }
-      .memo-editor textarea { min-height: 40vh; }
-      .ai-sidebar { width: auto; max-height: 260px; }
-      .ai-content { overflow-y: visible; }
-    }
-
-    @media (max-width: 768px) {
-      .header { padding: 0.5rem 0.75rem; gap: 0.5rem; }
-      .header-left { width: 100%; flex-wrap: wrap; gap: 0.5rem; }
-      .nav-tabs { flex: 1 1 100%; overflow-x: auto; scrollbar-width: none; }
-      .nav-tabs::-webkit-scrollbar { display: none; }
-      .tab-btn { white-space: nowrap; flex-shrink: 0; }
-      .search-box { flex: 1 1 100%; max-width: none; }
-      .header-actions { width: 100%; }
-      .btn-icon { width: 36px; height: 36px; }
-      .info-bar { padding: 0 0.75rem; font-size: 0.8rem; }
-      .info-bar-left { white-space: normal; }
-      .info-bar-right { gap: 0.3rem 0.6rem; }
-      .container { padding: 0 0.6rem; }
-      .section-card { padding: 0.75rem; }
-      .modal-box { width: 94%; max-height: 90vh; overflow-y: auto; }
-      .region-grid { grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); max-height: 45vh; }
-      .food-card { padding: 0.9rem; }
-      .form-row { gap: 0.5rem; }
-      .ai-header-title { font-size: 1.05rem; }
-      .ai-features-grid { grid-template-columns: 1fr; }
-      .ai-prompt-header { flex-wrap: wrap; gap: 0.4rem; }
-      .memo-editor-footer { flex-wrap: wrap; gap: 0.5rem; }
-    }
-
-    @media (max-width: 480px) {
-      .food-category-grid { grid-template-columns: repeat(3, 1fr); }
-      .category-chip { padding: 0.45rem 0.3rem; font-size: 0.8rem; }
-      .switch-btn { padding: 0.4rem 0.7rem; font-size: 0.82rem; }
-      .recommend-title { font-size: 1.2rem; }
-      .result-recommend-box { padding: 1rem; }
-      .favorite-item { padding: 0.6rem 0.7rem; gap: 0.4rem; }
-      .food-filter-row .tag-chip { padding: 0.3rem 0.55rem; font-size: 0.78rem; }
-    }
   </style>
 </head>
 <body>
@@ -662,26 +603,24 @@
     const MEMOS_PER_PAGE = 30;
 
     let selectedAiId = 'chatgpt';
-    let currentGpsCoords = { lat: null, lon: null, addressName: "", real: false };
-    let gpsBusy = false, gpsAutoTried = false;
+    let currentGpsCoords = { lat: 37.573, lon: 126.979, addressName: "현재 GPS 위치" };
 
-    const FOOD_CATEGORIES = ["전체 맛집", "한식", "중식", "일식", "양식", "분식", "고기", "면", "찌개/탕", "샐러드", "죽", "디저트"];
-
-    // 이전 버전에 저장돼 있던 카테고리명을 새 이름으로 이관
-    const FOOD_CATEGORY_MIGRATE = { "일식/초밥": "일식", "양식/파스타": "양식", "카페/디저트": "디저트", "국물": "찌개/탕" };
+    const FOOD_CATEGORIES = [
+      "전체 맛집", "한식", "일식/초밥", "중식", "양식/파스타", "카페/디저트", "고기", "면", "분식", "국물", "샐러드", "죽"
+    ];
 
     const MENU_DATABASE = {
-      "한식": ["김치찌개", "된장찌개", "제육", "불고기", "비빔밥", "부대찌개", "감자탕", "갈비탕", "설렁탕", "순대국", "뼈해장국", "육개장", "삼겹살", "닭갈비", "찜닭", "갈비찜", "낙지볶음", "오징어볶음", "고등어구이", "생선구이", "청국장", "콩비지찌개", "추어탕", "삼계탕", "보쌈정식", "한우국밥"],
-      "중식": ["짜장면", "짬뽕", "탕수육", "볶음밥", "간짜장", "차돌짬뽕", "짬뽕밥", "깐풍기", "유린기", "마라탕", "마라샹궈", "꿔바로우", "양장피", "팔보채", "유산슬", "울면", "중식냉면", "새우볶음밥", "멘보샤", "고추잡채", "잡채밥", "마파두부밥"],
-      "일식": ["모둠초밥", "연어초밥", "광어초밥", "돈카츠", "치즈카츠", "규동", "가츠동", "에비동", "사케동", "연어덮밥", "우동", "메밀소바", "돈코츠라멘", "미소라멘", "마제소바", "규카츠", "야끼소바", "타코야키", "오코노미야키", "텐동", "튀김덮밥", "카레우동", "스키야키", "장어덮밥"],
-      "양식": ["토마토파스타", "까르보나라", "로제파스타", "알리오올리오", "봉골레파스타", "미트소스파스타", "페퍼로니피자", "고구마피자", "마르게리타피자", "시카고피자", "스테이크", "함박스테이크", "수제버거", "치즈버거", "리조또", "빠네파스타", "라자냐", "치킨도리아", "오븐스파게티", "감자튀김", "콥샐러드", "바비큐립"],
-      "분식": ["떡볶이", "김밥", "튀김", "순대", "순대국밥", "어묵", "라면", "쫄면", "만두", "컵밥", "떡꼬치", "소떡소떡", "닭강정"],
-      "고기": ["삼겹살", "목살", "항정살", "가브리살", "우삼겹", "차돌박이", "한우등심구이", "LA갈비", "돼지갈비", "양갈비", "소곱창", "소대창", "막창", "닭목살", "닭발", "오리고기", "훈제오리", "껍데기", "떡갈비", "제육"],
-      "면": ["잔치국수", "칼국수", "막국수", "물냉면", "비빔냉면", "쫄면", "비빔국수", "콩국수", "장칼국수", "바지락칼국수", "얼큰칼국수", "메밀소바", "우동", "라면", "짬뽕라면", "짜파게티", "파스타", "마제소바", "쌀국수", "팟타이"],
-      "찌개/탕": ["김치찌개", "된장찌개", "부대찌개", "순대국", "설렁탕", "갈비탕", "뼈해장국", "감자탕", "육개장", "곰탕", "추어탕", "삼계탕", "청국장", "콩비지찌개", "동태탕", "알탕", "대구탕", "미역국", "소고기국밥", "어묵탕"],
-      "샐러드": ["닭가슴살샐러드", "리코타치즈샐러드", "연어샐러드", "아보카도샐러드", "우삼겹샐러드", "단호박샐러드", "리코타연어샐러드", "쉬림프샐러드", "소고기안심샐러드", "콥샐러드", "부라타치즈토마토샐러드", "케이준치킨샐러드"],
-      "죽": ["야채죽", "단호박죽", "전복죽", "소고기버섯죽", "참치야채죽", "닭죽", "낙지김치죽", "잣죽", "흑임자죽", "삼계죽"],
-      "디저트": ["크로플", "조각케이크", "마카롱", "스콘", "휘낭시에", "소금빵", "샌드위치", "허니브레드", "팥빙수", "망고빙수", "홍합미역죽", "새우죽"]
+      "한식": ["제육볶음 정식", "김치찌개와 불고기", "돌솥비빔밥", "간장게장 정식", "우렁된장찌개"],
+      "일식/초밥": ["모둠 초밥 세트", "사케동 (연어덮밥)", "돈코츠 라멘", "규동 (소고기덮밥)", "로스카츠 정식"],
+      "중식": ["짬뽕라면", "유니짜장면", "찹쌀 꿔바로우", "마라탕", "간짜장과 탕수육"],
+      "양식/파스타": ["트러플 크림 파스타", "수제 채끝 스테이크", "마르게리타 피자", "쉬림프 로제 파스타", "클래식 치즈버거"],
+      "카페/디저트": ["아이스 카페라떼 & 크로플", "말차라떼 & 바스크 치즈케이크", "아메리카노 & 마카롱", "수제 과일 타르트"],
+      "고기": ["생삼겹살 구이", "숙성 한우 등심", "소갈비살 숯불구이", "매운 갈비찜", "훈제 오리고기"],
+      "면": ["얼큰 칼국수", "시원한 메밀소바", "잔치국수와 김밥", "비빔냉면", "들기름 메밀국수"],
+      "분식": ["모둠 떡볶이와 튀김", "김밥과 쫄면", "참치김치 수제비", "라볶이와 순대"],
+      "국물": ["진한 설렁탕", "얼큰한 육개장", "바지락 칼국수", "추어탕", "한방 삼계탕"],
+      "샐러드": ["리코타 치즈 샐러드", "닭가슴살 콥 샐러드", "연어 아보카도 샐러드", "단호박 구이 샐러드"],
+      "죽": ["전복죽", "야채죽", "소고기 버섯죽", "단호박죽"]
     };
 
     const AI_DIRECTORY = [
@@ -1013,27 +952,14 @@
     function updateStocks() {
       if (stockInflight) return stockInflight;
       stockInflight = (async () => {
-        // 1순위: GitHub Actions가 서버에서 네이버 증권 값을 받아 저장해 둔 stocks.json (CORS 문제 없음)
-        let a = null, b = null, fileTime = null;
-        try {
-          const j = await fetchJSONTimeout('stocks.json?t=' + Date.now(), 4000);
-          if (Number.isFinite(j.kospi) && Number.isFinite(j.kosdaq)) {
-            a = okRate(j.kospi); b = okRate(j.kosdaq);
-            fileTime = j.updatedAt ? new Date(j.updatedAt) : null;
-          }
-        } catch (e) {}
-        // 2순위: stocks.json이 없으면 브라우저에서 네이버 증권을 직접 조회
-        if (a === null || b === null) {
-          [a, b] = await Promise.all([fetchRate("KOSPI"), fetchRate("KOSDAQ")]);
-          fileTime = null;
-        }
+        const [a, b] = await Promise.all([fetchRate("KOSPI"), fetchRate("KOSDAQ")]);
         if (a !== null) stockLast.kospi = a;
         if (b !== null) stockLast.kosdaq = b;
         showRate(kospiDisplayEl, a ?? stockLast.kospi ?? null);
         showRate(kosdaqDisplayEl, b ?? stockLast.kosdaq ?? null);
 
         if (a !== null || b !== null) {
-          const now = fileTime && !isNaN(fileTime) ? fileTime : new Date();
+          const now = new Date();
           const yyyy = now.getFullYear();
           const mm = String(now.getMonth() + 1).padStart(2, '0');
           const dd = String(now.getDate()).padStart(2, '0');
@@ -1358,78 +1284,7 @@
       }
     }
 
-    /* ===== '뭘먹지' 맛집 추천 뷰 구현 (GPS/주소 기반 스위치, 3단계 셀렉트, 반경, 카테고리, 취향별, 나의 메뉴) ===== */
-
-    // 네이버 지도 검색 주소 (구 m.map.naver.com/search2 주소는 더 이상 동작하지 않아 현행 웹 지도 주소로 변경)
-    function naverSearchUrl(query) {
-      return 'https://map.naver.com/p/search/' + encodeURIComponent(query);
-    }
-    function foodEsc(str) {
-      return String(str ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    }
-
-    // 좌표 → 한국식 주소 문자열 (예: 서울시 영등포구 신길로 41가길 34)
-    function formatKoAddress(a) {
-      const norm = t => (t || '').replace(/(특별자치시|특별시|광역시)$/, '시');
-      const road = (a.road || '').replace(/(로|길)(\d)/, '$1 $2');
-      const parts = [
-        norm(a.state || a.province),
-        norm(a.city || a.town),
-        a.borough || a.city_district || a.county || a.district || '',
-        ...(road ? [road, a.house_number || ''] : [a.suburb || a.quarter || a.neighbourhood || a.village || ''])
-      ].filter(Boolean);
-      return [...new Set(parts)].join(' ').trim();
-    }
-    async function reverseGeocode(lat, lon) {
-      try {   // 1순위: OpenStreetMap Nominatim (키 불필요, 도로명 단위)
-        const j = await fetchJSONTimeout(
-          `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1&accept-language=ko`, 8000);
-        const addr = formatKoAddress(j.address || {});
-        if (addr) return addr;
-      } catch (e) {}
-      try {   // 2순위: BigDataCloud (키 불필요, 동 단위)
-        const j = await fetchJSONTimeout(
-          `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=ko`, 8000);
-        const norm = t => (t || '').replace(/(특별자치시|특별시|광역시)$/, '시');
-        const addr = [...new Set([norm(j.principalSubdivision), j.city, j.locality].filter(Boolean))].join(' ');
-        if (addr) return addr;
-      } catch (e) {}
-      return '';
-    }
-    function gpsStatusText() {
-      const c = currentGpsCoords;
-      if (gpsBusy) return '현재 위치: 확인 중...';
-      if (!c.real) return "현재 위치: 아직 확인되지 않았습니다. [현재 위치 갱신]을 눌러 주세요.";
-      return `현재 위치: 위도:${c.lat.toFixed(2)}, 경도:${c.lon.toFixed(2)}` + (c.addressName ? ` / ${c.addressName}` : '');
-    }
-    function updateGpsStatus() {
-      const el = document.getElementById('gpsStatusText');
-      if (el) el.textContent = gpsStatusText();
-    }
-    async function refreshGps(manual) {
-      if (!navigator.geolocation) {
-        if (manual) alert('이 브라우저는 위치 정보를 지원하지 않습니다.');
-        return false;
-      }
-      gpsBusy = true; updateGpsStatus();
-      try {
-        const pos = await new Promise((res, rej) =>
-          navigator.geolocation.getCurrentPosition(res, rej, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }));
-        const lat = pos.coords.latitude, lon = pos.coords.longitude;
-        currentGpsCoords = { lat, lon, addressName: '', real: true };
-        gpsBusy = false; updateGpsStatus();
-        const addr = await reverseGeocode(lat, lon);
-        currentGpsCoords.addressName = addr;
-        updateGpsStatus();
-        if (manual) alert('현재 위치가 성공적으로 갱신되었습니다.' + (addr ? '' : ' (주소는 확인하지 못했습니다)'));
-        return true;
-      } catch (err) {
-        gpsBusy = false; updateGpsStatus();
-        if (manual) alert('GPS 위치를 가져오지 못했습니다: ' + (err && err.message ? err.message : err));
-        return false;
-      }
-    }
-
+    /* ===== '뭘먹지' 맛집 추천 뷰 구현 (GPS/주소중심 스위치, 3단계 셀렉트, 반경, 카테고리, 취향별, 즐겨찾기) ===== */
     function renderFoodView() {
       foodContainerEl.innerHTML = '';
 
@@ -1452,9 +1307,6 @@
       }
 
       const fState = appState.settings.foodSearch;
-      if (!FOOD_CATEGORIES.includes(fState.category)) {
-        fState.category = FOOD_CATEGORY_MIGRATE[fState.category] || '전체 맛집';
-      }
 
       const mainCard = document.createElement('div');
       mainCard.className = 'food-card';
@@ -1462,7 +1314,7 @@
       // 1. 모드 선택 스위치 (GPS중심 vs 주소중심)
       const switchRow = document.createElement('div');
       switchRow.innerHTML = `
-        <div style="font-weight:800; font-size:1.1rem; margin-bottom:0.5rem;"><i class="fa-solid fa-utensils" style="color:var(--primary-color);"></i> 위치 선택</div>
+        <div style="font-weight:800; font-size:1.1rem; margin-bottom:0.5rem;"><i class="fa-solid fa-utensils" style="color:var(--primary-color);"></i> 뭘먹지 맛집 탐색 및 메뉴 추천</div>
         <div class="switch-group">
           <button class="switch-btn ${fState.mode === 'gps' ? 'active' : ''}" id="modeGpsBtn"><i class="fa-solid fa-location-crosshairs"></i> GPS중심</button>
           <button class="switch-btn ${fState.mode === 'address' ? 'active' : ''}" id="modeAddrBtn"><i class="fa-solid fa-map-location-dot"></i> 주소중심</button>
@@ -1481,9 +1333,9 @@
       if (fState.mode === 'gps') {
         locationArea.innerHTML = `
           <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:0.5rem;">
-            <div style="min-width:0; flex:1 1 220px;">
-              <div style="font-weight:700; font-size:0.92rem;"><i class="fa-solid fa-satellite-dish" style="color:var(--primary-color);"></i> GPS 기반 맛집 탐색</div>
-              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2px; word-break:keep-all; overflow-wrap:anywhere;" id="gpsStatusText">${gpsStatusText()}</div>
+            <div>
+              <div style="font-weight:700; font-size:0.92rem;"><i class="fa-solid fa-satellite-dish" style="color:var(--primary-color);"></i> GPS 기반 주변 맛집 탐색</div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2.px;" id="gpsStatusText">현재 위치: ${currentGpsCoords.addressName} (좌표 연동됨)</div>
             </div>
             <button class="btn-primary" id="getGpsBtn" style="font-size:0.82rem; padding:0.35rem 0.8rem;"><i class="fa-solid fa-location-crosshairs"></i> 현재 위치 갱신</button>
           </div>
@@ -1491,7 +1343,7 @@
       } else {
         const sidoList = Object.keys(regionGroups);
         const sidoOptions = sidoList.map(s => `<option value="${s}" ${s === fState.sido ? 'selected' : ''}>${s}</option>`).join('');
-
+        
         let gungooOptions = '';
         if (regionGroups[fState.sido]) {
           gungooOptions = regionGroups[fState.sido].map(g => `<option value="${g.name}" ${g.name === fState.gungoo ? 'selected' : ''}>${g.name}</option>`).join('');
@@ -1499,7 +1351,7 @@
 
         locationArea.innerHTML = `
           <div style="display:flex; flex-direction:column; gap:0.5rem; width:100%;">
-            <div style="font-weight:700; font-size:0.92rem;"><i class="fa-solid fa-map" style="color:var(--primary-color);"></i> 주소 기반 맛집 탐색</div>
+            <div style="font-weight:700; font-size:0.92rem;"><i class="fa-solid fa-map" style="color:var(--primary-color);"></i> 주소 중심 검색 (3단계 설정)</div>
             <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
               <div class="form-group" style="flex:1; min-width:120px;">
                 <label>1단계: 시/도 (필수)</label>
@@ -1510,8 +1362,8 @@
                 <select class="food-select" id="addrGungooSelect" style="width:100%;">${gungooOptions}</select>
               </div>
               <div class="form-group" style="flex:1; min-width:120px;">
-                <label>3단계: 상세주소 (선택)</label>
-                <input type="text" id="addrDongInput" class="food-select" placeholder="예: 신길로 34가길 34" value="${foodEsc(fState.dong || '')}" style="width:100%; height:34px;">
+                <label>3단계: 읍/면/동 (선택)</label>
+                <input type="text" id="addrDongInput" class="food-select" placeholder="예: 여의도동" value="${fState.dong || ''}" style="width:100%; height:34px;">
               </div>
             </div>
           </div>
@@ -1526,7 +1378,7 @@
       let radiusChips = radii.map(r => `<button class="tag-chip ${fState.radius === r ? 'active' : ''}" data-radius="${r}">${r}</button>`).join('');
       radiusRow.innerHTML = `
         <span style="font-size:0.85rem; font-weight:700; color:var(--text-muted);">거리 반경:</span>
-        <div style="display:flex; gap:0.3rem; flex-wrap:wrap;" id="radiusChipsContainer">${radiusChips}</div>
+        <div style="display:flex; gap:0.3rem;" id="radiusChipsContainer">${radiusChips}</div>
       `;
       mainCard.appendChild(radiusRow);
 
@@ -1554,24 +1406,31 @@
         catGridEl.appendChild(chip);
       });
 
-      // 5. 상황별·취향별 필터링 (선택 옵션) - 한 줄 나열
+      // 5. 상황별·취향별 필터링 (선택 옵션)
       const optionsRow = document.createElement('div');
       optionsRow.style.display = 'flex';
       optionsRow.style.flexDirection = 'column';
       optionsRow.style.gap = '0.5rem';
       optionsRow.innerHTML = `
         <div style="font-size:0.88rem; font-weight:700;"><i class="fa-solid fa-sliders"></i> 상황별·취향별 필터링 (선택)</div>
-        <div class="food-filter-row" id="situationTags">
+        <div style="display:flex; gap:0.4rem; flex-wrap:wrap;" id="situationTags">
           <button class="tag-chip ${fState.situation === '혼밥' ? 'active' : ''}" data-sit="혼밥">혼밥</button>
           <button class="tag-chip ${fState.situation === '회식' ? 'active' : ''}" data-sit="회식">회식</button>
           <button class="tag-chip ${fState.situation === '데이트' ? 'active' : ''}" data-sit="데이트">데이트</button>
-          <select class="food-select" id="priceFilterSelect" title="가격대">
-            <option value="">가격대</option>
-            <option value="가성비" ${fState.price === '가성비' ? 'selected' : ''}>가성비</option>
-            <option value="일반" ${fState.price === '일반' ? 'selected' : ''}>일반</option>
-            <option value="고급" ${fState.price === '고급' ? 'selected' : ''}>고급</option>
-          </select>
-          <label class="food-parking"><input type="checkbox" id="parkingCheck" ${fState.parking ? 'checked' : ''}> 주차가능</label>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap; margin-top:0.3rem;">
+          <div>
+            <span style="font-size:0.82rem; font-weight:600; color:var(--text-muted);">가격대:</span>
+            <select class="food-select" id="priceFilterSelect" style="padding:0.3rem 0.5rem; font-size:0.82rem;">
+              <option value="">상관없음</option>
+              <option value="가성비" ${fState.price === '가성비' ? 'selected' : ''}>가성비 (저렴)</option>
+              <option value="일반" ${fState.price === '일반' ? 'selected' : ''}>일반</option>
+              <option value="고급" ${fState.price === '고급' ? 'selected' : ''}>고급 (프리미엄)</option>
+            </select>
+          </div>
+          <label style="display:flex; align-items:center; gap:0.4rem; font-size:0.82rem; font-weight:600; cursor:pointer;">
+            <input type="checkbox" id="parkingCheck" ${fState.parking ? 'checked' : ''}> 주차 가능 여부 우선
+          </label>
         </div>
       `;
       mainCard.appendChild(optionsRow);
@@ -1592,12 +1451,12 @@
 
       foodContainerEl.appendChild(mainCard);
 
-      // 7. 나의 메뉴 카드 추가
+      // 7. 나의 메뉴 (즐겨찾기 목록) 카드 추가
       const favCard = document.createElement('div');
       favCard.className = 'food-card';
       favCard.innerHTML = `
         <div style="font-weight:800; font-size:1.05rem; display:flex; align-items:center; gap:0.5rem;">
-          <i class="fa-solid fa-star" style="color:#f1c40f;"></i> 나의 메뉴 (<span id="favCount">0</span>/100)
+          <i class="fa-solid fa-star" style="color:#f1c40f;"></i> 나의 메뉴 즐겨찾기 목록 (<span id="favCount">0</span>/100)
         </div>
         <div class="favorite-list" id="favoriteListContainer"></div>
       `;
@@ -1619,12 +1478,26 @@
         };
 
         if (fState.mode === 'gps') {
-          document.getElementById('getGpsBtn').onclick = () => refreshGps(true);
-          // 처음 GPS 화면을 열었을 때 한 번 자동으로 현재 위치 확인 (실패해도 조용히 넘어감)
-          if (!currentGpsCoords.real && !gpsAutoTried) {
-            gpsAutoTried = true;
-            refreshGps(false);
-          }
+          document.getElementById('getGpsBtn').onclick = () => {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                  currentGpsCoords = {
+                    lat: pos.coords.latitude,
+                    lon: pos.coords.longitude,
+                    addressName: `현재 위치 (위도:${pos.coords.latitude.toFixed(2)}, 경도:${pos.coords.longitude.toFixed(2)})`
+                  };
+                  document.getElementById('gpsStatusText').textContent = `현재 위치: ${currentGpsCoords.addressName}`;
+                  alert('현재 GPS 위치가 성공적으로 갱신되었습니다.');
+                },
+                (err) => {
+                  alert('GPS 위치를 가져오지 못했습니다: ' + err.message);
+                }
+              );
+            } else {
+              alert('이 브라우저는 위치 정보를 지원하지 않습니다.');
+            }
+          };
         } else {
           const sidoSel = document.getElementById('addrSidoSelect');
           const gungooSel = document.getElementById('addrGungooSelect');
@@ -1644,7 +1517,6 @@
             renderFoodView();
           };
 
-          // 상세주소는 입력할 때마다 저장되어, 다음에 열면 마지막 입력값이 그대로 표시됨
           dongInput.oninput = (e) => {
             fState.dong = e.target.value;
             saveState();
@@ -1681,7 +1553,7 @@
         };
 
         // 추천해죠 버튼 클릭 이벤트
-        document.getElementById('recommendBtn').onclick = async () => {
+        document.getElementById('recommendBtn').onclick = () => {
           const cat = fState.category;
           let pool = [];
           if (cat === '전체 맛집') {
@@ -1691,82 +1563,53 @@
           }
 
           const pickedMenu = pool[Math.floor(Math.random() * pool.length)];
-
-          // GPS 모드인데 아직 위치를 못 받았다면 먼저 한 번 시도
-          if (fState.mode === 'gps' && !currentGpsCoords.real) {
-            await refreshGps(false);
-          }
-
-          // displayLoc: 화면 표시용, searchLoc: 검색어용 (좌표 숫자는 검색에 쓰지 않고 주소만 사용)
-          let displayLoc = '', searchLoc = '';
+          
+          let locationStr = "";
           if (fState.mode === 'gps') {
-            const c = currentGpsCoords;
-            if (c.real) {
-              displayLoc = `위도:${c.lat.toFixed(2)}, 경도:${c.lon.toFixed(2)}` + (c.addressName ? ` / ${c.addressName}` : '');
-              searchLoc = c.addressName || '';
-            } else {
-              displayLoc = '현재 위치 미확인';
-            }
+            locationStr = currentGpsCoords.addressName;
           } else {
-            const detail = (fState.dong || '').trim();   // 상세주소가 있으면 그 주소 기준으로 검색
-            displayLoc = `${fState.sido} ${fState.gungoo} ${detail}`.trim();
-            searchLoc = displayLoc;
+            locationStr = `${fState.sido} ${fState.gungoo} ${fState.dong || ''}`.trim();
           }
 
-          // 상황별·취향별 조건도 검색어에 반영
-          const extras = [];
-          if (fState.situation) extras.push(fState.situation);
-          if (fState.price === '가성비' || fState.price === '고급') extras.push(fState.price);
-          if (fState.parking) extras.push('주차');
-          const searchQuery = [searchLoc, pickedMenu, '맛집', ...extras].filter(Boolean).join(' ');
-          const naverUrl = naverSearchUrl(searchQuery);
-          const noLocNote = (fState.mode === 'gps' && !searchLoc)
-            ? '<div style="font-size:0.78rem; color:var(--danger-color);">현재 위치(주소)를 확인하지 못해 메뉴 이름으로만 검색합니다. 위치 권한을 허용해 주세요.</div>' : '';
+          const searchQuery = `${locationStr} ${pickedMenu} 맛집`;
+          const naverUrl = `https://m.map.naver.com/search2/search.naver?query=${encodeURIComponent(searchQuery)}`;
 
           resultBox.style.display = 'flex';
           resultBox.className = 'result-recommend-box';
           resultBox.innerHTML = `
-            <div style="font-size:0.85rem; color:var(--text-muted); overflow-wrap:anywhere;">설정하신 조건 [${foodEsc(displayLoc)} / 반경 ${fState.radius} / ${cat}]에 딱 맞는 추천 메뉴!</div>
-            <div class="recommend-title">🎉 ${foodEsc(pickedMenu)}</div>
-            ${noLocNote}
+            <div style="font-size:0.85rem; color:var(--text-muted);">설정하신 조건 [${locationStr} / 반경 ${fState.radius} / ${cat}]에 딱 맞는 추천 메뉴!</div>
+            <div class="recommend-title">🎉 ${pickedMenu}</div>
             <div style="display:flex; gap:0.8rem; align-items:center; flex-wrap:wrap; justify-content:center;">
               <a href="${naverUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:0.5rem 1.2rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">
                 <i class="fa-solid fa-map-location-dot"></i> 네이버에서 맛집 조회하기
               </a>
-              <button class="btn-secondary" id="saveFavMenuBtn" style="padding:0.5rem 1rem;"><i class="fa-solid fa-star" style="color:#f1c40f;"></i> 나의 메뉴 저장</button>
+              <button class="btn-secondary" id="saveFavMenuBtn" style="padding:0.5rem 1rem;"><i class="fa-solid fa-star" style="color:#f1c40f;"></i> 나의 메뉴 즐겨찾기 저장</button>
             </div>
           `;
 
           document.getElementById('saveFavMenuBtn').onclick = () => {
             const favs = appState.settings.foodFavorites;
             if (favs.length >= 100) {
-              alert('나의 메뉴는 최대 100개까지만 저장할 수 있습니다.');
+              alert('즐겨찾기는 최대 100개까지만 저장할 수 있습니다.');
               return;
             }
-            if (favs.some(f => f.menu === pickedMenu && f.location === displayLoc)) {
-              alert('이미 나의 메뉴에 등록된 메뉴입니다.');
+            if (favs.some(f => f.menu === pickedMenu && f.location === locationStr)) {
+              alert('이미 즐겨찾기에 등록된 메뉴입니다.');
               return;
             }
             favs.unshift({
               id: 'fav-' + Date.now(),
               menu: pickedMenu,
-              location: displayLoc,
-              query: searchQuery,
+              location: locationStr,
               url: naverUrl,
               createdAt: new Date().toLocaleString()
             });
             saveState();
             renderFavoritesList();
-            alert(`'${pickedMenu}' 메뉴가 나의 메뉴에 저장되었습니다!`);
+            alert(`'${pickedMenu}' 메뉴가 즐겨찾기에 저장되었습니다!`);
           };
         };
       }, 50);
-    }
-
-    // 저장된 항목의 조회 주소 (이전 버전에서 저장된 옛 주소도 현행 주소로 변환)
-    function favSearchUrl(fav) {
-      const q = fav.query || `${(fav.location || '').replace(/현재 위치 \(위도[^)]*\)/, '').replace(/위도:[^/]*\/?/, '').trim()} ${fav.menu} 맛집`.trim();
-      return naverSearchUrl(q);
     }
 
     function renderFavoritesList() {
@@ -1779,7 +1622,7 @@
       container.innerHTML = '';
 
       if (favs.length === 0) {
-        container.innerHTML = '<p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0.8rem;">저장된 메뉴가 없습니다.</p>';
+        container.innerHTML = '<p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0.8rem;">저장된 즐겨찾기 메뉴가 없습니다.</p>';
         return;
       }
 
@@ -1787,24 +1630,24 @@
         const item = document.createElement('div');
         item.className = 'favorite-item';
         item.innerHTML = `
-          <div style="display:flex; flex-direction:column; gap:0.2rem; cursor:pointer; flex:1;" title="클릭하면 네이버 지도 맛집 검색으로 이동">
+          <div style="display:flex; flex-direction:column; gap:0.2rem; cursor:pointer; flex:1;" title="클릭시 네이버 맛집 정보로 이동">
             <div style="font-weight:700; font-size:0.92rem; color:var(--primary-color);">⭐ ${fav.menu}</div>
             <div style="font-size:0.75rem; color:var(--text-muted);">위치: ${fav.location} (${fav.createdAt})</div>
           </div>
           <div style="display:flex; gap:0.4rem;">
-            <a href="${favSearchUrl(fav)}" target="_blank" rel="noopener noreferrer" class="btn-icon-sm" title="맛집 조회"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            <button class="btn-icon-sm danger" title="삭제" onclick="window.deleteFoodFavorite(${idx})"><i class="fa-solid fa-trash"></i></button>
+            <a href="${fav.url}" target="_blank" rel="noopener noreferrer" class="btn-icon-sm" title="맛집 조회"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <button class="btn-icon-sm danger" title="즐겨찾기 삭제" onclick="window.deleteFoodFavorite(${idx})"><i class="fa-solid fa-trash"></i></button>
           </div>
         `;
         item.querySelector('div').onclick = () => {
-          window.open(favSearchUrl(fav), '_blank', 'noopener,noreferrer');
+          window.open(fav.url, '_blank', 'noopener,noreferrer');
         };
         container.appendChild(item);
       });
     }
 
     function deleteFoodFavorite(idx) {
-      if (verifyDeletePassword() && confirm('이 메뉴를 삭제하시겠습니까?')) {
+      if (verifyDeletePassword() && confirm('이 즐겨찾기 항목을 삭제하시겠습니까?')) {
         appState.settings.foodFavorites.splice(idx, 1);
         saveState();
         renderFavoritesList();
