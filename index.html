@@ -255,6 +255,30 @@
     .btn-primary:hover { background: var(--primary-hover); }
     .btn-secondary { background: none; border: 1px solid var(--border-color); color: var(--text-color); padding: 0.45rem 0.9rem; border-radius: 6px; cursor: pointer; font-size: 0.88rem; }
 
+
+/* 구글 지도 버튼 컬러 */
+.google-maps-btn {
+  background: linear-gradient(
+    135deg,
+    #4285F4 0%,
+    #4285F4 25%,
+    #EA4335 25%,
+    #EA4335 50%,
+    #FBBC05 50%,
+    #FBBC05 75%,
+    #34A853 75%,
+    #34A853 100%
+  );
+  color: #ffffff;
+  border: none;
+  font-weight: 700;
+}
+
+.google-maps-btn:hover {
+  filter: brightness(0.92);
+}
+
+
     .item-delete-row { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem; border-bottom: 1px solid var(--border-color); font-size: 0.88rem; }
     .bg-preview { width: 100%; height: 100px; border-radius: 8px; border: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: center; background-position: center; background-size: cover; color: var(--text-muted); font-size: 0.82rem; }
 
@@ -2232,7 +2256,10 @@
               <a href="${naverUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:0.5rem 1.2rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">
                 <i class="fa-solid fa-map-location-dot"></i> 네이버에서 맛집 조회하기
               </a>
-              <a href="${googleUrl}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:0.5rem 1.1rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;" title="반경 ${fState.radius}에 맞춰 지도 확대 수준을 설정합니다">
+              <a href="${googleUrl}" target="_blank" rel="noopener noreferrer" <a href="${googleUrl}" target="_blank" rel="noopener noreferrer" class="btn-secondary google-maps-btn" style="padding:0.5rem 1.1rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;" title="반경 ${fState.radius}에 맞춰 지도 확대 수준을 설정합니다">
+    <i class="fa-brands fa-google"></i> 구글지도에서 조회 (반경 ${fState.radius})
+</a> style="padding:0.5rem 1.1rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;" title="반경 ${fState.radius}에 맞춰 지도 확대 수준을 설정합니다">
+
                 <i class="fa-brands fa-google"></i> 구글지도에서 조회 (반경 ${fState.radius})
               </a>
               <button class="btn-secondary" id="saveFavMenuBtn" style="padding:0.5rem 1rem;"><i class="fa-solid fa-star" style="color:#f1c40f;"></i> 나의 메뉴 저장</button>
