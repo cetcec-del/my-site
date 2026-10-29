@@ -1,11 +1,66 @@
 {
- "updatedAt": "2026-10-29T08:58:49.225Z",
- "source": "JTBC 이슈피드",
+ "updatedAt": "2026-10-29T09:55:19.842Z",
+ "source": "JTBC 이슈피드 + 구글뉴스(JTBC)",
  "items": [
+  {
+   "title": "검증 끝 247만장 반출 완료…'13개 상자' 국과수로 간다",
+   "link": "https://news.jtbc.co.kr/article/NB12325493",
+   "date": "2026-10-29T09:50:21.000Z"
+  },
+  {
+   "title": "[오늘 한 컷] 그 골목에 다시 꽃이 놓였습니다",
+   "link": "https://news.jtbc.co.kr/article/NB12325480",
+   "date": "2026-10-29T09:45:00.000Z"
+  },
+  {
+   "title": "\"김태규 나와\" \"김현지 나와\"…국감 마지막까지 '막말 정쟁'",
+   "link": "https://news.jtbc.co.kr/article/NB12325481",
+   "date": "2026-10-29T09:42:08.000Z"
+  },
+  {
+   "title": "[단독] 6개월 전 흉기 준비, 좁은 방에서 집중 공격…원당역 피해 역무원 남편 \"수 차례 분리 요청\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5INWN1RlFGTVVNVEdqVkVoaEsydHBTR3FlbVhTdEU2ckFGWTZybnhsWUN0TXpuOGx4cGp5LThGQzJYdGpELWtUbC0tM3hHQ3UyZjVnSw?oc=5",
+   "date": "2026-10-29T08:44:26.000Z"
+  },
   {
    "title": "9월 가계대출 금리 5% 육박...주담대 14년 5개월 만에 최고치",
    "link": "https://news.jtbc.co.kr/article/NB12325476",
    "date": "2026-10-29T07:21:24.000Z"
+  },
+  {
+   "title": "제주 ‘스토킹 신고 보복’ 살해 피의자 신상 공개…61살 강성은",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5ZanhRMG5zeGdpek5OdW14OWxXZ0x4c0tNYl82QzhYdUcybjU1Nkl6cFFYNW1UMDYwZmdpYnNQOEpMQjFNVmdhdEsxcks5bEFKcXV1Qw?oc=5",
+   "date": "2026-10-29T07:19:11.000Z"
+  },
+  {
+   "title": "인사 안 한다고 ‘아버지뻘’ 관리소장 폭행한 40대 남성 입건",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5tQ29sMzlHY1hScWVpZ1FSZlpoWjNOTUE4NlpxZk9LTHMwNnVnT3FQWUtadlRqUVZSdVVlOUJWR1gyOFFweUt0Wm1Sb3llRzZJMWlGQw?oc=5",
+   "date": "2026-10-29T06:54:00.000Z"
+  },
+  {
+   "title": "[단독] ‘구로동 미라 시신’은 중국 국적 불법체류자…집 주인 \"시신 있던 이유 몰라\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE42LTBuUUpqVnZWWmEwNGpoLXYzb09vVVl5VTRFdDlMRFpsTkF6LWYwOTdyYXpvNTBVVy1UbGFwNWVaWFQ0czFMTThKLUJCVGp3cVRBWA?oc=5",
+   "date": "2026-10-29T06:40:00.000Z"
+  },
+  {
+   "title": "삼성전자 급락에 코스피도 하락 전환…하루 만에 ‘6천피’ 반납",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBJOGxwYmp1YzlNLUhXNTJ1alJRc0NsUTNNbWlKUkp2aDlrMEtvR2VBelZwZlBhLURpM0JaUDRjNkx6YVYxYVBTbXNJNHpOYnNEaFFyTw?oc=5",
+   "date": "2026-10-29T06:35:00.000Z"
+  },
+  {
+   "title": "[단독] “민간인 예약 원천 불가” 주장했지만 군복지단 규정엔 “비회원도 예약 가능”",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5MaGo2Y2NrSF9ic1hKZVUxS2NXV05XTlJ3LUxVYnNueGN2dnRyb3EybWlQMTB6aTQyaUpFb3N2RGgxNDNSa09HYm5TR3YyYUJhWTItZw?oc=5",
+   "date": "2026-10-29T06:30:00.000Z"
+  },
+  {
+   "title": "“마운자로 반값”…국산 첫 비만약 ‘에페’ 오늘부터 처방",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBlM2xfSzdxYkVjXzJfdGpSTnlCV2RSNXRtc3VzeGJYLWh0ZHhHaUNWMUZPWDIxbGdFZmU0bVdxOERybUVudnRCeUVHRzF0LXM0TGg1TA?oc=5",
+   "date": "2026-10-29T06:24:00.000Z"
+  },
+  {
+   "title": "스티브잡스가 끔찍하다 했는데…애플, 결국 터치 맥북 출시",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1HUktWZEVaRG84OTBYMkFYUTROTlZBSUJBTGZKNGllMGtvQTdWdTRMSHZxMWVBZHgwSjlMY1JoQjRKVkpIVG9kRnN2VjhVMFU5VmJBSA?oc=5",
+   "date": "2026-10-29T05:59:00.000Z"
   },
   {
    "title": "국방부, SCM 내년 연기에 \"'투스탭' 접근…전작권 전환 늦어진다는 의미 아냐\"",
@@ -13,9 +68,49 @@
    "date": "2026-10-29T05:18:00.000Z"
   },
   {
-   "title": "이 대통령, 이태원 참사 기억식 첫 참석…“단 하나 의문 없도록 진실 밝힐 것\"",
-   "link": "https://news.jtbc.co.kr/article/NB12325449",
-   "date": "2026-10-29T05:00:39.000Z"
+   "title": "'여자 프로배구 최초' 전체 1순위 지명된 재미동포…오드리 박 어떤 토스 보여줄까? 서툰 한국말로 자기소개도",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1UdVA0Vmp4YkxxakdNM3BxNWtPNVhCSjBwby1jZnROOVp0NjB5VTBmbjhnWGQ0WEM5WUFQT0htTVp1dmZ3dGl0cm5JZFZGRWEwd1VXag?oc=5",
+   "date": "2026-10-29T05:02:00.000Z"
+  },
+  {
+   "title": "\"김도영, 그냥 메이저리그 가주세요\" 삼성 팬들이 본 '김도영'…김도영 어떻게 막을까? 팬들 생각 들어봤습니다",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBOeWFUckVtdnNnTFRLaEcxSHFRNng5TERlX21nX1pkb1Z0Q0M5TGhmaDRiU0pTSkxLVVF2ODF1QmpULS1KZTJhLVo0alJYaHZsNHZKLQ?oc=5",
+   "date": "2026-10-29T04:59:00.000Z"
+  },
+  {
+   "title": "북한, 동해로 10여 발 발사…안보실 \"상황 관리에 도움 안 되는 엄중한 행위\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBXcHc3OGVPNHVoeVpGX0JqODN6Q0loRFl2a0hYQzRpNlRYRlB2M28tZDM5UjU4UWR1Q2VLa3JhQnVaU2VrNE9XY20yNWQ1RzFfbm83aA?oc=5",
+   "date": "2026-10-29T03:45:00.000Z"
+  },
+  {
+   "title": "\"제2의 윤석열 나오지 않도록\"…특검, 2심서도 윤 전 대통령에 사형 구형",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9ERXFOOUVYU2ZUMkltT3JILWxXOEh6WVR0TDJEX0o5d2lsV1FCS0ZGa0plY3ZQQzBXX1QxcWY3LU4yOFZCREZZTktiRlgzdGRKYUhDeA?oc=5",
+   "date": "2026-10-29T03:05:00.000Z"
+  },
+  {
+   "title": "‘농지조사’ 송미령에 떠넘기기? 이 대통령 \"칭찬한 것\" 설명에 \"궤변\", \"칭찬처럼 안 들려\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1QMVVWUXcyZ0xwYVlGZWVmU1g3ajFwdmpMa0IyLWYzRmRpaHNrVHJkMEowVXV2ZC1ZZWotZG5jLUtBM1N2SF9TaEtkVzZRM1J1WEpFUA?oc=5",
+   "date": "2026-10-29T02:35:58.000Z"
+  },
+  {
+   "title": "강석우, 할아버지 됐다 “아들이 아들을 낳았다”",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE95WUVZaTdaaGNXNlJaczVhOS1fUGlDUllsR0xLN2FTS3h2SlhsN3ozalJVamdjRmdZWjRuRDlYLUpEQU51YVB5VXFad1g0dDJUSHNzNw?oc=5",
+   "date": "2026-10-29T02:14:00.000Z"
+  },
+  {
+   "title": "신해철·유재석 문화훈장…유해진은 대통령 표창 받는다",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9QU1hneXFRV3FOVGR6VVFJNlBvSk04M0kwcFh2Vllhdjc3WkNYYjlidEp0UGpTWFR5a1F5dGpwRE9aR3NmelhLVjhuM0JLQTFNcUVUVw?oc=5",
+   "date": "2026-10-29T02:12:00.000Z"
+  },
+  {
+   "title": "\"영부인님 골프 안 쳐요\"…‘김건희 맨발 줄넘기’ 사진 꺼낸 최측근",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE53VUt1ZnJpQ18yOHhjNk9qT2ZWSFZuV0t3akkxenJXNDVkY0d1aUhVeW9MNWwycGd1dVUxcUhGZWR0dFpuN2x0THp5Uy1XRXQyVXdWcQ?oc=5",
+   "date": "2026-10-29T01:58:10.000Z"
+  },
+  {
+   "title": "이태원 참사 영상 쓴 ‘콜 오브 듀티’...\"그대로 가져다 사용, 경악\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBRa1VCRzJiM3ZCQUE3OHFhNkN3eTVSVlNXZ1dPbHNIMmtKZE1Zc1NtWUNuNERFZlJROUt2MkVRYjlsRlBSRzdjR29ucmdkN0hnaWM4bg?oc=5",
+   "date": "2026-10-29T01:40:00.000Z"
   },
   {
    "title": "조국혁신당 \"조희대 탄핵, 11월 5일 본회의에서 처리하자\"",
@@ -23,34 +118,39 @@
    "date": "2026-10-29T01:38:09.000Z"
   },
   {
+   "title": "청와대 \"이 대통령 발언, 특정 단어보다 맥락 고려해달라\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1OSzQ4blg1TnNuVXEwV0hETEdGbFBGNk5wVGZDN0l2WVhVMUFvRGNNRUhxQi0xbHdmX0ZvUUFkVWlJZE8zS0l2QXBYOWlBakpmZDJlRA?oc=5",
+   "date": "2026-10-29T01:34:00.000Z"
+  },
+  {
+   "title": "정성호 \"이 대통령, SNS 줄여야…조희대 국정조사는 ‘용두사미’ 우려돼 부담\"",
+   "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBtNmJwMDN0Y2hKa2xRLUtZMWhKSGZsYkxVRHgxQjhOb3MwSUJSY2d6c1g5WHpPQ2cyUlBxLWRvelpWQ1c1Z1NxVjVvak8ybkt6V3d0QUliTFBRY1o2UDEzYnZYSWFoRWpTTXc?oc=5",
+   "date": "2026-10-29T01:15:00.000Z"
+  },
+  {
+   "title": "107조원 벌고도 주가는 하락…삼성전자 \"4분기도 실적 성장\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5GaXk2U3kyRjg0cUhCX2FxMGZkSlJkVVJJcXFBUURtbjY5X0FCZm82YW0wdVEtOVpURTdLS1c4SnBUVmlkWG9CTjllOXhqZWVVUUstNQ?oc=5",
+   "date": "2026-10-29T01:05:02.000Z"
+  },
+  {
+   "title": "10월 29일 (목) 아침& 다시보기",
+   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1ZMDdKVjFMYjNScTc3YzJPaFBNNzNzMERHbXp4bmZxeTdJcTRrUkVHaXN5aDJBcmhxQmNOZEFqakZkbUJrNnJMN2F0bnVZcy11eFE?oc=5",
+   "date": "2026-10-29T00:51:45.000Z"
+  },
+  {
+   "title": "스페인 고속열차 추돌로 68명 사망…한국인 2명 부상 \"치료중\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1KRXhHcXY1MTNKb2xlNlgwejVNc1F4MVRQSU8tbjNvMktoUmNUTlMtUDduamZUc09kbnZxNFM5bzFkdkMybE1fWWJLTURLZ1JLbDNTQQ?oc=5",
+   "date": "2026-10-29T00:41:00.000Z"
+  },
+  {
+   "title": "\"졸업시켜 보디가드로 쓰면 돼\" 학폭 가해 학생들 감싼 교장",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9OOTBVNzFhVFg1eHV5MHYzYWVFZUtJNkNzV2lCc3pUbk05dThQWC0wYzFpWThTdE9iU19jcGJqcDJPSzlJUVRXYzlWV2pEcnFybk82Mg?oc=5",
+   "date": "2026-10-29T00:40:23.000Z"
+  },
+  {
    "title": "윤 '내란 우두머리' 항소심…특검 사형 구형 전망",
    "link": "https://news.jtbc.co.kr/article/NB12325374",
    "date": "2026-10-29T00:28:25.000Z"
-  },
-  {
-   "title": "여권번호까지 새나갔다…마이리얼트립 개인정보 유출",
-   "link": "https://news.jtbc.co.kr/article/NB12325401",
-   "date": "2026-10-28T23:59:09.000Z"
-  },
-  {
-   "title": "역삼 방화범 '피해자에 안 미안하나' 물음에 \"셧업해 셧업\"",
-   "link": "https://news.jtbc.co.kr/article/NB12325391",
-   "date": "2026-10-28T22:59:13.000Z"
-  },
-  {
-   "title": "특검·국힘 내부 촬영 '실랑이'…3시간 파행 끝 겨우 시작",
-   "link": "https://news.jtbc.co.kr/article/NB12325377",
-   "date": "2026-10-28T22:57:46.000Z"
-  },
-  {
-   "title": "젤렌스키 \"우린 트럼프와 종전 방법 달라…미·러 경협 반대\"",
-   "link": "https://news.jtbc.co.kr/article/NB12325365",
-   "date": "2026-10-28T14:54:46.000Z"
-  },
-  {
-   "title": "장윤기 부친 \"미안하다…착한 아들이었는데..\"",
-   "link": "https://news.jtbc.co.kr/article/NB12325364",
-   "date": "2026-10-28T14:35:50.000Z"
   }
  ]
 }
