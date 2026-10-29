@@ -2228,6 +2228,8 @@
           const searchQuery = [searchLoc, pickedMenu, '맛집'].filter(Boolean).join(' ');
           const naverUrl = naverSearchUrl(searchQuery);
 
+
+
           // 구글지도용 중심 좌표: GPS는 현재 좌표, 주소 기반은 주소를 좌표로 변환
           let center = null, centerNote = '';
           if (fState.mode === 'gps') {
@@ -2253,15 +2255,15 @@
             ${noLocNote}
             ${centerNote ? `<div style="font-size:0.78rem; color:var(--text-muted);">${foodEsc(centerNote)}</div>` : ''}
             <div style="display:flex; gap:0.8rem; align-items:center; flex-wrap:wrap; justify-content:center;">
-              <a href="${naverUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:0.5rem 1.2rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">
-                <i class="fa-solid fa-map-location-dot"></i> 네이버에서 맛집 조회하기
-              </a>
-              <a href="${googleUrl}" target="_blank" rel="noopener noreferrer" <a href="${googleUrl}" target="_blank" rel="noopener noreferrer" class="btn-secondary google-maps-btn" style="padding:0.5rem 1.1rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;" title="반경 ${fState.radius}에 맞춰 지도 확대 수준을 설정합니다">
-    <i class="fa-brands fa-google"></i> 구글지도에서 조회 (반경 ${fState.radius})
-</a> style="padding:0.5rem 1.1rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;" title="반경 ${fState.radius}에 맞춰 지도 확대 수준을 설정합니다">
 
-                <i class="fa-brands fa-google"></i> 구글지도에서 조회 (반경 ${fState.radius})
+              <a href="${naverUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:0.5rem 1.2rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">
+                <i class="fa-solid fa-map-location-dot"></i> 네이버에서 맛집 조회
               </a>
+
+              <a href="${googleUrl}" target="_blank" rel="noopener noreferrer" class="btn-secondary google-maps-btn" style="padding:0.5rem 1.1rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;" title="반경 ${fState.radius}에 맞춰 지도 확대 수준을 설정합니다">
+                <i class="fa-brands fa-google"></i> 구글지도에서 맛집 조회 (반경 ${fState.radius})
+              </a>
+
               <button class="btn-secondary" id="saveFavMenuBtn" style="padding:0.5rem 1rem;"><i class="fa-solid fa-star" style="color:#f1c40f;"></i> 나의 메뉴 저장</button>
             </div>
           `;
@@ -2291,6 +2293,8 @@
         };
       }, 50);
     }
+
+
 
     // 저장된 항목의 조회 주소 (이전 버전에서 저장된 옛 주소도 현행 주소로 변환)
     function favSearchUrl(fav) {
