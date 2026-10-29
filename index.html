@@ -183,6 +183,57 @@
     .btn-copy-prompt { background: none; border: 1px solid var(--border-color); padding: 0.25rem 0.55rem; border-radius: 4px; font-size: 0.75rem; color: var(--text-muted); cursor: pointer; transition: all 0.2s; }
     .btn-copy-prompt:hover { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
 
+    /* ===== '뭘먹지' 탭 전용 레이아웃 & 스타일 ===== */
+    .food-container { display: flex; flex-direction: column; gap: 1.2rem; width: 100%; }
+    .food-card {
+      background: rgba(var(--card-bg-light), var(--card-opacity));
+      border: 1px solid var(--border-color); border-radius: 12px; padding: 1.2rem;
+      display: flex; flex-direction: column; gap: 1rem; box-shadow: var(--card-shadow);
+    }
+    [data-theme="dark"] .food-card { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
+
+    .switch-group { display: flex; background: rgba(0,0,0,0.05); padding: 0.3rem; border-radius: 10px; width: fit-content; gap: 0.3rem; }
+    .switch-btn { border: none; background: none; padding: 0.45rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.88rem; color: var(--text-muted); cursor: pointer; transition: all 0.2s; }
+    .switch-btn.active { background: var(--primary-color); color: #fff; }
+
+    .form-row { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
+    .food-select { padding: 0.45rem 0.7rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); font-weight: 600; font-size: 0.88rem; outline: none; }
+
+    .food-category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.5rem; }
+    .category-chip {
+      padding: 0.5rem 0.7rem; border-radius: 8px; border: 1px solid var(--border-color);
+      background: rgba(0,0,0,0.02); color: var(--text-color); font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; text-align: center; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+    }
+    .category-chip:hover, .category-chip.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+
+    .tag-chip {
+      padding: 0.35rem 0.7rem; border-radius: 20px; border: 1px solid var(--border-color);
+      background: var(--bg-color); color: var(--text-muted); font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .tag-chip.active { background: #27ae60; color: #fff; border-color: #27ae60; }
+
+    .result-recommend-box {
+      border: 2px dashed var(--primary-color); border-radius: 12px; padding: 1.5rem; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 1rem; background: rgba(74, 144, 226, 0.03);
+    }
+    .recommend-title { font-size: 1.4rem; font-weight: 800; color: var(--primary-color); }
+
+    .favorite-list { display: flex; flex-direction: column; gap: 0.5rem; max-height: 400px; overflow-y: auto; }
+    .favorite-item {
+      display: flex; justify-content: space-between; align-items: center; padding: 0.7rem 1rem;
+      border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-color);
+    }
+
+    /* Global Guard Screen */
+    .login-guard-screen {
+      background: rgba(var(--card-bg-light), var(--card-opacity));
+      border: 1px solid var(--border-color); border-radius: 12px; padding: 4rem 1.5rem;
+      text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.2rem; box-shadow: var(--card-shadow); margin-top: 1rem;
+    }
+    [data-theme="dark"] .login-guard-screen { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
+
     /* Modals */
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
     .modal-overlay.active { opacity: 1; pointer-events: auto; }
@@ -206,6 +257,63 @@
 
     .item-delete-row { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem; border-bottom: 1px solid var(--border-color); font-size: 0.88rem; }
     .bg-preview { width: 100%; height: 100px; border-radius: 8px; border: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: center; background-position: center; background-size: cover; color: var(--text-muted); font-size: 0.82rem; }
+
+    /* 뉴스 출처 아이콘 (G: 구글뉴스, J: JTBC) */
+    .news-src { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border-radius: 50%; margin-right: 0.4rem; font-size: 0.62rem; font-weight: 800; color: #fff; vertical-align: 1px; flex-shrink: 0; }
+    .news-src-g { background: #4285f4; }
+    .news-src-j { background: #e4002b; }
+
+    /* ===== 반응형 (태블릿/모바일) ===== */
+    html { -webkit-text-size-adjust: 100%; }
+    img, video { max-width: 100%; }
+    .food-select, .form-group input, .form-group select { max-width: 100%; }
+
+    @media (hover: none) {
+      .link-actions { opacity: 1; }
+    }
+
+    @media (max-width: 900px) {
+      .grid-container { flex-direction: column; }
+      .memo-container, .ai-container { flex-direction: column; height: auto; }
+      .memo-sidebar { width: auto; max-height: 240px; }
+      .memo-editor { min-height: 65vh; }
+      .memo-editor textarea { min-height: 40vh; }
+      .ai-sidebar { width: auto; max-height: 260px; }
+      .ai-content { overflow-y: visible; }
+    }
+
+    @media (max-width: 768px) {
+      .header { padding: 0.5rem 0.75rem; gap: 0.5rem; }
+      .header-left { width: 100%; flex-wrap: wrap; gap: 0.5rem; }
+      .nav-tabs { flex: 1 1 100%; overflow-x: auto; scrollbar-width: none; }
+      .nav-tabs::-webkit-scrollbar { display: none; }
+      .tab-btn { white-space: nowrap; flex-shrink: 0; }
+      .search-box { flex: 1 1 100%; max-width: none; }
+      .header-actions { width: 100%; }
+      .btn-icon { width: 36px; height: 36px; }
+      .info-bar { padding: 0 0.75rem; font-size: 0.8rem; }
+      .info-bar-left { white-space: normal; }
+      .info-bar-right { gap: 0.3rem 0.6rem; }
+      .container { padding: 0 0.6rem; }
+      .section-card { padding: 0.75rem; }
+      .modal-box { width: 94%; max-height: 90vh; overflow-y: auto; }
+      .region-grid { grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); max-height: 45vh; }
+      .food-card { padding: 0.9rem; }
+      .form-row { gap: 0.5rem; }
+      .ai-header-title { font-size: 1.05rem; }
+      .ai-features-grid { grid-template-columns: 1fr; }
+      .ai-prompt-header { flex-wrap: wrap; gap: 0.4rem; }
+      .memo-editor-footer { flex-wrap: wrap; gap: 0.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .food-category-grid { grid-template-columns: repeat(3, 1fr); }
+      .category-chip { padding: 0.45rem 0.3rem; font-size: 0.8rem; }
+      .switch-btn { padding: 0.4rem 0.7rem; font-size: 0.82rem; }
+      .recommend-title { font-size: 1.2rem; }
+      .result-recommend-box { padding: 1rem; }
+      .favorite-item { padding: 0.6rem 0.7rem; gap: 0.4rem; }
+    }
   </style>
 </head>
 <body>
@@ -259,8 +367,21 @@
     </div>
   </div>
 
-  <!-- Main Content -->
+  <!-- Main Container -->
   <div class="container">
+    <div id="loginGuardWrapper" style="display: none;">
+      <div class="login-guard-screen">
+        <i class="fa-solid fa-lock" style="font-size: 3rem; color: var(--primary-color);"></i>
+        <h2 style="font-size: 1.4rem; font-weight: 800;">로그인이 필요한 서비스입니다</h2>
+        <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 450px; line-height: 1.5;">
+          B.mark, 메모, AI 디렉토리 및 '뭘먹지' 맛집 추천 등 모든 개인화 서비스를 이용하려면 구글 로그인이 필요합니다.
+        </p>
+        <button class="btn-primary" id="guardLoginBtn" style="padding: 0.7rem 1.5rem; font-size: 1rem; margin-top: 0.5rem;">
+          <i class="fa-brands fa-google"></i> 구글 로그인하기
+        </button>
+      </div>
+    </div>
+
     <div class="grid-container" id="gridContainer"></div>
 
     <div class="memo-container" id="memoContainer" style="display: none;">
@@ -287,6 +408,9 @@
       <div class="ai-sidebar" id="aiSidebar"></div>
       <div class="ai-content" id="aiContent"></div>
     </div>
+
+    <!-- '뭘먹지' 맛집 추천 Container -->
+    <div class="food-container" id="foodContainer" style="display: none;"></div>
   </div>
 
   <!-- 지역 선택 팝업 모달 -->
@@ -465,7 +589,19 @@
         "bgImage": "", 
         "bgSize": "cover",
         "cardOpacity": 85,
-        "region": null
+        "region": null,
+        "foodSearch": {
+          "mode": "gps",
+          "sido": "서울",
+          "gungoo": "종로구",
+          "dong": "",
+          "radius": "1km",
+          "category": "전체 맛집",
+          "situation": "",
+          "price": "",
+          "parking": false
+        },
+        "foodFavorites": []
       },
       "pages": [
         {
@@ -487,7 +623,6 @@
       "memos": []
     });
 
-    // 로컬 스토리지 백업/로드 안전 장치 함수
     const LOCAL_BACKUP_KEY = "yus_note_app_state_backup_v1";
 
     function loadInitialData() {
@@ -525,8 +660,29 @@
     const MEMOS_PER_PAGE = 30;
 
     let selectedAiId = 'chatgpt';
+    let currentGpsCoords = { lat: null, lon: null, addressName: "", real: false };
+    let gpsBusy = false, gpsAutoTried = false;
 
-    /* ===== AI 디렉토리 데이터 (Gemini 포함 16개 카테고리) ===== */
+    const FOOD_CATEGORIES = ["전체 맛집", "한식", "중식", "일식", "양식", "분식", "고기", "면", "찌개/탕", "샐러드", "죽", "디저트"];
+
+    // 이전 버전에 저장돼 있던 카테고리명을 새 이름으로 이관
+    const FOOD_CATEGORY_MIGRATE = { "일식/초밥": "일식", "양식/파스타": "양식", "카페/디저트": "디저트", "국물": "찌개/탕" };
+
+    const MENU_DATABASE = {
+      "한식": ["김치찌개", "된장찌개", "제육", "불고기", "비빔밥", "부대찌개", "감자탕", "갈비탕", "설렁탕", "순대국", "뼈해장국", "육개장", "삼겹살", "닭갈비", "찜닭", "갈비찜", "낙지볶음", "오징어볶음", "고등어구이", "생선구이", "청국장", "콩비지찌개", "추어탕", "삼계탕", "보쌈정식", "한우국밥"],
+      "중식": ["짜장면", "짬뽕", "탕수육", "볶음밥", "간짜장", "차돌짬뽕", "짬뽕밥", "깐풍기", "유린기", "마라탕", "마라샹궈", "꿔바로우", "양장피", "팔보채", "유산슬", "울면", "중식냉면", "새우볶음밥", "멘보샤", "고추잡채", "잡채밥", "마파두부밥"],
+      "일식": ["모둠초밥", "연어초밥", "광어초밥", "돈카츠", "치즈카츠", "규동", "가츠동", "에비동", "사케동", "연어덮밥", "우동", "메밀소바", "돈코츠라멘", "미소라멘", "마제소바", "규카츠", "야끼소바", "타코야키", "오코노미야키", "텐동", "튀김덮밥", "카레우동", "스키야키", "장어덮밥"],
+      "양식": ["토마토파스타", "까르보나라", "로제파스타", "알리오올리오", "봉골레파스타", "미트소스파스타", "페퍼로니피자", "고구마피자", "마르게리타피자", "시카고피자", "스테이크", "함박스테이크", "수제버거", "치즈버거", "리조또", "빠네파스타", "라자냐", "치킨도리아", "오븐스파게티", "감자튀김", "콥샐러드", "바비큐립"],
+      "분식": ["떡볶이", "김밥", "튀김", "순대", "순대국밥", "어묵", "라면", "쫄면", "만두", "컵밥", "떡꼬치", "소떡소떡", "닭강정"],
+      "고기": ["삼겹살", "목살", "항정살", "가브리살", "우삼겹", "차돌박이", "한우등심구이", "LA갈비", "돼지갈비", "양갈비", "소곱창", "소대창", "막창", "닭목살", "닭발", "오리고기", "훈제오리", "껍데기", "떡갈비", "제육"],
+      "면": ["잔치국수", "칼국수", "막국수", "물냉면", "비빔냉면", "쫄면", "비빔국수", "콩국수", "장칼국수", "바지락칼국수", "얼큰칼국수", "메밀소바", "우동", "라면", "짬뽕라면", "짜파게티", "파스타", "마제소바", "쌀국수", "팟타이"],
+      "찌개/탕": ["김치찌개", "된장찌개", "부대찌개", "순대국", "설렁탕", "갈비탕", "뼈해장국", "감자탕", "육개장", "곰탕", "추어탕", "삼계탕", "청국장", "콩비지찌개", "동태탕", "알탕", "대구탕", "미역국", "소고기국밥", "어묵탕"],
+      "샐러드": ["닭가슴살샐러드", "리코타치즈샐러드", "연어샐러드", "아보카도샐러드", "우삼겹샐러드", "단호박샐러드", "리코타연어샐러드", "쉬림프샐러드", "소고기안심샐러드", "콥샐러드", "부라타치즈토마토샐러드", "케이준치킨샐러드"],
+      "죽": ["야채죽", "단호박죽", "전복죽", "소고기버섯죽", "참치야채죽", "닭죽", "낙지김치죽", "잣죽", "흑임자죽", "삼계죽"],
+      "디저트": ["크로플", "조각케이크", "마카롱", "스콘", "휘낭시에", "소금빵", "샌드위치", "허니브레드", "팥빙수", "망고빙수", "홍합미역죽", "새우죽"]
+    };
+
+ /* ===== AI 디렉토리 데이터 (Gemini 포함 16개 카테고리) ===== */
     const AI_DIRECTORY = [
       {
         category: "종합 어시스턴트",
@@ -1039,9 +1195,10 @@
       }
     ];
 
-    let pageTabsEl, gridContainerEl, memoContainerEl, aiContainerEl, searchInputEl, themeBtnEl, authBtn;
+    let pageTabsEl, gridContainerEl, memoContainerEl, aiContainerEl, foodContainerEl, searchInputEl, themeBtnEl, authBtn;
     let addSectionHeaderBtn, deleteSectionHeaderBtn, bgImageModalBtn, opacityHeaderBtn;
     let exportBtn, importBtn, importFileInput;
+    let loginGuardWrapperEl, guardLoginBtnEl;
     let memoListEl, memoTitleInputEl, memoDateBadgeEl, memoContentInputEl, memoImportantInputEl, newMemoBtnEl, saveMemoBtnEl, deleteMemoBtnEl;
     let aiSidebarEl, aiContentEl;
     let sectionModalEl, sectionModalTitleEl, sectionTitleInputEl, sectionHeightSelectEl, sectionHeightInputEl, sectionOrderInputEl, closeSectionModalBtn, saveSectionBtn;
@@ -1072,10 +1229,7 @@
     "강원도:춘천시,37.881,127.730;원주시,37.342,127.920;강릉시,37.752,128.876;동해시,37.525,129.114;태백시,37.164,128.986;속초시,38.207,128.592;삼척시,37.450,129.165;홍천군,37.697,127.888;횡성군,37.491,127.984;영월군,37.183,128.460;평창군,37.370,128.390;정선군,37.380,128.660;철원군,38.146,127.313;화천군,38.106,127.706;양구군,38.110,127.990;인제군,38.058,128.171;고성군,38.379,128.473;양양군,38.075,128.618|" +
     "제주:제주시,33.500,126.531;서귀포시,33.254,126.560";
 
-    const WEATHER_TEXT = {0:"맑음",1:"대체로 맑음",2:"구름조금",3:"흐림",45:"안개",48:"안개",
-      51:"이슬비",53:"이슬비",55:"이슬비",56:"어는 이슬비",57:"어는 이슬비",61:"비",63:"비",65:"강한 비",
-      66:"어는 비",67:"어는 비",71:"눈",73:"눈",75:"폭설",77:"싸락눈",80:"소나기",81:"소나기",82:"강한 소나기",
-      85:"눈소나기",86:"눈소나기",95:"뇌우",96:"뇌우",99:"뇌우"};
+    const WEATHER_TEXT = {0:"맑음",1:"대체로 맑음",2:"구름조금",3:"흐림",45:"안개",48:"안개",51:"이슬비",53:"이슬비",55:"이슬비",56:"어는 이슬비",57:"어는 이슬비",61:"비",63:"비",65:"강한 비",66:"어는 비",67:"어는 비",71:"눈",73:"눈",75:"폭설",77:"싸락눈",80:"소나기",81:"소나기",82:"강한 소나기",85:"눈소나기",86:"눈소나기",95:"뇌우",96:"뇌우",99:"뇌우"};
 
     const regionGroups = {};
     let currentRegion = { sido: "서울", name: "종로구", lat: 37.573, lon: 126.979 };
@@ -1085,10 +1239,13 @@
       gridContainerEl = document.getElementById('gridContainer');
       memoContainerEl = document.getElementById('memoContainer');
       aiContainerEl = document.getElementById('aiContainer');
+      foodContainerEl = document.getElementById('foodContainer');
       searchInputEl = document.getElementById('searchInput');
       themeBtnEl = document.getElementById('themeBtn');
 
       authBtn = document.getElementById('authBtn');
+      loginGuardWrapperEl = document.getElementById('loginGuardWrapper');
+      guardLoginBtnEl = document.getElementById('guardLoginBtn');
 
       regionModalBtn = document.getElementById('regionModalBtn');
       regionModalEl = document.getElementById('regionModal');
@@ -1289,9 +1446,8 @@
       el.className = rate > 0 ? "market-up" : rate < 0 ? "market-down" : "";
     }
 
-    /* ===== 증시 등락률 (네이버 증권 전용): 타임아웃 + 동시 요청(먼저 성공한 값 사용) + 재시도 + 직전 값 유지 ===== */
-    const stockLast = {};          // 마지막으로 성공한 값 (실패 시 화면에 유지)
-    let stockInflight = null;      // 중복 호출 방지
+    const stockLast = {};
+    let stockInflight = null;
 
     async function fetchJSONTimeout(url, ms = 5000) {
       const ctrl = new AbortController();
@@ -1307,13 +1463,13 @@
       if (!Number.isFinite(v) || Math.abs(v) > 30) throw new Error("invalid rate");
       return v;
     }
-    // 네이버 증권 응답 해석 (polling: datas[0], 모바일: 최상위)
+
     function parseNaver(j) {
       const d = (j.datas && j.datas[0]) || j;
       let v = parseFloat(String(d.fluctuationsRatio).replace(/,/g, ""));
       const diff = parseFloat(String(d.compareToPreviousClosePrice).replace(/,/g, ""));
       const code = d.compareToPreviousPrice && String(d.compareToPreviousPrice.code);
-      if (Number.isFinite(v) && v > 0 && (diff < 0 || code === "4" || code === "5")) v = -v;   // 하락이면 음수
+      if (Number.isFinite(v) && v > 0 && (diff < 0 || code === "4" || code === "5")) v = -v;
       if (!Number.isFinite(v)) {
         const close = parseFloat(String(d.closePrice).replace(/,/g, ""));
         v = diff / (close - diff) * 100;
@@ -1326,7 +1482,6 @@
       const mobile = `https://m.stock.naver.com/api/index/${naverCode}/basic`;
       const viaAllorigins = u => fetchJSONTimeout(`https://api.allorigins.win/get?url=${encodeURIComponent(u)}`, 7000)
         .then(d => parseNaver(JSON.parse(d.contents)));
-      // 네이버 두 주소를 직접/중계로 동시에 요청하고, 가장 먼저 성공한 값을 사용
       return Promise.any([
         fetchJSONTimeout(polling).then(parseNaver),
         viaAllorigins(polling),
@@ -1339,7 +1494,7 @@
     async function fetchRate(naverCode) {
       for (let attempt = 0; attempt < 2; attempt++) {
         try { return await fetchRateOnce(naverCode); } catch (e) {}
-        if (attempt === 0) await new Promise(r => setTimeout(r, 2000));   // 2초 뒤 한 번 재시도
+        if (attempt === 0) await new Promise(r => setTimeout(r, 2000));
       }
       return null;
     }
@@ -1347,15 +1502,27 @@
     function updateStocks() {
       if (stockInflight) return stockInflight;
       stockInflight = (async () => {
-        const [a, b] = await Promise.all([fetchRate("KOSPI"), fetchRate("KOSDAQ")]);
+        // 1순위: GitHub Actions가 서버에서 네이버 증권 값을 받아 저장해 둔 stocks.json (CORS 문제 없음)
+        let a = null, b = null, fileTime = null;
+        try {
+          const j = await fetchJSONTimeout('stocks.json?t=' + Date.now(), 4000);
+          if (Number.isFinite(j.kospi) && Number.isFinite(j.kosdaq)) {
+            a = okRate(j.kospi); b = okRate(j.kosdaq);
+            fileTime = j.updatedAt ? new Date(j.updatedAt) : null;
+          }
+        } catch (e) {}
+        // 2순위: stocks.json이 없으면 브라우저에서 네이버 증권을 직접 조회
+        if (a === null || b === null) {
+          [a, b] = await Promise.all([fetchRate("KOSPI"), fetchRate("KOSDAQ")]);
+          fileTime = null;
+        }
         if (a !== null) stockLast.kospi = a;
         if (b !== null) stockLast.kosdaq = b;
         showRate(kospiDisplayEl, a ?? stockLast.kospi ?? null);
         showRate(kosdaqDisplayEl, b ?? stockLast.kosdaq ?? null);
 
-        // 하나라도 새로 가져왔을 때만 갱신 시각 변경
         if (a !== null || b !== null) {
-          const now = new Date();
+          const now = fileTime && !isNaN(fileTime) ? fileTime : new Date();
           const yyyy = now.getFullYear();
           const mm = String(now.getMonth() + 1).padStart(2, '0');
           const dd = String(now.getDate()).padStart(2, '0');
@@ -1385,18 +1552,6 @@
     }
     const fmtShort = d => `${pad(d.getMonth() + 1)}.${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
 
-    function stripTags(s) {
-      const ta = document.createElement("textarea");
-      ta.innerHTML = s.replace(/<[^>]+>/g, "");
-      return ta.value.trim();
-    }
-    function parseDate(str) {
-      if (!str) return null;
-      let t = Date.parse(str);
-      if (isNaN(t)) t = Date.parse(String(str).replace(" ", "T") + "Z");
-      return isNaN(t) ? null : new Date(t);
-    }
-
     async function loadNewsList(containerEl, timeEl, msgEl) {
       containerEl.innerHTML = '<p style="font-size:0.8rem; color:var(--text-muted); text-align:center; padding:1rem;">뉴스를 불러오는 중...</p>';
       
@@ -1409,7 +1564,7 @@
         if (!items || items.length === 0) throw new Error('파싱 결과 없음');
 
         containerEl.innerHTML = '';
-        const limit = Math.min(items.length, 30);   // 최대 30개 표시 (목록 영역은 스크롤)
+        const limit = Math.min(items.length, 30);
         for (let i = 0; i < limit; i++) {
           const item = items[i];
           const a = document.createElement('a');
@@ -1420,7 +1575,14 @@
 
           const titleEl = document.createElement('div');
           titleEl.className = 'news-item-title';
-          titleEl.textContent = item.title;
+          // 출처 아이콘: 링크 주소로 구글(G) / JTBC(J) 구분
+          const isGoogle = /news\.google\.com/i.test(item.link || '');
+          const badge = document.createElement('span');
+          badge.className = 'news-src ' + (isGoogle ? 'news-src-g' : 'news-src-j');
+          badge.textContent = isGoogle ? 'G' : 'J';
+          badge.title = isGoogle ? '구글뉴스에서 가져온 기사' : 'JTBC에서 가져온 기사';
+          titleEl.appendChild(badge);
+          titleEl.appendChild(document.createTextNode(item.title));
 
           const timeElItem = document.createElement('div');
           timeElItem.className = 'news-item-time';
@@ -1452,16 +1614,22 @@
     }
 
     function setupAuthListeners() {
+      const handleLoginClick = () => {
+        provider.setCustomParameters({ prompt: 'select_account' });
+        signInWithPopup(auth, provider).catch(err => alert("로그인 오류: " + err.message));
+      };
+
       authBtn.addEventListener('click', () => {
         if (currentUser) {
           if (confirm("로그아웃 하시겠습니까?")) {
             signOut(auth).catch(err => alert("로그아웃 오류: " + err.message));
           }
         } else {
-          provider.setCustomParameters({ prompt: 'select_account' });
-          signInWithPopup(auth, provider).catch(err => alert("로그인 오류: " + err.message));
+          handleLoginClick();
         }
       });
+
+      guardLoginBtnEl.addEventListener('click', handleLoginClick);
 
       onAuthStateChanged(auth, (user) => {
         currentUser = user;
@@ -1476,8 +1644,8 @@
             unsubscribeFirestore();
             unsubscribeFirestore = null;
           }
-          // [수정] 일시적인 인증 끊김 시 데이터가 초기화되지 않도록 로컬 백업/현재 상태를 그대로 유지
         }
+        renderCurrentView();
       });
     }
 
@@ -1501,7 +1669,6 @@
           }
           refreshUI();
         } else {
-          // 서버에 문서가 없으면 현재 로컬 백업 데이터를 서버에 업로드하여 유실 방지
           saveState();
         }
       });
@@ -1515,7 +1682,6 @@
           await setDoc(userDocRef, appState);
         } catch (err) {
           console.error("Firestore 저장 오류:", err);
-          alert("서버 저장 실패! 상세오류: " + err.message);
         }
       }
     }
@@ -1627,13 +1793,37 @@
         renderCurrentView();
       });
       pageTabsEl.appendChild(aiBtn);
+
+      const foodBtn = document.createElement('button');
+      foodBtn.className = `tab-btn ${activeTab === 'food' ? 'active' : ''}`;
+      foodBtn.innerHTML = '<i class="fa-solid fa-utensils"></i> 뭘먹지';
+      foodBtn.addEventListener('click', () => {
+        activeTab = 'food';
+        renderPageTabs();
+        renderCurrentView();
+      });
+      pageTabsEl.appendChild(foodBtn);
     }
 
     function renderCurrentView() {
+      if (!currentUser) {
+        loginGuardWrapperEl.style.display = 'block';
+        gridContainerEl.style.display = 'none';
+        memoContainerEl.style.display = 'none';
+        aiContainerEl.style.display = 'none';
+        foodContainerEl.style.display = 'none';
+        addSectionHeaderBtn.style.display = 'none';
+        deleteSectionHeaderBtn.style.display = 'none';
+        return;
+      }
+
+      loginGuardWrapperEl.style.display = 'none';
+
       if (activeTab === 'memo') {
         gridContainerEl.style.display = 'none';
         memoContainerEl.style.display = 'flex';
         aiContainerEl.style.display = 'none';
+        foodContainerEl.style.display = 'none';
         addSectionHeaderBtn.style.display = 'none';
         deleteSectionHeaderBtn.style.display = 'none';
         renderMemoView();
@@ -1641,18 +1831,488 @@
         gridContainerEl.style.display = 'none';
         memoContainerEl.style.display = 'none';
         aiContainerEl.style.display = 'flex';
+        foodContainerEl.style.display = 'none';
         addSectionHeaderBtn.style.display = 'none';
         deleteSectionHeaderBtn.style.display = 'none';
         renderAiView();
+      } else if (activeTab === 'food') {
+        gridContainerEl.style.display = 'none';
+        memoContainerEl.style.display = 'none';
+        aiContainerEl.style.display = 'none';
+        foodContainerEl.style.display = 'flex';
+        addSectionHeaderBtn.style.display = 'none';
+        deleteSectionHeaderBtn.style.display = 'none';
+        renderFoodView();
       } else {
         gridContainerEl.style.display = 'flex';
         memoContainerEl.style.display = 'none';
         aiContainerEl.style.display = 'none';
+        foodContainerEl.style.display = 'none';
         addSectionHeaderBtn.style.display = 'flex';
         deleteSectionHeaderBtn.style.display = 'flex';
         renderDashboard(searchInputEl.value.trim());
       }
     }
+
+    /* ===== '뭘먹지' 맛집 추천 뷰 구현 (GPS/주소 기반 스위치, 3단계 셀렉트, 반경, 카테고리, 취향별, 나의 메뉴) ===== */
+
+    // 네이버 지도 검색 주소 (구 m.map.naver.com/search2 주소는 더 이상 동작하지 않아 현행 웹 지도 주소로 변경)
+    function naverSearchUrl(query) {
+      return 'https://map.naver.com/p/search/' + encodeURIComponent(query);
+    }
+    function foodEsc(str) {
+      return String(str ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    // 좌표 → 한국식 주소 문자열 (예: 서울시 영등포구 신길로 41가길 34)
+    function formatKoAddress(a) {
+      const norm = t => (t || '').replace(/(특별자치시|특별시|광역시)$/, '시');
+      const road = (a.road || '').replace(/(로|길)(\d)/, '$1 $2');
+      const parts = [
+        norm(a.state || a.province),
+        norm(a.city || a.town),
+        a.borough || a.city_district || a.county || a.district || '',
+        ...(road ? [road, a.house_number || ''] : [a.suburb || a.quarter || a.neighbourhood || a.village || ''])
+      ].filter(Boolean);
+      return [...new Set(parts)].join(' ').trim();
+    }
+    async function reverseGeocode(lat, lon) {
+      try {   // 1순위: OpenStreetMap Nominatim (키 불필요, 도로명 단위)
+        const j = await fetchJSONTimeout(
+          `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1&accept-language=ko`, 8000);
+        const addr = formatKoAddress(j.address || {});
+        if (addr) return addr;
+      } catch (e) {}
+      try {   // 2순위: BigDataCloud (키 불필요, 동 단위)
+        const j = await fetchJSONTimeout(
+          `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=ko`, 8000);
+        const norm = t => (t || '').replace(/(특별자치시|특별시|광역시)$/, '시');
+        const addr = [...new Set([norm(j.principalSubdivision), j.city, j.locality].filter(Boolean))].join(' ');
+        if (addr) return addr;
+      } catch (e) {}
+      return '';
+    }
+    function gpsStatusText() {
+      const c = currentGpsCoords;
+      if (gpsBusy) return '현재 위치: 확인 중...';
+      if (!c.real) return "현재 위치: 아직 확인되지 않았습니다. [현재 위치 갱신]을 눌러 주세요.";
+      return `현재 위치: 위도:${c.lat.toFixed(2)}, 경도:${c.lon.toFixed(2)}` + (c.addressName ? ` / ${c.addressName}` : '');
+    }
+    function updateGpsStatus() {
+      const el = document.getElementById('gpsStatusText');
+      if (el) el.textContent = gpsStatusText();
+    }
+    async function refreshGps(manual) {
+      if (!navigator.geolocation) {
+        if (manual) alert('이 브라우저는 위치 정보를 지원하지 않습니다.');
+        return false;
+      }
+      gpsBusy = true; updateGpsStatus();
+      try {
+        const pos = await new Promise((res, rej) =>
+          navigator.geolocation.getCurrentPosition(res, rej, { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }));
+        const lat = pos.coords.latitude, lon = pos.coords.longitude;
+        currentGpsCoords = { lat, lon, addressName: '', real: true };
+        gpsBusy = false; updateGpsStatus();
+        const addr = await reverseGeocode(lat, lon);
+        currentGpsCoords.addressName = addr;
+        updateGpsStatus();
+        if (manual) alert('현재 위치가 성공적으로 갱신되었습니다.' + (addr ? '' : ' (주소는 확인하지 못했습니다)'));
+        return true;
+      } catch (err) {
+        gpsBusy = false; updateGpsStatus();
+        if (manual) alert('GPS 위치를 가져오지 못했습니다: ' + (err && err.message ? err.message : err));
+        return false;
+      }
+    }
+
+    // ----- 거리 반경 적용: 네이버 지도 검색에는 반경 파라미터가 없어, 구글지도(중심 좌표 + 확대 수준)로 근사 -----
+    function radiusToMeters(r) {
+      const m = String(r || '1km').match(/([\d.]+)\s*(km|m)/i);
+      return m ? parseFloat(m[1]) * (m[2].toLowerCase() === 'km' ? 1000 : 1) : 1000;
+    }
+    function zoomForRadius(meters, lat) {
+      // 화면 세로 약 700px 안에 반경의 2배(지름)가 들어오는 확대 수준
+      const mpp = (2 * meters) / 700;
+      const z = Math.log2(156543.03 * Math.cos(lat * Math.PI / 180) / mpp);
+      return Math.max(11, Math.min(18, Math.round(z)));
+    }
+    function googleMapsUrl(query, center, radiusStr) {
+      if (center) {
+        const z = zoomForRadius(radiusToMeters(radiusStr), center.lat);
+        return `https://www.google.com/maps/search/${encodeURIComponent(query)}/@${center.lat.toFixed(6)},${center.lon.toFixed(6)},${z}z?hl=ko`;
+      }
+      return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+    }
+    // 주소 → 좌표 (OpenStreetMap Nominatim, 키 불필요). 상세주소로 못 찾으면 시/군/구 중심으로 대체
+    async function geocodeKo(sido, gungoo, detail) {
+      const tries = [];
+      if (detail) tries.push({ q: `${sido} ${gungoo} ${detail}`, precise: true });
+      tries.push({ q: `${sido} ${gungoo}`, precise: false });
+      for (const t of tries) {
+        try {
+          const j = await fetchJSONTimeout(
+            `https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=kr&accept-language=ko&q=${encodeURIComponent(t.q)}`, 8000);
+          if (Array.isArray(j) && j[0]) return { lat: parseFloat(j[0].lat), lon: parseFloat(j[0].lon), precise: t.precise };
+        } catch (e) {}
+      }
+      return null;
+    }
+
+    function renderFoodView() {
+      foodContainerEl.innerHTML = '';
+
+      if (!appState.settings) appState.settings = {};
+      if (!appState.settings.foodSearch) {
+        appState.settings.foodSearch = {
+          mode: "gps",
+          sido: "서울",
+          gungoo: "종로구",
+          dong: "",
+          radius: "1km",
+          category: "전체 맛집",
+          situation: "",
+          price: "",
+          parking: false
+        };
+      }
+      if (!appState.settings.foodFavorites) {
+        appState.settings.foodFavorites = [];
+      }
+
+      const fState = appState.settings.foodSearch;
+      if (!FOOD_CATEGORIES.includes(fState.category)) {
+        fState.category = FOOD_CATEGORY_MIGRATE[fState.category] || '전체 맛집';
+      }
+
+      const mainCard = document.createElement('div');
+      mainCard.className = 'food-card';
+
+      // 1. 모드 선택 스위치 (GPS중심 vs 주소중심)
+      const switchRow = document.createElement('div');
+      switchRow.innerHTML = `
+        <div style="font-weight:800; font-size:1.1rem; margin-bottom:0.5rem;"><i class="fa-solid fa-utensils" style="color:var(--primary-color);"></i> 위치 선택</div>
+        <div class="switch-group">
+          <button class="switch-btn ${fState.mode === 'gps' ? 'active' : ''}" id="modeGpsBtn"><i class="fa-solid fa-location-crosshairs"></i> GPS중심</button>
+          <button class="switch-btn ${fState.mode === 'address' ? 'active' : ''}" id="modeAddrBtn"><i class="fa-solid fa-map-location-dot"></i> 주소중심</button>
+        </div>
+      `;
+      mainCard.appendChild(switchRow);
+
+      // 2. 위치 설정 영역 (GPS 또는 주소 3단계)
+      const locationArea = document.createElement('div');
+      locationArea.className = 'form-row';
+      locationArea.style.background = 'rgba(0,0,0,0.02)';
+      locationArea.style.padding = '0.8rem';
+      locationArea.style.borderRadius = '8px';
+      locationArea.style.border = '1px solid var(--border-color)';
+
+      if (fState.mode === 'gps') {
+        locationArea.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:0.5rem;">
+            <div style="min-width:0; flex:1 1 220px;">
+              <div style="font-weight:700; font-size:0.92rem;"><i class="fa-solid fa-satellite-dish" style="color:var(--primary-color);"></i> GPS 기반 맛집 탐색</div>
+              <div style="font-size:0.8rem; color:var(--text-muted); margin-top:2px; word-break:keep-all; overflow-wrap:anywhere;" id="gpsStatusText">${gpsStatusText()}</div>
+            </div>
+            <button class="btn-primary" id="getGpsBtn" style="font-size:0.82rem; padding:0.35rem 0.8rem;"><i class="fa-solid fa-location-crosshairs"></i> 현재 위치 갱신</button>
+          </div>
+        `;
+      } else {
+        const sidoList = Object.keys(regionGroups);
+        const sidoOptions = sidoList.map(s => `<option value="${s}" ${s === fState.sido ? 'selected' : ''}>${s}</option>`).join('');
+
+        let gungooOptions = '';
+        if (regionGroups[fState.sido]) {
+          gungooOptions = regionGroups[fState.sido].map(g => `<option value="${g.name}" ${g.name === fState.gungoo ? 'selected' : ''}>${g.name}</option>`).join('');
+        }
+
+        locationArea.innerHTML = `
+          <div style="display:flex; flex-direction:column; gap:0.5rem; width:100%;">
+            <div style="font-weight:700; font-size:0.92rem;"><i class="fa-solid fa-map" style="color:var(--primary-color);"></i> 주소 기반 맛집 탐색</div>
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <div class="form-group" style="flex:1; min-width:120px;">
+                <label>1단계: 시/도 (필수)</label>
+                <select class="food-select" id="addrSidoSelect" style="width:100%;">${sidoOptions}</select>
+              </div>
+              <div class="form-group" style="flex:1; min-width:120px;">
+                <label>2단계: 시/군/구 (필수)</label>
+                <select class="food-select" id="addrGungooSelect" style="width:100%;">${gungooOptions}</select>
+              </div>
+              <div class="form-group" style="flex:1; min-width:120px;">
+                <label>3단계: 상세주소 (선택)</label>
+                <input type="text" id="addrDongInput" class="food-select" placeholder="예: 신길로 34가길 34" value="${foodEsc(fState.dong || '')}" style="width:100%; height:34px;">
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      mainCard.appendChild(locationArea);
+
+      // 3. 반경 필터 설정
+      const radiusRow = document.createElement('div');
+      radiusRow.className = 'form-row';
+      const radii = ["300m", "500m", "1km", "2km", "5km"];
+      let radiusChips = radii.map(r => `<button class="tag-chip ${fState.radius === r ? 'active' : ''}" data-radius="${r}">${r}</button>`).join('');
+      radiusRow.innerHTML = `
+        <span style="font-size:0.85rem; font-weight:700; color:var(--text-muted);">거리 반경:</span>
+        <div style="display:flex; gap:0.3rem; flex-wrap:wrap;" id="radiusChipsContainer">${radiusChips}</div>
+        <span style="font-size:0.75rem; color:var(--text-muted);">※ 구글지도 조회에 반영 (네이버는 반경 지정 불가)</span>
+      `;
+      mainCard.appendChild(radiusRow);
+
+      // 4. 카테고리 선택 (필수 옵션)
+      const catBox = document.createElement('div');
+      catBox.style.display = 'flex';
+      catBox.style.flexDirection = 'column';
+      catBox.style.gap = '0.5rem';
+      catBox.innerHTML = `
+        <div style="font-size:0.88rem; font-weight:700;"><i class="fa-solid fa-list"></i> 카테고리 선택 (필수)</div>
+        <div class="food-category-grid" id="foodCatGrid"></div>
+      `;
+      mainCard.appendChild(catBox);
+
+      const catGridEl = catBox.querySelector('#foodCatGrid');
+      FOOD_CATEGORIES.forEach(cat => {
+        const chip = document.createElement('div');
+        chip.className = `category-chip ${fState.category === cat ? 'active' : ''}`;
+        chip.textContent = cat;
+        chip.onclick = () => {
+          fState.category = cat;
+          saveState();
+          renderFoodView();
+        };
+        catGridEl.appendChild(chip);
+      });
+
+      // 6. '추천해죠' 버튼 및 결과 상자
+      const actionRow = document.createElement('div');
+      actionRow.style.textAlign = 'center';
+      actionRow.style.marginTop = '0.5rem';
+      actionRow.innerHTML = `
+        <button class="btn-primary" id="recommendBtn" style="padding: 0.7rem 2rem; font-size: 1rem;"><i class="fa-solid fa-wand-magic-sparkles"></i> 추천해죠!</button>
+      `;
+      mainCard.appendChild(actionRow);
+
+      const resultBox = document.createElement('div');
+      resultBox.id = 'recommendResultBox';
+      resultBox.style.display = 'none';
+      mainCard.appendChild(resultBox);
+
+      foodContainerEl.appendChild(mainCard);
+
+      // 7. 나의 메뉴 카드 추가
+      const favCard = document.createElement('div');
+      favCard.className = 'food-card';
+      favCard.innerHTML = `
+        <div style="font-weight:800; font-size:1.05rem; display:flex; align-items:center; gap:0.5rem;">
+          <i class="fa-solid fa-star" style="color:#f1c40f;"></i> 나의 메뉴 (<span id="favCount">0</span>/100)
+        </div>
+        <div class="favorite-list" id="favoriteListContainer"></div>
+      `;
+      foodContainerEl.appendChild(favCard);
+
+      renderFavoritesList();
+
+      // 이벤트 바인딩
+      setTimeout(() => {
+        document.getElementById('modeGpsBtn').onclick = () => {
+          fState.mode = 'gps';
+          saveState();
+          renderFoodView();
+        };
+        document.getElementById('modeAddrBtn').onclick = () => {
+          fState.mode = 'address';
+          saveState();
+          renderFoodView();
+        };
+
+        if (fState.mode === 'gps') {
+          document.getElementById('getGpsBtn').onclick = () => refreshGps(true);
+          // 처음 GPS 화면을 열었을 때 한 번 자동으로 현재 위치 확인 (실패해도 조용히 넘어감)
+          if (!currentGpsCoords.real && !gpsAutoTried) {
+            gpsAutoTried = true;
+            refreshGps(false);
+          }
+        } else {
+          const sidoSel = document.getElementById('addrSidoSelect');
+          const gungooSel = document.getElementById('addrGungooSelect');
+          const dongInput = document.getElementById('addrDongInput');
+
+          sidoSel.onchange = (e) => {
+            fState.sido = e.target.value;
+            const firstG = regionGroups[fState.sido] && regionGroups[fState.sido][0] ? regionGroups[fState.sido][0].name : '';
+            fState.gungoo = firstG;
+            saveState();
+            renderFoodView();
+          };
+
+          gungooSel.onchange = (e) => {
+            fState.gungoo = e.target.value;
+            saveState();
+            renderFoodView();
+          };
+
+          // 상세주소는 입력할 때마다 저장되어, 다음에 열면 마지막 입력값이 그대로 표시됨
+          dongInput.oninput = (e) => {
+            fState.dong = e.target.value;
+            saveState();
+          };
+        }
+
+        // 반경 버튼 이벤트
+        document.querySelectorAll('#radiusChipsContainer .tag-chip').forEach(btn => {
+          btn.onclick = () => {
+            fState.radius = btn.getAttribute('data-radius');
+            saveState();
+            renderFoodView();
+          };
+        });
+
+        // 추천해죠 버튼 클릭 이벤트
+        document.getElementById('recommendBtn').onclick = async () => {
+          const cat = fState.category;
+          let pool = [];
+          if (cat === '전체 맛집') {
+            Object.values(MENU_DATABASE).forEach(arr => pool.push(...arr));
+          } else {
+            pool = MENU_DATABASE[cat] || ["대표 맛집 메뉴"];
+          }
+
+          const pickedMenu = pool[Math.floor(Math.random() * pool.length)];
+
+          // GPS 모드인데 아직 위치를 못 받았다면 먼저 한 번 시도
+          if (fState.mode === 'gps' && !currentGpsCoords.real) {
+            await refreshGps(false);
+          }
+
+          // displayLoc: 화면 표시용, searchLoc: 검색어용 (좌표 숫자는 검색에 쓰지 않고 주소만 사용)
+          let displayLoc = '', searchLoc = '';
+          if (fState.mode === 'gps') {
+            const c = currentGpsCoords;
+            if (c.real) {
+              displayLoc = `위도:${c.lat.toFixed(2)}, 경도:${c.lon.toFixed(2)}` + (c.addressName ? ` / ${c.addressName}` : '');
+              searchLoc = c.addressName || '';
+            } else {
+              displayLoc = '현재 위치 미확인';
+            }
+          } else {
+            const detail = (fState.dong || '').trim();   // 상세주소가 있으면 그 주소 기준으로 검색
+            displayLoc = `${fState.sido} ${fState.gungoo} ${detail}`.trim();
+            searchLoc = displayLoc;
+          }
+
+          const searchQuery = [searchLoc, pickedMenu, '맛집'].filter(Boolean).join(' ');
+          const naverUrl = naverSearchUrl(searchQuery);
+
+          // 구글지도용 중심 좌표: GPS는 현재 좌표, 주소 기반은 주소를 좌표로 변환
+          let center = null, centerNote = '';
+          if (fState.mode === 'gps') {
+            if (currentGpsCoords.real) center = { lat: currentGpsCoords.lat, lon: currentGpsCoords.lon };
+          } else {
+            const g = await geocodeKo(fState.sido, fState.gungoo, (fState.dong || '').trim());
+            if (g) {
+              center = { lat: g.lat, lon: g.lon };
+              if (!g.precise && (fState.dong || '').trim()) centerNote = '상세주소의 좌표를 찾지 못해 시/군/구 중심으로 반경을 적용했습니다.';
+            }
+          }
+          const googleQuery = center ? `${pickedMenu} 맛집` : searchQuery;   // 좌표가 있으면 지도 중심이 위치를 대신함
+          const googleUrl = googleMapsUrl(googleQuery, center, fState.radius);
+          if (!center) centerNote = '위치 좌표를 확인하지 못해 구글지도에도 반경이 적용되지 않았습니다.';
+          const noLocNote = (fState.mode === 'gps' && !searchLoc)
+            ? '<div style="font-size:0.78rem; color:var(--danger-color);">현재 위치(주소)를 확인하지 못해 메뉴 이름으로만 검색합니다. 위치 권한을 허용해 주세요.</div>' : '';
+
+          resultBox.style.display = 'flex';
+          resultBox.className = 'result-recommend-box';
+          resultBox.innerHTML = `
+            <div style="font-size:0.85rem; color:var(--text-muted); overflow-wrap:anywhere;">설정하신 조건 [${foodEsc(displayLoc)} / 반경 ${fState.radius} / ${cat}]에 딱 맞는 추천 메뉴!</div>
+            <div class="recommend-title">🎉 ${foodEsc(pickedMenu)}</div>
+            ${noLocNote}
+            ${centerNote ? `<div style="font-size:0.78rem; color:var(--text-muted);">${foodEsc(centerNote)}</div>` : ''}
+            <div style="display:flex; gap:0.8rem; align-items:center; flex-wrap:wrap; justify-content:center;">
+              <a href="${naverUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:0.5rem 1.2rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">
+                <i class="fa-solid fa-map-location-dot"></i> 네이버에서 맛집 조회하기
+              </a>
+              <a href="${googleUrl}" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:0.5rem 1.1rem; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;" title="반경 ${fState.radius}에 맞춰 지도 확대 수준을 설정합니다">
+                <i class="fa-brands fa-google"></i> 구글지도에서 조회 (반경 ${fState.radius})
+              </a>
+              <button class="btn-secondary" id="saveFavMenuBtn" style="padding:0.5rem 1rem;"><i class="fa-solid fa-star" style="color:#f1c40f;"></i> 나의 메뉴 저장</button>
+            </div>
+          `;
+
+          document.getElementById('saveFavMenuBtn').onclick = () => {
+            const favs = appState.settings.foodFavorites;
+            if (favs.length >= 100) {
+              alert('나의 메뉴는 최대 100개까지만 저장할 수 있습니다.');
+              return;
+            }
+            if (favs.some(f => f.menu === pickedMenu && f.location === displayLoc)) {
+              alert('이미 나의 메뉴에 등록된 메뉴입니다.');
+              return;
+            }
+            favs.unshift({
+              id: 'fav-' + Date.now(),
+              menu: pickedMenu,
+              location: displayLoc,
+              query: searchQuery,
+              url: naverUrl,
+              createdAt: new Date().toLocaleString()
+            });
+            saveState();
+            renderFavoritesList();
+            alert(`'${pickedMenu}' 메뉴가 나의 메뉴에 저장되었습니다!`);
+          };
+        };
+      }, 50);
+    }
+
+    // 저장된 항목의 조회 주소 (이전 버전에서 저장된 옛 주소도 현행 주소로 변환)
+    function favSearchUrl(fav) {
+      const q = fav.query || `${(fav.location || '').replace(/현재 위치 \(위도[^)]*\)/, '').replace(/위도:[^/]*\/?/, '').trim()} ${fav.menu} 맛집`.trim();
+      return naverSearchUrl(q);
+    }
+
+    function renderFavoritesList() {
+      const container = document.getElementById('favoriteListContainer');
+      const countEl = document.getElementById('favCount');
+      if (!container) return;
+
+      const favs = appState.settings.foodFavorites || [];
+      countEl.textContent = favs.length;
+      container.innerHTML = '';
+
+      if (favs.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:var(--text-muted); font-size:0.85rem; padding:0.8rem;">저장된 메뉴가 없습니다.</p>';
+        return;
+      }
+
+      favs.forEach((fav, idx) => {
+        const item = document.createElement('div');
+        item.className = 'favorite-item';
+        item.innerHTML = `
+          <div style="display:flex; flex-direction:column; gap:0.2rem; cursor:pointer; flex:1;" title="클릭하면 네이버 지도 맛집 검색으로 이동">
+            <div style="font-weight:700; font-size:0.92rem; color:var(--primary-color);">⭐ ${fav.menu}</div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">위치: ${fav.location} (${fav.createdAt})</div>
+          </div>
+          <div style="display:flex; gap:0.4rem;">
+            <a href="${favSearchUrl(fav)}" target="_blank" rel="noopener noreferrer" class="btn-icon-sm" title="맛집 조회"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <button class="btn-icon-sm danger" title="삭제" onclick="window.deleteFoodFavorite(${idx})"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        `;
+        item.querySelector('div').onclick = () => {
+          window.open(favSearchUrl(fav), '_blank', 'noopener,noreferrer');
+        };
+        container.appendChild(item);
+      });
+    }
+
+    function deleteFoodFavorite(idx) {
+      if (verifyDeletePassword() && confirm('이 메뉴를 삭제하시겠습니까?')) {
+        appState.settings.foodFavorites.splice(idx, 1);
+        saveState();
+        renderFavoritesList();
+      }
+    }
+    window.deleteFoodFavorite = deleteFoodFavorite;
 
     function renderAiView() {
       renderAiSidebar();
@@ -2361,8 +3021,10 @@
         memoCurrentPage = 1;
         if (activeTab === 'memo') renderMemoView();
         else if (activeTab === 'ai') renderAiView();
+        else if (activeTab === 'food') renderFoodView();
         else renderDashboard(e.target.value.trim());
       });
+
       searchInputEl.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
           const query = searchInputEl.value.trim();
@@ -2377,7 +3039,7 @@
       });
 
       window.addEventListener('resize', () => {
-        if (activeTab !== 'memo' && activeTab !== 'ai') renderDashboard(searchInputEl.value.trim());
+        if (activeTab !== 'memo' && activeTab !== 'ai' && activeTab !== 'food') renderDashboard(searchInputEl.value.trim());
       });
 
       addSectionHeaderBtn.addEventListener('click', () => openSectionModal('add'));
