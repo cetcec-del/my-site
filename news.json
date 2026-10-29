@@ -1,21 +1,26 @@
 {
- "updatedAt": "2026-10-29T16:00:27.686Z",
+ "updatedAt": "2026-10-29T21:05:03.748Z",
  "source": "JTBC 이슈피드 + 구글뉴스(JTBC)",
  "items": [
   {
    "title": "사건반장",
-   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1PQ2g1VGhqX0I4dzhyU3lSUWVNYng0cFkxNjFlVFpGUUVQcExSbC1ZYjhSYk5UNlJoa09uaVBOY2JXckNhOHhGaw?oc=5",
-   "date": "2026-10-29T14:11:08.000Z"
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE50WXU0V1B6Vk44VWtQR1VuVDUtck5MZTNMcjFfcWxvVFdtd3VVS2g3U004SWxrQk02aWJvaU1KZjZjVHBLdXR0cA?oc=5",
+   "date": "2026-10-29T16:52:12.000Z"
+  },
+  {
+   "title": "이가혁 라이브",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBDNkdmTkQzemhKTTEyTUZnTnR5Qk8wNjhjWVp0RG1Sb1h6UnMwTTdWZF9QNkRKTWFuOVVIVFphUVFFaU1RV3A4Nw?oc=5",
+   "date": "2026-10-29T15:28:52.000Z"
+  },
+  {
+   "title": "오늘의 주요뉴스",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5tYm1qT0t3cnJIWFlfSks3LTBKYWtYb01QTUJzMkRvNnFSd2NxdjFaenFWc0pZZ0hhVGpVUXkxVXFSeGNWVTlwZWJnUzFtWnkyVTJFaQ?oc=5",
+   "date": "2026-10-29T13:47:15.000Z"
   },
   {
    "title": "이 대통령, 빈 살만 사우디 왕세자 통화…\"전쟁 피해위로\"",
    "link": "https://news.jtbc.co.kr/article/NB12325549",
    "date": "2026-10-29T13:27:36.000Z"
-  },
-  {
-   "title": "아파트 고층에서 킥보드 ‘휙’…차량 파손한 8세 초등생, 처벌 피했다",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE93N1FRUWoxYXp1RnlGWlJEa21uUXA4VVQ1N3VRQVVYS21KX3I3QS1STXFpaEtzWjVTUTRId3c2U1NJZUtHZkVHVmhhZXZmZ1FfM2toRA?oc=5",
-   "date": "2026-10-29T13:08:00.000Z"
   },
   {
    "title": "한·독 정상, 반도체·방산 협력 강화…강화된 전략적 동반자 관계",
@@ -33,11 +38,6 @@
    "date": "2026-10-29T12:03:17.000Z"
   },
   {
-   "title": "스몰 마켓의 기적! 밀워키, 창단 57년 만 WS 첫 우승",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9QTlU5VVNRZzdRaU5pV2F2RUphQWR6ejdWbEZBUG5saEVKMjRIQWRHLVVwamVCb1hkWXNnS0llTUpWVm5TQnQ4YmtKLW42cmxrS1BxbQ?oc=5",
-   "date": "2026-10-29T11:51:00.000Z"
-  },
-  {
    "title": "\"주장은 손흥민이고, 더 할 말 없다\"…96라인도 전원 발탁",
    "link": "https://news.jtbc.co.kr/article/NB12325532",
    "date": "2026-10-29T11:48:28.000Z"
@@ -48,9 +48,14 @@
    "date": "2026-10-29T11:47:20.000Z"
   },
   {
-   "title": "[속보] ‘구로동 시신 유기’ 남성 2명 구속영장 기각",
-   "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE16R1kwVG9SZWVBbmZENjBVbER3dWNLUU5iMl9IOHNJX2JXYklKeHNDZVJ4dTNxN29SeDBvZHlZUTNDcXJNVDdUOHBTN3pDM01MdEpGVGZ2cFlGNE02U1d6SFM4MFl6SEUxSkE?oc=5",
-   "date": "2026-10-29T11:04:00.000Z"
+   "title": "[비하인드 뉴스] ‘비호감 싸움’ 와중에…홍준표 \"한동훈만 빼고\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE45bEcwVDR5cFpfYmROSjFkOV92VFd2TExLTzlydGE5TVEwNDI2QzNMRURjVDJWbkRaRGszTGQyNmZfeHBjLU4yUjVRcEh6NzAyVjVGQg?oc=5",
+   "date": "2026-10-29T11:37:00.000Z"
+  },
+  {
+   "title": "[단독] 중국산 차부품 ‘한국 라벨’ 붙여 쏙…급습하자 \"제보자 누구냐\"",
+   "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFAzQVF5eGJLazE4SjF6RTlvblJoRGRSeTlwNUF4a3NyenFrTjlKRHpWMUR6WVQzV01aeWU1QU1fM0ppWExpOF9YNnlNQUdhWjd4STVudWszX29kdlIwSGJsS0o2c2NFUnky?oc=5",
+   "date": "2026-10-29T11:13:00.000Z"
   },
   {
    "title": "수능 ‘AI 안경 커닝’ 막는다…교육부 ‘형사처벌’ 엄정 대응",
@@ -83,11 +88,6 @@
    "date": "2026-10-29T10:41:51.000Z"
   },
   {
-   "title": "이 대통령 \"과잉 정책으로 내국인 역차별 안 돼\" 해명",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9YcUR3Si1lOHhpTmVfNmRUYjAwY1ZpMmtlbkVwREpHdEhQWHRKUkN6djBMZUlRcTBpV0hfYldiVkFmakhBazk5SFd1NXQyU2NzaTRjdw?oc=5",
-   "date": "2026-10-29T10:40:17.000Z"
-  },
-  {
    "title": "[단독] 30대 역무원 ‘6개월 전’ 흉기 준비…피해자만 집중 공격",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFAxWE8tUWtsaGVaMndxWlh4MEp4VHN1bXJNSUVQRnYxSUtwdnQ0OVBqMXlzYWoyeUFpMnV5b0x0MlJZUWZJUEJacUIxaUpPeWliLWZsbw?oc=5",
    "date": "2026-10-29T10:31:00.000Z"
@@ -96,11 +96,6 @@
    "title": "\"제2 윤석열 없도록\" 사형 구형…\"가장 단호한 판결을\"",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1OMjJkdmJIVk1zY09rRjNSVEhaeEd5U2RrYnBFZDFNa19IVnpNdkxiNGhtaUx0ZXllWW10MGMxTk1TOS1LdHpULUdJX0k2VWl4amFVNA?oc=5",
    "date": "2026-10-29T10:27:00.000Z"
-  },
-  {
-   "title": "\"X팔린 대한민국\" 트럭 막아선 국힘…장동혁, 연장전 태세",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE4tYlBtWnQ1b0ZKeGlXSnpBQ1NKN3NZN082bXEtUXFnWGYzOHF5cG5zNVlTaTFwLVJBbk5rU1RTeHVmWFotQjB3TV80WEg3dFpScE44VA?oc=5",
-   "date": "2026-10-29T10:26:24.000Z"
   },
   {
    "title": "\"경악스럽다\" 참사 영상 쓴 게임사…삭제 요구에도 ‘거부’",
@@ -120,7 +115,7 @@
   {
    "title": "\"한국 좋아하던 언니\"…4년 흘러 다시 찾은 이태원 골목",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1IYnR0Q0NpTlRONmF5aW53LTVTUm1jYkZYOXZqVGY3U2w2RmFvbWtVVlRaSTBiWVZSaW1XbEduaDE0NHdueWoyOGlwME5Qb2p1Xzd0ZA?oc=5",
-   "date": "2026-10-29T10:09:40.000Z"
+   "date": "2026-10-29T10:00:00.000Z"
   },
   {
    "title": "[단독] 6개월 전 흉기 준비, 좁은 방에서 집중 공격…원당역 피해 역무원 남편 \"수 차례 분리 요청\"",
@@ -133,9 +128,9 @@
    "date": "2026-10-29T08:26:00.000Z"
   },
   {
-   "title": "“아이 키 크고 집중력 좋아진다”더니…해외직구 식품 60개 중 절반 넘게 ‘위해 성분’",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBqV3IwS1VCbEFrdXQ3b3JlRUlhekk0a1Y2SUxHTk9KeVJHSjhMTkVNMlVlR1JlNmNuT25HZ0s0UWtVcU9KblJFMDVKYnluOGo5em51aA?oc=5",
-   "date": "2026-10-29T07:53:00.000Z"
+   "title": "\"확실히 죽여버린다\" 이웃 여성에 3분간 30회 연타 날린 70대",
+   "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBwRUFuVWZFbWx4OUpBUXpUVEMzVlhZS1JYZFhEREdCR0hOTURpc3YxNnJqdl9UVGhPVjdJeTdfT0tXcHVja2xFckhCSm9fcV9QbUFMMzhvZmxDa2lfTU1UYWozSnJGMUtF?oc=5",
+   "date": "2026-10-29T07:27:00.000Z"
   },
   {
    "title": "제주 ‘스토킹 신고 보복’ 살해 피의자 신상 공개…61살 강성은",
@@ -145,12 +140,17 @@
   {
    "title": "[단독] ‘구로동 미라 시신’은 중국 국적 불법체류자…집 주인 \"시신 있던 이유 몰라\"",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE42LTBuUUpqVnZWWmEwNGpoLXYzb09vVVl5VTRFdDlMRFpsTkF6LWYwOTdyYXpvNTBVVy1UbGFwNWVaWFQ0czFMTThKLUJCVGp3cVRBWA?oc=5",
-   "date": "2026-10-29T06:40:00.000Z"
+   "date": "2026-10-29T06:53:52.000Z"
   },
   {
    "title": "삼성전자 급락에 코스피도 하락 전환…하루 만에 ‘6천피’ 반납",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBJOGxwYmp1YzlNLUhXNTJ1alJRc0NsUTNNbWlKUkp2aDlrMEtvR2VBelZwZlBhLURpM0JaUDRjNkx6YVYxYVBTbXNJNHpOYnNEaFFyTw?oc=5",
    "date": "2026-10-29T06:35:00.000Z"
+  },
+  {
+   "title": "[단독] “민간인 예약 원천 불가” 주장했지만 군복지단 규정엔 “비회원도 예약 가능”",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5MaGo2Y2NrSF9ic1hKZVUxS2NXV05XTlJ3LUxVYnNueGN2dnRyb3EybWlQMTB6aTQyaUpFb3N2RGgxNDNSa09HYm5TR3YyYUJhWTItZw?oc=5",
+   "date": "2026-10-29T06:30:00.000Z"
   }
  ]
 }
