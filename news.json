@@ -1,7 +1,12 @@
 {
- "updatedAt": "2026-10-30T13:56:11.416Z",
+ "updatedAt": "2026-10-30T19:06:13.990Z",
  "source": "JTBC 이슈피드 + 구글뉴스(JTBC)",
  "items": [
+  {
+   "title": "이가혁 라이브",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9ENWI2bkt6c20taVJiWlotNWd2T1p6M3lxOUVwQkc2MnlBVXhwLVpZd21kNU5hTG1kZ0tncFJJVll5Q2lFQTlWdQ?oc=5",
+   "date": "2026-10-30T14:42:22.000Z"
+  },
   {
    "title": "트럼프 \"이란전 곧 끝난다\"…방법 언급 없이 '비핵화 보장' 반복",
    "link": "https://news.jtbc.co.kr/article/NB12325772",
@@ -13,24 +18,9 @@
    "date": "2026-10-30T12:39:52.000Z"
   },
   {
-   "title": "레슬링 경기 중 ‘눈 찌르기’ 황당 반칙? ‘유망주가 왜…’",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9odnE3NmpZU19qSDFHa2t4bFZ2NnU4eWozZFY3SkZ0Mjc4cFNuNHZ2RjlOaHdsUzNZZzZWODZuZlJ6cmZrRVJKaVRTZ2hqd1Q3eEt1WQ?oc=5",
-   "date": "2026-10-30T12:03:00.000Z"
-  },
-  {
    "title": "[비하인드 뉴스] \"관저 같이 사는 건 아빠찬스\"…MB 아들도 살았는데?",
    "link": "https://news.jtbc.co.kr/article/NB12325719",
    "date": "2026-10-30T11:56:38.000Z"
-  },
-  {
-   "title": "[비하인드 뉴스] 30년 전 ‘최불암은 무대로, 김민석은 국회로’…\"영광이었다\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFB2cUZSdTVBY0hCdnpYWFpFblpYR1JHd3Y3TzdPbU1uOVduNGJ5WHR5S2JuWEFpYUtVa1NaTGtVYUxlcEpnY09PVVZKUmRXQWNheVVNOQ?oc=5",
-   "date": "2026-10-30T11:56:00.000Z"
-  },
-  {
-   "title": "‘대전 예수’ 와이스, 한국 돌아올까? 한화팬 ‘신났다’",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9ZN1o2MWFNa0kxVjNfZUI4ak5fcGQyS2dmeGMxSFRpdVFuR3JiOVBUNFItQWFJeVN2ZlBTaTJrTHJJWnlLTFdRRWhEYnIzYXF0UDJtcA?oc=5",
-   "date": "2026-10-30T11:55:00.000Z"
   },
   {
    "title": "\"북한, DMZ 국제국경화 노리나…군 시설 확충 충돌 우려\"",
@@ -43,9 +33,19 @@
    "date": "2026-10-30T11:18:18.000Z"
   },
   {
+   "title": "\"파하~\" 웃던 국민 아버지…최불암, 하늘의 별이 되다",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE43OWhwd0VCV1U0S0VzWG5YY01xNHp3T0czWVlFVFI2d1ZsNWFJdEZSazdVQ2toR0xOWUxMUk5hS0VtanBmb0Fwb1p0VldpOV9paFpJMg?oc=5",
+   "date": "2026-10-30T11:15:00.000Z"
+  },
+  {
    "title": "'오세훈 무죄' 대법원 상고…특검 \"녹취 선별, 재판부 기만\"",
    "link": "https://news.jtbc.co.kr/article/NB12325712",
    "date": "2026-10-30T11:02:21.000Z"
+  },
+  {
+   "title": "[단독] 입주민에 맞아 ‘피투성이’…\"XX놈 뒤졌어\" 충격 녹취",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBRX3BQZkN3VmpXcGZQZ3cyaEJmcU1PNTBoZGpTOVRDUVlXUkswQjV4R2FTWHNBbDFrRnUtT2h2UU5pdFVUbEhrczhEQ1ZUQ3NjWjIxTg?oc=5",
+   "date": "2026-10-30T10:48:00.000Z"
   },
   {
    "title": "'김건희 로저비비에' 김기현 '무죄'…아내만 벌금 500만원",
@@ -68,14 +68,29 @@
    "date": "2026-10-30T10:22:36.000Z"
   },
   {
+   "title": "다가오는 시한…\"북한 방송 들렸어요\" 초조한 주민들",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5zOVFrMnU4UGl0bG1GdDBScENUUkVzWkZTQTRFV3ZIaWxaZWxWa0tRcEFBWTdMTW4xLXJfOXI3NlZyVHZXU0p2SVBPb0dZT3lId2hhaQ?oc=5",
+   "date": "2026-10-30T10:18:00.000Z"
+  },
+  {
    "title": "[맞수토론] ‘쇼츠 판’ 깔아준 국감?…\"김태규 도배\" \"볼썽사나운 장면\"",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBibi1NN0x3bGE3UjBQRnlxUjVsbkMzU2NPeVpsWWxTX2llTHE0U3ZpWEt2ZFQ0YTNyaFlqNEZGX0NYaE9iVU14eFZyVW9temttb2lpeA?oc=5",
    "date": "2026-10-30T10:14:00.000Z"
   },
   {
+   "title": "계엄 ‘위헌 목적’까지 알아야 인정? 유무죄 갈린 이유",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5EUkhoUlB3ampRUFdsX1pCMkx1OFd3XzNYRDRIc2FjOEY1bVU5czJrTWlfaFE1YzkzYm90M3JIV0JFbkRMRmN4bW1vZGhiNGY5Z0lZUA?oc=5",
+   "date": "2026-10-30T10:04:00.000Z"
+  },
+  {
    "title": "‘롯데리아 회동’까지 싹 무죄…\"일반인보다 못한 취급\" 반발",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFAyTHYtdVVzZjVKUnBzYTBTRVcxRHlQcTF2anc5OFBCdDdqNjViUXgxRnBjRjlQVENwN1ozNHdLbjFaeUxYMkxCa2FsVURPRzBMQkdYSg?oc=5",
-   "date": "2026-10-30T10:02:24.000Z"
+   "date": "2026-10-30T09:55:00.000Z"
+  },
+  {
+   "title": "커지는 응급실 압수수색 논란…정은경, 경찰청장 직대 내주 만나",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBjTXhVZEVKWmJSQWtQbjAtZlBSSFdkSTRpa291VXFaSU0wQTBPSklZeVRLakExaU5GdGtzQy1rQlVTclVlM0lDNUJTWnVBb3lNem1zTw?oc=5",
+   "date": "2026-10-30T08:57:00.000Z"
   },
   {
    "title": "훈련하느다 화재 출동 지연...타이어 가게 화재로 옆 6층 건물 전소",
@@ -98,9 +113,9 @@
    "date": "2026-10-30T07:44:00.000Z"
   },
   {
-   "title": "흉기 위협하는 아들 살해한 의대 교수…대법원 \"정당방위 아니다\" 징역 4년 선고",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFA0bldfc1Fsa181akpSY2YtRUR3MlNkYzBya25VMk5kMkxqZVBOaGpVbHN0UFRkcEU3bHl4d1hfdEVmdmtkQXM2djdjdDRNZW52OTE4?oc=5",
-   "date": "2026-10-30T07:43:18.000Z"
+   "title": "남친 숨겨줬나…사기 혐의 남성 붙잡힌 곳은 ‘순경 여친 집’",
+   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE02MVMxaFl5T1p1azRvTlhWTjZ2RVhkT0pSektQaUM3NDJvSjZELW9zYjFMV2ZQei1qcnlYa1FKZGxIc0xyV2hrYWtxVWQyQnpQNWhB?oc=5",
+   "date": "2026-10-30T07:43:53.000Z"
   },
   {
    "title": "오폐수처리장서 발견된 태아 시신…엄마는 \"낳은 줄 몰랐다\"",
@@ -111,11 +126,6 @@
    "title": "여친 알몸으로 무릎 꿇리고 \"바람피우면 전 재산 내놔\"…영상까지 찍었다",
    "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBjMUU1UGRTRjMtVEdCUnZxQ3pEdE5YaV9BNkxLanpFOVZLNVZtV0V6ZEVUcE0wbVQ0c1FVSElkUGZXMHlGRDNvU3Z4MkF5UzBpRmtZ?oc=5",
    "date": "2026-10-30T07:43:05.000Z"
-  },
-  {
-   "title": "천안 오피스텔서 일본인 여성 살해 뒤 도주…30대 남성 체포",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1RZGdjRGJDMkU4MWd4MHQ5M3lFQnBIQ2FmTWJTUUpva283XzNLVEJjWlZUMjlkUVZiRjNGbVBpV1pKN2pRcklxUmZiOTdMajc5X2pJ?oc=5",
-   "date": "2026-10-30T07:43:03.000Z"
   },
   {
    "title": "\"장지로 가기 전 꼭 들러달라\"…‘아빠’ 최불암의 마지막 부탁",
@@ -138,19 +148,9 @@
    "date": "2026-10-30T06:22:00.000Z"
   },
   {
-   "title": "이가혁 라이브",
-   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBDNkdmTkQzemhKTTEyTUZnTnR5Qk8wNjhjWVp0RG1Sb1h6UnMwTTdWZF9QNkRKTWFuOVVIVFphUVFFaU1RV3A4Nw?oc=5",
-   "date": "2026-10-30T06:06:15.000Z"
-  },
-  {
-   "title": "‘콜 오브 듀티’ 제작사 \"깊은 사과\"...이태원 참사 영상 ‘전면 삭제’",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1URjJ1RDFmNFJ4cHplWDBNWXVwcEx3b0JfMzd3TE9sZm9PbkNZZGxtdFIzOUtncEZOSC1ZRTkxc3F0dElVWXBfWlUzYV9peGhGZHpMQQ?oc=5",
-   "date": "2026-10-30T06:04:00.000Z"
-  },
-  {
    "title": "‘김건희에 명품 선물’ 김기현 의원 무죄…배우자는 벌금 500만원",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5Lekd4a1V0cFRtT1l0RWlScjRhU2pxU3czQVlvSHRlZmpzUnQtQWlwZ2JHbFRaWE8wOTZDZUhPSjVldENzV3VrYkFYMW8wdEk0RzFFVQ?oc=5",
-   "date": "2026-10-30T05:58:00.000Z"
+   "date": "2026-10-30T06:09:53.000Z"
   }
  ]
 }
