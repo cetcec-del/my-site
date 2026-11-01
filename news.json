@@ -1,26 +1,36 @@
 {
- "updatedAt": "2026-11-01T19:29:10.244Z",
+ "updatedAt": "2026-11-01T22:59:51.494Z",
  "source": "JTBC 이슈피드 + 구글뉴스(JTBC)",
  "items": [
   {
+   "title": "아침&",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5Pbzg1d1N6N0JxRmlhOXFMclBZN2Vwd0VYWkFHdUZxZ1dIQXJ6VUZ2VmU4OWYxTG44Uy0xc2drcXZScWdmUmdtYw?oc=5",
+   "date": "2026-11-01T22:37:43.000Z"
+  },
+  {
+   "title": "\"네타냐후, 트럼프 통화서 '중간선거 직후 이란 타격' 압박\"",
+   "link": "https://news.jtbc.co.kr/article/NB12325939",
+   "date": "2026-11-01T22:18:34.000Z"
+  },
+  {
+   "title": "‘국민 아버지’ 최불암, 오늘 영면…마지막 작별 인사",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBBc0liOWZERFVWTUhpUXdkT2ZvLWFfZ0czQ08tcHM4Qm41MVVSdnB3U3VxWFd4YTF5NWtZbllIcXVWanNNc1d0S2JGOGFXeUVPOHhQOA?oc=5",
+   "date": "2026-11-01T21:20:00.000Z"
+  },
+  {
+   "title": "사건반장",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1jamVLdHZKbUE5SXBxZ1R4Tzd1RzBYYk9zMHNHdkNYcExRMGFsUVdGRmFTNGgxUUpEbHJnV05kQU9JT3llek40UQ?oc=5",
+   "date": "2026-11-01T15:41:29.000Z"
+  },
+  {
+   "title": "[단독] 여학생 ‘불법 촬영물’ 돌려본 중학생들...\"왕따 당할까봐\" 학폭위 회의록 뜯어보니 / 풀버전",
+   "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNM3oySHlpQ0h3QjdsWGVKaFJjanVQcFBQWVpwXzBlSHBJRUUwN0paN1FnQnlSaEEyOUI1V3h3UlJsNFk2bGFYTllSZ0ZBZ2U5dWlFZHVmQXJjaGRGblAybGxGMnJiXzJlNmR4aGFXLVplNk9fLXNZQjRFejV4UDhtTkQ1Yw?oc=5",
+   "date": "2026-11-01T12:03:00.000Z"
+  },
+  {
    "title": "11월 1일 (일) 뉴스룸 다시보기",
    "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9PTGNwaWZxdU5iR3VwWTROaFdEeTYwS3J4TnhQa1RKZ1FBNTRTcDlkNF9ieXRjaDRFWGl0ZlhzMmNDRXh1dUVsaXhLbERXMzEwUFE?oc=5",
-   "date": "2026-11-01T11:59:09.000Z"
-  },
-  {
-   "title": "베스티, 4000여 일 만에 완전체 음악방송…무대 150만뷰",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBURVV5NVpMck1NdDhRZzlzTVBUSk5RZFRILUt1VklkRjFqNjlHbFFBanlQTV95RTh5Vjg1dXhQNm93eG9heGVFa3pjZy1OaEZvR1pfNw?oc=5",
-   "date": "2026-11-01T11:43:00.000Z"
-  },
-  {
-   "title": "삼성·SK 개발 중인 ‘4F²’…중국 창신메모리 \"시제품 검증 완료\"",
-   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFA1eHA1NWhjWGpuTXRxR3FwYU8xdTRlWERDZ1Q2akFFcnpXSmdzejNTZ3VNZnY2ZTNwNFJ2V2dGUjFGY2EwM1dVellTbzBNS3NSOWc?oc=5",
-   "date": "2026-11-01T10:55:38.000Z"
-  },
-  {
-   "title": "경차 들이받고 또 추돌…고속도로 3중 사고로 모녀 심정지",
-   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1FdGdnS0hkRlFQQUxsZXBGX1d5Y2Y4cDRjQ2JYTlloS3gwdkoyQ2NReE03YWFwamZheVd0VTVtV0FsTGlJMHB1OUNSbVhON2VFZ1E?oc=5",
-   "date": "2026-11-01T10:55:38.000Z"
+   "date": "2026-11-01T11:29:12.000Z"
   },
   {
    "title": "\"커피 마시고 기억 잃었다\"…내기골프 노린 ‘치밀한 범행’",
@@ -33,14 +43,14 @@
    "date": "2026-11-01T10:39:00.000Z"
   },
   {
-   "title": "[날씨] 전국 가을비에 종일 ‘쌀쌀’…화요일부터 더 추워진다",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5OOHlWZjdKTlhhMnljcm9xYVBLQW1yLXpuUkRTNzFwWmtkMzgtdlNZaXJLSEYxalowXzBCNEhkQzVlV3I3TDFCVTNnN3h4NXNDTVVJbA?oc=5",
-   "date": "2026-11-01T10:39:00.000Z"
-  },
-  {
    "title": "지소연 \"손흥민 안쓰러웠다\"…남자 대표팀 향해 소신 발언",
    "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPTlQweGJNOHVNTVllMmd4aUhoclBRSnI1bUFvdFZoNGJhdXg1bE40cDlTYmVFNzJhY0R0NUwyeFJEaWN2aVNoSWctZktTUDZmXzJuSGZjVDItcWNhakY5dDBzRlB5V2ZMd1FkczlUZWFJejlfTUN0SlhDalNFaXZqUE43QQ?oc=5",
    "date": "2026-11-01T10:35:00.000Z"
+  },
+  {
+   "title": "구매 아닌 ‘구독’ 선택한다…가전 시장 ‘충성고객’ 확보 전쟁",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE40alJ2TE96Nkh3OFBDNVN5T3YwckFmOVlMYlYzaTN6RGcyTHN1OXM5TFA2aUlyek5aWElwVDlIUk40aDNjRjlIMDZhakhOU0ZyRkFybA?oc=5",
+   "date": "2026-11-01T10:29:00.000Z"
   },
   {
    "title": "끝날 기미 없는 '프랑스 시위'…규모 줄었지만 분노는 여전",
@@ -53,9 +63,29 @@
    "date": "2026-11-01T10:20:00.000Z"
   },
   {
+   "title": "삼성·SK 개발 중인 ‘4F²’…중국 창신메모리 \"시제품 검증 완료\"",
+   "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE12NnpMQUZNdXdDYmV0NFRxRUlNbVBVZUFNd1h4YW9xRjBFem12UktDak5ocEZYRFhuRWNxdjBna0c0NDN0aHdCdlkwUHFjU1JsUW5sTWVhTFk5YURJekR0TzZKRTJ3S2JKcWc?oc=5",
+   "date": "2026-11-01T10:20:00.000Z"
+  },
+  {
+   "title": "고령 저소득층 \"월 15만원 절실\"…기본소득에 사활 건 지자체들",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBOUW1VbGlpaTNFRXAwN0Q5Yi04RDhfR2tGd1hwb00zcXVTemk2Q0JUejBlTlFiVUtSancxWmh6SVlxUEM2azhhWG1wZHdMX2VjZmRJaA?oc=5",
+   "date": "2026-11-01T10:18:00.000Z"
+  },
+  {
    "title": "‘학폭위 회의록’에 드러난 만행…10대 성착취 범죄의 민낯",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1CbDJWV3FTQUVzNjlhSkpBUURwbkJjR1BzbFRQaXNDMzE2a2RKeVdFbnozSVFEU3JzM0NXaWFvQ1RER0NYQUhCS1dxdm92YUxoNUhEcQ?oc=5",
    "date": "2026-11-01T10:10:00.000Z"
+  },
+  {
+   "title": "경차 들이받고 또 추돌…고속도로 3중 사고로 모녀 심정지",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9xeGl1OXRBSjZ6Q0NrOUl0N2lpSjdSWTNqV21wM0o5UlNuNWFOUi01R3NTMWNKb3k2cjF1a2ItNzFzSXQwcFhNZkNaMmZtelZIa25KYQ?oc=5",
+   "date": "2026-11-01T10:09:00.000Z"
+  },
+  {
+   "title": "[단독] 동의 없이 여학생 ‘불법 촬영’…SNS 유포한 남학생 13명 기소",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9mcGJJOWl5Q1p5STJqRjd0SlpSM0ROSV9mTWVUMGgxOFpDRk05b2x1LVFDXzNqSGtvTTl4THZGWkVTS0hnV2NocWFtOVBLSlFQc0hxMw?oc=5",
+   "date": "2026-11-01T09:58:00.000Z"
   },
   {
    "title": "한국 수출 사상 첫 9천억 달러 돌파…'1조 달러' 시대 연다",
@@ -93,11 +123,6 @@
    "date": "2026-11-01T09:36:00.000Z"
   },
   {
-   "title": "JTBC",
-   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5CeXF2bm5mTmcxdER3VEpBcWZEUEVkcFJKNXVmQ182QzdxVThBMThBSk9tY21kQXItbjhCWHFpZ1FQM1dzNW01bA?oc=5",
-   "date": "2026-11-01T09:10:23.000Z"
-  },
-  {
    "title": "한동훈 \"경찰대 로스쿨?...국민을 '생체실험 대상'으로 보냐\"",
    "link": "https://news.jtbc.co.kr/article/NB12325912",
    "date": "2026-11-01T08:40:57.000Z"
@@ -106,21 +131,6 @@
    "title": "'동물농장' 빗댄 판사에 민주당·조국 \"사법부 독립, 조희대 성역화 아냐\"",
    "link": "https://news.jtbc.co.kr/article/NB12325905",
    "date": "2026-11-01T08:01:15.000Z"
-  },
-  {
-   "title": "정부, 종부세 비거주 1주택 기본공제 축소 폐지…12억 유지",
-   "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFAxZXhfRjM1RUdqQnlsMzQ3akw0ODVpakxJTkg1aDR6blIwbWN3djFCUl9VVmNpQll1b19aOGNxTUV0d2ZxaWZ6LVhRYmtiNTE1SG5rRXcxVUVPTDJTVklxQjZkVjFRUHJZ?oc=5",
-   "date": "2026-11-01T07:48:26.000Z"
-  },
-  {
-   "title": "‘6220만원 다이아’…김건희특검, 통일교 감사 삼일회계 압수수색",
-   "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE01dm9iTzBqRFRNR1paZVlwY3BleGFwdEM1VmNNZjBWWGxWS1Z2TktkN2dRbGJCd09TZGRCempIbDZ4ODRTQ3o1SDhFNkpDbGRpeklBbEQwRzJJQ19qdGlTVW5SaVphX1JuLVE?oc=5",
-   "date": "2026-11-01T07:31:24.000Z"
-  },
-  {
-   "title": "앰퍼샌드원, 11월 17일 첫 정규앨범 ‘PATHFINDER’ 발매",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE53SzV3Z0VOTHFwUEFkOEY4TWoxLXRhV0s1c1Q4ZHQtUGRkYmZiV3V4cmliaVB0SzR5SFBmNDJJUEc3YnVidmpQSkZlSlo0OE5vSHNSaw?oc=5",
-   "date": "2026-11-01T06:58:00.000Z"
   },
   {
    "title": "\"나한테 설명하려고 하지 마\"…욕설 없어도 ‘직장 내 괴롭힘’ 구청 과장 감봉 정당",
@@ -133,24 +143,14 @@
    "date": "2026-11-01T06:15:00.000Z"
   },
   {
+   "title": "대법 “사립고 교사, 국회 보좌관 겸직 안 돼...양립 불가능한 지위 겸유”",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFAwZ0ZGTHpUUW0zTE10QUN2QmZBLU9uMFpxSmViYWZXbjJ2Z1JSZzVxTEhiQWxoSGhZV1p2MkQyMW1sM21STm5RMzY3Q3VZZ1hsOG4yQw?oc=5",
+   "date": "2026-11-01T06:13:00.000Z"
+  },
+  {
    "title": "이 대통령, 내일 820조원 규모 내년도 예산안 시정연설",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBOb3RXdUJwUUYxMnZLTzBIa3ppbUJJRTJ6ejZUVFdhY2pmTGdCdEJFTnpJNHJOS1FNU2QwUjNoYWRReUcyeXpnY3NZeGNhc1cxY3hkdA?oc=5",
    "date": "2026-11-01T06:11:00.000Z"
-  },
-  {
-   "title": "커피에 약물 탄 뒤 ‘내기골프’…7500만원 빼앗은 일당 송치",
-   "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5KMEJVY0tOWlhZSVZhQTBfR1NKQ0NWd0dtSGp0ZDVkR19seUVkc1dOYks2cnB6SEJ4X2p6c0U3dnBKc0dPOHFzbE5ZOTlyVjNHd1Bsdzh3anNOZWFEb3dzVnN5RUY1Z0FKd1E?oc=5",
-   "date": "2026-11-01T05:58:00.000Z"
-  },
-  {
-   "title": "막상 뜯어보니 ‘한국만 불리’…한·일 대미투자 ‘결정적 차이’",
-   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFAyTlhIRGxYd1pzSjdacnBGeEdvb1E1SndxeEw2S2hXb0lTblUtdE5lQzlSeTRaR1p3LUZidlRyTnBtcE02cGlwOUJfa1M0YUZZZUE?oc=5",
-   "date": "2026-11-01T05:46:55.000Z"
-  },
-  {
-   "title": "트럼프 \"바이낸스 해킹 배후 북한이면 직접 논의할 것\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBwQU1jT3c1VHlUTUVTWEg5Z1paSXdTVWpHZF9GeWZndFVXQ0VmZ1FJbjhreWkyQ0VpSnFvRFBJSjhzZThYeHJwTkFXcDB4dThwQWYwWQ?oc=5",
-   "date": "2026-11-01T05:45:00.000Z"
   }
  ]
 }
