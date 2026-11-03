@@ -1,11 +1,131 @@
 {
- "updatedAt": "2026-11-03T02:15:54.329Z",
+ "updatedAt": "2026-11-03T09:42:31.076Z",
  "source": "JTBC 이슈피드 + 구글뉴스(JTBC)",
  "items": [
   {
-   "title": "[속보] 외교부 \"대통령 내외 등 여권 재발급 조치 시행 중\"",
+   "title": "[오늘 한 컷] '병보석'이라더니 '궁전 출근'?",
+   "link": "https://news.jtbc.co.kr/article/NB12326211",
+   "date": "2026-11-03T09:37:39.000Z"
+  },
+  {
+   "title": "'오세훈·장동혁·한동훈' 국회서 시간차 행사…누가 흥행?",
+   "link": "https://news.jtbc.co.kr/article/NB12326213",
+   "date": "2026-11-03T09:27:43.000Z"
+  },
+  {
+   "title": "김민석 '신천지' 사과…정청래 \"어떻게 책임질 건지 얘기하라\"",
+   "link": "https://news.jtbc.co.kr/article/NB12326214",
+   "date": "2026-11-03T09:18:41.000Z"
+  },
+  {
+   "title": "[단독] 법원, 한학자 통일교 총재 보석 결정 취소",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBPY29Fc3JjYUxwNjRDTW0yRGlRN0FjNEM3ckdLazhVdGh6VzhjZk9SZ18zRTVUMmVjVGppNWhGUExZb0JzTVJQU1d0dHdSWlhLcEJHag?oc=5",
+   "date": "2026-11-03T08:01:00.000Z"
+  },
+  {
+   "title": "김민석, 비공개 의총서 ‘신천지’ 사과…정청래 \"공개 사과하고 책임져라\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1MSHl5UTNpbVFDc3lLWF9IUUZaUFpaR2JHSy1CR291eFpRN2duR1BHYW04YWFTLXBCZ3dlR1dLQ19mREd2YTlnR05NcUtkQzJkLWM4Vg?oc=5",
+   "date": "2026-11-03T07:58:00.000Z"
+  },
+  {
+   "title": "[단독] 특검 \"천정궁이 생활 근거지, 보석 조건 위반 명백\"…한학자, 병원서 잠만 자고 다음날 아침 이탈",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE00OTdJYTBkVVZaQXRWQ2ItZ3JIaEU2US1vb01FRjlUNTY4NVp0cm9YajZUNVZFVG9PSW02dGtKU0hLR2NBSDZUUTJRZm15NmhTM0FIcg?oc=5",
+   "date": "2026-11-03T07:49:24.000Z"
+  },
+  {
+   "title": "김필 ‘Life Is Life’ 감미로운 라이브 선물…카타르시스 ‘짜릿’",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9SWDU4MXl2dmN6MFRQb2JIUi1wRkgxWnB1VzlidVNyVkppcmJ6WV8tLXdacVNDa2RKejI3Zzd1b05CMkUwdjd1RENnRWRQa1NlWFJuUw?oc=5",
+   "date": "2026-11-03T07:47:00.000Z"
+  },
+  {
+   "title": "[속보] 김민석, 의총서 신천지 의혹 제기 사과…\"3자 비밀연합 증거 없어\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE0xSUp4QTlvYW5Kbk9OWlFpS3poN0JSbHgxa3ZTTWpiSFhmZkd4UTJoTTJ3MTVnczRBaXlKb2NXMVByMlNueE4xM25Pc19fSjdib3BVNg?oc=5",
+   "date": "2026-11-03T07:34:00.000Z"
+  },
+  {
+   "title": "‘재혼황후’, ‘서프라이즈’ 우려 벗고 한드의 새 장 열까",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9NeUpiRm1TbkFJc1FkLXBiRTlWLTdJY21SRHlkOThDS0NibXUzQXFJVDNnTjYxVjQwd1Z4QXQyMjVldHpnVHFSUkFlbmU1NjRDU09tRg?oc=5",
+   "date": "2026-11-03T07:18:00.000Z"
+  },
+  {
+   "title": "가공식품 11개월, 외식 물가 9개월만 최고…10월 물가 2.8%↑",
+   "link": "https://news.jtbc.co.kr/article/NB12326237",
+   "date": "2026-11-03T07:14:44.000Z"
+  },
+  {
+   "title": "트럼프 \"난 미스터 거부권\"…민주당 장악시 초강수 예고",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBjNkoxZWxONHhIZDI3Xzd5bGdEa1BqbmhPQ0hVT05Zd3VUdFlPLUszeDRtSGlzVXZlM0ZTU24xci1DdWJpc1llSzNhZzRkeG52WmtWNQ?oc=5",
+   "date": "2026-11-03T07:07:12.000Z"
+  },
+  {
+   "title": "\"시속 160㎞ 패스트볼, 정말 뛰어나\"…MLB, 곽빈 빅리그 진출 가능성 조명",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE96MWEwc2xfZDlpT0pjeFZPbXEycFJGNGFNU0FtcDdVMHNOcjFJWG4xSDUxR3R6SVFTbmFsbENXSFdaY3hnaTlJSlFSTnlaLWIyeUNGZA?oc=5",
+   "date": "2026-11-03T07:01:00.000Z"
+  },
+  {
+   "title": "SLBM 발사관 갖춘 3600톤급 잠수함 ‘서희함’ 진수…2028년 해군 인도 예정",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFA1dnRpS0R0eFF4Y2JWT1lvYlQtcS03QXprSnoyTTlEdmJ6aWpRczJWeFZvZWFIaG92WUFDUlA4eEhWNzhQLUFlMHNKUndhejJYT1JaTw?oc=5",
+   "date": "2026-11-03T06:49:00.000Z"
+  },
+  {
+   "title": "오세훈 \"다문화 재검토, 대통령에 화답한 것 아냐…대통령 SNS 관심은 전월세에 쏟았어야\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE91SXliZzFkYmJpOXpHcVFEYk5VY3g1RGZEOS10cU1lUk5DNjJTOGFfekw1ODRLVXRrZTBpc01mNDBMVTRyZWNVbHg3Vk5SVG1vM084Qg?oc=5",
+   "date": "2026-11-03T05:31:00.000Z"
+  },
+  {
+   "title": "네이마르도 두 딸과 BTS 공연장에…‘아리랑’ 떼창에 85만 명 열광한 남미 투어",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFB2bm9RXy1ua1JjeVJWOUtQeTJzRnhqTGFWcE9wYmxMRGFzZmRhQVpRSWZ5eTFIbXdUeDB0LTZFQ1dtd2VwdG44TUQ0WFZzTWJVWVB5Sw?oc=5",
+   "date": "2026-11-03T05:02:00.000Z"
+  },
+  {
+   "title": "박항서에 ‘김치맨’ 인종차별 조롱 후폭풍…태국 축협 공식 대응, 최대 200만 원 벌금 가능",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE0zdE1zaFQ0RzByX1U5djVZa1I4UkFwTzU0eGhmZ0d4NmZrYW9Tc2Jhd2VQSXJ3dmczVEJsZGU3Mm1pWDhtTS1lY0NTU0k3NUEtQkVKMg?oc=5",
+   "date": "2026-11-03T05:00:00.000Z"
+  },
+  {
+   "title": "이재명 \"집값 놀라울 정도로 떨어져\"…장동혁 \"떨어진 건 지지율\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBDVXdEOXJ0VXhvZGJpbE1UWHhsbU4wdXlfRTBqV1I0WWc3cXlzRTIxWmJMdEZwTXlyb1NCcHhMdldWQXV1N3diRnowN1c5d2tnWkEwdw?oc=5",
+   "date": "2026-11-03T04:42:00.000Z"
+  },
+  {
+   "title": "한학자 재판 중단…JTBC 보도에 곧바로 ‘보석취소 심문’",
+   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBTa3BZVk5Kd3BDSjRXQXZwSDlMd21LWVRUa1B3VzlEWkVQU1RQNjFRQU1XbUtxcFJMcFI1QzZiU2pHbE8wNFhBQm1RMmxpMXJKQnc?oc=5",
+   "date": "2026-11-03T04:41:54.000Z"
+  },
+  {
+   "title": "단풍철 일본 몰린 한국인…하룻밤 숙박비도 9% ‘껑충’",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9GWk9oY19jam80SEExZnlMTUx1c21yMXpMdnRWUEVKcEtSX011eHdJVzQwMGFrRnNTOWNoUjRjVkdQam9DM0h6bk5ZckdfWEdZam9Qcg?oc=5",
+   "date": "2026-11-03T03:54:00.000Z"
+  },
+  {
+   "title": "[단독] \"YTN 사려고 윤핵관 만나\" 통일교 측 육성 입수…김건희 선물 전달 정황",
+   "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1RcnprS0ljcWdHVXd1ODQ5eTFXejZrb0FneVhqT3lsbllrYzlEdUU2YkNBaUdKTGUtTUZNaHAxVFVMeXlIeDJkMFpKOC1icWljZmExYlRuUEZyam55djFoX183ejgwNHhSdkE?oc=5",
+   "date": "2026-11-03T03:49:51.000Z"
+  },
+  {
+   "title": "미, 선거 직전 이란 요충지 게슘섬 타격…\"방어적 조치\"",
+   "link": "https://news.jtbc.co.kr/article/NB12326181",
+   "date": "2026-11-03T02:49:50.000Z"
+  },
+  {
+   "title": "‘드론 떼’ 레이저로 하나씩? 국기연 \"고출력 전자기파 무기 개발 필요\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBxYUJFdWJnRGpPdUdiMXNxd3drbkdYNGtYaEt1cHFzTjZNUnUxd1E1YzV5UV9rZ2tTd01YNHdPdDd5MG85TG8xSXlWdVNub0lqV0d1ZA?oc=5",
+   "date": "2026-11-03T02:44:46.000Z"
+  },
+  {
+   "title": "한동훈 딸이 개발한 앱, 이모가 ‘대리 제작’ 의혹…\"미성년자 등록 안돼\" 반박",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE4zd0czZk9fQ3d1ZWNGWGUzZVlwaTc1RnhodV9VZkZPMDlRVk0xbEF1MUU2SXFJOFRRYXdmM0JzWHZqd2dmTi1PS2syWS1Wc09vUnpuSg?oc=5",
+   "date": "2026-11-03T02:19:00.000Z"
+  },
+  {
+   "title": "외교부 \"대통령 내외 등 여권 재발급 조치…유출 경위 조사 중\"",
    "link": "https://news.jtbc.co.kr/article/NB12326172",
    "date": "2026-11-03T01:55:55.000Z"
+  },
+  {
+   "title": "“김기석 소장 서훈 취소, 반헌법적 행위와 무관\"…\"신군부에 맞선 인물\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBRRzR3T1ZUTDN2dEo0bVVoZlQzUVFabUtMclVPVlA3TXAzVXd0LWZna1N1cTV6T2hFeG53MEVsQ0Y2MGZabzU1ajkyaUphZjBiODdJWQ?oc=5",
+   "date": "2026-11-03T01:54:00.000Z"
   },
   {
    "title": "계속되는 해킹 위협…이 대통령 \"사이버보안 차르 기구 설치 적극 검토하라\"",
@@ -13,144 +133,24 @@
    "date": "2026-11-03T01:51:35.000Z"
   },
   {
-   "title": "청와대, 대통령 포함 개인정보 무더기 유출 긴급 회의…임광현 \"중대 사안\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1wQXJrdms3NTRJV0YtcDBOOWprUWtVZmkzeWNteFV5WENoMUJFQnZueUlfWThYUU4yUHRQS2FJQ2Q3WUU4SDNheVNWWV9ON29fbE5ISw?oc=5",
-   "date": "2026-11-03T01:09:00.000Z"
-  },
-  {
    "title": "의원총회 앞두고 요동치는 민주당…정청래 ‘쌍조 깃발’ vs 김민석 ‘선긋기’ 충돌?",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBubkgxMXQ4THhTLTd0c1R3SmJCM050YVl6MWxvd2xaMm54cmVvakdqN2Jta3RMcnU3alBlMWp2VF9jOTNwZVIxTkFpV2JSVGlqLWpydQ?oc=5",
-   "date": "2026-11-03T01:03:00.000Z"
+   "date": "2026-11-03T01:25:42.000Z"
   },
   {
-   "title": "장비 없이 ‘맨몸 암벽 등반’, 등산로 옆에 놔두고 왜…",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBBSm5pZ0s1X3RkZENVY3NNNkFBWmVCY1pvNXlDNS1USGhwbk5SY1V3U0N2UGVQOWNXb0tPbWxYR3hfbENvZUdUS2YtMUxYeW5FN29v?oc=5",
-   "date": "2026-11-03T00:48:01.000Z"
+   "title": "금융권 해킹에 공공시설도 점검…국정원, 2100여개 기관에 긴급 요청",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5uYUVDcEdhVmdvNTl5QkpHazY0dnlxV2NxMmhVUTJoa3dJVGRuRS1TdjRzM2xPbTVvVVZMQzZnWkZGV3NudC1laTRpaUpSN09NZ1kwcg?oc=5",
+   "date": "2026-11-03T01:18:00.000Z"
+  },
+  {
+   "title": "정연주·안소희부터 이와마츠 료·정진운까지…화려한 ‘레이오버 호텔’",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1QWjlzOVc5U21QS3VIdUdjUTBOeEdLOXpHXzZUeDRDeDhDM3ZFQjJGcEtmS3VlUnphcUJCRlNLMk1Kb0VzenJxRG9tYlBGd2pPTWw4aQ?oc=5",
+   "date": "2026-11-03T00:57:00.000Z"
   },
   {
    "title": "김여정, '바이낸스 해킹 배후' 지목에 반발…\"황당무계 낭설, 미 정치적 도발\"",
    "link": "https://news.jtbc.co.kr/article/NB12326155",
    "date": "2026-11-03T00:25:58.000Z"
-  },
-  {
-   "title": "[속보] ‘역삼 연쇄방화’ 피의자 신상공개…77세 이명수",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9SOU12Wmw1UWdnVUJTRWlTT0VMVkNYaktIWnRPT2ZwTzAzMTY3eFJJbWlRQTdHbks2NVVRUkRhOFFGbjNRTXRKR0RvZHlKUW9WbE5YRA?oc=5",
-   "date": "2026-11-03T00:07:00.000Z"
-  },
-  {
-   "title": "'5분이 15일 되는 매직'…공소청 보완 수사 요구 60% 급증",
-   "link": "https://news.jtbc.co.kr/article/NB12326134",
-   "date": "2026-11-03T00:04:53.000Z"
-  },
-  {
-   "title": "'역삼동 연쇄방화' 피의자는 77살 이명수…신상공개",
-   "link": "https://news.jtbc.co.kr/article/NB12326151",
-   "date": "2026-11-03T00:00:35.000Z"
-  },
-  {
-   "title": "‘엑스맨’ 프로페서X 패트릭 스튜어트 치매 투병 끝 별세",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE90Y1NLNGJoX0pqUV9xVzVmTVZuR0VxUnVtQTJCYmhjYmR1amE2cTVMU2k1ZHdrTlFGcnVObG5rZ205Y3FicTB3WEJGYVFwWUY5YVlR?oc=5",
-   "date": "2026-11-02T23:56:00.000Z"
-  },
-  {
-   "title": "병원 거주 조건에도…한학자, 석방 직후부터 '통일교 출퇴근'",
-   "link": "https://news.jtbc.co.kr/article/NB12326137",
-   "date": "2026-11-02T23:51:58.000Z"
-  },
-  {
-   "title": "공격 재개냐, 타협이냐…이란 핵 공격설까지 불거져 [소셜픽]",
-   "link": "https://news.jtbc.co.kr/article/NB12326135",
-   "date": "2026-11-02T23:27:41.000Z"
-  },
-  {
-   "title": "트럼프 \"난 미스터 거부권\"…민주당 장악시 초강수 예고",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBjNkoxZWxONHhIZDI3Xzd5bGdEa1BqbmhPQ0hVT05Zd3VUdFlPLUszeDRtSGlzVXZlM0ZTU24xci1DdWJpc1llSzNhZzRkeG52WmtWNQ?oc=5",
-   "date": "2026-11-02T23:17:53.000Z"
-  },
-  {
-   "title": "‘162조 미래기금’ 놓고 충돌…이 대통령, 연설 멈추고 정면 대응",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFByb2VEZTJVZVQ0TjdRYVdfUXNrWFNNanZDUUFOSnJqcGI3Ul9nc3cyZDRXT2xJM19SMUNDYVBWVGxWcElpeDYyRnZ0Z19yNkdjakx2Vg?oc=5",
-   "date": "2026-11-02T22:58:00.000Z"
-  },
-  {
-   "title": "'텃밭' 흔들리자 워싱턴 택했다…마지막까지 '지지층 결집' 호소",
-   "link": "https://news.jtbc.co.kr/article/NB12326129",
-   "date": "2026-11-02T22:46:19.000Z"
-  },
-  {
-   "title": "오늘 미국 중간선거…민주, 상·하원 장악 가능성 주목",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFA3My1LeDl1SlZwOTdmbHQxMlFXdEk4cDRYS2I5ZXdDN1E1bTFMcXNmVi1ha1dmNGFsUzVKdzBxd3lEM2g1VDJURlZUbXpxQ2YzdURaRA?oc=5",
-   "date": "2026-11-02T22:41:00.000Z"
-  },
-  {
-   "title": "[속보] 북 김여정, 바이낸스 사태에 \"미 정치적 도발…예의주시\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5QU2RCbzJzc2hXWk9BdUVHN0pPMVY5VVp6NFY4REZ0TVprMmxXQ2VYQUVBR19md3N2VnRuZFctSmtKMGRDbWdNd0MtaTh0a1MtbkxZZQ?oc=5",
-   "date": "2026-11-02T21:21:00.000Z"
-  },
-  {
-   "title": "카페서 피임도구 착용하고 음란 행위 한 남성…경찰 수사",
-   "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5mclhTRGJOSG9oRlFwYXQ0V0JJZ2dTRTBsY054TVB0RW5KQUxTSHN4ZzhKaVVpYmE4ZDQ5WUlueWJqN3JXWkhlV2dnY1YzZE85d0RObDlGMTFpa001ZHR4WUk4LUNZbE1tTXc?oc=5",
-   "date": "2026-11-02T21:00:00.000Z"
-  },
-  {
-   "title": "이재명 정부 첫 주중대사에 ‘노태우 장남’ 노재헌 임명",
-   "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBWYjBXN3lOdkt6NTVMSzVhaWNqeVNySHJmT1dyNWxYM25yblpIWGp0NXFSTzdZdUdNVzVOcTZlTmF4Z01rRDJBbXh1aFF4QU5BT0RoMlEtZk9zQmVwQ2oxUzJUTW9jZDZYNXc?oc=5",
-   "date": "2026-11-02T16:08:04.000Z"
-  },
-  {
-   "title": "\"애썼다\" 이별 서강준·안은진 ‘너 말고 다른 연애’ 마침표",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1oT1JuWnpkemIydUxsaWhBaEMwS3Y0TTJQU0FjSmFpdTNmeGpuZFFxUWVJdHRaVTVZX25IbG1BSzhKMnZIeFNlYkhSX1RFZklXS2NmNQ?oc=5",
-   "date": "2026-11-02T14:34:00.000Z"
-  },
-  {
-   "title": "이 대통령 부부·국무위원 등 168명 개인정보 유출 파문…순방 전 노출돼 ‘경호 구멍’",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5jSXVKS3ltTTlPYVk4LVpBZ1ByM0llSzdTeDJGUXVDaTZoQTRTRjREXy13ZFNsdXlZc2pZTkVEcVBlYU16VUIzU0NkdFNrU3NvY0VvMQ?oc=5",
-   "date": "2026-11-02T14:20:00.000Z"
-  },
-  {
-   "title": "11월 2일 (월) 사건반장 다시보기",
-   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9hSlVtbzluZ1BWcVFHenJ2LWVKdHNyUzNqMGppV01Vc2hHM2c4WUFzRVBoVk1ra1o2WnhMN2xiREtKYzd5T0pXc3IwUktDMHBCRHc?oc=5",
-   "date": "2026-11-02T13:33:44.000Z"
-  },
-  {
-   "title": "승객 태우고 손엔 ‘휴대전화’…형사 고발 된 버스 기사",
-   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5Ob3BJWWY0TG9QZE9IaW16akZ1OWl4dUh5TnJjZXl4d3VjczNBLUFuRXNiRjZnUFRlLUZJTnhUS29xNld1dzhwTVhVR0pqT0RBMXc?oc=5",
-   "date": "2026-11-02T13:33:43.000Z"
-  },
-  {
-   "title": "요즘 남대문이 난리라며? 화제의 ‘스카프 아저씨’",
-   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBIZWFRNk1OMkx0RFMxejFaVUJqbFBWTDYwMDNLUlpvaWJpWXJiVEZfTGJGZDdMZ2IwTV9IeEdIbWJJd0RvZWhRTzVaUkh4OFozTWc?oc=5",
-   "date": "2026-11-02T13:33:40.000Z"
-  },
-  {
-   "title": "미 상원 7개 경합주서 민주 6곳 우세…공화당 텃밭들 뚫려",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBpYVNGb0t0WVNfT2JNT0doYmctdWpWdEYwWllMdzhDQm80aHgtY1dwWm5QdjExQmVBUG4yR0oyWjRLbXNhZTBwNVJUWk90ZzZyWkJfWQ?oc=5",
-   "date": "2026-11-02T13:16:00.000Z"
-  },
-  {
-   "title": "한학자 재판 중단…JTBC 보도에 곧바로 ‘보석취소 심문’",
-   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBTa3BZVk5Kd3BDSjRXQXZwSDlMd21LWVRUa1B3VzlEWkVQU1RQNjFRQU1XbUtxcFJMcFI1QzZiU2pHbE8wNFhBQm1RMmxpMXJKQnc?oc=5",
-   "date": "2026-11-02T12:32:50.000Z"
-  },
-  {
-   "title": "사건반장",
-   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9EajN2RVRzZ28wMExlbDhjOGVvbWx3X29VS3pGM29xNW1LZVlFRFJYeEhqc3p4ZmVDbVZibElyZTNpcDcwZHh5eQ?oc=5",
-   "date": "2026-11-02T11:40:09.000Z"
-  },
-  {
-   "title": "[단독] ‘병 보석’ 한학자, 병원 이탈해 ‘통일교 궁전행’…극비리 첩보작전 / 풀버전",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9IQ1YzUlgza0JCN01IOXpEQ2tMMEg4VGlhY2VDWWJQSnBCUGZDTXBMc21jYl94TVhJRDFSOHJ1XzNhTkliTVl6cnhxbHVUNUFVSGptdA?oc=5",
-   "date": "2026-11-02T11:27:00.000Z"
-  },
-  {
-   "title": "[비하인드 뉴스] \"합당 1월\" \"김민석 100일\"…정청래 '마지노선 정치' 먹힐까",
-   "link": "https://news.jtbc.co.kr/article/NB12326059",
-   "date": "2026-11-02T11:17:21.000Z"
-  },
-  {
-   "title": "이번엔 ‘줬다 뺏은’ 16호 도움…손흥민, 미뤄진 대기록",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9KdWVONkdpR3F4V1V1ZWh2OENHdXd2QlMxaVZWdHpobl9OMDZOOHF5c19XNDZWUGFLSl9ldUpLVFZHR2ZvcGpNdVJYRzdzYXZKemEzbQ?oc=5",
-   "date": "2026-11-02T11:16:00.000Z"
   }
  ]
 }
