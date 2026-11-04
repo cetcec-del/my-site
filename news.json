@@ -1,11 +1,61 @@
 {
- "updatedAt": "2026-11-04T17:51:33.856Z",
- "source": "구글뉴스(JTBC)",
+ "updatedAt": "2026-11-04T23:25:29.503Z",
+ "source": "JTBC 이슈피드 + 구글뉴스(JTBC)",
  "items": [
+  {
+   "title": "재판부 \"선거 공정성 훼손\" 질타…윤석열 측, 반발하며 상고 예고",
+   "link": "https://news.jtbc.co.kr/article/NB12326542",
+   "date": "2026-11-04T23:20:42.000Z"
+  },
+  {
+   "title": "패배 윤곽 드러나자 트럼프에 '즉석 통화'…무슨 말 했나 [소셜픽]",
+   "link": "https://news.jtbc.co.kr/article/NB12326555",
+   "date": "2026-11-04T23:07:48.000Z"
+  },
+  {
+   "title": "AI 규제에 반도체 업계 '긴장'…'트럼프 심판' 한국 경제 영향은",
+   "link": "https://news.jtbc.co.kr/article/NB12326552",
+   "date": "2026-11-04T22:58:34.000Z"
+  },
+  {
+   "title": "아침&",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE8xZndjd0lrOWx0a0RiWGdvRHF1RGgxWXVXTU84cVhMb0djQWRINU5qa3NiMC1tN0lkT3ZqTEl1a2F3ejJ4VHlkTA?oc=5",
+   "date": "2026-11-04T22:29:10.000Z"
+  },
+  {
+   "title": "이란 \"트럼프 중간선거 참패 후 변화 기대한다면 큰 착각\"",
+   "link": "https://news.jtbc.co.kr/article/NB12326535",
+   "date": "2026-11-04T14:51:40.000Z"
+  },
+  {
+   "title": "이 대통령 \"'집값 폭락' 발언 왜곡 이은 2차 가짜뉴스...시정 바란다\"",
+   "link": "https://news.jtbc.co.kr/article/NB12326534",
+   "date": "2026-11-04T14:30:32.000Z"
+  },
+  {
+   "title": "강창일 “선거 패한 트럼프, '북미회담'으로 점수 따려할 것”",
+   "link": "https://news.jtbc.co.kr/article/NB12326531",
+   "date": "2026-11-04T12:32:23.000Z"
+  },
+  {
+   "title": "[비하인드 뉴스] 신동욱 \"또 해야 되나요?\"…계엄 사과, 180도 변했다",
+   "link": "https://news.jtbc.co.kr/article/NB12326507",
+   "date": "2026-11-04T11:46:31.000Z"
+  },
   {
    "title": "사건반장",
    "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBHYjNfUlJGVDR6UENpMkVZaFB3bmZfX0t4S2F5VENycnZRS21rU1c4czNIR01aXzBneE5ZME1zbnVOMmN2TEJTbw?oc=5",
    "date": "2026-11-04T11:39:30.000Z"
+  },
+  {
+   "title": "'신천지 사과' 김민석 면전서 \"법 위반 조사해야\" 직격",
+   "link": "https://news.jtbc.co.kr/article/NB12326496",
+   "date": "2026-11-04T11:27:37.000Z"
+  },
+  {
+   "title": "이 대통령, 잇따른 부동산 행보…'공급 속도전' 강조",
+   "link": "https://news.jtbc.co.kr/article/NB12326500",
+   "date": "2026-11-04T11:16:12.000Z"
   },
   {
    "title": "[단독] ‘한학자 재수감’ 통일교 내분…후계자 손자, 직접 나서 신도들에 사과",
@@ -15,7 +65,7 @@
   {
    "title": "신촌 세브란스병원 정신과 교수 흉기 피습…50대 여성 체포",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5EVUpBUDd3dEJuQV9idjRMVTFidEVXWF9xS2xzQ0I3R1RaNThOY0JkaGNMMnIyZFBmRWJOMkdFT0dYcEM5d21GYkNiMEsxald1OTllXw?oc=5",
-   "date": "2026-11-04T11:06:25.000Z"
+   "date": "2026-11-04T11:03:00.000Z"
   },
   {
    "title": "‘당선무효형’ 대법 확정되면 윤석열이 ‘헌정 사상 첫 사례’",
@@ -38,9 +88,9 @@
    "date": "2026-11-04T10:39:00.000Z"
   },
   {
-   "title": "‘이게 다 트럼프 때문’ 분노 거셌다…미국 뒤덮은 ‘블루 쓰나미’",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5JNjNxUXczV3g4ajk2SEJVU05JbFFmTkplSnNjc1FOZm9LbjFMaEFOYXVQbnI3ekZZcUZURFhiWnp3cHJoVnZPYXVVc0VxaHBRSG5qYg?oc=5",
-   "date": "2026-11-04T10:24:24.000Z"
+   "title": "영평상 빛낸 영화인들… 전도연·조인성부터 신혜선·현빈까지",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFAzYURUWEE4eFhtOFRva3pDRDRKN1VBS0dnUGZ2RjFwMjBMM1hrNmszdWJCYkV2Z2NHTFFfQjNDS3Q1Y1d3c085OGR2YXRmR3NWVmNrOQ?oc=5",
+   "date": "2026-11-04T10:38:00.000Z"
   },
   {
    "title": "\"민주당에 협력\" 하나 했다…그새 돌변한 트럼프 ‘VETO’",
@@ -48,14 +98,24 @@
    "date": "2026-11-04T10:10:00.000Z"
   },
   {
+   "title": "‘이게 다 트럼프 때문’ 분노 거셌다…미국 뒤덮은 ‘블루 쓰나미’",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5JNjNxUXczV3g4ajk2SEJVU05JbFFmTkplSnNjc1FOZm9LbjFMaEFOYXVQbnI3ekZZcUZURFhiWnp3cHJoVnZPYXVVc0VxaHBRSG5qYg?oc=5",
+   "date": "2026-11-04T10:01:00.000Z"
+  },
+  {
    "title": "[속보]경찰, ‘뇌물수수’ 강호동 농협중앙회장 구속영장 신청",
    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9ZaUpZY3NKYXllUlcxeHdqTVRsZTZjZTJqN3lNbVN4STQ1ZjAyamtteEx6TG1NNmZQanhMMDBkZVhoaWQ2MzdxaUlfU1ljVGdKVnQ1RkVMYVI2bkNTM1FfTVpPLVJLbEs3d0E?oc=5",
    "date": "2026-11-04T09:42:00.000Z"
   },
   {
+   "title": "‘대통령의 Y’ 이재명 대통령 유튜브 런칭한다 …진행자는 손정은",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9oYXZySWNCU1k2THh2dk9DRVlWSkphVTRsR3VXSWlaYS1kUmFMRUQ0TFJ3T0xGWjE1MjZwVW5MR0pmRHI0YllZY3BCcUxYQkgtc0hYYQ?oc=5",
+   "date": "2026-11-04T09:13:00.000Z"
+  },
+  {
    "title": "[속보]신촌세브란스 의사 얼굴에 흉기 휘둘러...피의자 검거",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE4yczVmcjQyb1pnYUgzQ3Jkd3FaQXNmNmpQbFBrTWlPVURPSm9hR2hYdGZQV2ozRmNfeVBpaWJENWF5OUhGbGFDME1YdGZxWVlCNk9IUw?oc=5",
-   "date": "2026-11-04T08:43:53.000Z"
+   "date": "2026-11-04T08:40:00.000Z"
   },
   {
    "title": "‘트럼프식 정치’ 텍사스 분노…\"실망했다\" 균열 보인 보수",
@@ -83,74 +143,14 @@
    "date": "2026-11-04T08:13:07.000Z"
   },
   {
-   "title": "축구에서 이런 일이? 데 미겔 사망에 깊은 슬픔...모리뉴부터 아르테타까지 충격",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBHaXNVbEJRMWlTaWF5QURZMjZKV2ZYOUs4QWo1cTg0RngyUDk0MXRKV05US3l6bEcwQmQwX2hXWnZwUFNkaG5ZVkp1SVBkTUpIZjVUZQ?oc=5",
-   "date": "2026-11-04T08:13:02.000Z"
+   "title": "정부지원 대출 도와준다더니…저신용자 3481명에 수수료 50억 챙긴 일당",
+   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE4tQ1FSeDRvNDBReGkzU0FjSkRBc3ZzRFhjYlNwaWpIY0xHeXA1MktldnBOQThEZ0VzQ1YxLWdnaE45bnJjbVR1UG5qd0tFZnhDMXdV?oc=5",
+   "date": "2026-11-04T08:13:05.000Z"
   },
   {
-   "title": "김민석 옆 빈자리…최민희 \"신천지 발언 말라 압박\" 공개회의 불참",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1LTlpCa3MxU2pQVmQ5NDBQQllXenF2a2YtWFpTeElObmVOdGtyVVZHSDJkWFFWSW9vMEx3RlByTlNqbk5UMGVycldYWG5qTjdfRDQxbw?oc=5",
-   "date": "2026-11-04T07:13:00.000Z"
-  },
-  {
-   "title": "공전 중인 ‘한·미 안보협의’…‘거대 야당’ 한국 부담 커진 이유",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFAxb2ZZTFVmS0xDemVBMmV5VEVhN19kdmZyU29wYTdrSGRvWEhIY2NUMkk5V2ViazJSVXgwcjlBZ0xsTUw1Qy0zV0puaFZ0emVqVTNCaA?oc=5",
-   "date": "2026-11-04T07:07:17.000Z"
-  },
-  {
-   "title": "하원 따낸 민주…‘상원 경합지’ 7곳 중 5곳에서도 승리 예측",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1TT1B1N0NrTnppdnVOVGRHQ3lUM01YcG5DcUFZZlJqQkF0ODk1SDhTdVh1OEVGYWJQZTRfTnB4YXZPMmg1LURkdVBfRWR5RDhycW1abg?oc=5",
-   "date": "2026-11-04T07:02:00.000Z"
-  },
-  {
-   "title": "[단독] \"수하물 탑재 완료라더니\" 대한항공 승객 짐 111개 무더기 누락, 승객 45시간 속옷 사 입으며 버텨",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1uZFNIczZXb2pYM0tjMkJ3MWQ5LUdCR2o3ZDZ0WHM4OWU1cWpQcHVxTWJoQzFPVm81MjU1V0tzdnhQa0NaVHcxa1lyMjJCYjBiYUlobQ?oc=5",
-   "date": "2026-11-04T06:32:00.000Z"
-  },
-  {
-   "title": "켰을 뿐인데 ‘계정·코인지갑’ 털릴 수도? 게임 ‘니케’ 해킹 정황",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5QYlo3bWhDNW00YmkyQUxRVmdpU3cwcEwtSkI1ZE1LZ2ZMZWUteHUycVEyOEhvTWtrcGpSb1JxdFVjTHRMR2ZqNDJQX1VxSjhLeHJjYw?oc=5",
-   "date": "2026-11-04T06:29:05.000Z"
-  },
-  {
-   "title": "바이든 백악관 출신 ‘제주 고씨’ 댄 고, 미 민주당 연방 하원의원 당선",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE0zem0zdkhzUzFNdzFGZV8xazFsTktlNTNXZDllNDkxVjBHWTZfWFZ6QVEtcnlvZ3BSWkdNR1ZFNFF3dEhteTdnVzk5RU40Qk5vcTdpYQ?oc=5",
-   "date": "2026-11-04T06:28:43.000Z"
-  },
-  {
-   "title": "미 민주당 의회 장악 시 한국 유불리 따져봤더니",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBxTUl5MGNoYzQ0MHVLTnQybFhBMnFkSFdPU0VsN21seENHWGppMm9IWGNzVmRoRW93RXg0ZmRaQkFrNVo0aFlIZC1CNFR6MUF1SDRkTQ?oc=5",
-   "date": "2026-11-04T05:56:28.000Z"
-  },
-  {
-   "title": "윤석열 측 \"항소심 판결 부당한 점 많아…상고해 다툴 것\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9JSUhWYUJFOE83UUJPQm8xNGRtVXQwckNtQWk3djNPa3ZJTVBkc2dONGdRcmFZTXIwejVBYXdxZEFKSEpBVmw5S3hFNXI5OVU4TGFWeQ?oc=5",
-   "date": "2026-11-04T05:54:00.000Z"
-  },
-  {
-   "title": "\"블루 쓰나미\" 예측 나왔다…전문가 조심스레 꺼낸 이유",
-   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBScXVDLTVHcnNfclFYbjJVUF9iWWlVOEV1Zjh3UTRUS0VwbnFGOG5xZXhzeUcwUEZ4VnEwYmNrYXBKQVhUVFpYT2NpMDR2RTVGRUE?oc=5",
-   "date": "2026-11-04T05:32:46.000Z"
-  },
-  {
-   "title": "윤석열 선거법 2심도 당선 무효형…확정시 국힘 397억 반환 [선고 풀영상]",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE4wU1RXZk0zSFVQdHNmdkdxSXlQSWJ5X0NrQTMzV3VSNUt3NUtkX09sZGwtVFctWUVsZGNEVzdDVDlmS3EtdGgxRnp1REJ3eTNQdUdYcg?oc=5",
-   "date": "2026-11-04T05:25:00.000Z"
-  },
-  {
-   "title": "박진영, 이단·사이비 논란에…\"핍박도 하나님이 해결하셔\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9mX3NUUUVyUDJwcm03OUJZQ05jZHg0QmowaVdGb0RVR0dwT19sZDNOX2ZpWklFMjJDN3pwZlQ2RGcxNE5rUm1qcjAzY01qeTZPcW0tNw?oc=5",
-   "date": "2026-11-04T05:05:00.000Z"
-  },
-  {
-   "title": "효성중공업 사무노조 오늘부터 전면파업 돌입…사측 \"법과 원칙 대응\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBfa002NUJxN3JQeXI0M0tQYThoTXdBeV8zOTN6UzlYcWs1Ym1TV3FGSGF0S3ZNY2lYd2x3REQxbkdwTHQ2eDkxUlM2UnpZN1RGdjRzTQ?oc=5",
-   "date": "2026-11-04T05:03:00.000Z"
-  },
-  {
-   "title": "경기도 ‘결식아동’ 밥값마저 끊을 판…국힘 \"예산 삭감 막겠다\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5IT28wVU5QMjQ3OFozVTl5U2MtOTcyUno4WW5FSDZUWVgtakZUcmlIXzFIUWhKanp4ck93cmoydEF0TUc1bmpWZ3prYm11eWNaMkRyNw?oc=5",
-   "date": "2026-11-04T04:56:00.000Z"
+   "title": "\"머리 아프다\"던 20대 작업자…조선소 용접 중 쓰러져 숨져",
+   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBFTmxveGdsX2laZjJVdWJLTXNQck9MaEFDZjQwbE1qYXVqV1hGUFJEZFN1MzZWRUU2b29zUERtZGVfSFZBdVdvVW5zRDJCOXBLeFAw?oc=5",
+   "date": "2026-11-04T08:13:04.000Z"
   }
  ]
 }
