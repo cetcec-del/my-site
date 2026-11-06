@@ -1,7 +1,27 @@
 {
- "updatedAt": "2026-11-06T14:36:43.231Z",
+ "updatedAt": "2026-11-06T20:34:52.434Z",
  "source": "JTBC 이슈피드 + 구글뉴스(JTBC)",
  "items": [
+  {
+   "title": "장르가 머니",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE85YXQ3UTU4YWstaXc2Wk0waDU1Y0hQQUlvaTlhR2FiUENLOVRVZkxpWTVEeS05NXJGb0llbUVudGxkcjZNZE93ZA?oc=5",
+   "date": "2026-11-06T16:55:53.000Z"
+  },
+  {
+   "title": "아침&",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE8xZndjd0lrOWx0a0RiWGdvRHF1RGgxWXVXTU84cVhMb0djQWRINU5qa3NiMC1tN0lkT3ZqTEl1a2F3ejJ4VHlkTA?oc=5",
+   "date": "2026-11-06T14:22:27.000Z"
+  },
+  {
+   "title": "‘조작기소 특검법’ 본회의 통과",
+   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1EdjJjS1BPcGNGcXpZa0ZpckgwOUotNXJuZE1QLXhYRFBHUWhVT2RLdUhhUHp4R0hWcHBNaUZnTjMzcFUteFc0TTNTN3FOUDJqcVJ3?oc=5",
+   "date": "2026-11-06T13:25:06.000Z"
+  },
+  {
+   "title": "\"특검에도 박수 쳐 달라\"…윤석열, 법정서 무슨 일?",
+   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1Tclc2OHR3dEhKTGVuXzlPWHlqRjZXRm9BNjhXRDgyWXBCSEE3NTRGOXNWUXB5VnFGdzAtV0dzdGs1eVIzSTZQeUIxVEdyV2lxQUpF?oc=5",
+   "date": "2026-11-06T12:52:51.000Z"
+  },
   {
    "title": "\"임금 올려라\" 평일인데 60만명 거리로…프랑스 마비",
    "link": "https://news.jtbc.co.kr/article/NB12326913",
@@ -29,13 +49,18 @@
   },
   {
    "title": "[단독] 탈옥 대비해 ‘총 든 군인’…교도소 이송 작전 ‘첫 공개’",
-   "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5ROEtBODJTZzZlRFJPUEFqRmRONHNBUWRYYjJZT1FmOTNYemktNDlBYXQyTmppejFFalhQSmpWWkVxRE91UDlxR0Jhd2dSM3pqRUFxR1BEVVdBWlhtRXFFTzZfOWVFaHhULWc?oc=5",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9XY1BobGotZktITUZYTURScnFJbzdrTVRndzBPZjhOZVpBZTV5OF84NzEzb05SaDdMaTdPZURvVFhNZENiS0pHUDhic1Fsel9vazE4ZQ?oc=5",
    "date": "2026-11-06T11:06:00.000Z"
   },
   {
    "title": "[단독] 빗물 뚝뚝, 심각한 내부…‘47년 된 원주교도소’ 마지막 모습",
-   "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9GUlBIc2EzZ0lTZHhBUjNzQ0V6bTlqS2N2aTdkcW5qZTJHbFZUaTJMMkFpN20zNVF5REFNX1ItR3J2ZGl3VkdTN1VBVkVQUWY2blZQX3ZXbmgyeDNodzEzbEhDUTg1ckg3b0E?oc=5",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5fQlUycm16SlhVODE0UTVkcjVubXRXZlFBdHV5ektpU19DWm5Uc25idVdyNXA3czJ4emVnd1RqVmVLYnJ5M2NLYmRUV0QteWt3Q0hGQw?oc=5",
    "date": "2026-11-06T11:01:00.000Z"
+  },
+  {
+   "title": "[속보] 일본 지바현 동남동쪽 바다에서 규모 6.1 지진 발생",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFB6aDE1Wl9sWC1SV0wtdXJfSnpEb2xWUV9YLWFMMk5HZ01ETFVOOFlBcVpCNDc3ZjYzbkx3MnpYSnB0LXo0U2NFbmllR2E1SjZlZDVBQQ?oc=5",
+   "date": "2026-11-06T10:59:00.000Z"
   },
   {
    "title": "'신천지' 열람 후…\"좀 심각해\" \"별거 없어\" 엇갈렸다",
@@ -78,6 +103,11 @@
    "date": "2026-11-06T09:49:00.000Z"
   },
   {
+   "title": "[단독] ‘복지기금 6억 독식’ 자회사 대표 감싸준 의혹 남부발전 박영철 부사장 해임",
+   "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNalBQVDFCWmxMaVZhY252ZElYV0xZdWQxLTE4MnQ5YjlhMnhZQjFvWDVlNU5wMk14NnJMT09WUlJoU1FYSDNDOEsyRHA5TVo3UlprZi1EaWJOZXM1WFpfTFVucVdrYjF1NkVHUzhkVEY5MTZNam04dlJ6WWF3UkNVLWROaw?oc=5",
+   "date": "2026-11-06T09:21:00.000Z"
+  },
+  {
    "title": "국내 증시 출렁이자 \"단기 충격 있지만\"…급락장에 제언",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE43d2VQeDF4UThoXzBEWWxialYtemtrUXhsWjJidDktMlZzWXptNk55MzdRQ1F0TEpTWkJUU3ZfSVViWkVTSG1LWTl1VDAzLWtyVXVDWQ?oc=5",
    "date": "2026-11-06T08:42:00.000Z"
@@ -93,19 +123,14 @@
    "date": "2026-11-06T08:28:00.000Z"
   },
   {
-   "title": "‘냉면 목구멍’ 발언, 북 ‘대남통’ 리선권 입지에 변동 감지...해임 가능성",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE43XzNXcEl1TkZDcG5ISktfWlFxY3NGSUMzRmlFaUEzb2prYU91dFJXSS1vRFlmM0pubHZEYUJaUHBfRFJWUXphaDRDTzRqeXhObVJuZg?oc=5",
-   "date": "2026-11-06T07:51:00.000Z"
-  },
-  {
-   "title": "[단독] \"수하물 탑재 완료라더니\" 대한항공 승객 짐 111개 무더기 누락, 승객 45시간 속옷 사 입으며 버텨",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1uZFNIczZXb2pYM0tjMkJ3MWQ5LUdCR2o3ZDZ0WHM4OWU1cWpQcHVxTWJoQzFPVm81MjU1V0tzdnhQa0NaVHcxa1lyMjJCYjBiYUlobQ?oc=5",
-   "date": "2026-11-06T07:16:17.000Z"
+   "title": "음료수값 내려고 건넨 복권, 알고 보니 13억원짜리 ‘대박’",
+   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1Vd2xCaVN5TVI4V3dDMy1VbF9CS21ZR2JqVFpWemt6eDh2cWdqb1VKeDNsOE83bm1nRkpkbndLSHpPZFFQSFRsT05oVlZhRk9DX1FV?oc=5",
+   "date": "2026-11-06T07:50:44.000Z"
   },
   {
    "title": "[단독]찢어진 반쪽 ‘태극기’ 방치…미 필라델피아 한국전 참전기념비 관리 소홀",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9EVWZOV09yR19jeFh6bEN2d2R4Z09FRGNVd0lqbnJBNkRKVmdLZmhyQWRhZWMyMEpfVEdySkVLQ0hVOHZhclpwRVRvSmp3OXZQUm5Vcg?oc=5",
-   "date": "2026-11-06T06:58:00.000Z"
+   "date": "2026-11-06T06:59:09.000Z"
   },
   {
    "title": "이틀 새 624포인트 ‘증발’…코스피 6% 급락에 5000선 턱걸이",
@@ -126,31 +151,6 @@
    "title": "‘쇼츠 국감’에 \"성과 없었다\" 46%…‘최고 활약’ 꼽힌 의원은?",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5zUTZVNEhjcS0xck5XNmNIV2pWYTJ4T0ZEeEdkX0xTZklHdTVvZkx1OE9acmV6TkoxdlpRdEZZNWdLVzl0SkwzRzhtOUJoZHlHQ1VMaA?oc=5",
    "date": "2026-11-06T05:32:00.000Z"
-  },
-  {
-   "title": "‘임금협상 갈등’ 공항철도 노조, 오는 13일 경고 파업...개통 이후 첫 파업",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1EZDBMM2FpbUMwMnhLVHZoU2FreFpHWktGZ3pLX09tT3VYWXc5NUd4WFN0V3hIVURYa2NhRHhFT1J2Z195RFUyMVBzbloyMEpUdUtXWA?oc=5",
-   "date": "2026-11-06T05:15:00.000Z"
-  },
-  {
-   "title": "허리 숙일 때마다 ‘화르륵’…수상한 남성 잡았더니 \"술 취해서 몰라\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1lUHBkcW02X3hGWnM3Ulc4TWxOb0ZiUDVoaDYyYUhsemkweDltZ3hFZENMNnVsOGE3Z3N5SEVTeHYtQUc3Nmw2UmdQVFNKSC0tMExLcg?oc=5",
-   "date": "2026-11-06T04:48:00.000Z"
-  },
-  {
-   "title": "새 경찰청장 후보에 김종철 차장…1년 11개월 만",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBUNWUxS0trNlR5N08wSTd2cHFrZTlUZk9mcnlNV1FocTJyZHJ4ajhXNVZhcnp0MlAwOVZxY2JyNUJYSnlSem5nRFpHSzdOOHBqRE1iYw?oc=5",
-   "date": "2026-11-06T04:29:00.000Z"
-  },
-  {
-   "title": "박항서 ‘김치맨’ 격분?…그 이전에 선수 향한 ‘원숭이’ 모욕 있었다",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9lQjY2TThUYWt4STQ5REZxMWxnaDFiSzhvek1tWVZjcGhTZ0E2TGo2enJocU5nNnlEMVdCX09fdmdHMVhYSExtMWNCTGhpcUcwZEo2eA?oc=5",
-   "date": "2026-11-06T04:26:00.000Z"
-  },
-  {
-   "title": "‘사법부 독립’ 논란 속 전국법관대표회의 30일 개최…일주일 앞당겨",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9TQV8zUjI0V1hHdm1uU2lfSDNSbDljNVRDVUtvSm9Zb0hLajNQbEJxeDUtbzVwTkNSTFRWUGpGOEptczhyaXRkZ0c3OXpQMzJSaS1leg?oc=5",
-   "date": "2026-11-06T03:31:00.000Z"
   }
  ]
 }
