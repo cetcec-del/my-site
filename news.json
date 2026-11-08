@@ -1,7 +1,132 @@
 {
- "updatedAt": "2026-11-08T07:06:45.497Z",
+ "updatedAt": "2026-11-08T14:16:25.141Z",
  "source": "JTBC 이슈피드 + 구글뉴스(JTBC)",
  "items": [
+  {
+   "title": "이 시각 뉴스룸",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5YQkNzVlN3WGRaVVhGSmZFRTNPSFZ5UUpsYmVqRm81aVN0OUNrUDlCNG9sSWxHU3dyaUpCNm5YbzhYMFFhVVU0NA?oc=5",
+   "date": "2026-11-08T11:43:53.000Z"
+  },
+  {
+   "title": "축구협회 연내 회장 선거 무산…FIFA 공동서한에 무슨 내용이",
+   "link": "https://news.jtbc.co.kr/article/NB12327067",
+   "date": "2026-11-08T11:41:07.000Z"
+  },
+  {
+   "title": "‘갓 튀긴 라면’ 무슨 맛이길래…구미축제 인파 40만 몰렸다",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5nTFVCTWh6dHB3Ql85RUh0ZmM4VFhkS2JPdTMwdFJhX1ctMU9nX3p4dGcyODNETnlvM2YzZF93UFMzaHdkVG4yUDhuZkdkMHZRd1RnTw?oc=5",
+   "date": "2026-11-08T11:17:00.000Z"
+  },
+  {
+   "title": "‘중국 스파이’ 연루설 보도 뒤…젠슨 황 장녀 돌연 방한 취소",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE0yMF91NXFHTTZaTUw1YW1vSFFLUHBGV1lyT1VLSWVyUms0SXRWM0cwZTRJNkVQc2ZnWms0czAtYlRVX1FtQjRBcmo0X2duRVNYcUJDdg?oc=5",
+   "date": "2026-11-08T11:07:00.000Z"
+  },
+  {
+   "title": "'올림픽공원 봉쇄 시위' 5개월째…대관료·복구비 등 31억 피해",
+   "link": "https://news.jtbc.co.kr/article/NB12327061",
+   "date": "2026-11-08T10:35:37.000Z"
+  },
+  {
+   "title": "[현장 줌인] 사시사철 푸른 소나무, 이젠 옛말?…안면도 덮친 재선충병",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE12M1RVZ2ZDVkVtLU53RlljX0NCVkVMY1NldTVZTTdzelQyUENhTVNFWkdXYWxmS3BnOU81T3ZKdDhuSncxekh2MHR4U2JQczFtdEtEMA?oc=5",
+   "date": "2026-11-08T10:34:00.000Z"
+  },
+  {
+   "title": "\"지시한 적 없다\"던 윤석열…'계엄 메시지' 재판 본격화",
+   "link": "https://news.jtbc.co.kr/article/NB12327052",
+   "date": "2026-11-08T10:23:47.000Z"
+  },
+  {
+   "title": "청와대 국정상황실장에 김태근 내정…'2기 참모진' 개편 속도",
+   "link": "https://news.jtbc.co.kr/article/NB12327056",
+   "date": "2026-11-08T10:17:58.000Z"
+  },
+  {
+   "title": "지방에 맡긴 '소방재정' 손본다…당정, 국가 지원 확대 추진",
+   "link": "https://news.jtbc.co.kr/article/NB12327066",
+   "date": "2026-11-08T10:13:07.000Z"
+  },
+  {
+   "title": "‘도 넘은’ 장동혁? \"대통력 탄핵\" 언급에 민주 \"제정신 아냐\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1QallkcnJiLUN3TFJqVGh6M3RiUndLbWtYTUdhdmEwd1BackhjUlBxVWE2ZDFrT29hcFgxV29PN3F1TlhVQ1RrTzlkRGhRQTNuYTFmaA?oc=5",
+   "date": "2026-11-08T10:08:00.000Z"
+  },
+  {
+   "title": "무차별 총격에 시민들 ‘혼비백산’…폴란드 도심 아수라장",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5TNnUxQVZFNTl6bEpIMVNkdGtMQmtPQ1dQU2tmU09vT2ZFbGRHMWQ0ZDdYWWVCSk9hbWlyWHVsRFRael9sQTRLWU9RanFOV0lIZUtJcw?oc=5",
+   "date": "2026-11-08T10:05:00.000Z"
+  },
+  {
+   "title": "51조 투자한 텍사스까지…삼전닉스 '블루 웨이브' 불똥 튀나",
+   "link": "https://news.jtbc.co.kr/article/NB12327059",
+   "date": "2026-11-08T09:53:53.000Z"
+  },
+  {
+   "title": "\"조건 변화 없다\" 전작권 전환 재확인…핵잠 도입도 긍정적",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBEbXlDMktlekxDOXhVRVE0aXRQejdqaUo1TE5kR3R6b0ptczIwbHdIUlp5bTE5NEFjcDROSzhJUXRQaUJCYnd0dFI4NkV0MEVDSWU3Ug?oc=5",
+   "date": "2026-11-08T09:53:00.000Z"
+  },
+  {
+   "title": "[인터뷰] \"미 역사상 각료 탄핵 전례 없어…‘헤그세스 탄핵’ 미지수\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1IV3lFa3BNV1BSU0doLUlLdFZsc2xCWWJ1TGxSM1JwOXhvZUswU0pQdk5xaEY3MVRRQmN1Vk14WG5uOExmMk9xeDhKZlRKcW5LaVVxTw?oc=5",
+   "date": "2026-11-08T09:52:00.000Z"
+  },
+  {
+   "title": "검찰총장 후보추천위 내주 개최 불발...인선 절차 미뤄져",
+   "link": "https://news.jtbc.co.kr/article/NB12327069",
+   "date": "2026-11-08T09:38:38.000Z"
+  },
+  {
+   "title": "UFC 회장이 백악관 대변인으로?…트럼프의 '파격 제안'",
+   "link": "https://news.jtbc.co.kr/article/NB12327050",
+   "date": "2026-11-08T09:35:06.000Z"
+  },
+  {
+   "title": "김민석 \"소방공무원 국가직 전환에 맞게 국비 지원 늘려야\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE83SkhHWFlIalItTGlEa3dnYXJPTkRfNmhuMi1lYmU4T19WLW1Eb0VXZnNaOXRiVEkzbWpDdkc2MllUZ1owUkFqQjFHNTlVWVdtSy1fSg?oc=5",
+   "date": "2026-11-08T09:35:00.000Z"
+  },
+  {
+   "title": "내년 1월 '중동전' 결판나나…헤그세스 감싼 트럼프, 속내는",
+   "link": "https://news.jtbc.co.kr/article/NB12327045",
+   "date": "2026-11-08T09:32:40.000Z"
+  },
+  {
+   "title": "JTBC",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE44b0tQVUZ3dG5obzd1YjdHbjZlREJIS0hEXzhmMlJtZ0lGQk1nYjFtTWxsTFVvcEt6TGZ4RFZIQWxTMWpFc20xXw?oc=5",
+   "date": "2026-11-08T09:12:34.000Z"
+  },
+  {
+   "title": "국민의힘, 민주 ‘신천지 의혹’ 역공 계속…\"야당은 8개월 털더니 여당은 밀실 열람으로 덮나\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5EbTQwc0YxQVFfSHZmNEhmZE83RENOTzhnMnQzU09KRTdSbm5xRHVBUHJTX01heHd6eFRVSmZYY2swZVRZemJ4TXZ3MDRrTUJ2dEp2OQ?oc=5",
+   "date": "2026-11-08T08:16:00.000Z"
+  },
+  {
+   "title": "배우 김수현, 허위사실 유포한 김세의 재판에 증인 소환",
+   "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBsSWowOTdJY2F4R25zU2ljX2hnVkV1NWduM19VYlVsS19JT1JJZzd3SVRhQXdFLXFMeV9tVkJEUVA2Z0p2TGpxakk1UDBwM0N3UHFNS2RfX2hoeTdVWjRnWTFnMkFoNjFVdHc?oc=5",
+   "date": "2026-11-08T08:10:00.000Z"
+  },
+  {
+   "title": "[속보] 프로야구 삼성, 12년 만에 한국시리즈 정상 탈환…통산 9번째 V",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBuZXA2Tm1JemdwWWRmM09zNlFEeGpPWW95STlrSjkxeGxDcV9MRzRxZnFhYmZ3c2hWLWRGNHZrMTlPTFB0NUdNaHBuNFJubTJObGNnYQ?oc=5",
+   "date": "2026-11-08T08:06:00.000Z"
+  },
+  {
+   "title": "이스라엘, 야권 아이젠코트에 연정 구성권…네타냐후 실각 가능성 커져",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBHVmQ2R3ZkWTBrcEwtdmpGYUJIYzc2U2JfczloSExROWJWczBwNnM0WklRcndWQXpNNVBqa0J5U1JSRWUyS1NFWTRfOXhtbU43RkpSVQ?oc=5",
+   "date": "2026-11-08T07:54:00.000Z"
+  },
+  {
+   "title": "아침&",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9ITTA3MmNOaDBNWXpSYjRsUjVmYk0zTnctWTJrbldyYnNqYnZhczlUbG5UTGJYVDU4WkM0SERIT2IySXVYZktvcg?oc=5",
+   "date": "2026-11-08T07:43:51.000Z"
+  },
+  {
+   "title": "11월 7일 (토) 뉴스룸 다시보기",
+   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9HazZ6VkptVnhSTXcwRkZqQnVhdU5WLTVrLXV4UlVtQmgxMUlmSDM2REZlRDRSVEtPbjVON2Q3NHBSMlUxM242Z09MZS1IQlZFTlE?oc=5",
+   "date": "2026-11-08T06:53:06.000Z"
+  },
   {
    "title": "계란 한 판 7,354원, 전년 대비 13.2% 상승...고병원성 AI 확진 소식에 계란값 우려",
    "link": "https://news.jtbc.co.kr/article/NB12327033",
@@ -18,139 +143,14 @@
    "date": "2026-11-08T06:19:00.000Z"
   },
   {
+   "title": "코스피 폭락에 상장사 3곳 중 1곳 ‘최저가’...국민의힘 \"독감을 폐렴으로 키워\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBBaUtNREx3Q3pFTUtGZVY3Q3pjUktoLTVERlF3VWRoTDhWSTlyR1BVRThBNVRqdTQ5ZEZJNXZnNVdPSGduZXdhQm9iNTVnV2drT214dg?oc=5",
+   "date": "2026-11-08T05:46:00.000Z"
+  },
+  {
    "title": "진성준 국방위원장 \"미, 전작권 전환 기존 합의 확인\"…방미 성과 발표",
-   "link": "https://news.jtbc.co.kr/article/NB12327025",
-   "date": "2026-11-08T05:34:43.000Z"
-  },
-  {
-   "title": "젠슨 황 딸, 한국 안 온다…부총리 면담부터 기업 방문까지 줄줄이 무산",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5OTFFaMThxLW95RlpYcFE4a0JOVmhDYzZ2WFBVNXVtVmlJd0JhMTQtSXdrWWRONVBRZHpqZElmbHZzc1Z6dWo2bUpycVFaOHNIM2JBWg?oc=5",
-   "date": "2026-11-08T05:27:00.000Z"
-  },
-  {
-   "title": "덤프트럭에 새겨진 안중근·유관순…시민 가슴 울렸다",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5hcGVVb0NrbElNdWdMOVNlOVE0d2RXWlFBUkxpQlNzeXl3Y3BFT3ctVXZiMlJsLWlDMUJGM3VTengtUEtWdENDZFowUjN5empua29n?oc=5",
-   "date": "2026-11-08T05:03:12.000Z"
-  },
-  {
-   "title": "장동혁 \"누구 한 사람 데려온다고 중도확장 안돼\"…당내 분란 경고",
-   "link": "https://news.jtbc.co.kr/article/NB12327021",
-   "date": "2026-11-08T04:56:10.000Z"
-  },
-  {
-   "title": "\"6명 사망\" 충격 휩싸인 폴란드…총격범 집엔 ‘시신 3구’",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5ncFY3X0xNdDBIRXZpOHdJN2RrUTRWcERRMi1xSVZfVlJhSzViRGo1YjlKQzNWTmJsQm5xLVNBNlhONklYSG95S3FINTZ6cDlOVGEtRg?oc=5",
-   "date": "2026-11-08T03:06:04.000Z"
-  },
-  {
-   "title": "만취 운전 30대, 신호대기 중 ‘쿨쿨’…벌금 1300만원",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE11Qll2U191ak5jVDhSaXItQWZ1Y3B4eEVaejEwYTRNd0lXa01mVHEzQ0d0QXREMzZpdXA0aVJLZWhLNDBSOVFKeDg3RFdhNGlSV1phNg?oc=5",
-   "date": "2026-11-08T03:06:00.000Z"
-  },
-  {
-   "title": "서울 아파트 매물 훅 늘었다…집값은? 다 올랐는데 '여기만'",
-   "link": "https://news.jtbc.co.kr/article/NB12327019",
-   "date": "2026-11-08T03:03:25.000Z"
-  },
-  {
-   "title": "알래스카 초접전…'아직 모르는데' 트럼프는 \"이겼다\"",
-   "link": "https://news.jtbc.co.kr/article/NB12327017",
-   "date": "2026-11-08T02:56:59.000Z"
-  },
-  {
-   "title": "김정우 국정상황실장 사의…\"470일 쉼 없이 달려\" 후임에 김태근 내정",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBRaWdFVjZON3o3akxndV9ranEyeHU3cl9zQUhrNVZrcFFRVzkwVzhWZmpydEh4QUp0Und3aWk1WHZHUXhWdFFkbm5qOWhoMHlWUmZpeQ?oc=5",
-   "date": "2026-11-08T02:43:00.000Z"
-  },
-  {
-   "title": "이 시각 뉴스룸",
-   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1RTGQ1T0pIYnhqSFRJNE1WWDBGU3RGOE9Ra2tZajRLeFMtR0gxSnpneEo4V3JnbTVyWmpqREpHZm96ZmpXZ296bA?oc=5",
-   "date": "2026-11-08T02:41:54.000Z"
-  },
-  {
-   "title": "프랑스 고물가·교육 시위 4주째 격돌…전국서 충돌·최루가스 발사",
-   "link": "https://news.jtbc.co.kr/article/NB12327016",
-   "date": "2026-11-08T02:13:20.000Z"
-  },
-  {
-   "title": "블랙핑크 지수, 에이티즈 산·우영 ‘냉부해’ 출격",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1JRWRfSG5ldmVwcm9PcXZ4R21Beng1Mi1JZi15Zk9tSFVaWlBxQzlpcFlVTWFaTjhScmFOUEZGTlc3eTFOa0k3RWNabHFqSzVNRm9QMQ?oc=5",
-   "date": "2026-11-08T01:11:00.000Z"
-  },
-  {
-   "title": "폴란드 ‘무차별 총격 테러’ 범인 집서 시신 3구 추가 발견…가족 추정",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5hUFZEZFZ6YURNTGliM0tJOU55TUV3SUhPTzBXSXp4R1VSZ2lsMF93WjlIdV9ubVhGdVlmS3VPNEx4NVROZDNLR0wtQlVjYkN0dHJ2eg?oc=5",
-   "date": "2026-11-08T00:58:00.000Z"
-  },
-  {
-   "title": "투어스 도훈, 질투였다 ‘놀면뭐하니?’ 청량한 등장",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5yTGtiWTJBZVNKWUpFbXN3aHNEX3F4WTFIZmRPQVpwdHNMOGUtZTltSUlOVGF5M0lUZVRYWE1pTUJObExvZWtYMngtbGRaY1BINmZtcA?oc=5",
-   "date": "2026-11-08T00:58:00.000Z"
-  },
-  {
-   "title": "SLL, ‘파이널 테이블’ OST Part.2 일레인(Elaine) ‘Till the End’, 오늘 오후 6시 공개",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9vem9sbS04eURPOXVIcGJQZWM3RjhjR3dJc0tya0RHX2V1NWlTaXJRdDdfSk5jNEJSZ1dKRjFnR0RlV21xa0hsSXpKMEFic3NrejdhMA?oc=5",
-   "date": "2026-11-08T00:40:00.000Z"
-  },
-  {
-   "title": "폴란드 크라쿠프 도심서 총기 난사로 6명 사망…범인은 극우사상 심취한 폴란드인",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE41ZWZIRHhtVDhRbkNCazdzUEFMLUthcVdBUWdIdjROR0RrRnd0cV9rUjBwSGtjSFlNUDJNY2VqU0VzNGpEYzEyRW5DY3h5TnRWSzB5dA?oc=5",
-   "date": "2026-11-07T23:21:00.000Z"
-  },
-  {
-   "title": "트럼프 \"UFC 회장에 백악관 대변인 제안\"…실제 인선 여부는 불확실",
-   "link": "https://news.jtbc.co.kr/article/NB12327006",
-   "date": "2026-11-07T23:17:12.000Z"
-  },
-  {
-   "title": "\"배달기사가 우리 음식 먹더라\" 사진 확산…배민 \"훼손된 음식, 기사 비용 부담\"",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBfWkxscHppdWhpSFU1ZlRwNFBBZGpMZG5XbGNEVWhFSDM3Qm56QU1pVHBSeWhwdnlNOFNvckFPYVJJTDFQNHNFWnBNbFRDaGNaWmd3?oc=5",
-   "date": "2026-11-07T22:47:08.000Z"
-  },
-  {
-   "title": "JTBC 뉴스룸",
-   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE0wVUlZRmwtOTdSMWh5c0hCNklxR3FxYzM0cFQ5VFpsUlVFU0VibS1fVjFvM1JmLTNZak5pVXo1Tm1jNmZrZ0NraQ?oc=5",
-   "date": "2026-11-07T21:42:35.000Z"
-  },
-  {
-   "title": "강남 병원서 무릎 인공관절 수술한 60대 숨져…경찰 수사 착수",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1SSFZ1N1N6alh4SElKb3J2dk5wUUZpMmFEZUVDcHMxWFBVU0hvX0tkZmdwSk1KazdSX2JoSlhSVzhXbDA1YklqblRDbVdSR3A1VlFz?oc=5",
-   "date": "2026-11-07T18:48:17.000Z"
-  },
-  {
-   "title": "젠슨 황, ‘중국 스파이’ 여성과 연인 관계?…미국 정보당국 메모 파장",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1PZDB5R01uRlVsUjM4VjZWUVdSLXRwXzdfUjRWVk9Qbmp2a1RYM3ZFZk5lMFE3Qkc2cTRyNXl5czQybkN1QjRKb2IyZlJnMjY2T195dA?oc=5",
-   "date": "2026-11-07T15:20:00.000Z"
-  },
-  {
-   "title": "‘젠슨 황 장녀’ 매디슨 황, 방한 하루 앞두고 돌연 취소…\"가족 사유\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5tLVhERjN5ZjB0SVlvVFhjaVJtQU4ycFRDNVN3OXYta1VvcTBsZFI5VkVXV2lUVW13QWFfVGhncFdUeWlYVmJ0dFZvWEZMVFZJR3pOaQ?oc=5",
-   "date": "2026-11-07T14:28:00.000Z"
-  },
-  {
-   "title": "11월 7일 (토) 뉴스룸 다시보기",
-   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9HazZ6VkptVnhSTXcwRkZqQnVhdU5WLTVrLXV4UlVtQmgxMUlmSDM2REZlRDRSVEtPbjVON2Q3NHBSMlUxM242Z09MZS1IQlZFTlE?oc=5",
-   "date": "2026-11-07T12:23:05.000Z"
-  },
-  {
-   "title": "이가혁 라이브",
-   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBfelVfTmVUR1BCNGNZVzZzMGVMS1g2Z3c5SXhkbXdteE90Tmlob1ZxMHpIb0J0UDltNDdrZE82aEJWSXgzcXFOYQ?oc=5",
-   "date": "2026-11-07T12:14:09.000Z"
-  },
-  {
-   "title": "[날씨] 서울서 첫 얼음 관측…입동 추위에 첫눈 가능성",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9LbUFSV2JiLWRhN2MzZ2RoQVEzWWgxR3owd0J4MUN1eGg3Z3BLRDlRM0pKcDZhQ1RmNHlxWFAtQV9ISzI4X1N2cV9uVU9HUHNVUFoyTQ?oc=5",
-   "date": "2026-11-07T11:43:00.000Z"
-  },
-  {
-   "title": "[인터뷰] ‘류현진의 길’ 선택한 하현승…\"한국서 배우며 더 성장 하고파\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE8wMVpPSXhBMmVTT0ZfUm5VWXdqWU1XZUVXTS1semM2Tnd0RGNHVWVObHo4R1FJVTU4Q3lHZWYyUHRjTjBTM0dZYUlQSnladU5rRFFFSA?oc=5",
-   "date": "2026-11-07T11:40:00.000Z"
-  },
-  {
-   "title": "우주선도 반도체도 만드는 금손…‘문래동 장인’ 맥 끊긴다",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5Tc1NVcm1WaFdrQjlLZE9iMF9MeU93eFhSVTBuTEdiejZLSFZieGhRaHpqMGhXY0hqZlJueS1hbmwzNWdHczJsR01KTS11SFhFM3lTUA?oc=5",
-   "date": "2026-11-07T11:01:00.000Z"
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5YVE1PYjZhZVY1V0dNaGgtTVF2ZlBWeGZwNDhDYmZ6SV9hUjlCNnVvRUxHOUxkb0RBdXFoZDBHVkw2a2ZURTNkUFFSV0RHOTNud0NpOQ?oc=5",
+   "date": "2026-11-08T05:34:00.000Z"
   }
  ]
 }
