@@ -1,7 +1,27 @@
 {
- "updatedAt": "2026-11-08T14:16:25.141Z",
+ "updatedAt": "2026-11-08T18:53:32.054Z",
  "source": "JTBC 이슈피드 + 구글뉴스(JTBC)",
  "items": [
+  {
+   "title": "구룡마을 화재",
+   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5DdEItbndqbk5uTWRLbXdhLWt1Wm1QUU9oaUJCUzZJVzMybkx0SVJxaVpVLUw3VUZDYWdFTWgwMEJYdDFFWTF2TFlQMUh2dlhQWEVz?oc=5",
+   "date": "2026-11-08T17:37:11.000Z"
+  },
+  {
+   "title": "장르가 머니",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE85YXQ3UTU4YWstaXc2Wk0waDU1Y0hQQUlvaTlhR2FiUENLOVRVZkxpWTVEeS05NXJGb0llbUVudGxkcjZNZE93ZA?oc=5",
+   "date": "2026-11-08T16:34:09.000Z"
+  },
+  {
+   "title": "강원 인제에 올가을 첫 대설주의보…1cm 내리다 밤 11시 해제",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9jNnF4Z3E0RG54NzlQZjAteFNrTFhUQTE0RGc3NkpoYllVd1VNcy10ZE1HS3dBdDJVbUhNcUtZQkt0OVdGZDBNN0hxY1pCN3YyT2kwRg?oc=5",
+   "date": "2026-11-08T14:54:00.000Z"
+  },
+  {
+   "title": "‘닥터X’ 김우석, 충격의 두 얼굴…전국환 살해 시도",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5TM3F6WDE2c2lxYmNKWXE2NFFaeld6WWwwTDFnN3ZsNDZsandvdGZxVkd2ZFZxTU11NXN0UkJwZVd0VUZGRzlEVmYwcjRvU284MkgwZw?oc=5",
+   "date": "2026-11-08T11:58:00.000Z"
+  },
   {
    "title": "이 시각 뉴스룸",
    "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5YQkNzVlN3WGRaVVhGSmZFRTNPSFZ5UUpsYmVqRm81aVN0OUNrUDlCNG9sSWxHU3dyaUpCNm5YbzhYMFFhVVU0NA?oc=5",
@@ -131,26 +151,6 @@
    "title": "계란 한 판 7,354원, 전년 대비 13.2% 상승...고병원성 AI 확진 소식에 계란값 우려",
    "link": "https://news.jtbc.co.kr/article/NB12327033",
    "date": "2026-11-08T06:30:32.000Z"
-  },
-  {
-   "title": "서울 ‘첫눈’ 관측…직년보다 26일 빨라",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9Lc3ZaREZyQk91WUxYN25VcFlCaExEeVNKa2FYX2M5ODBHVlNxNUpKVGR3SU12SENwaFZxVmlCLW53dXprV3ZqeU0wZWEyc2NkdHNGYw?oc=5",
-   "date": "2026-11-08T06:19:00.000Z"
-  },
-  {
-   "title": "‘치매’ 단어 뜻, ‘어리석다’…명칭 변경 논의에 의료계 ‘신중’ 또는 ‘반대’",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE56N2tHWU5MQW93cUZxUDZLeC02UE40SGpQZWQ5THc5V0dZLV84QkM1MmFBaFZNRC1BQjJsSXd6b2xpelNnanJIM1RNak5UR1FlaHJMWg?oc=5",
-   "date": "2026-11-08T06:19:00.000Z"
-  },
-  {
-   "title": "코스피 폭락에 상장사 3곳 중 1곳 ‘최저가’...국민의힘 \"독감을 폐렴으로 키워\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBBaUtNREx3Q3pFTUtGZVY3Q3pjUktoLTVERlF3VWRoTDhWSTlyR1BVRThBNVRqdTQ5ZEZJNXZnNVdPSGduZXdhQm9iNTVnV2drT214dg?oc=5",
-   "date": "2026-11-08T05:46:00.000Z"
-  },
-  {
-   "title": "진성준 국방위원장 \"미, 전작권 전환 기존 합의 확인\"…방미 성과 발표",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5YVE1PYjZhZVY1V0dNaGgtTVF2ZlBWeGZwNDhDYmZ6SV9hUjlCNnVvRUxHOUxkb0RBdXFoZDBHVkw2a2ZURTNkUFFSV0RHOTNud0NpOQ?oc=5",
-   "date": "2026-11-08T05:34:00.000Z"
   }
  ]
 }
