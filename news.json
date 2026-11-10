@@ -1,21 +1,41 @@
 {
- "updatedAt": "2026-11-10T18:14:48.299Z",
+ "updatedAt": "2026-11-10T23:31:59.057Z",
  "source": "JTBC 이슈피드 + 구글뉴스(JTBC)",
  "items": [
+  {
+   "title": "'청해부대 우회 파병' 우려 목소리…국회 \"임무 더 명확히\"",
+   "link": "https://news.jtbc.co.kr/article/NB12327478",
+   "date": "2026-11-10T23:24:55.000Z"
+  },
+  {
+   "title": "'금융보안원'마저 뚫렸다…해킹 안전지대는 어디에",
+   "link": "https://news.jtbc.co.kr/article/NB12327473",
+   "date": "2026-11-10T23:03:42.000Z"
+  },
+  {
+   "title": "첩보 받았지만 '대놓고' 감쌌다…트럼프·젠슨 황 수상한 밀월",
+   "link": "https://news.jtbc.co.kr/article/NB12327481",
+   "date": "2026-11-10T22:49:31.000Z"
+  },
+  {
+   "title": "\"한덕수 석방 땐 진짜 전쟁\"…대법원 향해 '날 세운' 민주당",
+   "link": "https://news.jtbc.co.kr/article/NB12327474",
+   "date": "2026-11-10T22:47:20.000Z"
+  },
+  {
+   "title": "\"이란 대규모 공격 필요없다\"는 미국…대신 숨통 조이기?",
+   "link": "https://news.jtbc.co.kr/article/NB12327484",
+   "date": "2026-11-10T21:50:12.000Z"
+  },
+  {
+   "title": "미 전쟁부장관, 탄핵안 발의에 \"국가 파괴하는 사보타주\"",
+   "link": "https://news.jtbc.co.kr/article/NB12327467",
+   "date": "2026-11-10T15:13:49.000Z"
+  },
   {
    "title": "미 중간선거 후 첫 대면한 한미 외교...'핵잠 연료·농축' 내용은 함구",
    "link": "https://news.jtbc.co.kr/article/NB12327460",
    "date": "2026-11-10T13:24:54.000Z"
-  },
-  {
-   "title": "하루만에 '260조' 증발시킨 CEO…분노의 주주들 집단소송",
-   "link": "https://news.jtbc.co.kr/article/NB12327405",
-   "date": "2026-11-10T12:56:54.000Z"
-  },
-  {
-   "title": "\"한덕수 풀어주면 진짜 전쟁\"…민주당, '구속 만료' 앞두고 조 대법원장에 총공세",
-   "link": "https://news.jtbc.co.kr/article/NB12327456",
-   "date": "2026-11-10T12:47:50.000Z"
   },
   {
    "title": "[비하인드 뉴스] \"국회 로텐더홀서 무릎 꿇자\" 윤상현 제안에 이진숙 반응",
@@ -30,7 +50,7 @@
   {
    "title": "[단독] 남학생 모아놓고 \"XX하면 벌금\"…‘금욕방’ 만든 상담교사",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1iMlVram9wOE1CX0RXQjg4OUZMMWg0YnRST1FGZlNIYy1QMk1kNXlIOEJfc0JHV280eU0wX0FaQjlhVmpxNV92ejhjQXdQVG1MS3ktMw?oc=5",
-   "date": "2026-11-10T12:25:21.000Z"
+   "date": "2026-11-10T12:23:00.000Z"
   },
   {
    "title": "\"죽인다\" \"넌 남자도 아녀\" JTBC 기자에 소리친 박왕열 / 풀버전",
@@ -43,14 +63,9 @@
    "date": "2026-11-10T12:12:39.000Z"
   },
   {
-   "title": "개표상황표 '은닉·위조' 정황…특검, 선관위 압수수색",
-   "link": "https://news.jtbc.co.kr/article/NB12327416",
-   "date": "2026-11-10T12:05:42.000Z"
-  },
-  {
-   "title": "금융권 보안 점검하는 금융보안원도 뚫려...\"금융권 안전지대 없어\"",
-   "link": "https://news.jtbc.co.kr/article/NB12327454",
-   "date": "2026-11-10T11:55:33.000Z"
+   "title": "개표상황표 ‘은닉·위조’ 정황…특검, 선관위 압수수색",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBUby05dWl3MkwyQVd0UG1fTGhXZFQ3VVZOUUhBdktJZ29hcVFGaExDT0hzQXFFNlN1VGpoa1pqSkN1Wm9nNXg2c0RtQk9uT2E0b0ZUTA?oc=5",
+   "date": "2026-11-10T12:05:00.000Z"
   },
   {
    "title": "1554만원 벌어 남는 건 340만원 뿐",
@@ -58,14 +73,19 @@
    "date": "2026-11-10T11:54:32.000Z"
   },
   {
-   "title": "'청해부대 작전 확대' 이란 첫 반응…국회 \"임무 더 명확히\"",
-   "link": "https://news.jtbc.co.kr/article/NB12327429",
-   "date": "2026-11-10T11:29:54.000Z"
+   "title": "사건반장",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9XaUt1SWZ2ckpmTmhmYTZ6bHVYc0FzaGd3MHpkWmFNdHVOcDYxOXg2UnF2cmxWSWVNdmdYeE8wSXRRR0JsTENxcg?oc=5",
+   "date": "2026-11-10T11:50:00.000Z"
   },
   {
-   "title": "공화당 손으로 '헤그세스 탄핵' 4표 이탈 땐…트럼프 초비상",
-   "link": "https://news.jtbc.co.kr/article/NB12327397",
-   "date": "2026-11-10T11:22:43.000Z"
+   "title": "공화당 손으로 ‘헤그세스 탄핵’ 4표 이탈 땐…트럼프 초비상",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9zNmd1NmdTYUUtNHhmblZ1UDdWVGlURzZLNkw4UnBEa2RtWTdTX0d0Y3ZCUkJMVmlaRXVSaVpxbGtBTFlBWnFLNXA1YXhrQVJCN0dVTQ?oc=5",
+   "date": "2026-11-10T11:22:00.000Z"
+  },
+  {
+   "title": "42살 정체불명 그녀 ‘첫 등장’ 시점…\"칩 확보\" 호언장담",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5FRFhMTmpIUXJCdW5ETGZnWlVoaWlibzdHSWdadmlRTHNsNFV3YTFrZGpUOGxkWXdmWHF2MnBuT3ZTYXlWeUp5MnREa29Hekg5aWN1aQ?oc=5",
+   "date": "2026-11-10T11:16:00.000Z"
   },
   {
    "title": "트럼프 결국 \"도둑 맞았다\"…보수진영까지 \"그만해라\"",
@@ -103,6 +123,11 @@
    "date": "2026-11-10T08:19:39.000Z"
   },
   {
+   "title": "중대장에 공포탄 맞은 대대장…발끈해 2발로 되갚았다가 결국",
+   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1ta3UyY0FhekFsSHdTb3QzZlZsemtjSEE5aEF5Ti02RXBFSXVRNGtWOWxDbGYzN0p3c0RfTmM0RGZxSXczd1pWUDBQMlZmXzdnXzNn?oc=5",
+   "date": "2026-11-10T08:19:38.000Z"
+  },
+  {
    "title": "은마 재건축 부담금 평균 4억6000만원?…강남구 \"2035년 준공 가정한 금액\"",
    "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1NN3JzUlFjRHhWQXlaRW96YTR1TWs3al9aUWlJTUxLakV3WWpKNmtyQjYzUFhwbklNYzROa2pUM1l0WWpvaERTYWp5Z1JPcnFGVHA0?oc=5",
    "date": "2026-11-10T08:19:38.000Z"
@@ -118,39 +143,14 @@
    "date": "2026-11-10T07:54:58.000Z"
   },
   {
-   "title": "[단독] 공소청, 귀국한 추미애 지사 아들 출국금지…재기수사 마무리 수순",
-   "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9GeWt6RjZkVjRlRnkzdzF1TlV4OWRTMlk5SEVGVkt1aE9NRjE0SVZVa3UyMzFEX0t3ZUdiNWhpWV9GZk1VSmVGcXNONHlkRTlvcXZUVEVqdFFGM2lrTkxJNkp5X1hGTU5oaWc?oc=5",
-   "date": "2026-11-10T07:45:48.000Z"
+   "title": "전화로 살해 협박하고 집까지 찾아간 40대…\"술 취해 말다툼하다가\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE8yQkRyUmYtcFdSb0Zua1dFMEFpN0lyMU5sa2g0WDBzM3Y5NDl2RWlZakxKZzNXOFpmYUNoVlVERW1sTXhVTHZlVFJpWmlBdlBodkhNbQ?oc=5",
+   "date": "2026-11-10T07:52:00.000Z"
   },
   {
    "title": "‘음주사고’로 재판받던 중 또 ‘음주 뺑소니’…\"죽을 뻔했다\"",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5FbFdGTWoxbVIyb3dJN194QU9kRVB5QTNMZlExNmR1V21NSG5TcHNucDVqd1otU3hNeXh6YjNLbWdEcnNFeGd4OXVXdGFZWWlLUEFtMw?oc=5",
    "date": "2026-11-10T07:35:00.000Z"
-  },
-  {
-   "title": "차량 사이로 빼꼼 드러난 알몸…대낮 공영주차장서 무슨 일이?",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5USEM5WVU5SnJGYndUb0YwSTJmNXNzN1p6bENjMXVsQXRsVkZNdk8tYVcwMjU5eDFLZ1ozdjVfZnExdlduV3VsajhDUzYzS0MyelR0QQ?oc=5",
-   "date": "2026-11-10T07:34:00.000Z"
-  },
-  {
-   "title": "\"엔비디아 GPU 확보 문제없다\"…젠슨 황 불륜 상대, 중국 큰손들에 투자 제안",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5GS1E4UUQ0cHgxcVU0eGVFZUlONWNzaWRNWndoXzMwdzk5TjByekVPaVQzZ3ViRHhGcGFlcTFhOEhvOEJzUDhsOGdQZTh3dlg4NUhHcg?oc=5",
-   "date": "2026-11-10T06:44:00.000Z"
-  },
-  {
-   "title": "외국산 마그네슘이 ‘한국산’으로?…490억어치 둔갑 업체 적발",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE92LVhiLWh2bHlUMkpUcENlTWVlaWdaTERXU1BHVWpMRHFjVlkyeTM3NDBRZGdKaktHVDh5Q3FyWXU5NWk5T0NrVzlQeWxYcFpvcVlFYw?oc=5",
-   "date": "2026-11-10T06:37:00.000Z"
-  },
-  {
-   "title": "코스피 장중 5300선 뚫었다…코스닥도 급등, ‘매수 사이드카’ 잇따라",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE95THJhQVdDVVZ1eFNIS29RSzkzTzFiWE1WbGZwY0twMTVFVW5Gbm9xV2xEdWJxT3FGWmdNOFhRLUhHR1NoMklkZXVET3pUZDgzS2xIcw?oc=5",
-   "date": "2026-11-10T06:36:00.000Z"
-  },
-  {
-   "title": "이재명 \"알박기 전부 체크, 총리가 보고하라\"…‘전광훈 교회’ 후속 조치?",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFA0R3NTZV93OHBlejVDQlRmaDl4TWdVWDFOQ0dqdmR2OE0weXBXQlR5Y2pCeDN4OVVLaVg0NEVNaWRETDRoUFdYSkZ1Q05zX3BQdTlFdA?oc=5",
-   "date": "2026-11-10T06:34:40.000Z"
   }
  ]
 }
