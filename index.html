@@ -1492,20 +1492,22 @@
       weatherDisplayEl.title = weatherBaseInfo.title;
     }
 
-    // ====== 미세먼지 등급 산정 (WHO 기준) ======
+    // ====== [수정] 미세먼지 등급 산정 (첨부 이미지 기준 반영) ======
     function getDustGrade(pm10, pm25) {
-      // WHO 24시간 평균 기준을 토대로 4단계 등급 산정
-      // PM2.5: 15, 25, 50 / PM10: 45, 100, 150
-      // 음수로 넘어온 값은 해당 지표를 무시한다.
       let grade25 = -1, grade10 = -1;
+      
+      // 초미세먼지(PM2.5): 좋음(0~15), 보통(16~25), 나쁨(26~37.5), 매우나쁨(38 이상)
       if (pm25 != null && pm25 >= 0) {
-        grade25 = pm25 <= 15 ? 0 : pm25 <= 25 ? 1 : pm25 <= 50 ? 2 : 3;
+        grade25 = pm25 <= 15 ? 0 : pm25 <= 25 ? 1 : pm25 <= 37.5 ? 2 : 3;
       }
+      
+      // 미세먼지(PM10): 좋음(0~45), 보통(46~50), 나쁨(51~75), 매우나쁨(76 이상)
       if (pm10 != null && pm10 >= 0) {
-        grade10 = pm10 <= 45 ? 0 : pm10 <= 100 ? 1 : pm10 <= 150 ? 2 : 3;
+        grade10 = pm10 <= 45 ? 0 : pm10 <= 50 ? 1 : pm10 <= 75 ? 2 : 3;
       }
+      
       const grade = Math.max(grade25, grade10);
-      const labels = ['양호', '보통', '나쁨', '매우나쁨'];
+      const labels = ['좋음', '보통', '나쁨', '매우나쁨'];
       const classes = ['dust-good', 'dust-moderate', 'dust-bad', 'dust-verybad'];
       return { label: labels[grade], className: classes[grade] };
     }
@@ -1761,18 +1763,12 @@
       });
     }
 
-    // ===== [수정] Firestore 동기화: 서버 데이터와 로컬 데이터를 메모 id 기준으로 병합 =====
-    // - 원인 ①: setDoc 전체 덮어쓰기 → merge 옵션 추가 (saveState)
-    // - 원인 ②: onSnapshot 무조건 덮어쓰기 → 병합 후 반영
-    // - 원인 ③: 로그인 직후 서버 데이터로 로컬 메모 유실 → mergeMemos로 보존
-    // - 원인 ④: 다중 탭/기기 간 서로 덮어씀 → 병합 후 서버 재반영
     function syncFromFirestore(uid) {
       if (unsubscribeFirestore) unsubscribeFirestore();
       const userDocRef = doc(db, "users", uid);
 
       unsubscribeFirestore = onSnapshot(userDocRef, (docSnap) => {
         if (!docSnap.exists()) {
-          // 신규 사용자: 현재 로컬 데이터를 서버에 초기 저장
           saveState();
           return;
         }
@@ -1794,7 +1790,6 @@
         };
         saveLocalBackup();
 
-        // 로컬에만 있던 메모가 병합으로 복구된 경우, 서버에도 반영
         if (mergedMemos.length !== serverMemos.length) {
           saveState();
         }
@@ -1811,7 +1806,6 @@
       });
     }
 
-    // ===== [수정] setDoc에 merge:true 적용 (문서 전체 덮어쓰기 방지) =====
     async function saveState() {
       saveLocalBackup();
       if (currentUser) {
