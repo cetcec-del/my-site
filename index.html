@@ -74,7 +74,13 @@
     .sep { color: var(--border-color); }
     .market-up { color: var(--up-color); }
     .market-down { color: var(--down-color); }
-    
+
+    /* 미세먼지 등급별 색상 */
+    .dust-good    { color: #f1c40f; } /* 양호 (노랑) */
+    .dust-moderate{ color: #3498db; } /* 보통 (파랑) */
+    .dust-bad     { color: #e74c3c; } /* 나쁨 (옅은 빨강) */
+    .dust-verybad { color: #8B4513; } /* 매우나쁨 (갈색) */
+
     button#refreshStockBtn { background: none; border: 0; padding: 2px; cursor: pointer; color: var(--text-muted); display: inline-flex; align-items: center; }
     button#refreshStockBtn:hover { color: var(--text-color); }
     button#refreshStockBtn.spin svg { animation: spin 0.8s linear infinite; }
@@ -118,15 +124,11 @@
     .link-actions { display: flex; opacity: 0; transition: opacity 0.2s; gap: 0.2rem; }
     .link-wrapper:hover .link-actions { opacity: 1; }
 
-    /* News Component Styling (수정됨: 최대 2줄 표시) */
+    /* News Component Styling */
     .news-list { display: flex; flex-direction: column; gap: 0.4rem; overflow-y: auto; list-style: none; margin: 0; padding: 0; }
     .news-item { text-decoration: none; color: var(--text-color); padding: 0.35rem; border-radius: 6px; border-bottom: 1px dashed var(--border-color); transition: background 0.2s; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
     .news-item:hover { background: rgba(0,0,0,0.04); }
-    .news-item-title { 
-      font-size: 0.86rem; font-weight: 600; line-height: 1.35; 
-      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; 
-      overflow: hidden; text-overflow: ellipsis; flex: 1; 
-    }
+    .news-item-title { font-size: 0.86rem; font-weight: 600; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; flex: 1; }
     .news-item-time { font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; align-self: flex-start; margin-top: 1px; }
     #newsMsg { color: var(--text-muted); font-size: 0.75rem; margin-top: 4px; word-break: break-all; }
 
@@ -140,6 +142,8 @@
     .memo-item:hover, .memo-item.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
     .memo-item-title { font-weight: 600; font-size: 0.88rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .memo-item-date { font-size: 0.72rem; opacity: 0.8; margin-top: 0.2rem; }
+    .memo-number { font-weight: 800; margin-right: 0.4rem; color: var(--primary-color); }
+    .memo-item.active .memo-number { color: #fff; }
 
     .memo-editor { flex: 1; background: rgba(var(--card-bg-light), var(--card-opacity)); backdrop-filter: var(--card-blur); border-radius: 12px; border: 1px solid var(--border-color); padding: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; }
     [data-theme="dark"] .memo-editor { background: rgba(var(--card-bg-dark), var(--card-opacity)); }
@@ -1419,21 +1423,25 @@
             saveState();
             regionModalEl.classList.remove('active');
             updateWeather();
+            updateAirQuality();
           };
           regionGridEl.appendChild(chip);
         });
       }
     }
 
+    // ====== 날씨/미세먼지 갱신: 접속 시 1회 + 30분 간격 (동일 주기) ======
     function startClockAndDataUpdater() {
       updateDateTime();
       setInterval(updateDateTime, 1000);
 
       updateWeather();
+      updateAirQuality();
       updateStocks();
       refreshStockBtnEl.addEventListener("click", refreshAllWeatherStock);
 
-      setInterval(updateWeather, 30 * 60 * 1000);
+      setInterval(updateWeather, 30 * 60 * 1000);    // 일반 날씨: 30분
+      setInterval(updateAirQuality, 30 * 60 * 1000); // 미세먼지/초미세먼지: 30분
       setInterval(updateStocks, 5 * 60 * 1000);
     }
 
@@ -1452,18 +1460,75 @@
       currentDateTimeDisplayEl.textContent = `${yyyy}.${mm}.${dd}. (${day}) ${hours}:${mins}:${secs}`;
     }
 
+    let weatherBaseInfo = null;
+    let weatherDustHtml = '';
+
+    function renderWeatherDisplay() {
+      if (!weatherBaseInfo) return;
+      weatherDisplayEl.innerHTML = `${weatherBaseInfo.regionName} ${weatherBaseInfo.text} ${weatherBaseInfo.temp}°C${weatherDustHtml}`;
+      weatherDisplayEl.title = weatherBaseInfo.title;
+    }
+
+    // ====== [수정] 미세먼지 등급 산정 (WHO 기준) ======
+    function getDustGrade(pm10, pm25) {
+      // WHO 24시간 평균 기준을 토대로 4단계 등급 산정
+      // PM2.5: 15, 25, 50 / PM10: 45, 100, 150
+      // 음수로 넘어온 값은 해당 지표를 무시한다.
+      let grade25 = -1, grade10 = -1;
+      if (pm25 != null && pm25 >= 0) {
+        grade25 = pm25 <= 15 ? 0 : pm25 <= 25 ? 1 : pm25 <= 50 ? 2 : 3;
+      }
+      if (pm10 != null && pm10 >= 0) {
+        grade10 = pm10 <= 45 ? 0 : pm10 <= 100 ? 1 : pm10 <= 150 ? 2 : 3;
+      }
+      const grade = Math.max(grade25, grade10);
+      const labels = ['양호', '보통', '나쁨', '매우나쁨'];
+      const classes = ['dust-good', 'dust-moderate', 'dust-bad', 'dust-verybad'];
+      return { label: labels[grade], className: classes[grade] };
+    }
+
     async function updateWeather() {
       try {
         const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${currentRegion.lat}&longitude=${currentRegion.lon}&current=temperature_2m,weather_code&timezone=Asia%2FSeoul`;
-        const res = await fetch(weatherUrl);
-        const j = await res.json();
-        const temp = Math.round(j.current.temperature_2m);
-        const text = WEATHER_TEXT[j.current.weather_code] || "알 수 없음";
-        weatherDisplayEl.textContent = `${currentRegion.name} ${text} ${temp}°C`;
-        weatherDisplayEl.title = `${currentRegion.sido} ${currentRegion.name}`;
+        const weatherRes = await fetch(weatherUrl);
+        const weatherJ = await weatherRes.json();
+        const temp = Math.round(weatherJ.current.temperature_2m);
+        const text = WEATHER_TEXT[weatherJ.current.weather_code] || "알 수 없음";
+        weatherBaseInfo = {
+          regionName: currentRegion.name,
+          text,
+          temp,
+          title: `${currentRegion.sido} ${currentRegion.name}`
+        };
+        renderWeatherDisplay();
       } catch (e) {
         weatherDisplayEl.textContent = `${currentRegion.name} 날씨 --`;
       }
+    }
+
+    // 미세먼지/초미세먼지 갱신 함수 (날씨와 동일 주기)
+    async function updateAirQuality() {
+      try {
+        const airUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${currentRegion.lat}&longitude=${currentRegion.lon}&current=pm10,pm2_5&timezone=Asia%2FSeoul`;
+        const airRes = await fetch(airUrl);
+        const airJ = await airRes.json();
+        const pm10 = airJ.current?.pm10;
+        const pm25 = airJ.current?.pm2_5;
+
+        if (pm10 != null && pm25 != null) {
+          const pm10Num = Math.round(pm10);
+          const pm25Num = Math.round(pm25);
+          const grade10Only = getDustGrade(pm10, -1); // PM10만 반영
+          const grade25Only = getDustGrade(-1, pm25); // PM2.5만 반영
+          weatherDustHtml = ` <span class="${grade10Only.className}">미.${grade10Only.label}${pm10Num}</span> <span class="${grade25Only.className}">초.${grade25Only.label}${pm25Num}</span>`;
+        } else {
+          weatherDustHtml = ' <span style="color:var(--text-muted);">미세먼지 --</span>';
+        }
+      } catch (dustErr) {
+        console.warn('대기질 정보 로드 실패:', dustErr);
+        weatherDustHtml = ' <span style="color:var(--text-muted);">미세먼지 --</span>';
+      }
+      renderWeatherDisplay();
     }
 
     function showRate(el, rate) {
@@ -1563,8 +1628,9 @@
     async function refreshAllWeatherStock() {
       refreshStockBtnEl.classList.add("spin");
       await Promise.all([
-        updateWeather(), 
-        updateStocks(), 
+        updateWeather(),
+        updateAirQuality(),
+        updateStocks(),
         loadNewsList(document.querySelector('.news-list'), document.getElementById('newsUpdateTime'), document.getElementById('newsMsg'))
       ]);
       refreshStockBtnEl.classList.remove("spin");
@@ -1675,11 +1741,16 @@
     function syncFromFirestore(uid) {
       if (unsubscribeFirestore) unsubscribeFirestore();
       const userDocRef = doc(db, "users", uid);
+
       unsubscribeFirestore = onSnapshot(userDocRef, (docSnap) => {
         if (docSnap.exists()) {
           const serverData = docSnap.data();
           if (serverData && serverData.pages && serverData.pages.length > 0) {
-            appState = serverData;
+            const mergedState = {
+              ...serverData,
+              memos: Array.isArray(serverData.memos) ? serverData.memos : []
+            };
+            appState = mergedState;
             saveLocalBackup();
           }
           if (!appState.pages) appState.pages = [];
@@ -1689,11 +1760,14 @@
             currentRegion = appState.settings.region;
             try { localStorage.setItem("wsbar-region-obj", JSON.stringify(currentRegion)); } catch(e){}
             updateWeather();
+            updateAirQuality();
           }
           refreshUI();
         } else {
           saveState();
         }
+      }, (error) => {
+        console.error("Firestore 동기화 오류:", error);
       });
     }
 
@@ -2609,7 +2683,13 @@
       memoListEl.innerHTML = '';
       const query = (searchInputEl?.value || '').trim().toLowerCase();
       const allMemos = Array.isArray(appState.memos) ? appState.memos : [];
-      const sortedMemos = [...allMemos].sort((a, b) => Number(!!b.important) - Number(!!a.important));
+      const sortedMemos = [...allMemos].sort((a, b) => {
+        const impA = Number(!!a.important);
+        const impB = Number(!!b.important);
+        if (impA !== impB) return impB - impA;
+        return String(b.createdAt || '').localeCompare(String(a.createdAt || ''));
+      });
+
       const filteredMemos = query ? sortedMemos.filter(m =>
         String(m.title || '').toLowerCase().includes(query) ||
         String(m.content || '').toLowerCase().includes(query)
@@ -2631,11 +2711,22 @@
       const startIdx = (memoCurrentPage - 1) * MEMOS_PER_PAGE;
       const pageMemos = filteredMemos.slice(startIdx, startIdx + MEMOS_PER_PAGE);
 
-      pageMemos.forEach(memo => {
+      const totalCount = filteredMemos.length;
+
+      pageMemos.forEach((memo, idx) => {
         const item = document.createElement('div');
         item.className = `memo-item ${memo.id === selectedMemoId ? 'active' : ''}`;
         const title = document.createElement('div');
         title.className = 'memo-item-title';
+
+        const globalIndex = startIdx + idx;
+        const memoNumber = totalCount - globalIndex;
+
+        const numSpan = document.createElement('span');
+        numSpan.className = 'memo-number';
+        numSpan.textContent = `${memoNumber}.`;
+        title.appendChild(numSpan);
+
         if (memo.important) {
           const tag = document.createElement('span');
           tag.className = 'memo-important-tag';
@@ -2903,7 +2994,6 @@
       linkModalEl.classList.add('active');
     }
 
-    // URL에서 페이지 제목 가져오기 기능 구현
     async function fetchLinkTitle() {
       let url = linkUrlInputEl.value.trim();
       if (!url) {
@@ -2938,7 +3028,6 @@
           alert('페이지에서 제목을 찾지 못했습니다. 직접 입력해 주세요.');
         }
       } catch (err) {
-        // CORS 또는 프록시 실패 시 도메인명을 기본값으로 채워줌
         try {
           const u = new URL(url);
           linkNameInputEl.value = u.hostname;
