@@ -682,6 +682,29 @@
       }
     }
 
+    // ===== [신규] 메모 병합 헬퍼 =====
+    // - id 기준으로 로컬/서버 메모를 합집합 처리
+    // - 동일 id라면 createdAt(작성/수정일시)이 더 최신인 쪽을 사용
+    // - 결과는 최신순 정렬
+    function mergeMemos(localMemos, serverMemos) {
+      const map = new Map();
+      const all = [...(serverMemos || []), ...(localMemos || [])];
+      all.forEach(m => {
+        if (!m || !m.id) return;
+        const prev = map.get(m.id);
+        if (!prev) {
+          map.set(m.id, m);
+        } else {
+          const prevTime = String(prev.createdAt || '');
+          const curTime = String(m.createdAt || '');
+          if (curTime > prevTime) map.set(m.id, m);
+        }
+      });
+      return [...map.values()].sort((a, b) =>
+        String(b.createdAt || '').localeCompare(String(a.createdAt || ''))
+      );
+    }
+
     let appState = loadInitialData();
 
     let activeTab = 0;
@@ -731,7 +754,7 @@
             id: "gemini",
             name: "Gemini",
             provider: "Google",
-            icon: "fa-sparkles",
+            icon: "fa-star",
             url: "https://gemini.google.com",
             description: "구글의 최신 멀티모달 AI로, 방대한 웹 정보 검색과 텍스트·코드·이미지 통합 분석에 뛰어납니다.",
             feat1Title: "실시간 구글 검색 연동", feat1Desc: "구글 검색 엔진과 직접 연동되어 가장 최신의 웹 정보를 실시간으로 반영",
@@ -1469,7 +1492,7 @@
       weatherDisplayEl.title = weatherBaseInfo.title;
     }
 
-    // ====== [수정] 미세먼지 등급 산정 (WHO 기준) ======
+    // ====== 미세먼지 등급 산정 (WHO 기준) ======
     function getDustGrade(pm10, pm25) {
       // WHO 24시간 평균 기준을 토대로 4단계 등급 산정
       // PM2.5: 15, 25, 50 / PM10: 45, 100, 150
@@ -1518,8 +1541,8 @@
         if (pm10 != null && pm25 != null) {
           const pm10Num = Math.round(pm10);
           const pm25Num = Math.round(pm25);
-          const grade10Only = getDustGrade(pm10, -1); // PM10만 반영
-          const grade25Only = getDustGrade(-1, pm25); // PM2.5만 반영
+          const grade10Only = getDustGrade(pm10, -1);
+          const grade25Only = getDustGrade(-1, pm25);
           weatherDustHtml = ` <span class="${grade10Only.className}">미.${grade10Only.label}${pm10Num}</span> <span class="${grade25Only.className}">초.${grade25Only.label}${pm25Num}</span>`;
         } else {
           weatherDustHtml = ' <span style="color:var(--text-muted);">미세먼지 --</span>';
@@ -1738,45 +1761,63 @@
       });
     }
 
+    // ===== [수정] Firestore 동기화: 서버 데이터와 로컬 데이터를 메모 id 기준으로 병합 =====
+    // - 원인 ①: setDoc 전체 덮어쓰기 → merge 옵션 추가 (saveState)
+    // - 원인 ②: onSnapshot 무조건 덮어쓰기 → 병합 후 반영
+    // - 원인 ③: 로그인 직후 서버 데이터로 로컬 메모 유실 → mergeMemos로 보존
+    // - 원인 ④: 다중 탭/기기 간 서로 덮어씀 → 병합 후 서버 재반영
     function syncFromFirestore(uid) {
       if (unsubscribeFirestore) unsubscribeFirestore();
       const userDocRef = doc(db, "users", uid);
 
       unsubscribeFirestore = onSnapshot(userDocRef, (docSnap) => {
-        if (docSnap.exists()) {
-          const serverData = docSnap.data();
-          if (serverData && serverData.pages && serverData.pages.length > 0) {
-            const mergedState = {
-              ...serverData,
-              memos: Array.isArray(serverData.memos) ? serverData.memos : []
-            };
-            appState = mergedState;
-            saveLocalBackup();
-          }
-          if (!appState.pages) appState.pages = [];
-          if (!appState.memos) appState.memos = [];
-          if (!appState.settings) appState.settings = { theme: 'light', openNewPage: false, bgImage: '', bgSize: 'cover', cardOpacity: 85, region: null };
-          if (appState.settings.region) {
-            currentRegion = appState.settings.region;
-            try { localStorage.setItem("wsbar-region-obj", JSON.stringify(currentRegion)); } catch(e){}
-            updateWeather();
-            updateAirQuality();
-          }
-          refreshUI();
-        } else {
+        if (!docSnap.exists()) {
+          // 신규 사용자: 현재 로컬 데이터를 서버에 초기 저장
+          saveState();
+          return;
+        }
+
+        const serverData = docSnap.data() || {};
+        const localMemos = Array.isArray(appState.memos) ? appState.memos : [];
+        const serverMemos = Array.isArray(serverData.memos) ? serverData.memos : [];
+        const mergedMemos = mergeMemos(localMemos, serverMemos);
+
+        const serverPages = (serverData.pages && serverData.pages.length > 0) ? serverData.pages : null;
+        const localPages = (appState.pages && appState.pages.length > 0) ? appState.pages : null;
+        const serverSettings = serverData.settings || null;
+
+        appState = {
+          ...serverData,
+          pages: serverPages || localPages || [],
+          memos: mergedMemos,
+          settings: serverSettings || appState.settings || { theme: 'light', openNewPage: false, bgImage: '', bgSize: 'cover', cardOpacity: 85, region: null }
+        };
+        saveLocalBackup();
+
+        // 로컬에만 있던 메모가 병합으로 복구된 경우, 서버에도 반영
+        if (mergedMemos.length !== serverMemos.length) {
           saveState();
         }
+
+        if (appState.settings.region) {
+          currentRegion = appState.settings.region;
+          try { localStorage.setItem("wsbar-region-obj", JSON.stringify(currentRegion)); } catch(e){}
+          updateWeather();
+          updateAirQuality();
+        }
+        refreshUI();
       }, (error) => {
         console.error("Firestore 동기화 오류:", error);
       });
     }
 
+    // ===== [수정] setDoc에 merge:true 적용 (문서 전체 덮어쓰기 방지) =====
     async function saveState() {
       saveLocalBackup();
       if (currentUser) {
         try {
           const userDocRef = doc(db, "users", currentUser.uid);
-          await setDoc(userDocRef, appState);
+          await setDoc(userDocRef, appState, { merge: true });
         } catch (err) {
           console.error("Firestore 저장 오류:", err);
         }
