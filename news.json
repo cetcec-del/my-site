@@ -1,7 +1,22 @@
 {
- "updatedAt": "2026-11-13T17:53:54.854Z",
+ "updatedAt": "2026-11-13T23:23:58.490Z",
  "source": "JTBC 이슈피드 + 구글뉴스(JTBC)",
  "items": [
+  {
+   "title": "사건반장",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE8zUXNkQ1lFY3NXajdUQmVLdmlSVG55ZnVCaFBlUmVRVnMyNVVCRUJ1amdmVXlPamhZc1dYUE94cEY4VktCb1dHUQ?oc=5",
+   "date": "2026-11-13T22:12:02.000Z"
+  },
+  {
+   "title": "이 시각 뉴스룸",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5fRVBFS2l5Y1ExMk51ZUZ5MUdfRjlhajkzVzVhTmtjRndCekNvNjluSndjNGpfdmtINGVSZm1BR2FjLTdGanVsZg?oc=5",
+   "date": "2026-11-13T19:37:41.000Z"
+  },
+  {
+   "title": "중기부 ‘모두의 창업’ 개인정보 유출...1차 사고 5개월 만",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5aa29MOW5Fd2JQaURHMjJJRnZuOVVDMV9kdjh3dHJOOFBOeVhsZVBqNzZMMFlPcmdtX19uX3Y0X3V4cUZrX2lQeElLeXFWVkRldXZPeg?oc=5",
+   "date": "2026-11-13T14:44:00.000Z"
+  },
   {
    "title": "트와이스 지효, 소속사 설립 후 첫 나들이…세련美 장착",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9LUG9oV1hKTUNxdThNNjVqemZfRXlYT1BaTjV6QUtSZjFSbUZwbDBXeUFaeVZUVjBva2FWZXlwNnVkT01jSnNuMUhhRVRxdDVRSV84eA?oc=5",
@@ -16,11 +31,6 @@
    "title": "[비하인드 뉴스] \"X팔리지도 않나\" 갑자기 서초구민을…친한계, 전략 변경?",
    "link": "https://news.jtbc.co.kr/article/NB12328006",
    "date": "2026-11-13T11:20:07.000Z"
-  },
-  {
-   "title": "‘최민희 녹취’ 입수…\"이 대통령, 한덕수 손잡고 윤석열 하야 쪽으로\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBUdnJxQlpkXzBKS2czMEpRdVFrTzExSnZsNF9VTlI3d2FkbmY2VDJPRi1SSHVVdlR0OVVrdlhMckh3czhTbmgzQzNCUGVPNnE5OVlBeQ?oc=5",
-   "date": "2026-11-13T11:11:11.000Z"
   },
   {
    "title": "말문 연 캡틴 손…한국 축구 첫 'A매치 60호골' 조준",
@@ -51,6 +61,11 @@
    "title": "김민석 100일 앞두고 사실상 '선전포고'…\"터질 게 터졌다\"",
    "link": "https://news.jtbc.co.kr/article/NB12327984",
    "date": "2026-11-13T10:51:05.000Z"
+  },
+  {
+   "title": "‘최민희 녹취’ 입수…\"이 대통령, 한덕수 손잡고 윤석열 하야 쪽으로\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBUdnJxQlpkXzBKS2czMEpRdVFrTzExSnZsNF9VTlI3d2FkbmY2VDJPRi1SSHVVdlR0OVVrdlhMckh3czhTbmgzQzNCUGVPNnE5OVlBeQ?oc=5",
+   "date": "2026-11-13T10:50:00.000Z"
   },
   {
    "title": "‘33년 일군 AI 제국’ 쫓겨난 젠슨 황 \"난 쓰레기\"…직원들 눈물",
@@ -108,6 +123,11 @@
    "date": "2026-11-13T09:01:12.000Z"
   },
   {
+   "title": "‘레이오버 호텔’ 감독, ‘11세’ 박예린에 감탄 \"선생님과 연기하는 기분\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE01TUd3V2NWNnRQR0NoQXpydkczNU1WQlBtbTltLXZLSEUyLWJSaUJPVlh5T2d2Mnc4VDlqdTdNcXh6ZEd0ZGxnVThaT2xoMDA2ckRyWA?oc=5",
+   "date": "2026-11-13T08:52:00.000Z"
+  },
+  {
    "title": "박소진 \"‘레이오버 호텔’, 미운 캐릭터도 받아들여지는 영화\"",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5LZGVXbGZrVnk0STVHb2RDbzVPN3hFYVZrMkpabmxBQlgzWThxclozMFZWS1NMcXV1Tk1aLXhZZlR4RjV0YW91N0tfenB5Q0VidWloMg?oc=5",
    "date": "2026-11-13T08:50:00.000Z"
@@ -120,37 +140,17 @@
   {
    "title": "\"뱁새가 황새 따라가다…\" 이란 외무부 대변인 ‘한국 속담’으로 경고",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5MUUstaklERFdxQkt4YnJMUWZ6Wk42eVgzOUtqWnA4TW5uSGpEZklhZ1pHb0h2b21lWUY3c2JYM3p6ZThpNEhKaDI3ZUNxa05HTk1BNQ?oc=5",
-   "date": "2026-11-13T07:06:00.000Z"
+   "date": "2026-11-13T07:13:55.000Z"
   },
   {
    "title": "최민희 48분 육성 녹취엔…\"윤석열 탄핵에 이 대통령 반대했다. 하야시키고 가자 했다\"",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFB1NndZd0RtR0VvaTJydlVPc0ZMT1ZsNlRFa0s2amx0VTNkSW9mUHlFT2FsbFRFcDlWSjlkSzVmX3lqMDZsa1FMQndxd1lRWDF3QVR5SA?oc=5",
-   "date": "2026-11-13T06:54:00.000Z"
+   "date": "2026-11-13T07:00:24.000Z"
   },
   {
    "title": "최민희 “통일교가 김민석 밀었다…이재명 대통령도 ‘윤석열 하야’ 쪽이었다\"",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBSdlRyU3BwOElicm9RaU1DaWtmZjJLOGtMdHVLY19XWlJHQzhWVDhiYTdGTUJoWE5HWG5mc1d6RFJ0b1JwanhWT3M2T00yMGtKaHIxSw?oc=5",
    "date": "2026-11-13T06:40:00.000Z"
-  },
-  {
-   "title": "\"이제 ‘억소리’ 전쟁\"…재초환 분쟁 조짐에 대형 로펌들 TF 가동",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1Oazdqa21LbUhNNFlOQWVNaVlfVW1hMXJOVUcxUUZRMzdWT1A4MkZhWVVsdnRidGdkTXJDR0RrVE85dmJIam1qTVJxdjVQVmdYMUZ2aA?oc=5",
-   "date": "2026-11-13T06:30:00.000Z"
-  },
-  {
-   "title": "\"난 쓰레기\" 무너져 자포자기…‘젠슨 황 사퇴’ 전말 보니",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE42REFsRmZaMkNwU25lbVFKSmVkWW9PSVFEb2IzanBwUFdURm5xRTdxX2hHdkJmMWJJXzRTS1JoOWpWd1dRNTcwdUJQOXpZeUpjVjFSNA?oc=5",
-   "date": "2026-11-13T06:21:00.000Z"
-  },
-  {
-   "title": "장르가 머니",
-   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE0yOGVUQnVPdmUzV1FidUI2RnA1YmlRNEZ0WEtCN1RZbEpYNFpSamp5TWtWWFFabzd5bWE2c01xQ0g4Q3ZRVUZEZQ?oc=5",
-   "date": "2026-11-13T05:49:45.000Z"
-  },
-  {
-   "title": "손흥민 첫 인터뷰엔 ‘내분, 불화, 갈등’ 단어 없었다…\"앞으로 이런 이야기 나오지 않았으면\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9JZkNsTEFRblRQQzBUVjk1SXJISVB0QVFrVGtwQkg2TndJTW9lQWNKR3ZfTXE4SXFYSVhTaG9LQ1ExZ2dCNnB5NlptVUdvamg5NDh4Tw?oc=5",
-   "date": "2026-11-13T05:46:00.000Z"
   }
  ]
 }
