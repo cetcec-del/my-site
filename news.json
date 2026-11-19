@@ -1,7 +1,32 @@
 {
- "updatedAt": "2026-11-19T13:29:30.274Z",
+ "updatedAt": "2026-11-19T21:45:16.228Z",
  "source": "JTBC 이슈피드 + 구글뉴스(JTBC)",
  "items": [
+  {
+   "title": "AI 부정행위 파장",
+   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1YTkh1a1cxTktjNXQ2RmcyT2FGU1VXcUlhS3YxdnZZeXRuQVdGeXU5SHZfVU9TMGlENGlEdmdLaERSekNCVGx0QVNpVjdnVTVGRS1z?oc=5",
+   "date": "2026-11-19T21:31:43.000Z"
+  },
+  {
+   "title": "트럼프 \"김정은과 관계 좋지만 만남 성사 안 돼…언젠간 회담할 것\"",
+   "link": "https://news.jtbc.co.kr/article/NB12328965",
+   "date": "2026-11-19T21:28:39.000Z"
+  },
+  {
+   "title": "사건반장",
+   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFB3Nm5kaTdMOFdQNE9IeC1EbkNFbm5xZkw0SEZvTUxmdDdmRU5wYjRBWW0ySlBpbVA1X0s0OUVsNm9paXBMdTBiWA?oc=5",
+   "date": "2026-11-19T20:56:04.000Z"
+  },
+  {
+   "title": "라이브",
+   "link": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE03TXQ4WDFXZlpkQmswZ1lyUnRJRDdsSUJ1R0FOODZUNnJBOU5MaW9VdEZoTEc2ZUgzZnN3XzNqUGhqZw?oc=5",
+   "date": "2026-11-19T19:18:51.000Z"
+  },
+  {
+   "title": "메시 없이 7골 넣고도…아르헨 감독 \"코치 자리 비었어\" 깜짝",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1aSG43Y0dqN0dTOHhqYXRfX3dBblZNQkNlN1ZhbGVrdVRsc1EyNXFzMzVUY3FSYjRFM1hFSy1KM0tkTnc3dmZLQmhXRjIwV0FkYlBXNQ?oc=5",
+   "date": "2026-11-19T12:26:00.000Z"
+  },
   {
    "title": "이 대통령, 3박 4일 순방 마치고 귀국…국내 현안 산적",
    "link": "https://news.jtbc.co.kr/article/NB12328955",
@@ -23,11 +48,6 @@
    "date": "2026-11-19T11:41:58.000Z"
   },
   {
-   "title": "사건반장",
-   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFB3Nm5kaTdMOFdQNE9IeC1EbkNFbm5xZkw0SEZvTUxmdDdmRU5wYjRBWW0ySlBpbVA1X0s0OUVsNm9paXBMdTBiWA?oc=5",
-   "date": "2026-11-19T11:39:00.000Z"
-  },
-  {
    "title": "\"시진핑·푸틴, 날 좋아해\"…이게 성과? 트럼프의 '자화자찬'",
    "link": "https://news.jtbc.co.kr/article/NB12328898",
    "date": "2026-11-19T11:38:22.000Z"
@@ -38,9 +58,9 @@
    "date": "2026-11-19T11:38:10.000Z"
   },
   {
-   "title": "북미 대화 의식? 인권결의안 '첫 기권'…정작 김정은은",
-   "link": "https://news.jtbc.co.kr/article/NB12328908",
-   "date": "2026-11-19T11:12:36.000Z"
+   "title": "김창민 폭행 주범만 살인죄…‘왜 공범은 3년?’ 유족 분통",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5NV0pZZXVvZC1saXFnRXhWbWw5bkptZHR5LXdLVzZjMmdmV1ZBalNqSUJWQmZtdndjbnRnR1d3WV9obGNtOC14S3h4N0REZlNtX3ZRMA?oc=5",
+   "date": "2026-11-19T11:13:00.000Z"
   },
   {
    "title": "한한령 해제? \"대륙이 열린다\"…K-콘텐츠주 '들썩'",
@@ -48,14 +68,24 @@
    "date": "2026-11-19T11:12:03.000Z"
   },
   {
-   "title": "이진우 ‘만점’ 명함으로 책 펴내 수십억 인세…성공 신화 민낯",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE10S0FJNGsyX0dCSElyZzMzVmRVd1J4TVZUQUVFN2t2cWxLWGN5aTNwck1USUJ3OTRZcnRPOV9qeEpVWU1yQ0FEV0FOX2JaSWUwVi1BaQ?oc=5",
-   "date": "2026-11-19T11:01:43.000Z"
-  },
-  {
    "title": "김건희 '징역 4년' 확정…'명태균 여론조사'는 무죄",
    "link": "https://news.jtbc.co.kr/article/NB12328911",
    "date": "2026-11-19T10:59:02.000Z"
+  },
+  {
+   "title": "이진우 ‘만점’ 명함으로 책 펴내 수십억 인세…성공 신화 민낯",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE10S0FJNGsyX0dCSElyZzMzVmRVd1J4TVZUQUVFN2t2cWxLWGN5aTNwck1USUJ3OTRZcnRPOV9qeEpVWU1yQ0FEV0FOX2JaSWUwVi1BaQ?oc=5",
+   "date": "2026-11-19T10:58:00.000Z"
+  },
+  {
+   "title": "\"리트만점 이진우와 구치소 수감\" 충격 증언…\"공갈 범죄였다\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE4yeHNDLUZRTjF3Vl9LdzRPRUd2NTFfcW5XTEZNbUo3a0pQRDBTRFpVM3FpRnVhOE5GU1owY1RoTzktU3FTdGhZbHg2bzUzbFBCUzI3Rw?oc=5",
+   "date": "2026-11-19T10:47:00.000Z"
+  },
+  {
+   "title": "검증 노쇼 ‘리트 만점자’ 끝내 숨져…메모엔 ‘지쳤다’",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBHd2l4TlNfdDVvc3FTblpTaGc4TldyYnF5TGNmLUdXcEZSZHJ3akZTSDNPR2g2TnJoYjVDT3dWc2pad3RrdEZ6c09tUW80LWpsbFI4QQ?oc=5",
+   "date": "2026-11-19T10:38:00.000Z"
   },
   {
    "title": "재난문자로만 49명 잡았다…\"수능 부정행위자 총 98명\"",
@@ -68,14 +98,19 @@
    "date": "2026-11-19T10:02:00.000Z"
   },
   {
+   "title": "시험 도중 \"갑자기 이름 불려 나갔어요\"…재수생 적발",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5VX25ORllHdnJhQ3Y0UGszWVlfa1pHZzdLSHktSDdxc3lCMzZvOU5qbWNlaUVfRGhFRHVwMFJYZlpjd04xUlBmRU10M2ZKaHhONEx0NQ?oc=5",
+   "date": "2026-11-19T10:01:00.000Z"
+  },
+  {
    "title": "‘신발 벗겨보니’ 휴대폰이…수능장 경고에도 기어이 들고 갔다",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBxaDYwWHpRU1ZQSUVfU2d3YnBmZ09jcVJ1cWExRkRCbGJldG01b0R3UXpxVU42dVJYUFIydkNWbFlkVlVVdXo4R0pNdll2SmFva1NKUA?oc=5",
    "date": "2026-11-19T09:53:00.000Z"
   },
   {
-   "title": "AI 부정행위 파장",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1YTkh1a1cxTktjNXQ2RmcyT2FGU1VXcUlhS3YxdnZZeXRuQVdGeXU5SHZfVU9TMGlENGlEdmdLaERSekNCVGx0QVNpVjdnVTVGRS1z?oc=5",
-   "date": "2026-11-19T09:40:54.000Z"
+   "title": "오전 10시, 수능 보던 딸에게 온 카톡…\"보자마자 눈물이 펑펑\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE4yLUhwcVN6VmRIN0VyRjRUaEIxalk1UXN3T2dXN1ZCVlNUOThxQ3Y3Z0NJUlQ1NVd3a2pTOUJrWFFKMDc4WTVYZjlkWk9zOGdGV1hTMw?oc=5",
+   "date": "2026-11-19T09:41:00.000Z"
   },
   {
    "title": "[맞수토론] 전국에 울린 ‘삐’소리…재난문자로 스마트폰 적발",
@@ -88,14 +123,24 @@
    "date": "2026-11-19T09:06:58.000Z"
   },
   {
+   "title": "국토부, 이혜훈 반포 원펜타스 계약취소 요청…조합에 공문",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5EY3NqOEF3MS1ZSjZDalQ2V3FtZkFZT0tvaTBqT0tOU05VXzRPYWZENEtzVGhkeE01NmMtelB5NEQ1N2lEN1JHeG83NWQxYXVJeXZTdg?oc=5",
+   "date": "2026-11-19T09:06:00.000Z"
+  },
+  {
    "title": "4억 달러 넘게 쏟아붓고 후회한 머스크…\"나는 마가 아니다\"",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBSRm1halFFSk1PUFJsdVZ2MWZNTXZnRW5QR2gyamp5aldWbG13OC1SMlYxLUM0OTdaalY5UGJ5U2hwSEpzVHFTY2JfOEVoVEJPdjc2Qg?oc=5",
    "date": "2026-11-19T09:02:00.000Z"
   },
   {
+   "title": "의혹 남기고 숨진 ‘만점자’…수사 종결? 끝내 못 밝히나",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5qRG5BUXV2ZjNiVFloZU9tbmtKckJUc0RLRmJPdVpwLVhLeS1DZV9TcGxVeG1nTDFqSkF3aWpZYmJtSFFjOWtWZ0laaUw4X2dweHZaUA?oc=5",
+   "date": "2026-11-19T09:01:00.000Z"
+  },
+  {
    "title": "[속보] 경찰 \"리트 만점자 사망에도 불구하고 수사 이어가겠다\"",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9RWTEtVzNIYklrazNTaWZ5aWpSUUEwcTFpSHhKV1o3QWkwTWdaOEpKX2VndGFaU0F5OElzYllTXzQzS1NUMzhFN1VsZWN4ekp6YlAxTg?oc=5",
-   "date": "2026-11-19T09:00:26.000Z"
+   "date": "2026-11-19T08:59:00.000Z"
   },
   {
    "title": "대법, 한덕수 일부 무죄 취지 파기환송…\"계엄 전후 상황 달라\" [현장영상]",
@@ -106,51 +151,6 @@
    "title": "트럼프, 미중러 정상회담서 핵무기 감축 제안…우크라 전쟁도 논의",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBCdldoLWZwSjJMeVM2WmVGQnlGOVp1ckt3eGJpcVpCUDgyeEtrRjRlSkVQMjVnNlJpanc2X1UzTVI4UnhCNlVoRXIySWZzb2J1dWpDSw?oc=5",
    "date": "2026-11-19T08:17:00.000Z"
-  },
-  {
-   "title": "대법 \"김건희 상고 모두 기각\"…‘3대 의혹’ 징역 4년 확정 [현장영상]",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE13OHBUNXpHYWhNOGg0X293TUc4ZFNmNGwtQzEwbEtXMjZMQi1BWWFfOUVJbGQwTlYzZW9pXzA2STlyNkVKWFNET3kyUGtXQUtfV0VHRw?oc=5",
-   "date": "2026-11-19T08:09:13.000Z"
-  },
-  {
-   "title": "‘서울 가을’에 숨겨진 반전?…CNN \"이 냄새는 못 참아\"",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9CZThjazZUbTlmcnNmRmxoRkkxbTJraFQwSmlUVVB3WjJ5YmVEa0taSWl1d2lTVVB6dXNaRmpkVUFlSFp5TUgwTUVndjdJNFRuQXRN?oc=5",
-   "date": "2026-11-19T07:45:34.000Z"
-  },
-  {
-   "title": "‘수능냥이’ 된 이 대통령?…장동혁 \"황당 대책으로 수능 망쳐\"",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1tWENnN3VoSTAzeVlLMzBGWTd1c0J0YkNzb1lwT2RQZ0JHYWQtQnJfNDZsNGNmZG1PdU5PajlxYjlzSFlranQ1dXNfUFhiaEltcnFF?oc=5",
-   "date": "2026-11-19T07:45:20.000Z"
-  },
-  {
-   "title": "대법, 김건희 ‘3대 의혹’ 징역 4년 확정…한덕수 일부 무죄 취지 파기환송·구속 2개월 연장",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBIUUkxeGlzd2FpZXktVDZFVVhwOTlUWXplTXhSM0ROVWdLLU9YQ1pyS0xxTEcyaEdneDVmdlZ5ODJiTi1tekZRckgyRmRYMXNwV1dFeA?oc=5",
-   "date": "2026-11-19T07:12:00.000Z"
-  },
-  {
-   "title": "\"고양이가 훔쳐 온 물건 가져가세요\"…편의점 앞 놓인 ‘도난품 보관함’",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE80ZF9HYzVJa3R0NXBCVlZqRFpVellxenhmeG1id3pXeUgySVFIbTBVVHJDWU9ndWpyb1JuajJiVmt5aXpZN2NLckRPcVdjMFNYV05ReA?oc=5",
-   "date": "2026-11-19T06:55:00.000Z"
-  },
-  {
-   "title": "트럼프-시진핑, 무슨 얘기 나눴나…‘미국 농민들’ 언급 왜",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBYTjVERlF0Ti1fSUNoNkxBTTA1TVZtV21VS3BWY19sOGJWNzJXcl9jdENvdUJySFdGLWtWOEMwRGxLZmdoSW9WdHBiaGw5T2JrTDJVQw?oc=5",
-   "date": "2026-11-19T06:36:00.000Z"
-  },
-  {
-   "title": "[단독] 공정위 가는 '축구협회 쿠팡 밀어주기' 의혹…\"시장 지배적 지위 남용, 쿠팡이 초청전 79% 점유\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBtWkNoVUpFbEZYYUJpbTgtZnJ1QXdzNDhnM05CalUwWUdaMmg4bmZUY0JrM1JYYUpKcUFlVmwwUXhUU2Jwa3NiNmUzdXVsZ3lUSUtGRA?oc=5",
-   "date": "2026-11-19T06:33:00.000Z"
-  },
-  {
-   "title": "먼저 와 기다린 푸틴 ‘이례적’…트럼프, 다가가 \"내 친구\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9RNU1VMFVUaVVfMEVELTFmbl9DSFM3dWFzcGNCbkxoQm1zeTdrZC1nOHUwd2Z1azJSeXc1ZGhmTDlBa25JZmpkUlVIZGZnak11SkxzZw?oc=5",
-   "date": "2026-11-19T05:57:00.000Z"
-  },
-  {
-   "title": "이진우 스프링노트 찢어 ‘5줄 쪽지’…‘힘들다’ 부정행위 언급·사과 없어",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFA0MlFYaUlaSS1oeTBBZDFLeWNReUlPNkFYcU5WZTF3VTIyTmRIaFJTREpSQ0hEZVlIeGxmcWF1ci1McXR4ZWt2d1FzRHVQbEtFWFdieA?oc=5",
-   "date": "2026-11-19T05:53:00.000Z"
   }
  ]
 }
