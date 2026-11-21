@@ -1,31 +1,116 @@
 {
- "updatedAt": "2026-11-21T07:46:16.810Z",
+ "updatedAt": "2026-11-21T15:40:39.444Z",
  "source": "JTBC 이슈피드 + 구글뉴스(JTBC)",
  "items": [
+  {
+   "title": "11월 21일 (토) 뉴스룸 다시보기",
+   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1PS3FBdUY0aVQtMTBGeE5LeHBBZ0RBR3JKOFBMMTZtdGxuV0ZMS3BrYklJdEVIZUM4ZVU1OGF5SzVnSTlhZnoydGRpcks3QVhDemc?oc=5",
+   "date": "2026-11-21T12:30:58.000Z"
+  },
+  {
+   "title": "월드컵 선발 제외됐던 이재성…차범근 질문에 \"마음이 좀…\"",
+   "link": "https://news.jtbc.co.kr/article/NB12329211",
+   "date": "2026-11-21T12:00:29.000Z"
+  },
+  {
+   "title": "엔진 화재 경고로 비상 착륙…‘한국인 포함’ 전원 무사 대피",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE92aE9jbjlGZG5fTHdtX0hxbGl5M1c0WnZjaVJOQVJ5OUp2SjRwYTlKcGpXSzVjbk9jWUtWdlE1UlB4SXlGQWZJd29LR3lzUWtUSTFhYQ?oc=5",
+   "date": "2026-11-21T10:50:00.000Z"
+  },
+  {
+   "title": "'브로맨스' 내세워 자화자찬…정작 동맹국엔 '종전 청구서'",
+   "link": "https://news.jtbc.co.kr/article/NB12329196",
+   "date": "2026-11-21T10:47:41.000Z"
+  },
+  {
+   "title": "'실형 확정' 김건희 구치소 못 떠난다…남은 3건 재판은",
+   "link": "https://news.jtbc.co.kr/article/NB12329197",
+   "date": "2026-11-21T10:40:10.000Z"
+  },
+  {
+   "title": "이 대통령 \"지방에 새로운 기회\"…지역 현장 2주 연속 방문",
+   "link": "https://news.jtbc.co.kr/article/NB12329198",
+   "date": "2026-11-21T10:35:48.000Z"
+  },
+  {
+   "title": "\"해외 데이터센터에 중과세\"…트럼프 몽니에 한국도 긴장",
+   "link": "https://news.jtbc.co.kr/article/NB12329199",
+   "date": "2026-11-21T10:33:55.000Z"
+  },
+  {
+   "title": "'투매 장세'에 무너진 뉴욕증시…월요일 코스피 덮칠 충격은",
+   "link": "https://news.jtbc.co.kr/article/NB12329212",
+   "date": "2026-11-21T10:26:41.000Z"
+  },
+  {
+   "title": "[인터뷰] \"한덕수 판결이 트리거였나\"…박성준에게 묻는 조희대 탄핵",
+   "link": "https://news.jtbc.co.kr/article/NB12329188",
+   "date": "2026-11-21T10:23:54.000Z"
+  },
+  {
+   "title": "이 대통령 대장동 의혹 반박…장동혁 \"억울하면 재판받으라\"",
+   "link": "https://news.jtbc.co.kr/article/NB12329200",
+   "date": "2026-11-21T09:58:03.000Z"
+  },
+  {
+   "title": "조희대 탄핵 시점 ‘12·3이 딱’…국힘 \"대통령부터 탄핵해야\"",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1LX1BzZlY1TThuUWE4a3lyZVlVdjlWSmZBVVpjVWd6ekhwM19rSHY1RGR1UTY5azdGNjMzNG50anJBTnJuNnpoSmVPUnVXWFVSWC1Ubw?oc=5",
+   "date": "2026-11-21T09:56:00.000Z"
+  },
+  {
+   "title": "\"이 글도 조롱당하겠지\"…리트 만점자 '5줄 유서' 공개",
+   "link": "https://news.jtbc.co.kr/article/NB12329203",
+   "date": "2026-11-21T09:48:23.000Z"
+  },
+  {
+   "title": "[단독] 세무사 시험 뚫린 후 첫 국가자격시험…또 ‘6건 무효’ 적발",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBwN29BMFJScDM3cGVId2F6TjhGRTZ4bXdObkpMTGlRUTdmSGdnTkZ1TzhTQXNMMzQ3S0hicHZDc0ZsaVV2MXFhcVlGaUx0OUxyVEdtQg?oc=5",
+   "date": "2026-11-21T09:38:00.000Z"
+  },
+  {
+   "title": "아홉, 2027 시즌 그리팅 공개…파자마 파티 콘셉트",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFA5dDRTOUZCTmVRSUxfUTdSdnVyNDRpTW9IVUo3R1IxTnVpd2tDaFF5dW9sdkRDNnVNTUZFYWFsR1Y3amlwZXMxSG1pSlpIMEpTODU1cg?oc=5",
+   "date": "2026-11-21T09:11:00.000Z"
+  },
+  {
+   "title": "김민석 \"민주당의 큰 고민, 청년과 어떻게 함께할 것인가...당 고루해졌을 수도\"",
+   "link": "https://news.jtbc.co.kr/article/NB12329206",
+   "date": "2026-11-21T08:13:00.000Z"
+  },
+  {
+   "title": "[단독] 세무사 시험 부정행위자 자백 이후 첫 국가자격시험, ‘무작위 전화’에 휴대전화 울렸다",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5zN3h4Vkc4X09PQUVaMDlEWWtaLUZFYU5qSHZxVE8yMHhQUk1OaF8wR0d0cFA1UWFwd2NjR3MxelF0VVRFdmoyQ0x6MmJTNVlHS0lSZg?oc=5",
+   "date": "2026-11-21T08:13:00.000Z"
+  },
+  {
+   "title": "정은지, 아시아 투어 열기 잇는다…연말 앙코르 콘서트 개최",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9waGs4TkdPXzVXc1k5MkN3anlxVVd4aDY3eURveHhGN2lpTmZLeGpiblQzcDlBdmRfV1B5SWJiZGxoV3NhMHYxTFVOTUF6TkpDckFEOQ?oc=5",
+   "date": "2026-11-21T07:53:00.000Z"
+  },
   {
    "title": "이 대통령 \"수능 부정행위 포상금 최대 아닌 최소 1억...가담자 수만큼 증액\"",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9qTU1MOXp6cjF5YWh1UjVsTDc2dlprWlRWVjMxOWNITktQTC0zdDQ4VEE2WHdIaXVXbUtjcEt4YkhndmV2dEFHeTVSNHlHNXZDT2xVQg?oc=5",
    "date": "2026-11-21T07:37:00.000Z"
   },
   {
-   "title": "이사회는 왜 젠슨 황 복귀 의사 없다 했나...외신 \"정직성 부족과 거짓말 때문'",
-   "link": "https://news.jtbc.co.kr/article/NB12329192",
-   "date": "2026-11-21T07:01:44.000Z"
+   "title": "\"젠슨 황 사임 이유, 혼외관계 아니라 거짓말 때문\"…폭언 폭로도 잇따라",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFAwVGpxZkxwcmRjNTBrUUlabjdoTndEcDNld0dZVWpWbXRieTBQREdfQ1dqNWxhaUNWNDBVWUVrSVU3OWc5dGpnWnlYTzh6c3hNRW44aA?oc=5",
+   "date": "2026-11-21T06:57:00.000Z"
   },
   {
-   "title": "이대통령 '대장동 5500억 공익환수'…장동혁 \"1천만 훔쳐 5백만 돌려주면 무죄?\"",
-   "link": "https://news.jtbc.co.kr/article/NB12329183",
-   "date": "2026-11-21T06:34:14.000Z"
+   "title": "‘파이널 테이블’ 안효섭·장영남, 정체 들킨 뒤 첫 대면…폭풍전야 긴장감",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9DU1hSS2t1YTBOSzRCU1F6ZGt1dENLUXV0bk0xcXk3MTF3MjFlX0ZiT3pmUXU0X3M0aS1RQVotNER6Q3Y4Y3hlTUE0TlBZTHJjc3RlTA?oc=5",
+   "date": "2026-11-21T05:43:00.000Z"
   },
   {
    "title": "이 대통령, 울산 SK AI 데이터센터 방문…\"AI 고속도로가 AI 대전환 열 것\"",
-   "link": "https://news.jtbc.co.kr/article/NB12329178",
-   "date": "2026-11-21T05:21:08.000Z"
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1XMXQtX3lWd05JT3RoWlBhWEJmYWlyV0FEZHpkRDVLcEJHV2VVNlJYTG9jeXNvV3FqLWtrbk1JT3d2TlR1aXp5Y1J1ODlaVzJvYm1UcA?oc=5",
+   "date": "2026-11-21T05:21:00.000Z"
   },
   {
    "title": "민주당 대변인 \"내란 2주기, 12월 3일에 조희대 탄핵안 발의 공감대\" 전망",
    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9NeWpQaU9hcmNiNmpVeEdENGpaS1U0QWVmN25jYzdmamxGVlctcGY2LXpmTTEtNVpvWW5HYkhaaHJmYjFYajVxdEtfbVg5U1lNQ0hDeA?oc=5",
-   "date": "2026-11-21T04:42:43.000Z"
+   "date": "2026-11-21T04:36:00.000Z"
   },
   {
    "title": "코레일, 화물열차 탈선에 KTX·ITX 임시열차 15대 긴급 투입",
@@ -33,14 +118,24 @@
    "date": "2026-11-21T04:19:00.000Z"
   },
   {
+   "title": "금고 돈 슬쩍해 앞치마에 ‘쏙’?…사장에게 딱 걸린 직원",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE83QWoyZ1oxNXNpQ280RWkycFk3M3hHLWdPelpNa29FYW5fS0QtTzBTUXRXV05ERUcySm9rSkJVVnNlVmRMS0lEOGpQYUV3VXh3QktFWQ?oc=5",
+   "date": "2026-11-21T04:02:52.000Z"
+  },
+  {
+   "title": "\"이렇게 들어온다고?\"…안전봉도 실선도 무시한 테슬라 ‘마이웨이’",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9fb2VyME5DQ2RSazZsR3gycF9BWENOZ0N1RXEwTUNYSUVnUm82c2c0YU50Q2tWMGVMRWJjNUEtaFlGeU51R1ZwZ1VPR0FCRkVrRmNRYQ?oc=5",
+   "date": "2026-11-21T04:00:00.000Z"
+  },
+  {
    "title": "JTBC",
    "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBkYzZJRWVKUGYzLXBlLU9menBlY3Z4OWNyMm5vQ3lkb20xYW1YY2pBYV9NMGdodzdJRnZLUFVMUHlFdXZrckl5Uw?oc=5",
    "date": "2026-11-21T03:54:18.000Z"
   },
   {
-   "title": "트럼프 \"미·중·러, '한반도' 논의했다\"…구체적 언급 안 해",
-   "link": "https://news.jtbc.co.kr/article/NB12329169",
-   "date": "2026-11-21T03:06:55.000Z"
+   "title": "콜드, 새 EP ‘WAVY BABY’ 26일 발매…트리플 타이틀곡",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1ScHNnZGhhaTdOZUxhVEhOaS1USzZ6LU9hT1p1VUR4NWxtNnRnU1VSMjMxUWZ3MXZlVVg5S2wxVUE4Vmt3dmhfQXRDOHRvVTF5TXZ3LQ?oc=5",
+   "date": "2026-11-21T03:21:00.000Z"
   },
   {
    "title": "나스닥, 기술주 매도에 5.3% 폭락…비트코인·금도 와르르",
@@ -48,109 +143,14 @@
    "date": "2026-11-21T03:05:00.000Z"
   },
   {
-   "title": "'앞치마 입으세요'…AI 부정 논란에 대학 논술장도 비상",
-   "link": "https://news.jtbc.co.kr/article/NB12329172",
-   "date": "2026-11-21T03:04:13.000Z"
+   "title": "‘앞치마 입으세요’…AI 부정 논란에 대학 논술장도 비상",
+   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBJeHE0X0dpc2RZQm55ellvbWFwNDIxY3VjUFpOUzZCQ253V1FNVDV2a193ejNfTDhNTGJZbVZ0eGJNVi1fbTlFbUJ4ay1xV2FnakswRw?oc=5",
+   "date": "2026-11-21T03:04:00.000Z"
   },
   {
    "title": "이 시각 뉴스룸",
    "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1CV3Y1amM2Nzh0dEtfblh5Q3RZSkRPYl95cnBBYjhxblFRTlp5aEloal9xdzZQMjFZSGxmR1RLZnlhQjRudV9YbA?oc=5",
    "date": "2026-11-21T02:57:34.000Z"
-  },
-  {
-   "title": "코레일, 경부선 일반열차 운행 조정…천안~대전 구간 연계버스 투입",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9hTHlLeFI4NmsyR1RTeDNYQWF4Nkl1bnJIYWJwcjRNYlB0Ul9wWkpjQl9CX0UtNTdKTjRzWGw3SW1SZ0dQYmFWcDl4T2xhbTVDNnBSQw?oc=5",
-   "date": "2026-11-21T02:47:29.000Z"
-  },
-  {
-   "title": "[뉴스특보] 김건희·한덕수 대법원 ‘최종 판단’",
-   "link": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1jUTEzOWtGX2FFclZJR2JLWldCZUJJaC1RVjd5N0x1UU12eUJ5NlhxTjFjWVRtN0NRNFQ1UDJTVldudG44a3BDOQ?oc=5",
-   "date": "2026-11-21T02:28:58.000Z"
-  },
-  {
-   "title": "\"구급차가 못 들어왔다\"…암 투병 할머니 이송 막은 골목길 ‘나쁜 주차’",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE44UnNvTnhQbEJIMTdtdWZvbUxqc05yc2Jrck52djl1cUtmWG9RajJvejBRRHBDMnUwSlJma3RKRVQwekRzZXNPQk1Jam5QeHlGSjgydQ?oc=5",
-   "date": "2026-11-21T02:01:00.000Z"
-  },
-  {
-   "title": "[팩트체크] \"한국은 중심, 일본은 뒷전에\"? 정상회의 '단체샷' 따져보니",
-   "link": "https://news.jtbc.co.kr/article/NB12329152",
-   "date": "2026-11-20T23:00:01.000Z"
-  },
-  {
-   "title": "경부선 소정리역서 화물열차 탈선…천안~대전 일반열차 운행 중단",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1ONWExcDhqMXZ2NXlJd3pMcERnZUEyeGs5al9jRmxYelZvLVNFREszR21LZmtXZGxvOUl4UmVvaG5ud2JydUZaX0pzNGZ1STdTQkYwSg?oc=5",
-   "date": "2026-11-20T22:49:00.000Z"
-  },
-  {
-   "title": "앳된 얼굴로 \"배고파요\" 하더니…사장 눈 피해 금고 ‘슬쩍’",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE4wWFoxc3lvR1RQWmFuUTdsaHRZY0R2UTBJQ0dSLXkwcWJXUEJla2o4VDA3a3dKTnQ2ZnRpYUR3VUNYVXJscUVBcGlLSnZyNGxTSmpidg?oc=5",
-   "date": "2026-11-20T21:00:00.000Z"
-  },
-  {
-   "title": "알몸으로 복도에 줄줄이…정신요양시설 보호자는 몰랐다",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5ZNU5rY3pHa1dUemwxR1Fqc0NLcnB0QWE5SW1nRDREWXBCY0d1Qmd4RnY4VFhmMWV2dkZCZjgtYXhoT1V1cHpVT0RXTVZLUlFSYXprUg?oc=5",
-   "date": "2026-11-20T21:00:00.000Z"
-  },
-  {
-   "title": "11월 20일 (금) 장르가 머니 다시보기",
-   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5mS3U0LWppem1LVW9VeENvTjI5QzNaektVODliOVBEUzRxQkpMMjFkZ3dCUVVfdWMyOVJ5eWxrR2t1WW5zTW5ja3RjcUdDYkVDaFE?oc=5",
-   "date": "2026-11-20T19:20:37.000Z"
-  },
-  {
-   "title": "JTBC 차이나는 클라스 ‘항공우주’ 특집, 이달의 프로그램상",
-   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE02bmFnRnNnclpRMDUwbURyRURfVVJlc3VqeDl6V2IyQnZTckpaTy02MVJOU1liVXZwaUs1aEl3U3N6Zzd6cm9XTWR2RDR2VFdZZWc?oc=5",
-   "date": "2026-11-20T18:07:01.000Z"
-  },
-  {
-   "title": "이 대통령 \"5500억 환수가 배임이면…\" 대장동 업자 인터뷰 SNS에 공유",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFB3RnpaVWZXVFZfUHpSMERoN3VoRDk1UXBZX3NodHRwMVJVdnRyODUtNGVHM05HUXJvNm9WMTR1V2w1X1lveTF2Qkp5SnhNQVE2TXZWVQ?oc=5",
-   "date": "2026-11-20T15:01:00.000Z"
-  },
-  {
-   "title": "사우디 80층 타워 공격한 후티, 금융지구·발전소 추가 공격 예고",
-   "link": "https://news.jtbc.co.kr/article/NB12329145",
-   "date": "2026-11-20T14:59:36.000Z"
-  },
-  {
-   "title": "푸틴, 트럼프·시진핑 회담 끝나자마자 \"우크라이나 총공격\"",
-   "link": "https://news.jtbc.co.kr/article/NB12329144",
-   "date": "2026-11-20T14:52:06.000Z"
-  },
-  {
-   "title": "추미애 \"조희대, 내란범 사법세탁 공장장…일찍 탄핵했어야\"",
-   "link": "https://news.jtbc.co.kr/article/NB12329142",
-   "date": "2026-11-20T14:01:36.000Z"
-  },
-  {
-   "title": "\"찌질한 건 박지윤\" 악플…잡고 보니 최동석이었다",
-   "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9jcllMSjV6X2Z3US1rcXN3cVdEempDMGpfT3lWVHFPR08tbk1vajJKUWwwb0pQSnY4YkJWaUVwVGRQOHRqWm42SXBla1VrSVJYTkE?oc=5",
-   "date": "2026-11-20T13:27:47.000Z"
-  },
-  {
-   "title": "\"국가시험 전면 개편\" 지시",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1acFAwZHpOU1JiU0RYZ2ZMRmpydTdNei1aTW9kVGNNckZjTW5hQmR4T19LRjAwc0hmUVhkN0dmZTliVjVqanoyTVBacy1uVmk3X2pv?oc=5",
-   "date": "2026-11-20T13:12:47.000Z"
-  },
-  {
-   "title": "\"롯데 내년엔 꼭 우승해라!\"…‘키움행’ 정철원이 남긴 말",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5EdGRZNjJlZzJkeDMwNkNpWWpQSXFlODBIVC1xLWE1UVJBbVpYNEgxVUJ1ZmxNSVdsNEdEbV84YnpnWmg0cEpjYXhhWjRjUGVzZC1FSg?oc=5",
-   "date": "2026-11-20T12:17:00.000Z"
-  },
-  {
-   "title": "\"챗GPT도 2번이라는데\"…수험생 92.6% 틀린 수능 세계사 2번 문제",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE0ta1BrclpyamZPYnhMbWNDczVMWUtyS3lVdEZpNjJyWGMydkdVaUhSNmpTLXV3cEZIbWtiUUl5cDVPbWYyRUZNb0R5elZmZ0JBOEl0UA?oc=5",
-   "date": "2026-11-20T12:12:00.000Z"
-  },
-  {
-   "title": "김정은과는 끝내…일방적인 '짝사랑' 트럼프, 또 빈손",
-   "link": "https://news.jtbc.co.kr/article/NB12329080",
-   "date": "2026-11-20T11:53:11.000Z"
-  },
-  {
-   "title": "이 대통령, 김종철 경찰청장 임명 재가…공석 2년만에 해소",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9GNW1LZDFzTDB4UXhXSEZzNVpOUVdmT0JGNUJtS0J4ZE8xNjFQNXA4LV91b2c5S20yY2ZIWGs4YllvZWZBNmdGTlJHMnNWc2tpamhuSQ?oc=5",
-   "date": "2026-11-20T11:49:00.000Z"
   }
  ]
 }
