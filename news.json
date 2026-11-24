@@ -1,156 +1,56 @@
 {
- "updatedAt": "2026-11-24T06:50:44.680Z",
- "source": "JTBC 이슈피드 + 구글뉴스(JTBC)",
+ "updatedAt": "2026-11-24T18:43:45.118Z",
+ "source": "JTBC 이슈피드",
  "items": [
   {
-   "title": "[속보] 코스피, 6%대 급등 '5천피' 탈환…코스닥 4%대↑",
-   "link": "https://news.jtbc.co.kr/article/NB12329567",
-   "date": "2026-11-24T06:35:48.000Z"
+   "title": "미, 한국·중국·일본·EU 등 관세 조사 결과 이르면 이번 주 발표",
+   "link": "https://news.jtbc.co.kr/article/NB12329667",
+   "date": "2026-11-24T13:40:49.000Z"
   },
   {
-   "title": "재집권 위해 이란 공격 밀어붙이는 네타냐후…거국내각 구성 압박",
-   "link": "https://news.jtbc.co.kr/article/NB12329565",
-   "date": "2026-11-24T06:25:45.000Z"
+   "title": "유승민 체육회장, FIFA 서한에 \"체육회 권한 침해 소지 있어\"",
+   "link": "https://news.jtbc.co.kr/article/NB12329636",
+   "date": "2026-11-24T12:30:31.000Z"
   },
   {
-   "title": "내신 시험도 '금속탐지기' 점검…스마트기기 걸리면 모든 과목 '0점'",
-   "link": "https://news.jtbc.co.kr/article/NB12329564",
-   "date": "2026-11-24T06:23:49.000Z"
+   "title": "'AI 딸깍' 한 번에 정답 척척…수능 창시자도 \"없애는 게 낫겠다\"",
+   "link": "https://news.jtbc.co.kr/article/NB12329621",
+   "date": "2026-11-24T12:13:54.000Z"
   },
   {
-   "title": "중국 관영매체 \"젠슨 리, 젠슨 장 또 나올 것…'중국의 침투' 퍼뜨리려는 들짐승\"",
-   "link": "https://news.jtbc.co.kr/article/NB12329562",
-   "date": "2026-11-24T06:16:37.000Z"
+   "title": "\"10억 요구 거절당하자 폭로\"…역공 나선 장동혁 측",
+   "link": "https://news.jtbc.co.kr/article/NB12329603",
+   "date": "2026-11-24T12:13:30.000Z"
   },
   {
-   "title": "이 대통령 \"강남 집값 엄청나게 떨어져…일정 가격으로 사줄테니 분양 걱정말고 지어라\"",
-   "link": "https://news.jtbc.co.kr/article/NB12329561",
-   "date": "2026-11-24T06:14:24.000Z"
+   "title": "\"사이비 종교 해산\" 또 꺼낸 이 대통령…묘한 시점",
+   "link": "https://news.jtbc.co.kr/article/NB12329622",
+   "date": "2026-11-24T11:48:40.000Z"
   },
   {
-   "title": "현직 부장판사 \"재판 계기 법관 탄핵, 계엄 선포만큼 민주주의 오점\"",
-   "link": "https://news.jtbc.co.kr/article/NB12329556",
-   "date": "2026-11-24T05:51:33.000Z"
+   "title": "\"민생\" 외치며 시작했지만…골만 깊어진 '김민석 100일'",
+   "link": "https://news.jtbc.co.kr/article/NB12329623",
+   "date": "2026-11-24T11:42:19.000Z"
   },
   {
-   "title": "\"삼부는 골프3부\" 위증한 전 경호처 경호부장 1심서 징역형 집행유예",
-   "link": "https://news.jtbc.co.kr/article/NB12329555",
-   "date": "2026-11-24T05:44:26.000Z"
+   "title": "[단독] 증거인멸 없다? '풀려난 7명'…실시간 '말 맞춘' 정황",
+   "link": "https://news.jtbc.co.kr/article/NB12329620",
+   "date": "2026-11-24T11:35:47.000Z"
   },
   {
-   "title": "[속보] 경찰, 김병기 불구속 송치…뇌물·업무방해 등 혐의",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5fVWMxbGpYOXZ0aUlBUjlVY2ZxMzJBUGFOZGVfUnUyVGVSRlctOG9hTnphVnNrSU0yVjItWUN1YjBmaVg0bDd6UTUwa0ZEQ0lqd0F1Zg?oc=5",
-   "date": "2026-11-24T05:42:00.000Z"
+   "title": "[단독] 미래위 \"원상회복 필요\"…'위례 사건' 보완 조사 요구",
+   "link": "https://news.jtbc.co.kr/article/NB12329594",
+   "date": "2026-11-24T11:21:53.000Z"
   },
   {
-   "title": "축협 떨고 있니…홍명보 선임 때린 강유정, 관리 수장으로 귀환?",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE8zVHZIQUM1bk9qekNER3R4S00wT1Rheng1REJ2dndjQkdHbTdHNHlBcmtSb3l2akhFWG9SZlR5ek1ibzlGWVplOEJrM3ppNnkyNTFtdA?oc=5",
-   "date": "2026-11-24T05:19:00.000Z"
+   "title": "'공소 취소' 묻자…이용철 후보자 \"무리한 지휘 안 할 것\"",
+   "link": "https://news.jtbc.co.kr/article/NB12329612",
+   "date": "2026-11-24T11:17:50.000Z"
   },
   {
-   "title": "\"경찰 올 거니 가만히 계세요!\"…서울역서 라이터 3개에 불 붙이려던 노숙자 남성 시민들이 붙잡아",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1rem9OczNSVG1va0N1NmNWUUR4Um1XRGRxbk1HREEtUjdTTHZHZm1QTjNKQW0tNDJCYmxaY1Z4WGVpeFNwT043d3B4ZE5fYkVETVprOQ?oc=5",
-   "date": "2026-11-24T05:11:20.000Z"
-  },
-  {
-   "title": "키스오브라이프, 힙한 감성 더한 ‘트렌디 산타’로 예열",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE45bzZSdEd6UkxhU2hNcmxZUEZHVjBvWUhPeGdaRGx4cnR0bV92WjZWaXV2dHotX01JZGE5RjRvd0h2YlJhcHpkQ0NTTllDUURoQkpETA?oc=5",
-   "date": "2026-11-24T04:53:00.000Z"
-  },
-  {
-   "title": "다음은 \"내신\"…부정행위 시 ‘당일 전과목 0점’ 칼 뽑았다 [현장영상]",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFB6TENvbzNmdFRVYmtuZENTNkdCNTdkTElQUHctSzdwRklpdHM0RjVJQXhTcTg1dTZZb2xMd29NbEFlUks4WVdMcGZ3SG8xN2lWUGJtQw?oc=5",
-   "date": "2026-11-24T04:52:00.000Z"
-  },
-  {
-   "title": "삼성이 만든 휴머노이드는 뭐가 다를까? “내년 초 공개를 목표로 개발 중”",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9ZdTZ0V0hZTXU1NHVPMHZMOFliM0d1SkhkbUhpaW1Ld2F6ZHp4eU41ZzZ3ZG1mOF9wRWUtYnZ5Wjl0TDR2MlkwY1JqRF85enVrRFJ2VQ?oc=5",
-   "date": "2026-11-24T04:50:00.000Z"
-  },
-  {
-   "title": "또다시 유리천장 도전, 강금실 누구? 여성 첫 법무장관 이어 국정원장 지명",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5ELXdIZC1lSXNzVHBRR2dGZUJfSDhCT1JSLWtyaUVianp1QlQ3aVpEVkZuQXVRTzNKcG8yZUQtYllJcGw0OUVSREN3ZE00RlBQUzBNUQ?oc=5",
-   "date": "2026-11-24T04:16:53.000Z"
-  },
-  {
-   "title": "트럼프, '사형제도 강화' 발표…\"급진 좌파는 괴물에 동정심\"",
-   "link": "https://news.jtbc.co.kr/article/NB12329539",
-   "date": "2026-11-24T04:16:52.000Z"
-  },
-  {
-   "title": "대한변협 \"대법원장 탄핵 추진 우려…신중히 재고해야\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1Udk5RanNSUFptR0J0RlctZTd2dVFVanpMRDh0cGRvQldWX1NtX3YzakpHZkFNRzRqUVJoR015US10R2VUY2V3eVNXeUYtYVZLbmlKbg?oc=5",
-   "date": "2026-11-24T03:56:00.000Z"
-  },
-  {
-   "title": "어벤저스 vs 듄: 파트 3…내달 18일 개봉 ‘정면 승부’",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5sSlp5M2M0ejh2OXV1UU1Wck1yNEF3Rnh3dWZ5bm45bUliNDBhVWpyMmktd2hyeW5CZTN2ZXBUM3JtSzJuRGJrX3lzekJsT1c4YXZJ?oc=5",
-   "date": "2026-11-24T03:18:26.000Z"
-  },
-  {
-   "title": "공연장 덮친 정체불명 가스…맨체스터서 1만 2천명 대피",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBvOFBGUG5BSnlQQnVwTUFfaExGTmpRTEZIS0tOMHp2YW4xWE12UDNrcEp0SUxlU3FGVXVJSlpBUFl2NFhmeXlaeGEtZnZTcDgyT25v?oc=5",
-   "date": "2026-11-24T03:18:25.000Z"
-  },
-  {
-   "title": "스위스 외교사무소 설치 한 달도 안 됐는데…제재에 반발한 김여정 \"더러운 처사, 평양 외교사무소 철수 검토\"",
-   "link": "https://news.jtbc.co.kr/article/NB12329529",
-   "date": "2026-11-24T02:09:08.000Z"
-  },
-  {
-   "title": "\"34번 문제 보러 왔다가, 얼굴만 34번 보고 간다\"…수능 영어 강사 ‘AI급 미모’ 화제",
-   "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5QblBtSEgzaU5EcGR2V2VjTU0yR3hKVmJtWmtoZFIxWkt2U3VjNXY0bUtfTmJOcmQxSlBQeXkxaXZJTHVRQkZUZ2xmdnJJdEJLS1FtT1NMeWhfakc2Z19Jckg2b1JjV1IzYVE?oc=5",
-   "date": "2026-11-24T02:09:00.000Z"
-  },
-  {
-   "title": "'공개 충돌' 박선원 하루만에 \"송구\"...당내 \"동네 애들 막싸움\" 비판",
-   "link": "https://news.jtbc.co.kr/article/NB12329528",
-   "date": "2026-11-24T01:56:29.000Z"
-  },
-  {
-   "title": "MZ세대 인기, 30주년 맞은 ‘다마고치’…누적 판매 1억대 돌파",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE4wWFlTLWc0dlduYnF0MzZZdVEyMjg0U0g3cHhOWGtWRlFwSkJvVHNpTFJ0S1F1MTNRcVVKc3dtWDkyenRvNno1eXF5bndxQ05iMV9wdA?oc=5",
-   "date": "2026-11-24T01:34:00.000Z"
-  },
-  {
-   "title": "홈플러스 온라인 배송 멈춘다…26일 배송분부터 자동 취소·전액 환불",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1yYzhIX3FYRU5LMEp5S20zaHcyd29LbG15Qy1Ccld0VG5RdkhOd1R4X0RCaU5kVjFWT3B6V0NlejV0RzI0aFpWQTA3emlvZ284MHpDSQ?oc=5",
-   "date": "2026-11-24T01:13:00.000Z"
-  },
-  {
-   "title": "\"9급들 데리고 일하니 멘붕\"...부산인재개발원장 막말 폭탄",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE01bWIyaTNDeVU5NU5ERlhPOGM0aVBMX1RtWWJVaVh4ejRJb3VrbkFsekdVa2JQQmVFcnVxR1NfUTZFMm14V1dlbTlPanA3WXlrWXBJag?oc=5",
-   "date": "2026-11-24T01:06:00.000Z"
-  },
-  {
-   "title": "방공식별구역 진입한 러시아 군용기...합참 \"영공침범 없었다\"",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBMa0I5TUZVN1FvNjZxbzRwRFNBYmFmTHJXejdyUzRicGZNYkdvVS1VNHpIRjZBaElaQWRzTW1Oc1hRZm1TT1Zxb2JiRE5IT1pzckE0bQ?oc=5",
-   "date": "2026-11-24T01:05:46.000Z"
-  },
-  {
-   "title": "젠슨 황 돌아오자 코스피 장중 5000선 돌파…개장 6분 만에 매수 사이드카",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE92VVJyX0JSLXZNVm9iQW5zd1lWYWNoLUJ1UGJUOWZqMXVKMmU3VFNjNW5UVWRjQzZCaDFkVDdycFdaNDJkbnc0WjAyWWFqdWdOeG5iSA?oc=5",
-   "date": "2026-11-24T00:04:00.000Z"
-  },
-  {
-   "title": "앰퍼샌드원, 스튜디오 아제드 노래방 라이브 출격",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBpUW9KdEZmODJ6R2NVNXRNOXcwSmpqa3c3VlFuaHdpbWI1TWZZT0ljRVB5QzBIdFdHYkNXUG5YR0xQLWRuSUFwYW80SkozNmp4MHlrYQ?oc=5",
-   "date": "2026-11-24T00:04:00.000Z"
-  },
-  {
-   "title": "\"내 자리 맞아\" 아닌데요…KTX 민폐 승객의 최후",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFAyMWpJSU9neGtfVHE4QTJBbWdaTkJRSThMbVZaV25fenQ4UC05SDhtVkdqd3ZycFRlZUJkbmNlaHFTR3pKanJuakRuMlp4OHp0ZDFj?oc=5",
-   "date": "2026-11-24T00:00:43.000Z"
-  },
-  {
-   "title": "대걸레로 CCTV ‘쓱~’ 완전범죄 노렸던 절도범",
-   "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1iRHQwam1fa04xUmxwVEIxU0t2UTJsYWxERU5CVmhINFhnNVpENmF5Zzk0UFRQcjlxUzJjMmhsdXNERjFfVl9jeDlxRkwtRWRRS3h3?oc=5",
-   "date": "2026-11-24T00:00:38.000Z"
-  },
-  {
-   "title": "직원들 환호 속 복귀한 젠슨 황 \"더 나은 CEO 되겠다\"…엔비디아 주가 31% 폭등",
-   "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE55d3pQU25ERi1KZmtad2lISG1wcmwtOWtoVGc4YWFOUG1QOTc5bVF4c3c0OFRhZ01Pc1ZkR2lkZ0k0VkRNQ3BpVjJCZWxPRExTbl8tbw?oc=5",
-   "date": "2026-11-23T23:59:00.000Z"
+   "title": "[단독]역삼 방화범, 범행 뒤 구속 대비 신변정리…공소장에 담긴 '26명 살해 계획'",
+   "link": "https://news.jtbc.co.kr/article/NB12329652",
+   "date": "2026-11-24T10:52:58.000Z"
   }
  ]
 }
