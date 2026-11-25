@@ -1,7 +1,7 @@
 {
- "updatedAt": "2026-11-24T07:47:29.042Z",
- "kospi": 6.32,
- "kosdaq": 4.79,
+ "updatedAt": "2026-11-25T06:19:29.438Z",
+ "kospi": -6.13,
+ "kosdaq": -2.22,
  "source": {
   "kospi": "naver-polling",
   "kosdaq": "naver-polling"
